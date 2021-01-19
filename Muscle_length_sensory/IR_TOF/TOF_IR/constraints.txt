@@ -1,0 +1,3 @@
+﻿"WallThick"= 1.2'thickness of wall for printer
+"D3@Sketch4"="WallThick"*2+"dHole"
+"dHole"= 3.3'diameter of screw hole

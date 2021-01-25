@@ -81,12 +81,14 @@ void loop() {
   delayMicroseconds(12);
 
  
-  PORTD &= B11000111;   //D3, D4, D5 LOW  //We have finished the burst. We set everything to low
+  PORTD = B11000111;   //D3, D4, D5 LOW  //We have finished the burst. We set everything to low
   
   PORTB |= B00000100;   
   /*Rember, after the 8 cycles, the echo out pin, D10, is set
   to high till we receive the bounced echo signal.*/
   triggered = true;    //Reset the triggered value
+
+  delayMicroseconds(1000);
   }
 }
 

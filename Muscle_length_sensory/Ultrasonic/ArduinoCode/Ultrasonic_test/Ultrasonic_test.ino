@@ -24,7 +24,7 @@ void loop() {
   between the 10us trig pulse and the 8 cycles burt. For some reasons, if I put 250us delay,
   I get 350 on the oscilloscope. That's why I've made a 150us delay. 
   */
-  PORTD &= B11111111;   //D5 high    //Activate the MAX323 NPN transistor for supply  
+  PORTD = B11111111;   //D5 high    //Activate the MAX323 NPN transistor for supply  
   
   //Start burst
   PORTD |= B00001000;   //D3 HIGH

@@ -2,7 +2,7 @@
  * Schematic: http://www.electronoobs.com/eng_arduino_tut36_sch1.php */
  
 //Variables
-bool triggered = false;
+bool triggered = true;
 bool Trig_in_state =  false;
 
 void setup() {
@@ -24,8 +24,9 @@ void loop() {
   between the 10us trig pulse and the 8 cycles burt. For some reasons, if I put 250us delay,
   I get 350 on the oscilloscope. That's why I've made a 150us delay. 
   */
-  PORTD &= B11011111;   //D5 LOW    //Activate the MAX323 NPN transistor for supply  
-    
+  PORTD &= B11111111;   //D5 high    //Activate the MAX323 NPN transistor for supply  
+  
+  //Start burst
   PORTD |= B00001000;   //D3 HIGH
   PORTD &= B11101111;   //D4 LOW
   delayMicroseconds(12);//12us so around 40KHz. Freq = 1/2*12us
@@ -85,7 +86,7 @@ void loop() {
   PORTB |= B00000100;   
   /*Rember, after the 8 cycles, the echo out pin, D10, is set
   to high till we receive the bounced echo signal.*/
-  triggered = false;    //Reset the triggered value
+  triggered = true;    //Reset the triggered value
   }
 }
 

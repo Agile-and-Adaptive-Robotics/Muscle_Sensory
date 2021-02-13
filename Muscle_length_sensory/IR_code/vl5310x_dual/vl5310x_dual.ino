@@ -72,7 +72,7 @@ void read_dual_sensors() {
   Serial.print(F("\t"));
 
   // print sensor two reading
-  Serial.print(F("2: "));
+  Serial.print(F("\t"));
   if(measure2.RangeStatus != 4) {
     Serial.print(measure2.RangeMilliMeter);
   } else {
@@ -107,5 +107,5 @@ void setup() {
 void loop() {
    
   read_dual_sensors();
-  delay(100);
+  delay(2);
 }

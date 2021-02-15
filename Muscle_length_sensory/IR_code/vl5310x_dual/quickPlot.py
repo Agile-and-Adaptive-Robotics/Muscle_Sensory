@@ -25,7 +25,7 @@ indx2 = np.linspace(0, 10E-3*len(raw2), len(raw2))
 
 #figure 1: raw data 1
 #top plot, plot the time series
-fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(12, 5))
+fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(12, 7))
 fig.subplots_adjust(hspace= 0)
 axes[0].plot(indx1, raw1[:, 0], linewidth= 0.2, marker= ".")
 axes[0].plot(indx1, raw1[:, 1], linewidth= 0.2, marker= ".")
@@ -38,10 +38,9 @@ axes[1].plot([0, indx1[len(indx1)-1]], [0, 0], linewidth= 1.5, color= "black")
 axes[1].set_xlabel("Time(s)")
 axes[1].set_ylabel("Delta(mm)")
 
-
 #figure 2: raw data 2
 #top plot, plot the time series
-fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(12, 5))
+fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(12, 7))
 fig.subplots_adjust(hspace= 0)
 axes[0].plot(indx2, raw2[:, 0], linewidth= 0.2, marker= ".")
 axes[0].plot(indx2, raw2[:, 1], linewidth= 0.2, marker= ".")
@@ -53,6 +52,12 @@ axes[1].plot(indx2, diff2, linewidth= 0.2, marker= ".")
 axes[1].plot([0, indx2[len(indx2)-1]], [0, 0], linewidth= 1.5, color= "black")
 axes[1].set_xlabel("Time(s)")
 axes[1].set_ylabel("Delta(mm)")
+
+#figure 3: scatter plot of internal vs. external sensor
+fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(7, 7))
+#top plot: raw data 1
+axes.scatter(raw1[:, 0], raw1[:, 1], marker= ".")
+axes.scatter(raw2[:, 0], raw2[:, 1], marker= ".")
 
 plt.show()
 

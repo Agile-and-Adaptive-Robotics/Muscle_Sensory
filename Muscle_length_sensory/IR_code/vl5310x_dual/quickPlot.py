@@ -107,4 +107,24 @@ axes[2].scatter(raw3[:, 0], raw3[:, 1], marker= ".", label= "raw3")
 axes[2].plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line
 # axes[2].axis("equal")
 
+#figure 5: compare fited internal sensor data with external data
+#prepare data
+fitted1 = poly1(raw1[:, 0]) #make the fitted data
+#start plotting
+fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(15, 7))
+fig.subplots_adjust(hspace= 0)
+#top plot: compare the external sensor with fitted data
+axes[0].plot(indx1, raw1[:, 1], marker= ".", linewidth= 0.4, label= "External Sensor")
+axes[0].plot(indx1, fitted1, marker= ".", linewidth= 0.4, label= "Fitted Internal")
+axes[0].legend(loc= "best")
+axes[0].set_ylabel("Distance(mm)")
+axes[0].set_title("Comparison with fitted internal sensor data")
+#bottom plot: show delta between the external sensor to fitted
+axes[1].plot(indx1, raw1[:, 1]-fitted1, marker= ".", linewidth= 0.4, label= "Fitted delta")
+axes[1].plot(indx1, diff1, marker= ".", linewidth= 0.4, label= "Original delta")
+axes[1].plot([0, indx1[len(indx1)-1]], [0, 0], linewidth= 1.5, color= "black") #plot a horizontal line
+axes[1].set_ylabel("Delta(mm)")
+axes[1].set_xlabel("Time(s)")
+axes[1].legend(loc= "best")
+
 plt.show()

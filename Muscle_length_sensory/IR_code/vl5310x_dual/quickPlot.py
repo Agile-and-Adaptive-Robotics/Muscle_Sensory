@@ -52,10 +52,11 @@ new_y = poly1(new_x)
 #top plot, plot the time series
 fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(12, 7))
 fig.subplots_adjust(hspace= 0)
-axes[0].plot(indx1, raw1[:, 0], linewidth= 0.2, marker= ".")
-axes[0].plot(indx1, raw1[:, 1], linewidth= 0.2, marker= ".")
+axes[0].plot(indx1, raw1[:, 0], linewidth= 0.2, marker= ".", label= "Internal Sensor")
+axes[0].plot(indx1, raw1[:, 1], linewidth= 0.2, marker= ".", label= "External Sensor")
 axes[0].set_ylabel("Distance(mm)")
 axes[0].set_title("IR sensor Internal vs. External R1")
+axes[0].legend(loc= "best")
 
 #bottom plot, plot the difference between the external sensor and the internal sensor
 axes[1].plot(indx1, diff1, linewidth= 0.2, marker= ".")
@@ -67,8 +68,8 @@ axes[1].set_ylabel("Delta(mm)")
 #top plot, plot the time series
 fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(12, 7))
 fig.subplots_adjust(hspace= 0)
-axes[0].plot(indx2, raw2[:, 0], linewidth= 0.2, marker= ".")
-axes[0].plot(indx2, raw2[:, 1], linewidth= 0.2, marker= ".")
+axes[0].plot(indx2, raw2[:, 0], linewidth= 0.2, marker= ".", label= "Internal Sensor")
+axes[0].plot(indx2, raw2[:, 1], linewidth= 0.2, marker= ".", label= "External Sensor")
 axes[0].set_ylabel("Distance(mm)")
 axes[0].set_title("IR sensor Internal vs. External R2")
 
@@ -111,7 +112,7 @@ axes[2].plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line
 #prepare data
 fitted1 = poly1(raw1[:, 0]) #make the fitted data
 #start plotting
-fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(15, 7))
+fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(12, 7))
 fig.subplots_adjust(hspace= 0)
 #top plot: compare the external sensor with fitted data
 axes[0].plot(indx1, raw1[:, 1], marker= ".", linewidth= 0.4, label= "External Sensor")

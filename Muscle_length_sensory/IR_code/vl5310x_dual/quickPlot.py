@@ -77,14 +77,28 @@ axes.scatter(raw1[:, 0], raw1[:, 1], marker= ".", label= "raw1")
 axes.scatter(raw2[:, 0], raw2[:, 1], marker= ".", label= "raw2")
 axes.scatter(raw3[:, 0], raw3[:, 1], marker= ".", label= "raw3")
 axes.scatter(raw4[:, 0], raw4[:, 1], marker= ".", label= "raw4")
-axes.plot([20, 130], [20, 130], color= "black", linewidth= 1) #plot plot y=x function
-axes.plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line
 axes.plot([20, 130], [20, 130], color= "black", linewidth= 1, ls= "--") #plot plot y=x function
 axes.axis("equal")
 axes.legend(loc= "best")
 axes.set_xlabel("Internal")
 axes.set_ylabel("External")
 axes.grid(True)
+
+#figure 4: compare fit functions
+fig, axes = plt.subplots(nrows=3, ncols=1)
+#top plot: raw data 1
+axes[0].scatter(raw1[:, 0], raw1[:, 1], marker= ".", label= "raw1")
+axes[0].plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line
+# axes[0].axis("equal")
+#middle plot: raw data 2
+axes[1].scatter(raw2[:, 0], raw2[:, 1], marker= ".", label= "raw2")
+axes[1].plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line
+# axes[1].axis("equal")
+#bottom plot: raw data 3
+axes[2].scatter(raw3[:, 0], raw3[:, 1], marker= ".", label= "raw3")
+axes[2].plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line
+# axes[2].axis("equal")
+
 
 plt.show()
 

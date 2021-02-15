@@ -33,9 +33,17 @@ indx4 = np.linspace(0, 10E-3*len(raw4), len(raw4))
 
 #calculate the polynomial fit to the data.
 #(Source: https://www.kite.com/python/answers/how-to-plot-a-polynomial-fit-from-an-array-of-points-using-numpy-and-matplotlib-in-python)
-coeff1 = np.polyfit(raw1[:, 0], raw1[:, 1], 3)
+#combine all 4 data sets to make the polyfit
+temp1 = np.append(raw1[:, 0], raw2[:, 0])
+temp2 = np.append(raw3[:, 0], raw4[:, 0])
+combinedInternal = np.append(temp1, temp2) #Internal sensor, because of the limitation of np, have to do it like this
+temp1 = np.append(raw1[:, 1], raw2[:, 1])
+temp2 = np.append(raw3[:, 1], raw4[:, 1])
+combinedExternal = np.append(temp1, temp2) #External sensor
+#fit algorithm
+coeff1 = np.polyfit(combinedInternal, combinedExternal, 4)
 poly1 = np.poly1d(coeff1)
-new_x = np.linspace(np.min(raw1[:, 0]), np.max(raw1[:, 0]))
+new_x = np.linspace(np.min(combinedInternal), np.max(combinedInternal))
 new_y = poly1(new_x)
 
 #--plotting--
@@ -85,7 +93,7 @@ axes.set_ylabel("External")
 axes.grid(True)
 
 #figure 4: compare fit functions
-fig, axes = plt.subplots(nrows=3, ncols=1)
+fig, axes = plt.subplots(nrows=3, ncols=1, figsize=(3, 7))
 #top plot: raw data 1
 axes[0].scatter(raw1[:, 0], raw1[:, 1], marker= ".", label= "raw1")
 axes[0].plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line

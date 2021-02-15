@@ -41,7 +41,7 @@ temp1 = np.append(raw1[:, 1], raw2[:, 1])
 temp2 = np.append(raw3[:, 1], raw4[:, 1])
 combinedExternal = np.append(temp1, temp2) #External sensor
 #fit algorithm
-coeff1 = np.polyfit(combinedInternal, combinedExternal, 4)
+coeff1 = np.polyfit(combinedInternal, combinedExternal, 5)
 poly1 = np.poly1d(coeff1)
 new_x = np.linspace(np.min(combinedInternal), np.max(combinedInternal))
 new_y = poly1(new_x)

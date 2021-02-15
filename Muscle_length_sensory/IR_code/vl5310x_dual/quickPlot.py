@@ -79,6 +79,7 @@ axes.scatter(raw3[:, 0], raw3[:, 1], marker= ".", label= "raw3")
 axes.scatter(raw4[:, 0], raw4[:, 1], marker= ".", label= "raw4")
 axes.plot([20, 130], [20, 130], color= "black", linewidth= 1) #plot plot y=x function
 axes.plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line
+axes.plot([20, 130], [20, 130], color= "black", linewidth= 1, ls= "--") #plot plot y=x function
 axes.axis("equal")
 axes.legend(loc= "best")
 axes.set_xlabel("Internal")

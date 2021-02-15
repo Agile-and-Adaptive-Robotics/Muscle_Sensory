@@ -33,7 +33,7 @@ indx4 = np.linspace(0, 10E-3*len(raw4), len(raw4))
 
 #calculate the polynomial fit to the data.
 #(Source: https://www.kite.com/python/answers/how-to-plot-a-polynomial-fit-from-an-array-of-points-using-numpy-and-matplotlib-in-python)
-coeff1 = np.polyfit(raw1[:, 0], raw1[:, 1], 20)
+coeff1 = np.polyfit(raw1[:, 0], raw1[:, 1], 3)
 poly1 = np.poly1d(coeff1)
 new_x = np.linspace(np.min(raw1[:, 0]), np.max(raw1[:, 0]))
 new_y = poly1(new_x)

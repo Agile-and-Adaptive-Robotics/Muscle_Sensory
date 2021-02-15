@@ -62,14 +62,11 @@ void read_dual_sensors() {
   lox2.rangingTest(&measure2, false); // pass in 'true' to get debug data printout!
 
   // print sensor one reading
-  Serial.print(F("\n"));
   if(measure1.RangeStatus != 4) {     // if not out of range
     Serial.print(measure1.RangeMilliMeter);
   } else {
     Serial.print(F("Out of range"));
   }
-  
-  Serial.print(F("\t"));
 
   // print sensor two reading
   Serial.print(F("\t"));
@@ -107,5 +104,4 @@ void setup() {
 void loop() {
    
   read_dual_sensors();
-  delay(2);
 }

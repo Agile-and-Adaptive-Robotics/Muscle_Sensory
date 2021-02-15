@@ -31,6 +31,13 @@ indx2 = np.linspace(0, 10E-3*len(raw2), len(raw2))
 indx3 = np.linspace(0, 10E-3*len(raw3), len(raw3))
 indx4 = np.linspace(0, 10E-3*len(raw4), len(raw4))
 
+#calculate the polynomial fit to the data.
+#(Source: https://www.kite.com/python/answers/how-to-plot-a-polynomial-fit-from-an-array-of-points-using-numpy-and-matplotlib-in-python)
+coeff1 = np.polyfit(raw1[:, 0], raw1[:, 1], 20)
+poly1 = np.poly1d(coeff1)
+new_x = np.linspace(np.min(raw1[:, 0]), np.max(raw1[:, 0]))
+new_y = poly1(new_x)
+
 #--plotting--
 
 #figure 1: raw data 1
@@ -70,7 +77,8 @@ axes.scatter(raw1[:, 0], raw1[:, 1], marker= ".", label= "raw1")
 axes.scatter(raw2[:, 0], raw2[:, 1], marker= ".", label= "raw2")
 axes.scatter(raw3[:, 0], raw3[:, 1], marker= ".", label= "raw3")
 axes.scatter(raw4[:, 0], raw4[:, 1], marker= ".", label= "raw4")
-axes.plot([20, 130], [20, 130], color= "black", linewidth= 1)
+axes.plot([20, 130], [20, 130], color= "black", linewidth= 1) #plot plot y=x function
+axes.plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line
 axes.axis("equal")
 axes.legend(loc= "best")
 axes.set_xlabel("Internal")

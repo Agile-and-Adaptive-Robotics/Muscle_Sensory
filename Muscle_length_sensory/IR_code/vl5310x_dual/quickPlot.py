@@ -107,9 +107,4 @@ axes[2].scatter(raw3[:, 0], raw3[:, 1], marker= ".", label= "raw3")
 axes[2].plot(new_x, new_y, color= "black", linewidth= 2) #plot the poly fit line
 # axes[2].axis("equal")
 
-
 plt.show()
-
-
-
-

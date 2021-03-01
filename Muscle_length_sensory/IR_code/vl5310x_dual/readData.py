@@ -9,22 +9,40 @@ class readData(object):
     """
 
     def __init__(self, pathToFile):
-        assert isinstance(pathToFile, str), 'Path must be string'
+        assert isinstance(pathToFile, dict), 'Path must be a list of directories'
         self._pathToFile = pathToFile
 
-    def parseData(self):
-        raw1_pd = pd.read_csv(self._pathToFile, delimiter="\t", header=None)
+    def _parseDataSingle(self, singlePath):
+        raw1_pd = pd.read_csv(singlePath, delimiter="\t", header=None)
         return raw1_pd
 
-    def 
+    def parseData(self):
+        """
+        output a dict structure that contains the parsed data
+        :return:
+        """
+        out = []
+        counter = 0
+        print(self._pathToFile)
+        for fileName, eachFile in self._pathToFile.items():
+            print(counter, eachFile)
+            out.append(self._parseDataSingle(eachFile))
+            counter += 1
+        return out
 
 # run code condition
 RunAll = True
 
 if RunAll and __name__ == "__main__":
     # define path
-    path = "rawData3.txt"
+    path = {'raw 1': 'rawData3.txt',
+            'raw 2': 'rawData4.txt',
+            'raw 3': 'rawData5.txt'}
 
+    print((path))
     # instantiate and read data
     data1 = readData(path)
     raw_data1 = data1.parseData()
+
+    type(raw_data1)
+    print(raw_data1)

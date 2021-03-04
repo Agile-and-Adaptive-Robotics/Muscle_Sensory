@@ -4,9 +4,9 @@ import pandas as pd
 
 # define directory
 path1 = "rawData3.txt"
-path2 = "rawData4.txt"
-path3 = "rawData5.txt"
-path4 = "rawData6.txt"
+path2 = "rawData7_static.txt"
+path3 = "rawData8_static.txt"
+path4 = "rawData9_static.txt"
 
 # read using Panda, data was collected with 2 tabs, probably should change it in the future
 raw1_pd = pd.read_csv(path1, delimiter="\t", header=None)
@@ -41,7 +41,8 @@ temp1 = np.append(raw1[:, 1], raw2[:, 1])
 temp2 = np.append(raw3[:, 1], raw4[:, 1])
 combinedExternal = np.append(temp1, temp2)  # External sensor
 # fit algorithm
-coeff1 = np.polyfit(combinedInternal, combinedExternal, 5)
+# coeff1 = np.polyfit(combinedInternal, combinedExternal, 5)
+coeff1 = np.polyfit(raw1[:, 0], raw1[:, 1], 5)
 poly1 = np.poly1d(coeff1)
 new_x = np.linspace(np.min(combinedInternal), np.max(combinedInternal))
 new_y = poly1(new_x)

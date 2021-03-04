@@ -7,6 +7,7 @@ class plottingRoutine(object):
     """
     This class does all kind of plotting depending on the method
     """
+    # TODO: consider using bokeh for plotting
 
     def __init__(self, data, keys, showPlots=False):
         """
@@ -63,4 +64,8 @@ class plottingRoutine(object):
             plt.show()
 
     def showAllPlots(self):
+        """
+        Command to show all plots.
+        :return:
+        """
         plt.show()

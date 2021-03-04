@@ -13,6 +13,7 @@ class Data(object):
         assert isinstance(pathToFile, dict), 'Path must be a list of directories'
         self._pathToFile = pathToFile
         self._listOfArrays = self._parseData()
+        self.keys = pathToFile.keys()
 
     def _parseDataSingle(self, singlePath):
         raw1_pd = pd.read_csv(singlePath, delimiter="\t", header=None)
@@ -74,6 +75,13 @@ class Data(object):
         array3D[NaN_idx] = float("nan")
         return array3D
 
+    def returnKeys(self):
+        """
+        method to return the keys of list
+        :return:
+        """
+        return tuple(self.keys)
+
 
 # run code condition
 RunAll = True
@@ -92,5 +100,5 @@ if RunAll and __name__ == "__main__":
     # instantiate and read data
     data = Data(path)
     raw = data.readData2Array()
-    print(type(raw))
-    print(len(raw.shape))
+    keys = data.returnKeys()
+    print(type(keys))

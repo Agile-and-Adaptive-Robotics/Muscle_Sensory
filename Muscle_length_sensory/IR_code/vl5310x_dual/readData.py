@@ -69,6 +69,9 @@ class readData(object):
                 counter1 += 1
             counter1 = 0  # reset counter 1
             counter += 1
+        # convert all -999 values to NaN
+        NaN_idx = np.where(array3D == -999)
+        array3D[NaN_idx] = float("nan")
         return array3D
 
 
@@ -81,7 +84,10 @@ if RunAll and __name__ == "__main__":
     path = {'raw 1': 'rawData3.txt',
             'raw 2': 'rawData4.txt',
             'raw 3': 'rawData5.txt',
-            'raw 4': 'rawData6.txt'}
+            'raw 4': 'rawData6.txt',
+            'raw 5 static:': 'rawData7_static.txt',
+            'raw 6 static:': 'rawData8_static.txt',
+            'raw 7 static:': 'rawData9_static.txt'}
 
     # instantiate and read data
     data = readData(path)

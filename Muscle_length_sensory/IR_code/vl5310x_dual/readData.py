@@ -3,13 +3,13 @@ import pathlib as Path
 import pandas as pd
 
 
-class readData(object):
+class Data(object):
     """
     This class reads the text dat and output the data array 
     """
 
     def __init__(self, pathToFile):
-        print(f'<- Create readData object')
+        print(f'-> Create Data object.')
         assert isinstance(pathToFile, dict), 'Path must be a list of directories'
         self._pathToFile = pathToFile
         self._listOfArrays = self._parseData()
@@ -59,8 +59,8 @@ class readData(object):
         counter2 = 0  # counter variable
         for item in self._listOfArrays:
             buf = np.asarray(item)
-            print(buf.shape)
-            print(buf[:, 0])
+            # print(buf.shape)
+            # print(buf[:, 0])
             for i in buf[:, counter2]:
                 for j in buf[counter1, :]:
                     array3D[counter1, counter2, counter] = buf[counter1, counter2]
@@ -90,6 +90,7 @@ if RunAll and __name__ == "__main__":
             'raw 7 static:': 'rawData9_static.txt'}
 
     # instantiate and read data
-    data = readData(path)
+    data = Data(path)
     raw = data.readData2Array()
-    print(raw)
+    print(type(raw))
+    print(len(raw.shape))

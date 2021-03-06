@@ -1,25 +1,25 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from readData import Data
 
 
-class plottingRoutine(object):
+class plottingRoutine(Data):
     """
     This class does all kind of plotting depending on the method
     """
+
     # TODO: consider using bokeh for plotting
 
-    def __init__(self, data, keys, showPlots=False):
+    def __init__(self, pathtoFile, showPlots=False):
         """
         initialize input data. Expect a 3D array
         :param data:
         """
-        assert isinstance(data, np.ndarray), '>> Data must be numpy 3D array'
-        assert len(data.shape) == 3, '>> Input data must be 3D'
-        assert isinstance(keys, tuple), '>> Keys must be a tuple.'
         print('-> Create plotting routine object.')
-        self.data = data
-        self.keys = keys
+        super().__init__(pathToFile=pathtoFile)
+        self.data = super().readData2Array()
+        self.keys = super().returnKeys()
         self.showPlots = showPlots
         # define sampling period to make time array
         self.tPeriod = 0.093

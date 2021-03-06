@@ -1,6 +1,7 @@
 import visualData
 import readData
 import numpy as np
+from pathlib import Path
 
 
 # test integration of the classes
@@ -12,12 +13,13 @@ path = {'R1 dynamic BPA': 'rawData3.txt',
         'R6 some static': 'rawData8_static.txt',
         'R7 some static': 'rawData9_static.txt'}
 
+
 # instantiate the data
 data = readData.Data(path)
 # put the data into a 3D array
 rawArr = data.readData2Array()
 keys = data.returnKeys()
-makePlots = visualData.plottingRoutine(rawArr, keys)
+makePlots = visualData.plottingRoutine(path)
 makePlots.plotTimeSeries(showPlots=False)
-makePlots.plotDiff(showPlots=False)
+# makePlots.plotDiff(showPlots=False)
 makePlots.showAllPlots()

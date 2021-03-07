@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from readData import Data
+from analysizeData import analyzeData
 
 
 class plottingRoutine(Data):
@@ -27,6 +28,7 @@ class plottingRoutine(Data):
         self.tPeriod = 0.093
         # get number of files
         self.z_len = len(self.data[0, 0, :])
+        self.pathToFile = pathToFile
 
     def plotTimeSeries(self, showPlots=False, specificPlots=None):
         """
@@ -116,6 +118,27 @@ class plottingRoutine(Data):
 
         if showPlots:
             plt.show()
+
+    def plotFit(self, fitOrder=3, fitSet=None, showPlots=False):
+        """
+        Method to plot the data and compare it with the fit.
+        Call analyzeData class to calculate fit
+        :param fitSet:
+        :param fitOrder:
+        :return:
+        """
+        analyzeDataInstance = analyzeData(self.pathToFile)
+        fitCoeff, x2fit, y2fit = analyzeDataInstance.defineFit(fitOrder=fitOrder, fitSet=fitSet)
+        # plot the fit
+        poly1 = np.poly1d(fitCoeff)
+        new_x = np.linspace(np.min(x2fit), np.max(y2fit))
+        new_y = poly1(new_x)
+        fig, axes = plt.subplots(nrows=1, ncols=1)
+        axes.scatter(x2fit, y2fit)  # scatter of fit data
+        axes.plot(new_x, new_y, color="black", linewidth=2)  # line fit
+        if showPlots is True:
+            plt.show()
+        return fitCoeff
 
     def showAllPlots(self):
         """

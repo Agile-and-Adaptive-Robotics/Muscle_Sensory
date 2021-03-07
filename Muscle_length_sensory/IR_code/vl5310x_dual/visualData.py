@@ -26,26 +26,38 @@ class plottingRoutine(Data):
         # get number of files
         self.z_len = len(self.data[0, 0, :])
 
-    def plotTimeSeries(self, showPlots=False):
+    def plotTimeSeries(self, showPlots=False, specificPlots=None):
         """
-        method to plot time series, input is time array
+        Method to plot time series, input is time array.
+        Define specific with a tuple of arrays that need to be plotted.
         :return:
         """
         print('>> Plot time series.')
         # create control array for for-loop
         controlArr = np.arange(self.z_len)
-        for counter in controlArr:
-            time = np.linspace(0, self.tPeriod * len(self.data[:, 0, 0]), len(self.data[:, 0, 0]))
-            fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(12, 5))
-            axes.plot(time, self.data[:, 0, counter])
-            axes.plot(time, self.data[:, 1, counter])
-            axes.set_ylabel("Distance(mm)")
-            axes.set_xlabel("Time (s)")
-            axes.set_title(str(self.keys[counter]) + ' Plot')
+        assert isinstance(specificPlots, tuple), 'Plot selection must be a tuple'
+        if specificPlots is None:
+            for counter in controlArr:
+                time = np.linspace(0, self.tPeriod * len(self.data[:, 0, 0]), len(self.data[:, 0, 0]))
+                fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(12, 5))
+                axes.plot(time, self.data[:, 0, counter])
+                axes.plot(time, self.data[:, 1, counter])
+                axes.set_ylabel("Distance(mm)")
+                axes.set_xlabel("Time (s)")
+                axes.set_title(str(self.keys[counter]) + ' Plot')
+        else:
+            for counter in specificPlots:
+                time = np.linspace(0, self.tPeriod * len(self.data[:, 0, 0]), len(self.data[:, 0, 0]))
+                fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(12, 5))
+                axes.plot(time, self.data[:, 0, counter])
+                axes.plot(time, self.data[:, 1, counter])
+                axes.set_ylabel("Distance(mm)")
+                axes.set_xlabel("Time (s)")
+                axes.set_title(str(self.keys[counter]) + ' Plot')
         if showPlots:
             plt.show()
 
-    def plotDiff(self, showPlots=False):
+    def plotDiff(self, showPlots=False, specificPlots=None):
         """
         method to plot delta of the 2 sensors, input is time array
         :return:
@@ -53,13 +65,22 @@ class plottingRoutine(Data):
         print('>> Plot delta between sensors.')
         # create control array for for-loop
         controlArr = np.arange(self.z_len)
-        for counter in controlArr:
-            time = np.linspace(0, self.tPeriod * len(self.data[:, 0, 0]), len(self.data[:, 0, 0]))
-            fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(12, 5))
-            axes.plot(time, self.data[:, 0, counter] - self.data[:, 1, counter])
-            axes.set_ylabel("Delta (mm)")
-            axes.set_xlabel("Time (s)")
-            axes.set_title(str(self.keys[counter]) + ' Plot')
+        if specificPlots is None:
+            for counter in controlArr:
+                time = np.linspace(0, self.tPeriod * len(self.data[:, 0, 0]), len(self.data[:, 0, 0]))
+                fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(12, 5))
+                axes.plot(time, self.data[:, 0, counter] - self.data[:, 1, counter])
+                axes.set_ylabel("Delta (mm)")
+                axes.set_xlabel("Time (s)")
+                axes.set_title(str(self.keys[counter]) + ' Plot')
+        else:
+            for counter in specificPlots:
+                time = np.linspace(0, self.tPeriod * len(self.data[:, 0, 0]), len(self.data[:, 0, 0]))
+                fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(12, 5))
+                axes.plot(time, self.data[:, 0, counter] - self.data[:, 1, counter])
+                axes.set_ylabel("Delta (mm)")
+                axes.set_xlabel("Time (s)")
+                axes.set_title(str(self.keys[counter]) + ' Plot')
         if showPlots:
             plt.show()
 

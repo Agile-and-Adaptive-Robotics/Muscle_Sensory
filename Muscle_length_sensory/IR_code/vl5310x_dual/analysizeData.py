@@ -36,5 +36,5 @@ class analyzeData(Data):
                 x2fit = np.append(x2fit, self.data[:, 0, each])
                 y2fit = np.append(y2fit, self.data[:, 1, each])
 
-        coeff = np.polyfit(x2fit, y2fit, fitOrder)
-        return coeff
+        coefficient = np.polyfit(x2fit, y2fit, fitOrder)
+        return coefficient

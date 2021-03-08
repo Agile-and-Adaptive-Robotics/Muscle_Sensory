@@ -126,7 +126,7 @@ class plottingRoutine(Data):
         :param showPlots: Boolean for showing plot or not
         :param fitSet: which data set to fit
         :param fitOrder: order of polyfit
-        :return:
+        :return: return the fit coefficient and x, y arrays of the function to plot fit
         """
         analyzeDataInstance = analyzeData(self.pathToFile)
         fitCoeff, x2fit, y2fit = analyzeDataInstance.defineFit(fitOrder=fitOrder, fitSet=fitSet)
@@ -139,7 +139,7 @@ class plottingRoutine(Data):
         axes.plot(new_x, new_y, color="black", linewidth=2)  # line fit
         if showPlots is True:
             plt.show()
-        return fitCoeff
+        return fitCoeff, x2fit, y2fit
 
     def plotSimpleScatter(self, x, y, title=' ', ylabel=' ', xlabel=' ', showPlots=False):
         """
@@ -158,7 +158,7 @@ class plottingRoutine(Data):
         assert isinstance(xlabel, str), 'x axis label must be string'
         # start plotting procedure
         self.fig, self.axes = plt.subplots(nrows=1, ncols=1)
-        self.axes.scatter(x, y)
+        self.axes.scatter(x, y, marker='.')
         self.axes.set_xlabel(xlabel)
         self.axes.set_ylabel(ylabel)
         self.axes.set_title(title)
@@ -173,7 +173,7 @@ class plottingRoutine(Data):
         :param y: y values
         :return:
         """
-        self.axes.scatter(x, y)
+        self.axes.scatter(x, y, marker='.')
         if showPlots:
             plt.show()
 

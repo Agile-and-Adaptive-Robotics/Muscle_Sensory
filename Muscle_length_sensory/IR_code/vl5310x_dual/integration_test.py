@@ -22,7 +22,13 @@ makePlots = visualData.plottingRoutine(path)
 # makePlots.plotTimeSeries(specificPlots=(5, 6))
 # makePlots.plotDiff(showPlots=False, specificPlots=(5, 6))
 # makePlots.plotSeriesLadder(specificPlots=(4, 5, 6))
-fitOrder = makePlots.plotFit(fitOrder=2, fitSet=(4, 5, 6), showPlots=True)
+fitOrder = makePlots.plotFit(fitOrder=2, fitSet=(4, 5, 6), showPlots=False)
+ylabel = 'Y'
+xlabel = 'X'
+title = 'Title'
+makePlots.plotSimpleScatter(x=rawArr[:, 0, 1], y=rawArr[:, 1, 1], xlabel=xlabel,
+                            ylabel=ylabel, title=title, showPlots=False)
+makePlots.o_plot(x=rawArr[:, 0, 5], y=rawArr[:, 1, 5], showPlots=False)
 # print(fitOrder)
-# makePlots.showAllPlots()
+makePlots.showAllPlots()
 

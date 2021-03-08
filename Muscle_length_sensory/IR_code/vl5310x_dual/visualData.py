@@ -123,8 +123,9 @@ class plottingRoutine(Data):
         """
         Method to plot the data and compare it with the fit.
         Call analyzeData class to calculate fit
-        :param fitSet:
-        :param fitOrder:
+        :param showPlots: Boolean for showing plot or not
+        :param fitSet: which data set to fit
+        :param fitOrder: order of polyfit
         :return:
         """
         analyzeDataInstance = analyzeData(self.pathToFile)
@@ -139,6 +140,42 @@ class plottingRoutine(Data):
         if showPlots is True:
             plt.show()
         return fitCoeff
+
+    def plotSimpleScatter(self, x, y, title=' ', ylabel=' ', xlabel=' ', showPlots=False):
+        """
+        Input x and y data to create a simple scatter plot similar to IDL syntax
+        :param showPlots: bool to show plot
+        :param y: y axis data
+        :param x: x axis data
+        :param xlabel: label for y axis
+        :param ylabel: label for x axis
+        :param title: title of plot
+        :return:
+        """
+        # check input to verify input params
+        assert isinstance(title, str), 'Title must be string'
+        assert isinstance(ylabel, str), 'y axis label must be string'
+        assert isinstance(xlabel, str), 'x axis label must be string'
+        # start plotting procedure
+        self.fig, self.axes = plt.subplots(nrows=1, ncols=1)
+        self.axes.scatter(x, y)
+        self.axes.set_xlabel(xlabel)
+        self.axes.set_ylabel(ylabel)
+        self.axes.set_title(title)
+        if showPlots:
+            plt.show()
+
+    def o_plot(self, x, y, showPlots=False):
+        """
+        o_plot plots on top of already existing plot, meant to be used with plotSimpleScatter
+        :param showPlots: bool to show plot
+        :param x: x values
+        :param y: y values
+        :return:
+        """
+        self.axes.scatter(x, y)
+        if showPlots:
+            plt.show()
 
     def showAllPlots(self):
         """

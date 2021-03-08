@@ -153,6 +153,8 @@ class plottingRoutine(Data):
         :return:
         """
         # check input to verify input params
+        if len(x) != len(y):
+            Exception("x array must be same size as y array.")
         assert isinstance(title, str), 'Title must be string'
         assert isinstance(ylabel, str), 'y axis label must be string'
         assert isinstance(xlabel, str), 'x axis label must be string'
@@ -174,6 +176,8 @@ class plottingRoutine(Data):
         :param LinePlot: bool for line plot. Default to do scatter plot
         :return:
         """
+        if len(x) != len(y):
+            Exception("x array must be same size as y array.")
         if LinePlot:
             self.axes.plot(x, y, linewidth=1.3, color="black")
         else:

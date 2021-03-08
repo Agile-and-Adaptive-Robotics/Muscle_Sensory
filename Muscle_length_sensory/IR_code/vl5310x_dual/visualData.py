@@ -88,7 +88,7 @@ class plottingRoutine(Data):
         if showPlots:
             plt.show()
 
-    def plotSeriesLadder(self, showPlots=False, specificPlots=None):
+    def plotSeriesLadder(self, showPlots=False, specificPlots=None, title=''):
         """
         Method to do ladder plot
         :return:
@@ -96,25 +96,26 @@ class plottingRoutine(Data):
         print(">> Generate ladder plot.")
         # create control array for for-loop
         controlArr = np.arange(self.z_len)
-        assert isinstance(specificPlots, tuple), 'Plot selection must be a tuple'
+        if not(isinstance(specificPlots, tuple) or specificPlots is None):
+            Exception("Specification of plots need to be tuple or empty")
         if specificPlots is None:
             fig, axes = plt.subplots(nrows=len(controlArr), ncols=1, figsize=(12, 5))  # generate template
+            axes[0].set_title(title)
+            axes[-1].set_xlabel("Time (s)")
             for counter in controlArr:
                 time = np.linspace(0, self.tPeriod * len(self.data[:, 0, 0]), len(self.data[:, 0, 0]))
                 axes[counter].plot(time, self.data[:, 0, counter])
                 axes[counter].plot(time, self.data[:, 1, counter])
-                axes[counter].set_ylabel("Distance(mm)")
-                axes[counter].set_xlabel("Time (s)")
-                axes[counter].set_title(str(self.keys[counter]) + ' Plot')
+                fig.subplots_adjust(hspace=1)
         else:
             fig, axes = plt.subplots(nrows=len(specificPlots), ncols=1, figsize=(12, 5))  # generate template
             axes[0].set_title('Plot ' + str(specificPlots))
+            axes[-1].set_xlabel("Time (s)")
             for counter in specificPlots:
                 time = np.linspace(0, self.tPeriod * len(self.data[:, 0, 0]), len(self.data[:, 0, 0]))
                 axes[specificPlots.index(counter)].plot(time, self.data[:, 0, counter])
                 axes[specificPlots.index(counter)].plot(time, self.data[:, 1, counter])
-                axes[specificPlots.index(counter)].set_ylabel("Distance(mm)")
-                axes[specificPlots.index(counter)].set_xlabel("Time (s)")
+                fig.subplots_adjust(hspace=2)
 
         if showPlots:
             plt.show()
@@ -135,8 +136,10 @@ class plottingRoutine(Data):
         new_x = np.linspace(np.min(x2fit), np.max(y2fit))
         new_y = poly1(new_x)
         fig, axes = plt.subplots(nrows=1, ncols=1)
-        axes.scatter(x2fit, y2fit)  # scatter of fit data
+        axes.scatter(x2fit, y2fit, marker='.')  # scatter of fit data
         axes.plot(new_x, new_y, color="black", linewidth=2)  # line fit
+        print(f'Order of fit: {fitOrder}')
+        print(f'Fit params: {fitCoeff}')
         if showPlots is True:
             plt.show()
         return fitCoeff, new_x, new_y

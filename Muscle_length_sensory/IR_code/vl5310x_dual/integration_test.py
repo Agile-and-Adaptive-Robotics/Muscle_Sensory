@@ -32,6 +32,7 @@ makePlots.plotSimpleScatter(x=rawArr[:, 0, 1], y=rawArr[:, 1, 1], xlabel=xlabel,
 # test overplot function
 makePlots.o_plot(x=rawArr[:, 0, 5], y=rawArr[:, 1, 5], showPlots=False)
 makePlots.o_plot(x=rawArr[:, 0, 6], y=rawArr[:, 1, 6], showPlots=False)
+makePlots.o_plot(x=xfit, y=yfit, LinePlot=True)
 # print(fitOrder)
 makePlots.showAllPlots()
 print(fitOrder)

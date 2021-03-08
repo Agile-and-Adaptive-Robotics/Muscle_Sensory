@@ -139,7 +139,7 @@ class plottingRoutine(Data):
         axes.plot(new_x, new_y, color="black", linewidth=2)  # line fit
         if showPlots is True:
             plt.show()
-        return fitCoeff, x2fit, y2fit
+        return fitCoeff, new_x, new_y
 
     def plotSimpleScatter(self, x, y, title=' ', ylabel=' ', xlabel=' ', showPlots=False):
         """
@@ -165,15 +165,19 @@ class plottingRoutine(Data):
         if showPlots:
             plt.show()
 
-    def o_plot(self, x, y, showPlots=False):
+    def o_plot(self, x, y, LinePlot=False, showPlots=False):
         """
         o_plot plots on top of already existing plot, meant to be used with plotSimpleScatter
         :param showPlots: bool to show plot
         :param x: x values
         :param y: y values
+        :param LinePlot: bool for line plot. Default to do scatter plot
         :return:
         """
-        self.axes.scatter(x, y, marker='.')
+        if LinePlot:
+            self.axes.plot(x, y, linewidth=1.3, color="black")
+        else:
+            self.axes.scatter(x, y, marker='.')
         if showPlots:
             plt.show()
 
@@ -182,4 +186,13 @@ class plottingRoutine(Data):
         Command to show all plots.
         :return:
         """
-        plt.show()
+        plt.show(block=True)
+        input("Press Enter to close all plots...")
+        self._closeAllPlots()
+
+    def _closeAllPlots(self):
+        """
+        method to close all plots
+        :return:
+        """
+        plt.close("all")

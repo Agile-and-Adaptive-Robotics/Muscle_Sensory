@@ -137,16 +137,30 @@ class plottingRoutine(Data):
         new_x = np.linspace(np.min(x2fit), np.max(y2fit))
         new_y = poly1(new_x)
         fig, axes = plt.subplots(nrows=1, ncols=1)
-        axes.scatter(x2fit, y2fit, marker='.')  # scatter of fit data
-        axes.plot(new_x, new_y, color="black", linewidth=2)  # line fit
+
+        if isinstance(fitSet, int):
+            label = ('Set ' + str(self.keys[fitSet]) + ' (fitted data)')
+        else:
+            buf = ''
+            for each in fitSet:
+                buf += str(each) + ' '
+            label = ('Set ' + buf + ' (fitted data)')
+        axes.scatter(x2fit, y2fit, marker='.', label=label)  # scatter of fit data
+        axes.plot(new_x, new_y, color="black", linewidth=2, label='Line fit')  # line fit
         if compareWith is not None:
             if not(isinstance(compareWith, tuple) or isinstance(compareWith, int)):
                 Exception('compareWith must be integer or tuple')
             if isinstance(compareWith, int):
-                axes.scatter(self.data[:, 0, compareWith], self.data[:, 1, compareWith], marker='.')
+                axes.scatter(self.data[:, 0, compareWith], self.data[:, 1, compareWith],
+                             marker='.', label=('Set ' + str(self.keys[compareWith])))
             else:
                 for each in compareWith:
-                    axes.scatter(self.data[:, 0, each], self.data[:, 1, each], marker='.')
+                    axes.scatter(self.data[:, 0, each], self.data[:, 1, each], marker='.',
+                                 label=('Set ' + str(self.keys[each])))
+        axes.set_title('Compare fit and data')
+        axes.set_xlabel('Sensor 1')
+        axes.set_ylabel('Sensor 2')
+        axes.legend(loc="best")
         print(f'Order of fit: {fitOrder}')
         print(f'Fit params: {fitCoeff}')
         if showPlots is True:

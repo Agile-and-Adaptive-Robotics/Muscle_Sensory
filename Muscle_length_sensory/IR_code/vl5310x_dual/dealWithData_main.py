@@ -11,7 +11,10 @@ path = {'R1 dynamic BPA': 'rawData3.txt',
         'R5 static': 'rawData7_static.txt',
         'R6 some static': 'rawData8_static.txt',
         'R7 some static': 'rawData9_static.txt',
-        'R8 2 sensors dynamic': 'rawData10_2Sensors_dynamic.txt'}
+        'R8 2 sensors': 'rawData10_2Sensors_dynamic.txt',
+        'R9 2 sensors': 'rawData11_2Sensors_2.txt',
+        'R10 2 sensors': 'rawData12_2Sensors_3.txt',
+        'R11 2 sensors': 'rawData13_2Sensors_4.txt'}
 # instantiate the data
 data = readData.Data(path)
 # put the data into a 3D array
@@ -26,8 +29,8 @@ makePlots.plotSeriesLadder()  # generate all time series plots
 coefficients_dyn, x_new_dyn, y_new_dyn = makePlots.plotFit(fitOrder=4, fitSet=0,
                                                            showPlots=False, compareWith=(1, 2))
 # static data index 5 and 6
-coefficients_sta, x_new_sta, y_new_sta = makePlots.plotFit(fitOrder=1, fitSet=7,
-                                                           showPlots=False, compareWith=6)
+coefficients_sta, x_new_sta, y_new_sta = makePlots.plotFit(fitOrder=1, fitSet=(7, 8),
+                                                           showPlots=False, compareWith=(6, 9))
 
 # plot scatter static data
 title = 'Data of 2 sensors in same environment'

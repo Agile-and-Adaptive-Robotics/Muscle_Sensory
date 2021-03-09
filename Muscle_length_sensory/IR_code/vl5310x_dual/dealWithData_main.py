@@ -23,9 +23,11 @@ makePlots = visualData.plottingRoutine(path)
 makePlots.plotSeriesLadder()  # generate all time series plots
 # create fit for dynamic data and static data
 # dynamic data index 0
-coefficients_dyn, x_new_dyn, y_new_dyn = makePlots.plotFit(fitOrder=4, fitSet=0, showPlots=False)
+coefficients_dyn, x_new_dyn, y_new_dyn = makePlots.plotFit(fitOrder=4, fitSet=0,
+                                                           showPlots=False, compareWith=(1, 2))
 # static data index 5 and 6
-coefficients_sta, x_new_sta, y_new_sta = makePlots.plotFit(fitOrder=1, fitSet=7, showPlots=False)
+coefficients_sta, x_new_sta, y_new_sta = makePlots.plotFit(fitOrder=1, fitSet=7,
+                                                           showPlots=False, compareWith=6)
 
 # plot scatter static data
 title = 'Data of 2 sensors in same environment'
@@ -35,8 +37,6 @@ makePlots.plotSimpleScatter(x=rawArr[:, 0, 5], y=rawArr[:, 1, 5],
                             ylabel=ylabel, xlabel=xlabel, title=title)
 # overlap scatter of different static data set
 makePlots.o_plot(x=rawArr[:, 0, 6], y=rawArr[:, 1, 6])
-# overlap scatter of fitted data
-makePlots.o_plot(x=x_new_sta, y=y_new_sta, LinePlot=True)
 # overlap scatter of different data set
 makePlots.o_plot(x=rawArr[:, 0, 7], y=rawArr[:, 1, 7])
 # overlap scatter of different data set
@@ -48,8 +48,6 @@ makePlots.plotSimpleScatter(x=rawArr[:, 0, 2], y=rawArr[:, 1, 2],
                             ylabel=ylabel, xlabel=xlabel, title=title)
 # overlap scatter of different static data set
 makePlots.o_plot(x=rawArr[:, 0, 3], y=rawArr[:, 1, 3])
-# overlap scatter of fitted data
-makePlots.o_plot(x=x_new_dyn, y=y_new_dyn, LinePlot=True)
 
 # show all plots
 makePlots.showAllPlots()

@@ -120,13 +120,14 @@ class plottingRoutine(Data):
         if showPlots:
             plt.show()
 
-    def plotFit(self, fitOrder=3, fitSet=None, showPlots=False):
+    def plotFit(self, fitOrder=3, fitSet=None, showPlots=False, compareWith=None):
         """
         Method to plot the data and compare it with the fit.
         Call analyzeData class to calculate fit
         :param showPlots: Boolean for showing plot or not
         :param fitSet: which data set to fit
         :param fitOrder: order of polyfit
+        :param compareWith: choose which data set to compare
         :return: return the fit coefficient and x, y arrays of the function to plot fit
         """
         analyzeDataInstance = analyzeData(self.pathToFile)
@@ -138,6 +139,14 @@ class plottingRoutine(Data):
         fig, axes = plt.subplots(nrows=1, ncols=1)
         axes.scatter(x2fit, y2fit, marker='.')  # scatter of fit data
         axes.plot(new_x, new_y, color="black", linewidth=2)  # line fit
+        if compareWith is not None:
+            if not(isinstance(compareWith, tuple) or isinstance(compareWith, int)):
+                Exception('compareWith must be integer or tuple')
+            if isinstance(compareWith, int):
+                axes.scatter(self.data[:, 0, compareWith], self.data[:, 1, compareWith], marker='.')
+            else:
+                for each in compareWith:
+                    axes.scatter(self.data[:, 0, each], self.data[:, 1, each], marker='.')
         print(f'Order of fit: {fitOrder}')
         print(f'Fit params: {fitCoeff}')
         if showPlots is True:

@@ -29,7 +29,7 @@ makePlots.plotSeriesLadder()  # generate all time series plots
 coefficients_dyn, x_new_dyn, y_new_dyn = makePlots.plotFit(fitOrder=4, fitSet=0,
                                                            showPlots=False, compareWith=(1, 2))
 # static data index 5 and 6
-coefficients_sta, x_new_sta, y_new_sta = makePlots.plotFit(fitOrder=1, fitSet=(7, 8),
+coefficients_sta, x_new_sta, y_new_sta = makePlots.plotFit(fitOrder=1, fitSet=7,
                                                            showPlots=False, compareWith=(6, 9))
 
 # plot scatter static data
@@ -43,7 +43,7 @@ makePlots.o_plot(x=rawArr[:, 0, 6], y=rawArr[:, 1, 6])
 # overlap scatter of different data set
 makePlots.o_plot(x=rawArr[:, 0, 7], y=rawArr[:, 1, 7])
 # overlap scatter of different data set
-makePlots.o_plot(x=rawArr[:, 0, 4], y=rawArr[:, 1, 4])
+# makePlots.o_plot(x=rawArr[:, 0, 4], y=rawArr[:, 1, 4])
 
 # plot scatter dynamic data
 title = 'Dynamic data of External sensor and BPA sensor'

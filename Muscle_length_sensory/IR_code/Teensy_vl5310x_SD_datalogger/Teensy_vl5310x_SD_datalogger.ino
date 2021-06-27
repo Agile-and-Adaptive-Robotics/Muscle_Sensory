@@ -35,8 +35,6 @@ float samplingFreq = 50; //define sampling frequency in Hz
 float collectPeriod = 10; //number of seconds to collect data
 volatile float stopCount; //how mane counts to stop counting given sampling Frequency
 volatile int counter = 0; //variable to count about many times interrupt was fired
-// String IR_reading;
-// File dataFile
 
 void setup()
 { 

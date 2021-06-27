@@ -44,9 +44,10 @@ Format:
 date: "YYYYMMDD"
 time: "HHMM" - use military time
 */
-char collectDate[11] = "06/26/2021";
-char collectTime[6] = "23:59"; 
+char collectDate[11] = "06/27/2021";
+char collectTime[6] = "11:48"; 
 char fileName[12] = "IR_data.txt";
+char notes[200] = "this is a note for what ever data collection";  // add notes, make it short
 
 void setup()
 { 
@@ -94,11 +95,15 @@ void DataLoggingLoop() //Interrupt loop
         dataFile.print(counter);
         dataFile.print(", ");
         dataFile.println(IR_reading);
-        if (count==stopCount) //print end of data
+        if (counter==stopCount) //print end of data
         {
-            data.File.println("=====End_data=====")
+            dataFile.println("=====End_data=====");
         }
         dataFile.close();
+        Serial.print(collectDate);
+        Serial.print("\t");
+        Serial.print(collectTime);
+        Serial.print("\t");
         Serial.println(counter); // write to Serial. Comment out when run for real
     }
     counter += 1;
@@ -164,6 +169,8 @@ void WriteHeader2SD()
         dataFile.print(collectDate);
         dataFile.print(", Time: ");
         dataFile.println(collectTime);
+        dataFile.print("Notes: ");
+        dataFile.println(notes);
         dataFile.print("Collection period (s): ");
         dataFile.print(collectPeriod);
         dataFile.print(", Sampling Frequency (Hz): ");

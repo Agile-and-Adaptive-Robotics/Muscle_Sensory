@@ -58,9 +58,6 @@ void setup()
         while (1) {}
     }
     Serial.println("SD card is ready!");
-
-
-
 }
 
 void loop()
@@ -68,7 +65,6 @@ void loop()
     String IR_reading = String(sensor.readRangeContinuousMillimeters());
     if (sensor.timeoutOccurred()) { Serial.print(" TIMEOUT"); }
     //open file 
-    Serial.println("Open file to write.");
     File dataFile = SD.open("datalog.txt", FILE_WRITE);
     if (!dataFile){
         Serial.println("Failed to open file.");

@@ -58,10 +58,28 @@ class Data(object):
         return self.raw_data[start_idx:end_idx]
 
     def __getitem__(self, idx):
+        # TODO: getitem should return the 2D numpy array
         return self.get_data_segment(idx)
 
     def _read_header_data(self, index):
-        """Read header data and store it in an array"""
+        """Read header data and store it in a dict"""
+        pass
+
+    @staticmethod
+    def _header_keys():
+        """Return the keys that the header should look for"""
+        pass
+
+    def _str2array(self):
+        """Convert a data segment string to a data array"""
+        pass
+
+    def plot_series(self, idx):
+        """Plot the data series"""
+        pass
+
+    def basic_stats(self, idx):
+        """Return basic stats of the sensors"""
         pass
 
 

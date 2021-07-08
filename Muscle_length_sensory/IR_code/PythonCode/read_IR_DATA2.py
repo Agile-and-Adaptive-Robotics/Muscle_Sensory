@@ -18,6 +18,14 @@ class Data(object):
         self._path = path
         self._parse_data()
         self._find_start()
+        self._initialize_keys()
+
+    def _initialize_keys(self):
+        """initialize header keys so it can be updated"""
+        self.header = {}
+        header_keys = self._header_keys()
+        for each_key in header_keys:
+            self.header[each_key] = ""
 
     def _parse_data(self):
         """Parse the data file"""
@@ -62,13 +70,52 @@ class Data(object):
         return self.get_data_segment(idx)
 
     def _read_header_data(self, index):
-        """Read header data and store it in a dict"""
-        pass
+        """Read header data and store it in a dict
+        The input index is to indicate which data segment"""
+        # read the first 5 lines to obtain header data
+        data = self.get_data_segment(index)
+        header_data = data[1:5]
+        header_keys = self._header_keys()
+        for each_line in header_data:
+            # parse each line and compare it with predefined header keys to get information
+            for each_key in header_keys:
+                # fine starting index of sub string
+                start_idx = each_line.find(each_key)
+                if start_idx == -1:
+                    continue  # move to the next if cannot find key
+                # get end index of sub string
+                end_idx = start_idx + len(each_key)
+                # get comma index
+                comma_idx = each_line.find(',')
+                endline_idx = each_line.find('\n')
+                if comma_idx > end_idx:
+                    key_content = each_line[end_idx:comma_idx]
+                    self._update_header_data(each_key, self._get_text_only(key_content))
+                else:
+                    key_content = each_line[end_idx:endline_idx]
+                    self._update_header_data(each_key, self._get_text_only(key_content))
+
+        # adjust some keys to not use units
+        self.header['Sampling Frequency'] = self.header['Sampling Frequency (Hz)']
+        self.header['Collection period'] = self.header['Collection period (s)']
+
+    def _update_header_data(self, key, content):
+        """Update header data with appropriate key"""
+        header_keys = self._header_keys()
+        assert (key in header_keys), "key is not in predefined key set"
+        self.header[key] = content
 
     @staticmethod
     def _header_keys():
         """Return the keys that the header should look for"""
-        pass
+        keys = ('Date', 'Time', 'Notes', 'Collection period (s)', 'Sampling Frequency (Hz)')
+        return keys
+
+    @staticmethod
+    def _get_text_only(text):
+        """Strip colon and spaces in header text"""
+        assert isinstance(text, str), "To strip colon and spaces, need type text"
+        return text[2:len(text)]
 
     def _str2array(self):
         """Convert a data segment string to a data array"""
@@ -91,3 +138,5 @@ if RunAll and __name__ == "__main__":
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(IR_data[3])
+    print(IR_data._read_header_data(4))
+    print(IR_data.header)

@@ -142,7 +142,7 @@ class Data(object):
     def report(self, idx):
         """Make plots of the specified index and output a simple report"""
         self.plot_series(idx)
-        pass
+        plt.show()
 
     def plot_series(self, idx):
         """Plot the data series"""
@@ -153,8 +153,11 @@ class Data(object):
         sen1 = data[:, 1]
         sen2 = data[:, 2]
         fig = plt.figure()
-        plt.plot(time, sen1)
-        plt.plot(time, sen2)
+        ax = fig.add_subplot(111)
+        ax.plot(time, sen1)
+        ax.plot(time, sen2)
+        ax.set(ylabel='Distance',
+               xlabel='Time(s)')
         self._basic_stats(sen1, sen2)
 
     @staticmethod
@@ -174,5 +177,4 @@ if RunAll and __name__ == "__main__":
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
-    IR_data.plot_series(39)
-    plt.show()
+    IR_data.report(39)

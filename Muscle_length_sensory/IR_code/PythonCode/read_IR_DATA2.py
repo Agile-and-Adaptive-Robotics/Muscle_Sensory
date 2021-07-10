@@ -1,6 +1,6 @@
 import numpy as np
 # import pathlib as Path
-import pandas as pd
+import matplotlib.pyplot as plt
 
 
 class Data(object):
@@ -14,11 +14,13 @@ class Data(object):
         start idx is the start index of a data segment of the raw_data array
     """
 
-    def __init__(self, path):
-        self._path = path
+    def __init__(self, path2file):
+        self._path = path2file
         self._parse_data()
         self._find_start()
         self._initialize_keys()
+        self._index_data_set()  # initialize data_index
+        self.data_size = len(self.data_index)
 
     def _initialize_keys(self):
         """initialize header keys so it can be updated"""
@@ -31,6 +33,7 @@ class Data(object):
         """Parse the data file"""
         f = open(self._path, "r")
         self.raw_data = f.readlines()
+        f.close()
 
     def _find_start(self):
         """Return index of the start of data collection"""
@@ -117,17 +120,50 @@ class Data(object):
         assert isinstance(text, str), "To strip colon and spaces, need type text"
         return text[2:len(text)]
 
-    def _str2array(self):
+    def _str2array(self, idx):
         """Convert a data segment string to a data array"""
+        txt_data = self.get_data_segment(idx)
+        txt_data = txt_data[5:len(txt_data)]
+        # pre-slot a 3xn array
+        data = np.zeros(shape=(len(txt_data), 3))
+        for idx, each in enumerate(txt_data):
+            temp = np.array([0, 0, 0])
+            # parse through each line to find the 3 numbers
+            comma1 = each.find(",")
+            comma2 = each[comma1+1:len(each)].find(",")
+            # the indexing is to skip various things like \n, spaces, and commas\
+            temp[0] = float(each[0:comma1])
+            temp[1] = float(each[comma1+2:comma2+comma1+1])
+            temp[2] = float(each[comma1+comma2+3:len(each)-1])
+            for n in range(3):
+                data[idx, n] = temp[n]
+        return data
+
+    def report(self, idx):
+        """Make plots of the specified index and output a simple report"""
+        self.plot_series(idx)
         pass
 
     def plot_series(self, idx):
         """Plot the data series"""
-        pass
+        self._read_header_data(idx)
+        sampF = float(self.header['Sampling Frequency'])
+        data = self._str2array(idx)
+        time = data[:, 0]*1/sampF
+        sen1 = data[:, 1]
+        sen2 = data[:, 2]
+        fig = plt.figure()
+        plt.plot(time, sen1)
+        plt.plot(time, sen2)
+        self._basic_stats(sen1, sen2)
 
-    def basic_stats(self, idx):
+    @staticmethod
+    def _basic_stats(sen1, sen2):
         """Return basic stats of the sensors"""
-        pass
+        print(f'Sensor 1 mean: {np.mean(sen1)}')
+        print(f'Sensor 1 std dev: {np.std(sen1)}')
+        print(f'Sensor 2 mean: {np.mean(sen2)}')
+        print(f'Sensor 2 std dev: {np.std(sen2)}')
 
 
 RunAll = True
@@ -137,6 +173,6 @@ if RunAll and __name__ == "__main__":
     IR_data = Data(path)
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
-    print(IR_data[3])
-    print(IR_data._read_header_data(4))
-    print(IR_data.header)
+    print(f"Data size: {IR_data.data_size}")
+    IR_data.plot_series(39)
+    plt.show()

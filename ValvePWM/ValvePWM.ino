@@ -80,7 +80,7 @@ void loop() {
       for (int i = 0; i < total; i++) {
         timer = millis() - start;
         
-        if (fmod(timer,period.toInt())< pw.toInt()) {
+        if (fmod(timer,period.toInt())<= pw.toInt()) {
           digitalWrite(valve,HIGH);
         } else {
           digitalWrite(valve,LOW);

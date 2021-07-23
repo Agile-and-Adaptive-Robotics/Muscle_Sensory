@@ -1,0 +1,304 @@
+Level: Info
+Message: DisplayMarketplaceWelcomePage() sw3DPrintConnector undefined
+Source: file:///C:/Users/BENBOL~1/AppData/Local/Temp/swcachedir/SWMarketplaceAddin/SWMarketplaceWelcome.html?homeURL=https%3a%2f%2feu1-ifwe.3dexperience.3ds.com%2f%3faddinmode%3dsolidworks%26utm_medium%3dNATIVE_APP
+Line: 208
+-----------------------
+Level: Error
+Message: Uncaught (in promise) undefined
+Source: https://usw1-ifwe.3dexperience.3ds.com/?addinmode=solidworks&utm_medium=NATIVE_APP&serverId=FRONT_0
+Line: 0
+-----------------------
+Level: Info
+Message: setupRequire: RequireJS error type: "undefined" for module(s): ["text!DS/SNSearchUX/assets/templates/SearchView.html"]
+Error: https://usw1-ifwe.3dexperience.3ds.com/resources/20210415T194012Z/en/webapps/SNSearchUX/assets/templates/SearchView.html HTTP status: 0
+    at XMLHttpRequest.a.onreadystatechange (https://usw1-ifwe.3dexperience.3ds.com/resources/20210415T194012Z/en/wp/bundle-min.js:7:25373)
+Source: https://usw1-ifwe.3dexperience.3ds.com/resources/20210415T194012Z/en/wp/bundle-min.js
+Line: 7
+-----------------------
+Level: Error
+Message: Uncaught Error: https://usw1-ifwe.3dexperience.3ds.com/resources/20210415T194012Z/en/webapps/SNSearchUX/assets/templates/SearchView.html HTTP status: 0
+Source: https://usw1-ifwe.3dexperience.3ds.com/resources/20210415T194012Z/en/wp/bundle-min.js
+Line: 7
+-----------------------
+Level: Info
+Message: initializing Compass
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/c/UWA/js/UWA_W3C_Alone.js
+Line: 9
+-----------------------
+Level: Info
+Message: loaded en translations
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/c/UWA/js/UWA_W3C_Alone.js
+Line: 9
+-----------------------
+Level: Info
+Message: %sonCancel
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/WebappsUtils/WebappsUtils.js
+Line: 5
+-----------------------
+Level: Info
+Message: Compass refresh: parsing apps
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/c/UWA/js/UWA_W3C_Alone.js
+Line: 9
+-----------------------
+Level: Info
+Message: onCompassLoaded
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/c/UWA/js/UWA_W3C_Alone.js
+Line: 9
+-----------------------
+Level: Info
+Message: requireDs: Concatenated module "DS/MPFServices/MPFServices" not found. Individual scripts will be required for the module 
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Concatenated module "DS/MPFConnector/MPFConnector" not found. Individual scripts will be required for the module 
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Concatenated module "DS/MPFClickAndBuyComponent/MPFClickAndBuyComponent" not found. Individual scripts will be required for the module 
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Concatenated module "DS/MPFCartModel/MPFCartModel" not found. Individual scripts will be required for the module 
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Concatenated module "DS/MPFModelFactory/MPFModelFactory" not found. Individual scripts will be required for the module 
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Failed to load module "DS/MPFServices/MarketplaceServices" due to error "scripterror" for module: ["DS/MPFServices/MarketplaceServices"]
+  Error: Script error for: DS/MPFServices/MarketplaceServices
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: setupRequire: RequireJS error type: "scripterror" for module(s): ["pluginDS!DS/MPFServices/MarketplaceServices"]
+Error: Script error for: DS/MPFServices/MarketplaceServices
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught Error: Script error for: DS/MPFServices/MarketplaceServices
+http://requirejs.org/docs/errors.html#scripterror
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Failed to load module "DS/MPFClickAndBuyComponent/ClickAndBuyCartHelper" due to error "scripterror" for module: ["DS/MPFClickAndBuyComponent/ClickAndBuyCartHelper"]
+  Error: Script error for: DS/MPFClickAndBuyComponent/ClickAndBuyCartHelper
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: setupRequire: RequireJS error type: "scripterror" for module(s): ["pluginDS!DS/MPFClickAndBuyComponent/ClickAndBuyCartHelper"]
+Error: Script error for: DS/MPFClickAndBuyComponent/ClickAndBuyCartHelper
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught Error: Script error for: DS/MPFClickAndBuyComponent/ClickAndBuyCartHelper
+http://requirejs.org/docs/errors.html#scripterror
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Failed to load module "DS/MPFConnector/MarketplaceConnector" due to error "scripterror" for module: ["DS/MPFConnector/MarketplaceConnector"]
+  Error: Script error for: DS/MPFConnector/MarketplaceConnector
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: setupRequire: RequireJS error type: "scripterror" for module(s): ["pluginDS!DS/MPFConnector/MarketplaceConnector"]
+Error: Script error for: DS/MPFConnector/MarketplaceConnector
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught Error: Script error for: DS/MPFConnector/MarketplaceConnector
+http://requirejs.org/docs/errors.html#scripterror
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Failed to load module "DS/MPFCartModel/CartModel" due to error "scripterror" for module: ["DS/MPFCartModel/CartModel"]
+  Error: Script error for: DS/MPFCartModel/CartModel
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: setupRequire: RequireJS error type: "scripterror" for module(s): ["pluginDS!DS/MPFCartModel/CartModel"]
+Error: Script error for: DS/MPFCartModel/CartModel
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught Error: Script error for: DS/MPFCartModel/CartModel
+http://requirejs.org/docs/errors.html#scripterror
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Failed to load module "DS/MPFCartModel/CartFilters" due to error "scripterror" for module: ["DS/MPFCartModel/CartFilters"]
+  Error: Script error for: DS/MPFCartModel/CartFilters
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: setupRequire: RequireJS error type: "scripterror" for module(s): ["pluginDS!DS/MPFCartModel/CartFilters"]
+Error: Script error for: DS/MPFCartModel/CartFilters
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught Error: Script error for: DS/MPFCartModel/CartFilters
+http://requirejs.org/docs/errors.html#scripterror
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Failed to load module "DS/MPFModelFactory/MPFFactoriesV2" due to error "scripterror" for module: ["DS/MPFModelFactory/MPFFactoriesV2"]
+  Error: Script error for: DS/MPFModelFactory/MPFFactoriesV2
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: setupRequire: RequireJS error type: "scripterror" for module(s): ["pluginDS!DS/MPFModelFactory/MPFFactoriesV2"]
+Error: Script error for: DS/MPFModelFactory/MPFFactoriesV2
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught Error: Script error for: DS/MPFModelFactory/MPFFactoriesV2
+http://requirejs.org/docs/errors.html#scripterror
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Failed to load module "DS/MPFModelFactory/CartFactory" due to error "scripterror" for module: ["DS/MPFModelFactory/CartFactory"]
+  Error: Script error for: DS/MPFModelFactory/CartFactory
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: setupRequire: RequireJS error type: "scripterror" for module(s): ["pluginDS!DS/MPFModelFactory/CartFactory"]
+Error: Script error for: DS/MPFModelFactory/CartFactory
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught Error: Script error for: DS/MPFModelFactory/CartFactory
+http://requirejs.org/docs/errors.html#scripterror
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: requireDs: Failed to load module "DS/MPFServices/MarketplaceServices" due to error "scripterror" for module: ["pluginDS!DS/MPFServices/MarketplaceServices"]
+  Error: Script error for: DS/MPFServices/MarketplaceServices
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Info
+Message: setupRequire: RequireJS error type: "scripterror" for module(s): ["pluginDS!DS/MPFServices/MarketplaceServices"]
+Error: Script error for: DS/MPFServices/MarketplaceServices
+http://requirejs.org/docs/errors.html#scripterror
+    at makeError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:2563)
+    at HTMLScriptElement.onScriptError (https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js:1:17195)
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught Error: Script error for: DS/MPFServices/MarketplaceServices
+http://requirejs.org/docs/errors.html#scripterror
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/AmdLoader/AmdLoader.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught TypeError: Cannot read property 'getElement' of null
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/UIKIT/UIKIT.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught TypeError: Cannot read property 'getElement' of null
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/UIKIT/UIKIT.js
+Line: 1
+-----------------------
+Level: Error
+Message: Uncaught TypeError: Cannot read property 'hasClassName' of null
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/i3DXCompass/i3DXCompass.js
+Line: 2
+-----------------------
+Level: Error
+Message: Uncaught TypeError: Cannot read property 'hasClassName' of null
+Source: https://eu1-apps.3dexperience.3ds.com/enovia/webapps/i3DXCompass/i3DXCompass.js
+Line: 2
+-----------------------
+Level: Info
+Message: TNP - init socket
+Source: https://partsupply.3dexperience.3ds.com/resources/20210715T122722Z/en/webapps/TagNavigatorProxy/TagNavigatorProxy.js
+Line: 1
+-----------------------
+Level: Info
+Message: SendReady2
+Source: https://partsupply.3dexperience.3ds.com/categories?embeddedProfileId=SW2016&connect=&utm_medium=NATIVE_APP&serverId=FRONT_0
+Line: 1
+-----------------------
+Level: Info
+Message: RegisterReady2
+Source: https://partsupply.3dexperience.3ds.com/categories?embeddedProfileId=SW2016&connect=&utm_medium=NATIVE_APP&serverId=FRONT_0
+Line: 1
+-----------------------
+Level: Info
+Message: TNP - isReady!
+Source: https://partsupply.3dexperience.3ds.com/resources/20210715T122722Z/en/webapps/TagNavigatorProxy/TagNavigatorProxy.js
+Line: 1
+-----------------------

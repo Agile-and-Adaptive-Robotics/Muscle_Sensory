@@ -1,3 +1,5 @@
+
+
 %This function is written to be used with 2 arduino sketches
 %(1) SLoadCell_ZeroFactorSketch, when protocol_id == 1
 %(2) ValvePWM, when protocol_id == 2
@@ -21,15 +23,19 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     addRequired(p,'protocol_id');
     addRequired(p,'port');
     addOptional(p,'total',50000);
-    addOptional(p,'pw',0);
-    addOptional(p,'period',1);
+    addOptional(p,'pw_in',0);
+    addOptional(p,'period_in',1);
+    addOptional(p,'pw_out',0);
+    addOptional(p,'period_out',1);
     parse(p, protocol_id,port,varargin{:});
 
     protocol_id = p.Results.protocol_id;
     port = strjoin({'COM',num2str(p.Results.port)},'');   
     total = num2str(p.Results.total);
-    pw = num2str(p.Results.pw);
-    period = num2str(p.Results.period);
+    pw_in = num2str(p.Results.pw_in);
+    period_in = num2str(p.Results.period_in);
+    pw_out = num2str(p.Results.pw_out);
+    period_out = num2str(p.Results.period_out);
 
     format short g      %remove scientific notation
 
@@ -44,10 +50,12 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     %protocol_id, which increases the value of s.NumBytesAvailable and 
     %breaks the loop
 
-    vars = strjoin({total,pw,period},',');
+    vars = strjoin({total,pw_in,period_in,pw_out,period_out},',');
     %format variables to be easily read by the arduino
+    disp(vars);
 
     write(s,vars,'string'); 
+    total = str2num(total);
     readline(s);
     %writes the data for the arduino, reads once to clear
     %the "running" string from the buffer before reading the data

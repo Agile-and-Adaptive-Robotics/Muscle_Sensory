@@ -20,17 +20,23 @@
 #include <math.h>
 
 int choose_branch;    //initialize the variable "choose_branch"
-int valve = 4;
 
-String pw = "500";    //use milliseconds
-String period = "1000";
+int air_in = 6;
+int air_out = 5;
+
+String pw_in = "500";    //use milliseconds
+String pw_out = "0";
+String period_in = "1000";
+String period_out = "1";
+
 
 int timer = 0;
 
 void setup() {
-  pinMode(valve, OUTPUT);
+  pinMode(air_in, OUTPUT);
+  pinMode(air_out, OUTPUT);
   Serial.begin(115200);  //initialize arduino serial communication
-  Serial.setTimeout(1);
+  Serial.setTimeout(200);
 }
 
 void loop() {
@@ -41,7 +47,7 @@ void loop() {
     choose_branch = Serial.read();  //read the serial data into variable "choose_branch"
     if (choose_branch == '2') {     //If choose_branch is equal to '2', iterate through the following for loop
 
-      Serial.println("running"); // tell matlab that the arduino recieved the protocol id
+      Serial.println("running");    // tell matlab that the arduino recieved the protocol id
       String reading = "2";
       // initiate variable to store the serial data when it is being read
 
@@ -58,30 +64,44 @@ void loop() {
       }
 
       total = reading.toInt();                        //convert the read string to an integer
-      pw = Serial.readStringUntil(',').toInt();
-      period = Serial.readStringUntil(',').toInt();
+      pw_in = Serial.readStringUntil(',').toInt();
+      period_in = Serial.readStringUntil(',').toInt();
+      pw_out = Serial.readStringUntil(',').toInt();
+      period_out = Serial.readStringUntil(',').toInt();
+
       double start = millis();                        //start timer
         
       for (int i = 0; i < total; i++) {
         timer = millis() - start;
         
-        if (fmod(timer,period.toInt())<= pw.toInt()) {
-          digitalWrite(valve,HIGH);
+        if (fmod(timer,period_in.toInt())<= pw_in.toInt()) {
+          digitalWrite(air_in,HIGH);
           
         } else {
-          digitalWrite(valve,LOW);
+          digitalWrite(air_in,LOW);
         }
+
+          if (fmod(timer,period_out.toInt())<= pw_out.toInt()) {
+          digitalWrite(air_out,HIGH);
+          
+        } else {
         
+          digitalWrite(air_out,LOW);
+        }
+        //Serial.println(i);
         Serial.println(analogRead(A1));       //reads raw force data
         Serial.println(analogRead(A0));       //reads raw pressure sensor data
         Serial.println(timer);                //record time stamp of data collection
         
       }
+
+      digitalWrite(air_in,LOW);
+      digitalWrite(air_out,LOW);
       
-      digitalWrite(valve,LOW);  //release valve after data collection
     
     } else {  //if there is no information to read over serial from matlab, wait and release valve  
-      digitalWrite(valve,LOW);
+      digitalWrite(air_in,LOW);
+      digitalWrite(air_out,LOW);
     }
     
   }

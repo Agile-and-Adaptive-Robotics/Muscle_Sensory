@@ -23,6 +23,8 @@ int choose_branch;    //initialize the variable "choose_branch"
 
 int air_in = 6;
 int air_out = 5;
+int pressure_pin = A0;
+int force_pin = A1;
 
 String pw_in = "500";    //use milliseconds
 String pw_out = "0";
@@ -43,7 +45,7 @@ void loop() {
   char choose_branch = '0';
   int total = 0;
   
-  if (Serial.available() > 0) {     //if information is sent over serial from matlab]
+  if (Serial.available() > 0) {     //if information is sent over serial from matlab
     choose_branch = Serial.read();  //read the serial data into variable "choose_branch"
     if (choose_branch == '2') {     //If choose_branch is equal to '2', iterate through the following for loop
 
@@ -89,8 +91,8 @@ void loop() {
           digitalWrite(air_out,LOW);
         }
         //Serial.println(i);
-        Serial.println(analogRead(A1));       //reads raw force data
-        Serial.println(analogRead(A0));       //reads raw pressure sensor data
+        Serial.println(analogRead(force_pin));       //reads raw force data
+        Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
         Serial.println(timer);                //record time stamp of data collection
         
       }

@@ -65,15 +65,16 @@ void loop() {
         }
       }
 
-      total = reading.toInt();                        //convert the read string to an integer
+      total = reading.toDouble();                        //convert the read string to an integer
       pw_in = Serial.readStringUntil(',').toInt();
       period_in = Serial.readStringUntil(',').toInt();
       pw_out = Serial.readStringUntil(',').toInt();
       period_out = Serial.readStringUntil(',').toInt();
 
       double start = millis();                        //start timer
-        
-      for (int i = 0; i < total; i++) {
+      double timer = 0;
+      
+      for (int i = 0; i < total/2; i++) {
         timer = millis() - start;
         
         if (fmod(timer,period_in.toInt())<= pw_in.toInt()) {
@@ -82,7 +83,16 @@ void loop() {
         } else {
           digitalWrite(air_in,LOW);
         }
-
+        
+        Serial.println(analogRead(force_pin));       //reads raw force data
+        Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
+        Serial.println(timer);                //record time stamp of data collection
+        
+      }
+        digitalWrite(air_in,LOW);
+        
+      for (int i = 0; i < total/2; i++) {
+        timer = millis() - start; 
           if (fmod(timer,period_out.toInt())<= pw_out.toInt()) {
           digitalWrite(air_out,HIGH);
           
@@ -90,14 +100,12 @@ void loop() {
         
           digitalWrite(air_out,LOW);
         }
-        //Serial.println(i);
         Serial.println(analogRead(force_pin));       //reads raw force data
         Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
         Serial.println(timer);                //record time stamp of data collection
         
       }
 
-      digitalWrite(air_in,LOW);
       digitalWrite(air_out,LOW);
       
     

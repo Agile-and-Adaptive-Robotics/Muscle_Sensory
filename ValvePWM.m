@@ -141,7 +141,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     %**NOTE: If protocol_id == '1', either comment out the following code,
     %or change the range of data on which the basic statistics are calculated.
 
-    forceData = svalues(500:total,1);
+    forceData = svalues(500:total*1,1);
     pressureData = svalues(500:total,2);
 
     %Force stats

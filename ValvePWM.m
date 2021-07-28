@@ -84,9 +84,9 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     for i = 1:total
 
-        svalues(i,1) = str2double(readline(s))*0.00505+(2/300000);                                
-        svalues(i,2) = str2double(readline(s))*395/512-115;
-        svalues(i,3) = str2double(readline(s))/1000;
+        svalues(i,1) = 4.448*(1.2138*(str2double(readline(s)))-27.899); %Force(N)               
+        svalues(i,2) = str2double(readline(s))*395/512-115; %Pressure (kPa)
+        svalues(i,3) = str2double(readline(s))/1000; %Time(s)
 
         %read data to each column and convert units when needed
         %column 1 is force, converting lbs to N

@@ -21,8 +21,8 @@
 
 int choose_branch;    //initialize the variable "choose_branch"
 
-int air_in = 6;
-int air_out = 5;
+int air_in = 13;  
+int air_out = 12;
 int pressure_pin = A0;
 int force_pin = A1;
 
@@ -65,7 +65,7 @@ void loop() {
         }
       }
 
-      total = reading.toDouble();                        //convert the read string to an integer
+      total = reading.toInt();                        //convert the read string to an integer
       pw_in = Serial.readStringUntil(',').toInt();
       period_in = Serial.readStringUntil(',').toInt();
       pw_out = Serial.readStringUntil(',').toInt();

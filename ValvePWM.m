@@ -30,7 +30,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     parse(p, protocol_id,port,varargin{:});
 
     protocol_id = p.Results.protocol_id;
-    port = strjoin({'COM',num2str(p.Results.port)},'');   
+    port = strjoin({'COM',num2str(p.Results.port)}, '');   
     total = num2str(p.Results.total);
     pw_in = num2str(p.Results.pw_in);
     period_in = num2str(p.Results.period_in);
@@ -84,8 +84,8 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     for i = 1:total
 
-        svalues(i,1) = 4.448*(1.2138*(str2double(readline(s)))-27.899); %Force(N)               
-        svalues(i,2) = ((str2double(readline(s))*0.111)-2.6993)*6.8947; %Pressure (kPa)
+        svalues(i,1) = ((((str2double(readline(s))))*1.6475)-30.882)*4.45; %Force(N)            Aug 2
+        svalues(i,2) = ((str2double(readline(s)))*0.7654) -18.609; %Pressure (kPa)         Aug 2
         svalues(i,3) = str2double(readline(s))/1000; %Time(s)
 
         %read data to each column and convert units when needed

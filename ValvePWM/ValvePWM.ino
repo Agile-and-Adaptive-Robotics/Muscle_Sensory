@@ -21,8 +21,8 @@
 
 int choose_branch;    //initialize the variable "choose_branch"
 
-int air_in = 6;
-int air_out = 5;
+int air_in = 5;
+int air_out = 6;
 int pressure_pin = A0;
 int force_pin = A1;
 
@@ -37,13 +37,14 @@ int timer = 0;
 void setup() {
   pinMode(air_in, OUTPUT);
   pinMode(air_out, OUTPUT);
-  Serial.begin(115200);  //initialize arduino serial communication
+  Serial.begin(9600);  //initialize arduino serial communication
   Serial.setTimeout(200);
 }
 
 void loop() {
   char choose_branch = '0';
-  int total = 0;
+  int total_in = 0;
+  int total_out = 0;
   
   if (Serial.available() > 0) {     //if information is sent over serial from matlab
     choose_branch = Serial.read();  //read the serial data into variable "choose_branch"
@@ -65,7 +66,8 @@ void loop() {
         }
       }
 
-      total = reading.toDouble();                        //convert the read string to an integer
+      total_in = reading.toInt();                        //convert the read string to an integer
+      total_out = Serial.readStringUntil(',').toInt();
       pw_in = Serial.readStringUntil(',').toInt();
       period_in = Serial.readStringUntil(',').toInt();
       pw_out = Serial.readStringUntil(',').toInt();
@@ -74,26 +76,27 @@ void loop() {
       double start = millis();                        //start timer
       double timer = 0;
       
-      for (int i = 0; i < total/2; i++) {
+      for (int i = 0; i < total_in; i++) {
         timer = millis() - start;
         
-        if (fmod(timer,period_in.toInt())<= pw_in.toInt()) {
+        if (fmod(timer,period_in.toInt())<=pw_in.toInt() and i>50) {
           digitalWrite(air_in,HIGH);
-          
         } else {
           digitalWrite(air_in,LOW);
+          digitalWrite(LED_BUILTIN,HIGH);
         }
-        
-        Serial.println(analogRead(force_pin));       //reads raw force data
-        Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
-        Serial.println(timer);                //record time stamp of data collection
+
+        digitalWrite(LED_BUILTIN,LOW)
+        Serial.println(analogRead(force_pin));        //reads raw force data
+        Serial.println(analogRead(pressure_pin));     //reads raw pressure sensor data
+        Serial.println(timer);                        //record time stamp of data collection
         
       }
         digitalWrite(air_in,LOW);
         
-      for (int i = 0; i < total/2; i++) {
+      for (int i = 0; i < total_out; i++) {
         timer = millis() - start; 
-          if (fmod(timer,period_out.toInt())<= pw_out.toInt()) {
+          if (fmod(timer,period_out.toInt())<=pw_out.toInt()) {
           digitalWrite(air_out,HIGH);
           
         } else {

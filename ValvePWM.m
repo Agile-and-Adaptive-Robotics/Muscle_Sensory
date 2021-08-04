@@ -70,7 +70,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     yyaxis left     %graph force on left axis in blue
     Force = animatedline('color','blue');
-    ylim([-50,300]);
+    ylim([-50,700]);
     ylabel('Force (N)');
 
     yyaxis right    %graph pressure on right in red

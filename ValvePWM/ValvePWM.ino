@@ -75,18 +75,21 @@ void loop() {
 
       double start = millis();                        //start timer
       double timer = 0;
+
+      digitalWrite(air_in,HIGH);
+      digitalWrite(air_out,HIGH);
       
       for (int i = 0; i < total_in; i++) {
         timer = millis() - start;
         
         if (fmod(timer,period_in.toInt())<=pw_in.toInt() and i>50) {
           digitalWrite(air_in,HIGH);
+          digitalWrite(LED_BUILTIN,HIGH);
         } else {
           digitalWrite(air_in,LOW);
-          digitalWrite(LED_BUILTIN,HIGH);
+          digitalWrite(LED_BUILTIN,LOW);
         }
 
-        digitalWrite(LED_BUILTIN,LOW)
         Serial.println(analogRead(force_pin));        //reads raw force data
         Serial.println(analogRead(pressure_pin));     //reads raw pressure sensor data
         Serial.println(timer);                        //record time stamp of data collection
@@ -98,10 +101,12 @@ void loop() {
         timer = millis() - start; 
           if (fmod(timer,period_out.toInt())<=pw_out.toInt()) {
           digitalWrite(air_out,HIGH);
+          digitalWrite(LED_BUILTIN,HIGH);
           
         } else {
         
           digitalWrite(air_out,LOW);
+          digitalWrite(LED_BUILTIN,LOW);
         }
         Serial.println(analogRead(force_pin));       //reads raw force data
         Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data

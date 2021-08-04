@@ -46,6 +46,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     while s.NumBytesAvailable < 1               
         write(s,string(protocol_id),'string');
+        pause(0.25);
     end
 
     %the arduino sends sends the string "running" when it receives the
@@ -54,10 +55,9 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     vars = strjoin({total_in,total_out,pw_in,period_in,pw_out,period_out},',');
     %format variables to be easily read by the arduino
-    disp(vars);
 
-    write(s,vars,'string'); 
     disp(vars);
+    write(s,vars,'string'); 
     total_in = str2num(total_in);
     total_out = str2num(total_out);
     total = total_in + total_out;

@@ -53,7 +53,7 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
 
     for i = 1:total
                                         
-        svalues(i,1) = str2double(readline(s))*395/512-115;
+        svalues(i,1) = str2double(readline(s))*0.741-105;
         svalues(i,2) = str2double(readline(s))/1000;
 
         %read data to each column and convert units when needed

@@ -32,14 +32,14 @@ GND -> GND
 
 The HX711 board can be powered from 2.7V to 5V so the Arduino 5V power should be fine.*/
 
-int valve = 5;
+int valve_in = 3;
+int valve_out = 5;
 int baud = 9600;
 
 int choose_branch; //initialize the variable "choose_branch"
 
 void setup() {
-  pinMode(valve, OUTPUT);
-  digitalWrite(LED_BUILTIN,LOW);
+  pinMode(valve_in, OUTPUT);
   Serial.begin(baud);  //initialize arduino serial communication
   Serial.setTimeout(200);
 }
@@ -47,7 +47,6 @@ void setup() {
 void loop() {
   char choose_branch = '0';
   int total = 0;
-  digitalWrite(LED_BUILTIN,LOW);
   if (Serial.available() > 0) {     //if information is sent over serial from matlab]
     choose_branch = Serial.read();  //read the serial data into variable "choose_branch"
     if (choose_branch == '2') {     //if choose_branch is equal to '2', iterate through the following for loop
@@ -61,7 +60,6 @@ void loop() {
         //read from serial
         //if the reading is anything but 2 then break and start collecting data (we need to ignore any value of '2' because matlab sends many instances   
         //of the protocol id, so we want to make sure that it checks for the next unique value, which would be how many data points to collect)
-        digitalWrite(LED_BUILTIN,LOW);
         if (reading.length() > 1 and reading != "2\n") {    
           break;
         }
@@ -70,21 +68,30 @@ void loop() {
       total = reading.toInt();     //convert the read string to an integer
       double start = millis();     //start timer
       int timer = 0;
+      digitalWrite(valve_out,LOW);
       
-      for (int i = 0; i < total; i++) {
-        digitalWrite(valve,HIGH);
-        digitalWrite(LED_BUILTIN,HIGH);
+      for (int i = 0; i < 500; i++) {
+        digitalWrite(valve_in,HIGH);
         timer = millis() - start;
         Serial.println(analogRead(A0));         //reads raw pressure sensor data
         Serial.println(timer);       //record time stamp of data collection
         
       }
-      digitalWrite(valve, LOW);
+
+      for (int i = 0; i < total; i++) {
+        digitalWrite(valve_in,HIGH);
+        digitalWrite(valve_out,HIGH);
+        timer = millis() - start;
+        Serial.println(analogRead(A0));         //reads raw pressure sensor data
+        Serial.println(timer);       //record time stamp of data collection
+        
+      }
+      digitalWrite(valve_out, LOW);
+      digitalWrite(valve_in, LOW);
       delay(5000);
       
     } else {  //if there is no information to read over serial from matlab, wait...
-      digitalWrite(valve,LOW);
-      digitalWrite(LED_BUILTIN,LOW);
+      //digitalWrite(valve_in,LOW);
     }
   }
 }

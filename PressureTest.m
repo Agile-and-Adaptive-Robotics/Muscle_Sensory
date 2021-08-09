@@ -9,7 +9,7 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
     p = inputParser;
     addRequired(p,'protocol_id');
     addRequired(p,'port');
-    addOptional(p,'total',10000);
+    addOptional(p,'total',5000);
     parse(p,protocol_id,port,varargin{:});
     
     protocol_id = num2str(p.Results.protocol_id);
@@ -24,6 +24,7 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
 
     while s.NumBytesAvailable < 1               
         write(s,string(protocol_id),'string');
+        pause(0.25);
     end
     %the arduino sends sends the string "running" when it receives the
     %protocol_id, which increases the value of s.NumBytesAvailable and 

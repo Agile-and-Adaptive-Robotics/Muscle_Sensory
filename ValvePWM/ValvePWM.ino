@@ -37,7 +37,7 @@ int timer = 0;
 void setup() {
   pinMode(air_in, OUTPUT);
   pinMode(air_out, OUTPUT);
-  Serial.begin(115200);  //initialize arduino serial communication
+  Serial.begin(9600);  //initialize arduino serial communication
   Serial.setTimeout(200);
 }
 

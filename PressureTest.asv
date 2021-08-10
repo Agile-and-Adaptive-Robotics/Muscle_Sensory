@@ -40,7 +40,7 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
     svalues = zeros(total,2);   %creates array for the data
     clf;                        %clears graph from any previous tests
 
-        %graph pressure in red
+    yyaxis right    %graph pressure on right in red
     Pressure = animatedline('color','red');
     ylim([10,700]);
     ylabel('Pressure (kPa)');
@@ -58,6 +58,7 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
                                         
         svalues(i,2) = str2double(readline(s))*0.741-105;
         svalues(i,1) = str2double(readline(s))/1000;
+        disp(svalues(i,
         %read data to each column and convert units when needed
         %column 1 is force, converting lbs to N
 % %         %column 2 is pressure, converting analog value (1-1023) to
@@ -65,10 +66,12 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
         %column 3 is the time that the data was collected,
         %converting milliseconds to seconds
 
-            addpoints(Pressure,svalues(i,1),svalues(i,2));  
+            addpoints(Pressure,svalues(i,2),svalues(i,1));  
             %add pressure and time data
             
     end
+
+    addpoints(Pressure,svalues(i,2),svalues(i,1));
 
     %Use the following bit of code to find some basic statistics about the data
     %that has been collected.  The operating assumption here is that collecting 
@@ -79,7 +82,7 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
     %**NOTE: If protocol_id == '1', either comment out the following code,
     %or change the range of data on which the basic statistics are calculated.
 
-    pressureData = svalues(1:total,2);
+    pressureData = svalues(500:total,2);
 
     %Pressure stats
     stats(1,1) = mean(pressureData);
@@ -99,6 +102,5 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
     
     filename = strjoin('Experiment',experimentNum,'Fill');
     save(filename,data);
-    disp(filename);
 
 end

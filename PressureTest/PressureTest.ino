@@ -67,8 +67,8 @@ void loop() {
       
       total = reading.toInt();     //convert the read string to an integer
       double start = millis();     //start timer
-      int timer = 0;
-      digitalWrite(valve_out,LOW);
+      double timer = 0;
+      digitalWrite(valve_out,HIGH);
       
       for (int i = 0; i < 500; i++) {
         digitalWrite(valve_in,HIGH);
@@ -80,7 +80,7 @@ void loop() {
 
       for (int i = 0; i < total; i++) {
         digitalWrite(valve_in,HIGH);
-        digitalWrite(valve_out,HIGH);
+        digitalWrite(valve_out,LOW);
         timer = millis() - start;
         Serial.println(analogRead(A0));         //reads raw pressure sensor data
         Serial.println(timer);       //record time stamp of data collection
@@ -91,7 +91,6 @@ void loop() {
       delay(5000);
       
     } else {  //if there is no information to read over serial from matlab, wait...
-      //digitalWrite(valve_in,LOW);
     }
   }
 }

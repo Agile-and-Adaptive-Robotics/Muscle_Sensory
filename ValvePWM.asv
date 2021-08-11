@@ -84,8 +84,8 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     for i = 1:total
 
-        svalues(i,1) = ((str2double(readline(s)))*0.1531-2.8338)*4.448; %Force(N)            Aug 5
-        svalues(i,2) = ((str2double(readline(s)))*0.7654) -18.609; %Pressure (kPa)         Aug 2
+        svalues(i,1) = ((((str2double(readline(s))))*1.6475)-30.882)*4.45; %Force(N)            Aug 2
+        svalues(i,2) = ((str2double(readline(s)))%*0.7654) -18.609; %Pressure (kPa)         Aug 2
         svalues(i,3) = str2double(readline(s))/1000; %Time(s)
         
 
@@ -102,7 +102,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
         %value, which doesn't exist if the loop started at the minimum
         %i value
 
-            if abs(svalues(i-prev,1)-svalues(i,1))<500  
+            if abs(svalues(i-prev,1)-svalues(i,1))<100  
 
             %check if next value is more than
             %100 N away from the last known value

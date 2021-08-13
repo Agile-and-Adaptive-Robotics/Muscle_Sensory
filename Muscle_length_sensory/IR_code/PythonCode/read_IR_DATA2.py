@@ -1,5 +1,5 @@
 import numpy as np
-# import pathlib as Path
+from pathlib import Path
 import matplotlib.pyplot as plt
 
 
@@ -117,7 +117,7 @@ class Data(object):
     @staticmethod
     def _get_text_only(text):
         """Strip colon and spaces in header text"""
-        assert isinstance(text, str), "To strip colon and spaces, need type text"
+        assert isinstance(text, str), "To strip colon and spaces, need type string"
         return text[2:len(text)]
 
     def _str2array(self, idx):
@@ -139,26 +139,44 @@ class Data(object):
                 data[idx, n] = temp[n]
         return data
 
-    def report(self, idx):
+    def report(self, idx, norm=False):
         """Make plots of the specified index and output a simple report"""
-        self.plot_series(idx)
+        self.plot_series(idx, norm)
         plt.show()
 
-    def plot_series(self, idx):
+    def plot_series(self, idx, norm=False):
         """Plot the data series"""
         self._read_header_data(idx)
         sampF = float(self.header['Sampling Frequency'])
         data = self._str2array(idx)
         time = data[:, 0]*1/sampF
-        sen1 = data[:, 1]
-        sen2 = data[:, 2]
         fig = plt.figure()
         ax = fig.add_subplot(111)
+        sen1 = data[:, 1]
+        sen2 = data[:, 2]
+        if norm:
+            sen1 = self.normalize_data(sen1)
+            sen2 = self.normalize_data(sen2)
+            ax.set(title='Normalized dual sensor comparison')
+        else:
+            ax.set(title='Dual sensor comparison')
         ax.plot(time, sen1)
         ax.plot(time, sen2)
         ax.set(ylabel='Distance',
                xlabel='Time(s)')
+        ax.legend(['External', 'Internal'])
         self._basic_stats(sen1, sen2)
+
+    @staticmethod
+    def normalize_data(data):
+        """Normalize an input data set"""
+        # remove average
+        avg = np.mean(data)
+        data = data - avg
+        # remove spread
+        spread = max(data)-min(data)
+        data = data/spread
+        return data
 
     @staticmethod
     def _basic_stats(sen1, sen2):
@@ -172,9 +190,9 @@ class Data(object):
 RunAll = True
 if RunAll and __name__ == "__main__":
     # define path
-    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_DATA2.TXT"
+    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\dualsensor_teststand_data\IR_data2.txt"
     IR_data = Data(path)
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
-    IR_data.report(39)
+    IR_data.report(2, norm=True)

@@ -142,6 +142,7 @@ class Data(object):
     def report(self, idx, norm=False):
         """Make plots of the specified index and output a simple report"""
         self.plot_series(idx, norm)
+        self.plot_scatter(idx)
         plt.show()
 
     def plot_series(self, idx, norm=False):
@@ -166,6 +167,18 @@ class Data(object):
                xlabel='Time(s)')
         ax.legend(['External', 'Internal'])
         self._basic_stats(sen1, sen2)
+
+    def plot_scatter(self, idx):
+        """Plot the scattered data"""
+        data = self._str2array(idx)
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        sen1 = data[:, 1]
+        sen2 = data[:, 2]
+        ax.plot(sen1, sen2, linewidth=0, marker='o')
+        ax.set(title='Scatter plot external and internal sensors',
+               ylabel='Internal sensor',
+               xlabel='External sensor')
 
     @staticmethod
     def normalize_data(data):
@@ -195,4 +208,4 @@ if RunAll and __name__ == "__main__":
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
-    IR_data.report(2, norm=True)
+    IR_data.report(1, norm=False)

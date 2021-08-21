@@ -15,7 +15,8 @@ class Data(object):
     """
 
     def __init__(self, path2file):
-        self._path = path2file
+        self._path = Path(path2file)
+        self._init_paths()
         self._parse_data()
         self._find_start()
         self._initialize_keys()
@@ -28,6 +29,12 @@ class Data(object):
         header_keys = self._header_keys()
         for each_key in header_keys:
             self.header[each_key] = ""
+
+    def _init_paths(self):
+        self._parent = self._path.parent
+        self.wd = self._parent/self._path.stem
+        if self.wd.is_dir() is False:
+            self.wd.mkdir()
 
     def _parse_data(self):
         """Parse the data file"""
@@ -139,13 +146,19 @@ class Data(object):
                 data[idx, n] = temp[n]
         return data
 
-    def report(self, idx, norm=False):
+    def report(self, idx, norm=False, show=False):
         """Make plots of the specified index and output a simple report"""
-        self.plot_series(idx, norm)
-        self.plot_scatter(idx)
-        plt.show()
+        self.plot_series(idx, norm, save=True)
+        self.plot_scatter(idx, save=True)
+        if show:
+            plt.show()
 
-    def plot_series(self, idx, norm=False):
+    def full_report(self, norm=False):
+        for i in range(self.data_size):
+            self.report(idx=i, norm=norm, show=False)
+            plt.close()
+
+    def plot_series(self, idx, norm=False, save=False):
         """Plot the data series"""
         self._read_header_data(idx)
         sampF = float(self.header['Sampling Frequency'])
@@ -156,29 +169,36 @@ class Data(object):
         sen1 = data[:, 1]
         sen2 = data[:, 2]
         if norm:
+            title = 'Normalized dual sensor comparison'
             sen1 = self.normalize_data(sen1)
             sen2 = self.normalize_data(sen2)
-            ax.set(title='Normalized dual sensor comparison')
+            ax.set(title=title)
         else:
-            ax.set(title='Dual sensor comparison')
+            title = 'Dual sensor comparison'
+            ax.set(title=title)
         ax.plot(time, sen1)
         ax.plot(time, sen2)
         ax.set(ylabel='Distance',
                xlabel='Time(s)')
         ax.legend(['External', 'Internal'])
         self._basic_stats(sen1, sen2)
+        if save:
+            plt.savefig(f'{self.wd.as_posix()}\\{title}_{idx}.png', dpi=500)
 
-    def plot_scatter(self, idx):
+    def plot_scatter(self, idx, save=False):
         """Plot the scattered data"""
+        title = 'Scatter plot external and internal sensors'
         data = self._str2array(idx)
         fig = plt.figure()
         ax = fig.add_subplot(111)
         sen1 = data[:, 1]
         sen2 = data[:, 2]
         ax.plot(sen1, sen2, linewidth=0, marker='o')
-        ax.set(title='Scatter plot external and internal sensors',
+        ax.set(title=title,
                ylabel='Internal sensor',
                xlabel='External sensor')
+        if save:
+            plt.savefig(f'{self.wd.as_posix()}\\{title}_{idx}.png', dpi=500)
 
     @staticmethod
     def normalize_data(data):
@@ -199,6 +219,31 @@ class Data(object):
         print(f'Sensor 2 mean: {np.mean(sen2)}')
         print(f'Sensor 2 std dev: {np.std(sen2)}')
 
+    def combine_data(self, indices):
+        """input indices as a list of indices to aggregate data into one single pool"""
+        data = np.empty((1, 3))
+        for each_idx in indices:
+            data = np.vstack((data, self._str2array(each_idx)))
+        # delete the first data entry of empty array
+        data = np.delete(data, 0, 0)
+
+    def plot_combine_data(self, indices, save=False):
+        title = f'Combine data from indices {indices}'
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        markers = ['o', '^', 's']
+        for idx, each in enumerate(indices):
+            data = self._str2array(each)
+            sen2 = data[:, 1]
+            sen1 = data[:, 2]
+            ax.plot(sen1, sen2, linewidth=0, marker=markers[idx], markersize=2, )
+        ax.set_aspect('equal')
+        ax.set(title=title,
+               ylabel='Internal sensor',
+               xlabel='External sensor')
+        if save:
+            plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
+
 
 RunAll = True
 if RunAll and __name__ == "__main__":
@@ -208,4 +253,7 @@ if RunAll and __name__ == "__main__":
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
-    IR_data.report(1, norm=False)
+    IR_data.full_report(norm=True)
+    idx_list = [1, 2, 3]
+    IR_data.combine_data(indices=idx_list)
+    IR_data.plot_combine_data(indices=idx_list, save=True)

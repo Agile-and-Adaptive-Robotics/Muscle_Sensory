@@ -1,6 +1,7 @@
 import numpy as np
 from pathlib import Path
 import matplotlib.pyplot as plt
+from scipy import stats
 
 
 class Data(object):
@@ -226,6 +227,7 @@ class Data(object):
             data = np.vstack((data, self._str2array(each_idx)))
         # delete the first data entry of empty array
         data = np.delete(data, 0, 0)
+        return data
 
     def plot_combine_data(self, indices, save=False):
         title = f'Combine data from indices {indices}'
@@ -244,6 +246,30 @@ class Data(object):
         if save:
             plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
+    def calculate_fit_params_combined_data(self, indices):
+        """calculate fit parameters of the combined data"""
+        cdata = self.combine_data(indices=indices)
+        scipy_fit_params = stats.linregress(cdata[:, 2], cdata[:, 1])
+        # np_fit_params = np.polyfit(cdata[:, 0], cdata[:, 1], deg=1, full=True)
+        print(f'R value for fit {scipy_fit_params.rvalue}')
+        return scipy_fit_params
+
+    def plot_cdata_add_fit(self, indices):
+        """plot the combined data """
+        fit_params = self.calculate_fit_params_combined_data(indices=indices)
+        cdata = self.combine_data(indices=indices)
+        title = 'Combined Data'
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(cdata[:, 2], cdata[:, 1], linewidth=0, marker='o', markersize=2)
+        fitted_data = fit_params.slope*cdata[:, 2] + fit_params.intercept
+        ax.plot(cdata[:, 2], fitted_data)
+        ax.set_aspect('equal')
+        ax.set(title=title,
+               ylabel='Internal sensor',
+               xlabel='External sensor')
+        plt.show()
+
 
 RunAll = True
 if RunAll and __name__ == "__main__":
@@ -257,3 +283,5 @@ if RunAll and __name__ == "__main__":
     idx_list = [1, 2, 3]
     IR_data.combine_data(indices=idx_list)
     IR_data.plot_combine_data(indices=idx_list, save=True)
+    IR_data.plot_cdata_add_fit(indices=idx_list)
+    # plt.show()

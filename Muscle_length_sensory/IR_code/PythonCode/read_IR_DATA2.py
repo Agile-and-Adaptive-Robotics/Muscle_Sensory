@@ -182,7 +182,7 @@ class Data(object):
         ax.set(ylabel='Distance',
                xlabel='Time(s)')
         ax.legend(['External', 'Internal'])
-        self._basic_stats(sen1, sen2)
+        # self._basic_stats(sen1, sen2)
         if save:
             plt.savefig(f'{self.wd.as_posix()}\\{title}_{idx}.png', dpi=500)
 
@@ -268,7 +268,33 @@ class Data(object):
         ax.set(title=title,
                ylabel='Internal sensor',
                xlabel='External sensor')
-        plt.show()
+
+    def test_fit_to_data_set(self, indices, data_index, save=False):
+        """use the fit params from calculate_fit_params_combined_data to estimate how good the fit is
+        when applied to a data set"""
+        title = f'Compare_fitted_data_index_{data_index}'
+        fit_params = self.calculate_fit_params_combined_data(indices=indices)
+        data = self._str2array(data_index)
+        fitted_data = fit_params.slope*data[:, 2] + fit_params.intercept
+        # plot fitted data to compare with external sensor
+        fig = plt.figure()
+        ax = fig.add_subplot(211)
+        ax.plot(data[:, 0], data[:, 1], linewidth=1, marker='o', markersize=2)
+        ax.plot(data[:, 0], fitted_data, linewidth=1, marker='o', markersize=2)
+        ax.set(title=title,
+               ylabel='Distance(mm)',
+               xlabel='Time(s)')
+        # plot residual and calculate accuracy and repeatability
+        residual = data[:, 1] - fitted_data
+        ax = fig.add_subplot(212)
+        ax.plot(data[:, 0], residual, linewidth=1, marker='o', markersize=2)
+        ax.set(title='Residual',
+               ylabel='Distance(mm)',
+               xlabel='Time(s)')
+        print(f'Average error for fitted data index {data_index}: {np.mean(residual)} mm')
+        print(f'Spread data index {data_index}: {np.std(residual)}mm')
+        if save:
+            plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
 
 RunAll = True
@@ -281,7 +307,8 @@ if RunAll and __name__ == "__main__":
     print(f"Data size: {IR_data.data_size}")
     IR_data.full_report(norm=True)
     idx_list = [1, 2, 3]
-    IR_data.combine_data(indices=idx_list)
-    IR_data.plot_combine_data(indices=idx_list, save=True)
+    # IR_data.combine_data(indices=idx_list)
+    # IR_data.plot_combine_data(indices=idx_list, save=True)
     IR_data.plot_cdata_add_fit(indices=idx_list)
-    # plt.show()
+    IR_data.test_fit_to_data_set(indices=idx_list, data_index=1, save=True)
+    plt.show()

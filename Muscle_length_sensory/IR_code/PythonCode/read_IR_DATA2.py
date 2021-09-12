@@ -246,17 +246,40 @@ class Data(object):
         if save:
             plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
-    def calculate_fit_params_combined_data(self, indices):
-        """calculate fit parameters of the combined data"""
+    def calculate_lin_fit_params_combined_data(self, indices):
+        """calculate linear fit parameters of the combined data"""
         cdata = self.combine_data(indices=indices)
         scipy_fit_params = stats.linregress(cdata[:, 2], cdata[:, 1])
         # np_fit_params = np.polyfit(cdata[:, 0], cdata[:, 1], deg=1, full=True)
         print(f'R value for fit {scipy_fit_params.rvalue}')
         return scipy_fit_params
 
+    def calculate_poly_fit_params_combined_data(self, indices):
+        """calculate poly fit parameters of the combined data"""
+        cdata = self.combine_data(indices=indices)
+        # scipy_fit_params = stats.linregress(cdata[:, 2], cdata[:, 1])
+        np_fit_params = np.polyfit(cdata[:, 2], cdata[:, 1], deg=2)
+        # print(f'R value for poly fit {np_fit_params.rcond}')
+        return np_fit_params
+
+    def plot_cdata_add_poly_fit(self, indices):
+        """plot the combined data """
+        fit_params = self.calculate_poly_fit_params_combined_data(indices=indices)
+        cdata = self.combine_data(indices=indices)
+        title = 'Combined Data'
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(cdata[:, 2], cdata[:, 1], linewidth=0, marker='o', markersize=2)
+        fitted_data = fit_params[0]*cdata[:, 2]**2 + fit_params[1]*cdata[:, 2] + fit_params[2]
+        ax.plot(cdata[:, 2], fitted_data, linewidth=0, marker='o', markersize=4)
+        ax.set_aspect('equal')
+        ax.set(title=title,
+               ylabel='Internal sensor',
+               xlabel='External sensor')
+
     def plot_cdata_add_fit(self, indices):
         """plot the combined data """
-        fit_params = self.calculate_fit_params_combined_data(indices=indices)
+        fit_params = self.calculate_lin_fit_params_combined_data(indices=indices)
         cdata = self.combine_data(indices=indices)
         title = 'Combined Data'
         fig = plt.figure()
@@ -270,10 +293,10 @@ class Data(object):
                xlabel='External sensor')
 
     def test_fit_to_data_set(self, indices, data_index, save=False):
-        """use the fit params from calculate_fit_params_combined_data to estimate how good the fit is
+        """use the fit params from calculate_lin_fit_params_combined_data to estimate how good the fit is
         when applied to a data set"""
         title = f'Compare_fitted_data_index_{data_index}'
-        fit_params = self.calculate_fit_params_combined_data(indices=indices)
+        fit_params = self.calculate_lin_fit_params_combined_data(indices=indices)
         data = self._str2array(data_index)
         fitted_data = fit_params.slope*data[:, 2] + fit_params.intercept
         # plot fitted data to compare with external sensor
@@ -309,6 +332,6 @@ if RunAll and __name__ == "__main__":
     idx_list = [1, 2, 3]
     # IR_data.combine_data(indices=idx_list)
     # IR_data.plot_combine_data(indices=idx_list, save=True)
-    IR_data.plot_cdata_add_fit(indices=idx_list)
+    IR_data.plot_cdata_add_poly_fit(indices=idx_list)
     IR_data.test_fit_to_data_set(indices=idx_list, data_index=1, save=True)
     plt.show()

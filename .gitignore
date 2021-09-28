@@ -19,3 +19,4 @@ Muscle_length_sensory/testFixture/~$testFixtureAssembly.SLDASM
 Muscle_length_sensory/IR_TOF_circular_housing/~$circularHousing_withMounting.SLDASM
 Agent
 venv/
+*.png

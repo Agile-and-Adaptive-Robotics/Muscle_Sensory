@@ -65,12 +65,12 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     yyaxis left     %graph force on left axis in blue
     Force = animatedline('color','blue');
-    ylim([-50,300]);
+    ylim([-50,30000]);
     ylabel('Force (N)');
 
     yyaxis right    %graph pressure on right in red
     Pressure = animatedline('color','red');
-    ylim([10,700]);
+    ylim([0,700]);
     ylabel('Pressure (kPa)');
 
     %the load cell data will sometimes spike unexpectedly which
@@ -101,7 +101,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
         %value, which doesn't exist if the loop started at the minimum
         %i value
 
-            if abs(svalues(i-prev,1)-svalues(i,1))<100  
+            if abs(svalues(i-prev,1)-svalues(i,1))<1000  
 
             %check if next value is more than
             %100 N away from the last known value

@@ -3,7 +3,7 @@
 clear; clc; close all;
 
 %get number of experiment files in the directory (total files - 3)
-numOfExperiments = length(dir)-3;
+numOfExperiments = length(dir)-4;
 
 %create two lists with the names of the files (ExperimentxFill.mat where x
 %is the experiment number)

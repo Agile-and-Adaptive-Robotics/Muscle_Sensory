@@ -63,10 +63,10 @@ Format:
 date: "YYYYMMDD"
 time: "HHMM" - use military time
 */
-char collectDate[11] = "06/27/2021";
-char collectTime[6] = "11:48"; 
-char fileName[13] = "IR_data2.txt";
-char notes[200] = "this is a note for what ever data collection";  // add notes, make it short
+char collectDate[11] = "11/13/2021";
+char collectTime[6] = "01:05"; 
+char fileName[13] = "IR_data3.txt";
+char notes[200] = "test notes";  // add notes, make it short
 
 void setup()
 {
@@ -148,9 +148,9 @@ void DataLoggingLoop() //Interrupt loop
     }
     else if (!(counter > 5*check))
     {
-        //toggle at 2Hz
+        //toggle at 0.5Hz
         counter2 = counter2 + samplingPeriod;
-        if (counter2 > 0.5)
+        if (counter2 > 2.0)
         {
             digitalWriteFast(11, !digitalReadFast(11));
             Serial.println(counter2);
@@ -159,9 +159,9 @@ void DataLoggingLoop() //Interrupt loop
     }
     else
     {
-        //toggle at 3Hz
+        //toggle at 0.2Hz
         counter2 = counter2 + samplingPeriod;
-        if (counter2 > 0.333)
+        if (counter2 > 5.0)
         {
             digitalWriteFast(11, !digitalReadFast(11));
             Serial.println(counter2);
@@ -185,7 +185,7 @@ void DataLoggingLoop() //Interrupt loop
     }
     
     if (dataFile){
-        /*
+        
         dataFile.print(counter);
         dataFile.print(", ");
         dataFile.print(IR1_reading);
@@ -195,15 +195,12 @@ void DataLoggingLoop() //Interrupt loop
         {
             dataFile.println("=====End_data=====");
         }
-        */
         dataFile.close();
-        /*
         Serial.print(IR1_reading);
         Serial.print("\t");
         Serial.print(IR2_reading);
         Serial.print("\t");
         Serial.println(counter); // write to Serial. Comment out when run for real
-        */
     }
     
     counter += 1;

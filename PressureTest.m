@@ -9,8 +9,8 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
     p = inputParser;
     addRequired(p,'protocol_id');
     addRequired(p,'port');
-    addOptional(p,'total',5000);
-    addOptional(p,'experimentNum',0);
+    addOptional(p,'total',4500);
+    addOptional(p,'experimentNum',9);
     parse(p,protocol_id,port,varargin{:});
     
     protocol_id = num2str(p.Results.protocol_id);
@@ -97,8 +97,8 @@ function [Data, Stats] = PressureTest(protocol_id,port,varargin)
     Stats = stats;
     
     
-    filename = strjoin('Experiment',experimentNum,'Fill');
-    save(filename,data);
-    disp(filename);
+%     filename = strjoin('Experiment',experimentNum);
+%     save(filename,data);
+%     disp(filename);
 
 end

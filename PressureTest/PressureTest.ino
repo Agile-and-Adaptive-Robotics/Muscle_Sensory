@@ -10,27 +10,7 @@ https://github.com/sparkfun/HX711-Load-Cell-Amplifier/tree/master/firmware
 Source Code for the HX711 can be found here:
 https://github.com/bogde/HX711/tree/master/src
 
-Example using the SparkFun HX711 breakout board with a scale
-By: Nathan Seidle
-SparkFun Electronics
-Date: November 19th, 2014
-License: This code is public domain but you buy me a beer if you use this and we meet someday (Beerware license).
-
-Most scales require that there be no weight on the scale during power on. This sketch shows how to pre-load tare values
-so that you don't have to clear the scale between power cycles. This is good if you have something on the scale
-all the time and need to reset the Arduino and not need to tare the scale.
-
-This example code uses bogde's excellent library: https://github.com/bogde/HX711
-bogde's library is released under a GNU GENERAL PUBLIC LICENSE
-
-The HX711 does one thing well: read load cells. The breakout board is compatible with any wheat-stone bridge
-based load cell which should allow a user to measure everything from a few grams to tens of tons.
-Arduino pin 2 -> HX711 CLK
-3 -> DOUT
-5V -> VCC
-GND -> GND
-
-The HX711 board can be powered from 2.7V to 5V so the Arduino 5V power should be fine.*/
+*/
 
 int valve_in = 3;
 int valve_out = 5;
@@ -42,6 +22,8 @@ void setup() {
   pinMode(valve_in, OUTPUT);
   Serial.begin(baud);  //initialize arduino serial communication
   Serial.setTimeout(200);
+  digitalWrite(valve_out, LOW);
+  digitalWrite(valve_in, LOW);
 }
 
 void loop() {
@@ -55,7 +37,8 @@ void loop() {
       String reading = "2";
       //initiate variable to store the serial data when it is being read
 
-      while (true) {
+      while (true) 
+      {
         reading = Serial.readString();                      
         //read from serial
         //if the reading is anything but 2 then break and start collecting data (we need to ignore any value of '2' because matlab sends many instances   
@@ -68,9 +51,10 @@ void loop() {
       total = reading.toInt();     //convert the read string to an integer
       double start = millis();     //start timer
       double timer = 0;
-      digitalWrite(valve_out,HIGH);
+
       
-      for (int i = 0; i < 500; i++) {
+      for (int i = 0; i < 500; i++) {                 //Fill phase of test
+        digitalWrite(valve_out,HIGH);
         digitalWrite(valve_in,HIGH);
         timer = millis() - start;
         Serial.println(analogRead(A0));         //reads raw pressure sensor data
@@ -78,9 +62,9 @@ void loop() {
         
       }
 
-      for (int i = 0; i < total; i++) {
-        digitalWrite(valve_in,HIGH);
-        digitalWrite(valve_out,LOW);
+      for (int i = 0; i < total; i++) {             //Hold phase of test, to test for leak rate
+        digitalWrite(valve_in,LOW);
+        digitalWrite(valve_out,HIGH);
         timer = millis() - start;
         Serial.println(analogRead(A0));         //reads raw pressure sensor data
         Serial.println(timer);       //record time stamp of data collection
@@ -88,9 +72,13 @@ void loop() {
       }
       digitalWrite(valve_out, LOW);
       digitalWrite(valve_in, LOW);
-      delay(5000);
+      delay(100);
       
     } else {  //if there is no information to read over serial from matlab, wait...
+      digitalWrite(valve_out, LOW);
+      digitalWrite(valve_in, LOW);
+      delay(100);
+    
     }
   }
 }

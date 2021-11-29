@@ -25,24 +25,20 @@
       int air_out = 12;
       int pressure_pin = A0;
       int force_pin = A1;
-    
-      //Setting the timing of the valves pwm
+      //Setting the timing of the valves pwm 
       String pw_in = "500";            //use milliseconds
       String pw_out = "0";
       String period_in = "1000";
       String period_out = "1";
-      
       //initiate timer at 0
       int timer = 0;
-
-
+      
   void setup() {
     pinMode(air_in, OUTPUT);
     pinMode(air_out, OUTPUT);
-    Serial.begin(14400);           //initialize arduino serial communication //change to 9600 to collect all press and depress data
-    Serial.setTimeout(100);         //this sets the maximum milliseconds to wait for serial data. 
+    Serial.begin(115200);           //initialize arduino serial communication
+    Serial.setTimeout(1000);         //this sets the maximum milliseconds to wait for serial data. (Nov 5th, changed from 100 ->1000) 
   }
-
 
   void loop() {
     char choose_branch = '0'; 
@@ -72,12 +68,11 @@
         
                 double start = millis();          //start timer
                 double timer = 0;
-
+                
             //Data collection for pressurizing the BPA 
-            for (int i = 0; i < (total)/2; i++)         //data collection begins with total/2  number of data points. 
+            for (int i = 0; i < total/2; i++)         //data collection begins with total/2  number of data points. 
             {
               timer = millis() - start;
-          
                   if (fmod(timer,period_in.toInt())<= pw_in.toInt())      //fmod = floating point modulus. If the remainder of timer/period is smaller than the valve open time, then proceed to turn on valve. 
                   {       
                     digitalWrite(air_in,HIGH);
@@ -86,17 +81,14 @@
                   {
                     digitalWrite(air_in,LOW);                             //If remainder of timer/period is greater than valve open time, shut valve off. 
                   }
-                  
                   Serial.println(analogRead(force_pin));       //reads raw force data
                   Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
                   Serial.println(timer);                //record time stamp of data collection
                   
             }
-                  // digitalWrite(air_in,LOW);
-
-
+                  // digitalWrite(air_in,LOW)
              //Data collection for depressurizing BPA       
-             for (int i = 0; i < (total)/2; i++) 
+             for (int i = 0; i < total/2; i++) 
              {
                 timer = millis() - start; 
                   if (fmod(timer,period_out.toInt())<= pw_out.toInt()) 
@@ -110,14 +102,11 @@
                 Serial.println(analogRead(force_pin));       //reads raw force data
                 Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
                 Serial.println(timer);                //record time stamp of data collection
-                
               }
-              digitalWrite(air_out,LOW);
-        
-      
+              //digitalWrite(air_out,LOW);
       } else {  //if there is no information to read over serial from matlab, wait and release valve  
        // digitalWrite(air_in,LOW);
-      //  digitalWrite(air_out,LOW);
+        //digitalWrite(air_out,LOW);
       }
       
     }

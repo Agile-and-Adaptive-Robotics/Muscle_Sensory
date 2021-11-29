@@ -70,7 +70,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     yyaxis right    %graph pressure on right in red
     Pressure = animatedline('color','red');
-    ylim([0,800]);
+    ylim([0,700]);
     ylabel('Pressure (kPa)');
 
     %the load cell data will sometimes spike unexpectedly which

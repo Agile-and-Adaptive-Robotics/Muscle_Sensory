@@ -40,7 +40,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     format short g      %remove scientific notation
 
     %Initialize serial port 
-    s = serialport(port,115200);
+    s = serialport(port,14400); %change 115200 to 9600 Nov 16
 
     while s.NumBytesAvailable < 1               
         write(s,string(protocol_id),'string');
@@ -65,12 +65,12 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     yyaxis left     %graph force on left axis in blue
     Force = animatedline('color','blue');
-    ylim([0,5000]);
+    ylim([-100,5000]);
     ylabel('Force (N)');
 
     yyaxis right    %graph pressure on right in red
     Pressure = animatedline('color','red');
-    ylim([0,700]);
+    ylim([-50,800]);
     ylabel('Pressure (kPa)');
 
     %the load cell data will sometimes spike unexpectedly which

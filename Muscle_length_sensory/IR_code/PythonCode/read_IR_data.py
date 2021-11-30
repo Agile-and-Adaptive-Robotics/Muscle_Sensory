@@ -330,7 +330,7 @@ if RunAll and __name__ == "__main__":
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
-    IR_data.full_report(norm=True)
+    IR_data.full_report(norm=False)
     idx_list = [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
     IR_data.combine_data(indices=idx_list)
     IR_data.plot_combine_data(indices=idx_list, save=True)

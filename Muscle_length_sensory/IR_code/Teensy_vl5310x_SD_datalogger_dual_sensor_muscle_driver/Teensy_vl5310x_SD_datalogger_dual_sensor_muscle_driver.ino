@@ -49,9 +49,9 @@ IntervalTimer myTimer;
 
 const int chipSelect = BUILTIN_SDCARD;
 float Ts_micro;
-float samplingFreq = 100; //define sampling frequency in Hz
+float samplingFreq = 200; //define sampling frequency in Hz
 float samplingPeriod = 1/samplingFreq;
-float collectPeriod = 60; //number of seconds to collect data
+float collectPeriod = 180; //number of seconds to collect data
 volatile float randNum;
 volatile float stopCount; //how mane counts to stop counting given sampling Frequency
 volatile int counter = 0; //variable to count about many times interrupt was fired
@@ -63,10 +63,10 @@ Format:
 date: "YYYYMMDD"
 time: "HHMM" - use military time
 */
-char collectDate[11] = "11/13/2021";
+char collectDate[11] = "11/23/2021";
 char collectTime[6] = "01:05"; 
-char fileName[13] = "IR_data3.txt";
-char notes[200] = "test notes";  // add notes, make it short
+char fileName[13] = "IR_data4.txt";
+char notes[200] = "real data collection";  // add notes, make it short
 
 void setup()
 {
@@ -114,30 +114,19 @@ void DataLoggingLoop() //Interrupt loop
         return;
     }
 
-    if (!(counter > check))
+    if ((counter < 5*check) & (counter > 4*check))
     {
         // do nothing, static low
         digitalWriteFast(11, LOW);
     } 
-    else if (!(counter > 2*check))
+    else if ((counter < 4*check) & (counter > 3*check))
     {
         // toggle high
         digitalWriteFast(11, HIGH);
     }
-    else if (!(counter > 3*check))
+    else if ((counter < 3*check) & (counter > 2*check))
     {
-        // toggle at 0.5Hz
-        counter2 = counter2 + samplingPeriod;
-        if (counter2 > 2.0)
-        {
-            digitalWriteFast(11, !digitalReadFast(11));
-            Serial.println(counter2);
-            counter2 = 0;
-        }
-    }
-    else if (!(counter > 4*check))
-    {
-        //toggle at 1Hz
+        // toggle at 1.0Hz
         counter2 = counter2 + samplingPeriod;
         if (counter2 > 1.0)
         {
@@ -146,11 +135,22 @@ void DataLoggingLoop() //Interrupt loop
             counter2 = 0;
         }
     }
-    else if (!(counter > 5*check))
+    else if ((counter < 2*check) & (counter > 1*check))
     {
-        //toggle at 0.5Hz
+        //toggle at 2Hz
         counter2 = counter2 + samplingPeriod;
-        if (counter2 > 2.0)
+        if (counter2 > 0.5)
+        {
+            digitalWriteFast(11, !digitalReadFast(11));
+            Serial.println(counter2);
+            counter2 = 0;
+        }
+    }
+    else if ((counter < 1*check))
+    {
+        //toggle at 3Hz
+        counter2 = counter2 + samplingPeriod;
+        if (counter2 > 0.333)
         {
             digitalWriteFast(11, !digitalReadFast(11));
             Serial.println(counter2);
@@ -159,9 +159,9 @@ void DataLoggingLoop() //Interrupt loop
     }
     else
     {
-        //toggle at 0.2Hz
+        //toggle at 0.5Hz
         counter2 = counter2 + samplingPeriod;
-        if (counter2 > 5.0)
+        if (counter2 > 0.2)
         {
             digitalWriteFast(11, !digitalReadFast(11));
             Serial.println(counter2);

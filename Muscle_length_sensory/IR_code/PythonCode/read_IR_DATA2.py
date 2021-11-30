@@ -170,12 +170,12 @@ class Data(object):
         sen1 = data[:, 1]
         sen2 = data[:, 2]
         if norm:
-            title = 'Normalized dual sensor comparison'
+            title = f'Normalized dual sensor comparison. Data ID {idx}'
             sen1 = self.normalize_data(sen1)
             sen2 = self.normalize_data(sen2)
             ax.set(title=title)
         else:
-            title = 'Dual sensor comparison'
+            title = f'Dual sensor comparison. Data ID {idx}'
             ax.set(title=title)
         ax.plot(time, sen1)
         ax.plot(time, sen2)
@@ -184,22 +184,22 @@ class Data(object):
         ax.legend(['External', 'Internal'])
         # self._basic_stats(sen1, sen2)
         if save:
-            plt.savefig(f'{self.wd.as_posix()}\\{title}_{idx}.png', dpi=500)
+            plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
     def plot_scatter(self, idx, save=False):
         """Plot the scattered data"""
-        title = 'Scatter plot external and internal sensors'
+        title = f'Scatter plot external and internal sensors. Data ID {idx}'
         data = self._str2array(idx)
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        sen1 = data[:, 1]
-        sen2 = data[:, 2]
+        sen1 = data[:, 2]
+        sen2 = data[:, 1]
         ax.plot(sen1, sen2, linewidth=0, marker='o')
         ax.set(title=title,
                ylabel='Internal sensor',
                xlabel='External sensor')
         if save:
-            plt.savefig(f'{self.wd.as_posix()}\\{title}_{idx}.png', dpi=500)
+            plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
     @staticmethod
     def normalize_data(data):
@@ -233,13 +233,13 @@ class Data(object):
         title = f'Combine data from indices {indices}'
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        markers = ['o', '^', 's']
+        # markers = ['o', '^', 's']
         for idx, each in enumerate(indices):
             data = self._str2array(each)
             sen2 = data[:, 1]
             sen1 = data[:, 2]
-            ax.plot(sen1, sen2, linewidth=0, marker=markers[idx], markersize=2, )
-        ax.set_aspect('equal')
+            ax.plot(sen1, sen2, marker='o', markersize=1, linewidth=0)
+        # ax.set_aspect('equal')
         ax.set(title=title,
                ylabel='Internal sensor',
                xlabel='External sensor')
@@ -323,15 +323,24 @@ class Data(object):
 RunAll = True
 if RunAll and __name__ == "__main__":
     # define path
-    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\dualsensor_teststand_data\IR_data2.txt"
+    # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\dualsensor_teststand_data\IR_data2.txt"
+    # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\dualsensor_teststand_data\IR_data_short_cap.txt"
+    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
     IR_data = Data(path)
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
     IR_data.full_report(norm=True)
-    idx_list = [1, 2, 3]
-    # IR_data.combine_data(indices=idx_list)
-    # IR_data.plot_combine_data(indices=idx_list, save=True)
-    IR_data.plot_cdata_add_poly_fit(indices=idx_list)
-    IR_data.test_fit_to_data_set(indices=idx_list, data_index=1, save=True)
+    idx_list = [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
+    IR_data.combine_data(indices=idx_list)
+    IR_data.plot_combine_data(indices=idx_list, save=True)
+    # IR_data.plot_cdata_add_poly_fit(indices=idx_list)
+    # IR_data.test_fit_to_data_set(indices=idx_list, data_index=1, save=True)
     plt.show()
+
+makeReport = False
+if makeReport and __name__ == "__main__":
+    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
+    IR_data = Data(path)
+    for each in IR_data.data_index:
+        IR_data.report(each)

@@ -1,0 +1,47 @@
+BPA length at clamp end: 12cm
+Max contraction length:10cm
+contraction: 2cm
+Pressure Sensor Placement: Outlet of BPA
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+Inlet Valve Timing: 10ms per 500ms
+Outlet Valve Timing: 30ms per 500ms (Note: sub 30ms the valve wouldn't release gas even though it switches) 
+	Test 1 and 2 Comments:Pressure settles at about 200kPa when using 30ms for outlet valve :( 
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+Inlet Valve Timing: 10ms per 500ms
+Outlet Valve Timing: 40ms per 500ms
+
+Test 3 : Pressure settles at about 100kPa. 
+Test 4: Added tape to cover silencer holes2? Still same shit. 
+
+-------------------------------------------------------------------------------------------------------------------
+
+Inlet Valve Timing: 10ms per 500ms
+Outlet Valve Timing: 60ms per 500ms
+
+
+Test5: 100kPa
+
+Test6: 100kPa 
+
+
+----------------------------------------------
+Inlet Valve Timing: 5ms per 500ms
+Outlet Valve Timing: 40ms per 500ms
+
+Test7: 100kpa. 
+
+Test 8: 100kpa.
+
+---------------------------------------------
+Inlet Valve Timing: 5ms per 500ms
+Outlet Valve Timing: 50ms per 500ms
+
+Test 9: sub 100kpa. 
+Test 10:sub 100kpa

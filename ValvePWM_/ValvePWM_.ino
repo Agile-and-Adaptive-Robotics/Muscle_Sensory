@@ -38,6 +38,8 @@
     pinMode(air_out, OUTPUT);
     Serial.begin(115200);           //initialize arduino serial communication
     Serial.setTimeout(1000);         //this sets the maximum milliseconds to wait for serial data. (Nov 5th, changed from 100 ->1000) 
+    digitalWrite(air_in,LOW);
+    digitalWrite(air_out,LOW);
   }
 
   void loop() {
@@ -105,8 +107,8 @@
               }
               //digitalWrite(air_out,LOW);
       } else {  //if there is no information to read over serial from matlab, wait and release valve  
-       // digitalWrite(air_in,LOW);
-        //digitalWrite(air_out,LOW);
+        digitalWrite(air_in,LOW);
+        digitalWrite(air_out,LOW);
       }
       
     }

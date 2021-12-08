@@ -16,7 +16,7 @@ a = arduino;
 % We can read the output voltage, convert it to Celsius and convert the
 % result to Farenheit as follows:
 v = readVoltage(a,'A0');
-Pressure = ((v*1023/5)*0.7654)-18.609;
+Pressure = (v/5)*0.7654)-18.609;
 fprintf('Temperature Reading:\n  %.1f kPa\n',Pressure)
 
 %% Record and plot 10 seconds of temperature data
@@ -79,8 +79,8 @@ while ~stop
     % Read current voltage value
     v = readVoltage(a,'A0');
     % Calculate temperature from voltage (based on data sheet)
-    Pressure = ((v*1023/5)*0.7654)-18.609;
-    TempF = Pressure;    
+    Pressure = (v - 0.5)*100;
+    TempF = 9/5*Pressure + 32;    
     % Get current time
     t =  datetime('now') - startTime;
     % Add points to animation

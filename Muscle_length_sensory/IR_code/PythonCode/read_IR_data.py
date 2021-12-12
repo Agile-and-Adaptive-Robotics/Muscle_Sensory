@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy import stats
 
 
-class Data(object):
+class DataHandler(object):
     """
     this code parses the data from IR_DATA2.TXT and plot the data
     Provide the absolute path to IR_DATA2.TXT
@@ -80,7 +80,7 @@ class Data(object):
         # TODO: getitem should return the 2D numpy array
         return self.get_data_segment(idx)
 
-    def _read_header_data(self, index):
+    def read_header_data(self, index):
         """Read header data and store it in a dict
         The input index is to indicate which data segment"""
         # read the first 5 lines to obtain header data
@@ -161,7 +161,7 @@ class Data(object):
 
     def plot_series(self, idx, norm=False, save=False):
         """Plot the data series"""
-        self._read_header_data(idx)
+        self.read_header_data(idx)
         sampF = float(self.header['Sampling Frequency'])
         data = self._str2array(idx)
         time = data[:, 0]*1/sampF
@@ -194,7 +194,7 @@ class Data(object):
         ax = fig.add_subplot(111)
         sen1 = data[:, 2]
         sen2 = data[:, 1]
-        ax.plot(sen1, sen2, linewidth=0, marker='o')
+        ax.plot(sen1, sen2, '.b', linewidth=0, markersize=2)
         ax.set(title=title,
                ylabel='Internal sensor',
                xlabel='External sensor')
@@ -320,13 +320,13 @@ class Data(object):
             plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
 
-RunAll = True
+RunAll = False
 if RunAll and __name__ == "__main__":
     # define path
     # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\dualsensor_teststand_data\IR_data2.txt"
     # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\dualsensor_teststand_data\IR_data_short_cap.txt"
     path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
-    IR_data = Data(path)
+    IR_data = DataHandler(path)
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
@@ -338,9 +338,10 @@ if RunAll and __name__ == "__main__":
     # IR_data.test_fit_to_data_set(indices=idx_list, data_index=1, save=True)
     plt.show()
 
-makeReport = False
+makeReport = True
 if makeReport and __name__ == "__main__":
-    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
-    IR_data = Data(path)
+    # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
+    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_TEST4.TXT"
+    IR_data = DataHandler(path)
     for each in IR_data.data_index:
         IR_data.report(each)

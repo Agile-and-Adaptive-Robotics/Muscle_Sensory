@@ -1,0 +1,12 @@
+%converting .mat files to csv
+data = load('10mm_NoKink.mat')
+csvwrite('10mm_Data1.csv',data.Test1Data)
+csvwrite('10mm_Data2.csv',data.Test2Data)
+csvwrite('10mm_Data3.csv',data.Test3Data)
+csvwrite('10mm_Data4.csv',data.Test4Data)
+csvwrite('10mm_Data5.csv',data.Test5Data)
+csvwrite('10mm_Data6.csv',data.Test6Data)
+csvwrite('10mm_Data7.csv',data.Test7Data)
+csvwrite('10mm_Data8.csv',data.Test8Data)
+csvwrite('10mm_Data9.csv',data.Test9Data)
+csvwrite('10mm_Data10.csv',data.Test10Data)

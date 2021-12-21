@@ -13,3 +13,10 @@
 % csvwrite('Kinked_12mmTest10Data.csv',Kinked12mm.Test10Data);
 
 
+Kinked8mm = load('8mmKinked_Test5_10.mat');
+csvwrite('Kinked_8mmTest5Data.csv',Kinked8mm.Test5Data);
+csvwrite('Kinked_8mmTest6Data.csv',Kinked8mm.Test6Data);
+csvwrite('Kinked_8mmTest7Data.csv',Kinked8mm.Test7Data);
+csvwrite('Kinked_8mmTest8Data.csv',Kinked8mm.Test8Data);
+csvwrite('Kinked_8mmTest9Data.csv',Kinked8mm.Test9Data);
+csvwrite('Kinked_8mmTest10Data.csv',Kinked8mm.Test10Data);

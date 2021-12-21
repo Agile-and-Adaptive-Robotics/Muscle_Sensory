@@ -1,0 +1,3 @@
+%Loading data from mat file and save as csv.
+10mm_Kinked4mm = load('KinkedData_0_4cm.mat');
+csvwrite('Kinked_04mmTest1Data.csv',10mm_Kinked4mm.Test1Data);

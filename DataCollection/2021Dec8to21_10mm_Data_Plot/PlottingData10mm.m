@@ -44,7 +44,7 @@ plot(Unkinked_Time9,Unkinked_Force9)
 ylabel('Force(N)')
 hold on
 xlabel('Time(s)')
-title('10mm Unkinked - Test 9')
+title('10mm Unkinked  Test 9')
 yyaxis right
 ylabel('Pressure(kPa)')
 plot(Unkinked_Time9,Unkinked_Pressure9)
@@ -56,7 +56,7 @@ plot(Unkinked_Time10,Unkinked_Force10)
 ylabel('Force(N)')
 hold on
 xlabel('Time(s)')
-title('10mm Unkinked - Test 10')
+title('10mm Unkinked  Test 10')
 yyaxis right
 ylabel('Pressure(kPa)')
 plot(Unkinked_Time10,Unkinked_Pressure10)
@@ -96,7 +96,7 @@ plot(Kinked12mm_Time9,Kinked12mm_Force9)
 ylabel('Force(N)')
 hold on
 xlabel('Time(s)')
-title('Kinked12mm_Test10')
+title('Kinked12mm Test10')
 yyaxis right
 ylabel('Pressure(kPa)')
 plot(Kinked12mm_Time9,Kinked12mm_Pressure9)
@@ -108,7 +108,7 @@ plot(Kinked12mm_Time10,Kinked12mm_Force10)
 ylabel('Force(N)')
 hold on
 xlabel('Time(s)')
-title('Kinked12mm_Test10')
+title('Kinked12mm Test10')
 yyaxis right
 ylabel('Pressure(kPa)')
 plot(Kinked12mm_Time10,Kinked12mm_Pressure10)
@@ -121,12 +121,12 @@ hold on
 plot(Kinked4mm_Pressure9,Kinked4mm_Force9,'.k',Kinked4mm_Pressure10,Kinked4mm_Force10,'*b')
 plot(Kinked12mm_Pressure9,Kinked12mm_Force9,'.k',Kinked12mm_Pressure10,Kinked12mm_Force10,'*g');
 hold off
-legend('UnkinkedTest9','UnkinkedTest10','Kinked 4mm Test9','Kinked 4mm Test 10','Kinked 12mm Test 9','Kinked 12mm Test 10');
+legend('UnkinkedTest9','UnkinkedTest10','Kinked 4mm Test9','Kinked 4mm Test 10','Kinked 12mm Test 9','Kinked 12mm Test 10','Location','NW');
 title('Raw Data: Pressure vs Force');
 grid on
 
 
-% Filtering Force Signals
+% Filtering Force Signals [2,0.1]
 [B,A] = butter(2,0.1);
 Unkinked_Fforce9 = filter(B,A,Unkinked_Force9);
 Unkinked_Fforce10 = filter(B,A,Unkinked_Force10);
@@ -141,12 +141,12 @@ hold on
 plot(Kinked4mm_Pressure9,Kinked4mm_Fforce9,'.k',Kinked4mm_Pressure9,Kinked4mm_Fforce10,'*b')
 plot(Kinked12mm_Pressure9,Kinked12mm_Fforce9,'.k',Kinked12mm_Pressure9,Kinked12mm_Fforce10,'*g');
 hold off
-legend('UnkinkedTest9','Filtered','Kinked 4mm Test9','Filtered','Kinked 12mm Test 9','Filtered');
+legend('UnkinkedTest9','Filtered','Kinked 4mm Test9','Filtered','Kinked 12mm Test 9','Filtered','Location','NW');
 title('Filtered Data:[2,0.1] Pressure vs Force');
 grid on
 
 
-
+% Filtering Force Signals [2,0.5]
 [B,A] = butter(2,0.5);
 Unkinked_Fforce9 = filter(B,A,Unkinked_Force9);
 Unkinked_Fforce10 = filter(B,A,Unkinked_Force10);
@@ -160,9 +160,9 @@ hold on
 plot(Kinked4mm_Pressure9,Kinked4mm_Fforce9,'.k',Kinked4mm_Pressure9,Kinked4mm_Fforce10,'*b')
 plot(Kinked12mm_Pressure9,Kinked12mm_Fforce9,'.k',Kinked12mm_Pressure9,Kinked12mm_Fforce10,'*g');
 hold off
-legend('UnkinkedTest9','Filtered','Kinked 4mm Test9','Filtered','Kinked 12mm Test 9','Filtered');
+legend('UnkinkedTest9','Filtered','Kinked 4mm Test9','Filtered','Kinked 12mm Test 9','Filtered','Location','NW');
 title('Filtered Data:[2,0.5] Pressure vs Force');grid on;
-
+% Filtering Force Signals [2,0.9]
 [B,A] = butter(2,0.9);
 Unkinked_Fforce9 = filter(B,A,Unkinked_Force9);
 Unkinked_Fforce10 = filter(B,A,Unkinked_Force10);
@@ -177,7 +177,46 @@ hold on
 plot(Kinked4mm_Pressure9,Kinked4mm_Fforce9,'.k',Kinked4mm_Pressure9,Kinked4mm_Fforce10,'*b')
 plot(Kinked12mm_Pressure9,Kinked12mm_Fforce9,'.k',Kinked12mm_Pressure9,Kinked12mm_Fforce10,'*g');
 hold off
-legend('UnkinkedTest9','Filtered','Kinked 4mm Test9','Filtered','Kinked 12mm Test 9','Filtered');
+legend('UnkinkedTest9','Filtered','Kinked 4mm Test9','Filtered','Kinked 12mm Test 9','Filtered','Location','NW');
 title('Filtered Data:[2,0.9] Pressure vs Force');grid on;
 
 %% Comparing raw data vs filtered data
+[B,A] = butter(2,0.1);
+Unkinked_Fforce9 = filter(B,A,Unkinked_Force9);
+Unkinked_Fforce10 = filter(B,A,Unkinked_Force10);
+Kinked4mm_Fforce9 = filter(B,A,Kinked4mm_Force9);
+Kinked4mm_Fforce10 = filter(B,A,Kinked4mm_Force10);
+Kinked12mm_Fforce9 = filter(B,A,Kinked12mm_Force9);
+Kinked12mm_Fforce10 = filter(B,A,Kinked12mm_Force10);
+
+figure()
+plot(Unkinked_Time9,Unkinked_Force9,'k')
+ylabel('Force(N)')
+hold on
+xlabel('Time(s)')
+title('Comparing filtered force signals')
+plot(Unkinked_Time9,Unkinked_Fforce9,'.b')
+
+
+[B,A] = butter(2,0.5);
+Unkinked_Fforce9 = filter(B,A,Unkinked_Force9);
+Unkinked_Fforce10 = filter(B,A,Unkinked_Force10);
+Kinked4mm_Fforce9 = filter(B,A,Kinked4mm_Force9);
+Kinked4mm_Fforce10 = filter(B,A,Kinked4mm_Force10);
+Kinked12mm_Fforce9 = filter(B,A,Kinked12mm_Force9);
+Kinked12mm_Fforce10 = filter(B,A,Kinked12mm_Force10);
+plot(Unkinked_Time9,Unkinked_Fforce9,'.r')
+
+[B,A] = butter(2,0.9);
+Unkinked_Fforce9 = filter(B,A,Unkinked_Force9);
+Unkinked_Fforce10 = filter(B,A,Unkinked_Force10);
+Kinked4mm_Fforce9 = filter(B,A,Kinked4mm_Force9);
+Kinked4mm_Fforce10 = filter(B,A,Kinked4mm_Force10);
+Kinked12mm_Fforce9 = filter(B,A,Kinked12mm_Force9);
+Kinked12mm_Fforce10 = filter(B,A,Kinked12mm_Force10);
+plot(Unkinked_Time9,Unkinked_Fforce9,'.y')
+
+hold off
+legend('Unfiltered','Filtered [2,0.1]','[2,0.5]','[2,0.9]')
+
+

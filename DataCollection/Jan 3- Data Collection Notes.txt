@@ -1,0 +1,15 @@
+Jan 3 - Data Collection Notes
+---------------------------------
+BPA length: 23cm 
+Diameter :10mm
+
+
+Data Collection set 1: Unkinked
+Note: Force is collected using raw arduino output
+
+
+---------------------------
+Kinked:1.4cm 
+
+
+

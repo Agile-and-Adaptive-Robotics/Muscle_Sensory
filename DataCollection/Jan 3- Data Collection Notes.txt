@@ -1,7 +1,11 @@
 Jan 3 - Data Collection Notes
 ---------------------------------
 BPA length: 23cm 
+21.9cm(measured from clamped end to end)
 Diameter :10mm
+Max contraction length (measured clamp end to end @ 620kPa): 18.6cm
+Contraction: resting length - max contraction length = 21.9 - 18.6 = 3.3
+
 
 
 Data Collection set 1: Unkinked
@@ -9,7 +13,24 @@ Note: Force is collected using raw arduino output
 
 
 ---------------------------
-Kinked:1.4cm 
+Kinked:14mm
+---------------------------
+Kinked: 30mm
+comments: Might be too much slack. hence not enough force. 
+
+---------------------------
+
+#######################################################################################################
+
+BPA length: 30cm
+28.1cm(measured from clamped end to end)
+Diameter :10mm
+Max contraction length (620kPa): 24cm
+Contraction: resting length - max contraction length = 28.1 -24 = 4.1
 
 
-
+Kinked: 1.2cm
+----------------------------------
+Kinked: 2.2cm
+----------------------------------
+Kinked: 3.3cm

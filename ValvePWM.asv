@@ -70,7 +70,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     yyaxis right    %graph pressure on right in red
     Pressure = animatedline('color','red');
-    ylim([0,700]);
+    ylim([0,800]);
     ylabel('Pressure (kPa)');
 
     %the load cell data will sometimes spike unexpectedly which
@@ -84,7 +84,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     for i = 1:total
 
-        svalues(i,1) = ((((str2double(readline(s))))*1.6475)-30.882)*4.45; %Force(N)            Aug 2
+        svalues(i,1) = ((((str2double(readline(s))))));%*1.6475)-30.882)*4.45; %Force(N)            Aug 2
         svalues(i,2) = ((str2double(readline(s)))*0.7654) -18.609; %Pressure (kPa)         Aug 2
         svalues(i,3) = str2double(readline(s))/1000; %Time(s)
 

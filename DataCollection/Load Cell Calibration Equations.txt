@@ -1,0 +1,9 @@
+10mm 
+force (N) = ((Arduino Output*0.1535)-1.963)*4.45
+
+
+20mm 
+force(N) = (Arduino Output*0.392)-4.1786)*4.45
+
+
+

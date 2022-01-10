@@ -83,7 +83,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     %100 N, which indicates that the spike has ended
 
     for i = 1:total
-
+        %for 10mm
         svalues(i,1) = (((str2double(readline(s)))*0.1535)-1.963)*4.45; % Jan 5 2022 ((A0)*0.1535-1.963)4.45 N                 %*1.6475)-30.882)*4.45; %Force(N)            Aug 2
         svalues(i,2) = ((str2double(readline(s)))*0.7654) -18.609; %Pressure (kPa)         Aug 2
         svalues(i,3) = str2double(readline(s))/1000; %Time(s)

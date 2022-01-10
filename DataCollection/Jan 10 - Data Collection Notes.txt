@@ -3,8 +3,35 @@ Jan 10
 Comment: Pressure and Load data (check column)
 
 
-BPA length: 23cm 
-21.9cm(measured from clamped end to end)
+BPA length: 29.8cm 
+
+28.1cm(measured from clamped end to end)
+
 Diameter :10mm
-Max contraction length (measured clamp end to end @ 620kPa): 18.6cm
-Contraction: resting length - max contraction length = 21.9 - 18.6 = 3.3
+Max contraction length (measured clamp end to end @ 620kPa): 23.6cm
+Contraction: resting length - max contraction length = 28.1 - 23.6 = 4.5
+
+-------------------
+Kinked:1.7cm
+-------------------
+Kinked:2.8cm
+-------------------
+Kinked:4.1cm
+
+#####################################################################################################
+
+BPA length: 27.6 cm 
+25.7 cm(measured from clamped end to end)
+
+Diameter :10mm
+
+Max contraction length (measured clamp end to end @ 620kPa): 22.1 cm
+Contraction: resting length - max contraction length = 25.7 cm - 22.1 cm = 3.6 cm
+
+
+ -------------------
+Kinked: 0.7 cm
+-------------------
+Kinked: 1.5 cm
+-------------------
+Kinked: 3.1 cm

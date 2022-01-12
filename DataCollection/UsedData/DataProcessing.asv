@@ -1,0 +1,114 @@
+%This code modifies the data collected into a consistent pressure(kPa) and
+%load (N) 
+%% 10mm 13cm BPA (Force column needs to be mod)
+Data_10mm_13cm_Unkinked_Test9 = csvread('10mm_13cm_Unkinked_Test9.csv');
+    Force_10mm_13cm_Unkinked_Test9_Wrong = Data_10mm_13cm_Unkinked_Test9(:,1);
+    Force_10mm_13cm_Unkinked_Test9_A0=((Force_10mm_13cm_Unkinked_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
+    Force_10mm_13cm_Unkinked_Test9 = (((Force_10mm_13cm_Unkinked_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
+    Pressure_10mm_13cm_Unkinked_Test9 =Data_10mm_13cm_Unkinked_Test9(:,2);
+    Time_10mm_13cm_Unkinked_Test9 = Data_10mm_13cm_Unkinked_Test9(:,3);
+    
+    figure
+    title('10mm 13cm BPA Static Pressure and Force')
+    subplot 221
+    yyaxis left
+    plot(Time_10mm_13cm_Unkinked_Test9,Force_10mm_13cm_Unkinked_Test9)
+    ylim([-10,600])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Time_10mm_13cm_Unkinked_Test9,Pressure_10mm_13cm_Unkinked_Test9)
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('Unkinked Force and Pressure vs Time')
+    hold off   
+%kinked 4mm    
+Data_10mm_13cm_Kinked4mm_Test9 = csvread('10mm_13cm_Kinked4mm_Test9.csv');
+    Force_10mm_13cm_Kinked4mm_Test9_Wrong = Data_10mm_13cm_Kinked4mm_Test9(:,1);
+    Force_10mm_13cm_Kinked4mm_Test9_A0=((Force_10mm_13cm_Kinked4mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
+    Force_10mm_13cm_Kinked4mm_Test9 = (((Force_10mm_13cm_Kinked4mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
+    Pressure_10mm_13cm_Kinked4mm_Test9 =Data_10mm_13cm_Kinked4mm_Test9(:,2);
+    Time_10mm_13cm_Kinked4mm = Data_10mm_13cm_Kinked4mm_Test9(:,3);
+    
+    subplot 222
+    yyaxis left
+    plot(Time_10mm_13cm_Kinked4mm,Force_10mm_13cm_Kinked4mm_Test9)
+    ylim([-10,600])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Time_10mm_13cm_Kinked4mm,Pressure_10mm_13cm_Kinked4mm_Test9)
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('Kinked 4mm Force and Pressure vs Time')
+    hold off   
+ %Kinked 8mm
+ Data_10mm_13cm_Kinked8mm_Test9 = csvread('10mm_13cm_Kinked8mm_Test9.csv');
+    Force_10mm_13cm_Kinked8mm_Test9_Wrong = Data_10mm_13cm_Kinked8mm_Test9(:,1);
+    Force_10mm_13cm_Kinked8mm_Test9_A0=((Force_10mm_13cm_Kinked8mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
+    Force_10mm_13cm_Kinked8mm_Test9 = (((Force_10mm_13cm_Kinked8mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
+    Pressure_10mm_13cm_Kinked8mm_Test9 =Data_10mm_13cm_Kinked8mm_Test9(:,2);
+    Time_10mm_13cm_Kinked8mm = Data_10mm_13cm_Kinked8mm_Test9(:,3);
+    
+    subplot 223
+    yyaxis left
+    plot(Time_10mm_13cm_Kinked8mm,Force_10mm_13cm_Kinked8mm_Test9)
+    ylim([-10,600])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Time_10mm_13cm_Kinked8mm,Pressure_10mm_13cm_Kinked8mm_Test9)
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('Kinked 8mm Force and Pressure vs Time')
+    hold off   
+ %Kinked 12mm
+ Data_10mm_13cm_Kinked12mm_Test9 = csvread('10mm_13cm_Kinked12mm_Test9.csv');
+    Force_10mm_13cm_Kinked12mm_Test9_Wrong = Data_10mm_13cm_Kinked12mm_Test9(:,1);
+    Force_10mm_13cm_Kinked12mm_Test9_A0=((Force_10mm_13cm_Kinked12mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
+    Force_10mm_13cm_Kinked12mm_Test9 = (((Force_10mm_13cm_Kinked12mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
+    Pressure_10mm_13cm_Kinked12mm_Test9 =Data_10mm_13cm_Kinked12mm_Test9(:,2);
+    Time_10mm_13cm_Kinked12mm = Data_10mm_13cm_Kinked12mm_Test9(:,3);
+    
+    subplot 224
+    yyaxis left
+    plot(Time_10mm_13cm_Kinked12mm,Force_10mm_13cm_Kinked12mm_Test9)
+    ylim([-10,600])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Time_10mm_13cm_Kinked12mm,Pressure_10mm_13cm_Kinked12mm_Test9)
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('Kinked 12mm Force and Pressure vs Time')
+    hold off  
+%% 10mm 23cm BPA (Force column = Arduino Output)
+%Unkink
+Data_10mm_23cm_Unkinked_Test9 = csvread('10mm_23cm_Unkinked_Test9.csv');
+    Force_10mm_23cm_Unkinked_Test9_Wrong = Data_10mm_23cm_Unkinked_Test9(:,1);
+    Force_10mm_23cm_Unkinked_Test9_A0=((Force_10mm_23cm_Unkinked_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
+    Force_10mm_23cm_Unkinked_Test9 = (((Force_10mm_23cm_Unkinked_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
+    
+    Pressure_10mm_23cm_Unkinked_Test9 =Data_10mm_23cm_Unkinked_Test9(:,2);
+    Time_10mm_23cm_Unkinked_Test9 = Data_10mm_23cm_Unkinked_Test9(:,3);
+    
+    figure
+    title('10mm 13cm BPA Static Pressure and Force')
+    yyaxis left
+    plot(Time_10mm_23cm_Unkinked_Test9,Force_10mm_23cm_Unkinked_Test9)
+    ylim([-10,600])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Time_10mm_23cm_Unkinked_Test9,Pressure_10mm_23cm_Unkinked_Test9)
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('Unkinked Force and Pressure vs Time')
+    hold off    
+    
+    %Kink 

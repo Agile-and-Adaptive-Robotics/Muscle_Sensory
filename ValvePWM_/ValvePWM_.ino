@@ -45,7 +45,8 @@
   void loop() {
     char choose_branch = '0'; 
     int total = 0;
-
+          digitalWrite(air_in,LOW);
+        digitalWrite(air_out,LOW);
     if (Serial.available() > 0)              //If there's info sent over serial from MATLAB, read the serial data into "choose branch" variable.    ('2' = PWM data collection) 
     {     
       choose_branch = Serial.read();        

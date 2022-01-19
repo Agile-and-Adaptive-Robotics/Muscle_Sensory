@@ -1,0 +1,69 @@
+James's 20mm BPA Adventures
+
+Jan 19 2022: 
+
+Collect Data for 20mm BPA: 
+
+-----------------------------------------------------------------------------------------------------------
+BPA length: 25.3 cm 
+22.8 cm(measured from clamped end to end)
+
+Diameter :20mm
+
+Max contraction length (measured clamp end to end @ 620kPa):  17.3 cm
+Contraction: resting length - max contraction length =  22.8 cm - 17.3 cm = 5.5 cm
+
+NOTE: Data Saved as 23 cm due to not having original (unclamped) length available at start.
+
+ -------------------
+Kinked: 0.9 cm
+-------------------
+Kinked: 1.9 cm
+
+Data Jumped (load cell bolt sliped some) on second to last data set, will repeat the data set to be sure all data is good
+-------------------
+Kinked: 1.9 cm
+
+Repeated data point
+
+-----------------------------------------------------------------------------------------------------------
+
+BPA length: 15.0 cm 
+ 12.0 cm(measured from clamped end to end)
+
+Diameter :20mm
+
+Max contraction length (measured clamp end to end @ 620kPa):  9.5 cm
+Contraction: resting length - max contraction length =  12.0 cm - 9.5 cm = 2.5 cm
+
+Note: Data Saved as 12 cm due to not having unclamped length available at start. Attemped to resolve the load cell bolt slipage problem by 
+inserting a block of nuts and duct tape and using a hose clamp to hold it in place.
+
+
+ -------------------
+Kinked: 1 cm
+-------------------
+Kinked: 2.0 cm
+
+
+-------------------
+Kinked:  cm
+
+-----------------------------------------------------------------------------------------------------------
+
+BPA length: 30.0 cm 
+ 27.5 cm(measured from clamped end to end)
+
+Diameter :20mm
+
+Max contraction length (measured clamp end to end @ 620kPa):  20.7 cm
+Contraction: resting length - max contraction length = 27.5 cm - 20.7 cm = 6.8 cm
+
+
+ -------------------
+Kinked: 1.4 cm
+-------------------
+Kinked: 2.3 cm
+-------------------
+Kinked: 3.4 cm
+

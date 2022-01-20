@@ -4,12 +4,13 @@
 Data_10mm_13cm_Unkinked_Test9 = csvread('10mm_13cm_Unkinked_Test9.csv');
     Force_10mm_13cm_Unkinked_Test9_Wrong = Data_10mm_13cm_Unkinked_Test9(:,1);
     Force_10mm_13cm_Unkinked_Test9_A0=((Force_10mm_13cm_Unkinked_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
-    Force_10mm_13cm_Unkinked_Test9 = (((Force_10mm_13cm_Unkinked_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
+    Force_10mm_13cm_Unkinked_Test9_Offset = Force_10mm_13cm_Unkinked_Test9_A0 - min(Force_10mm_13cm_Unkinked_Test9_A0);
+    Force_10mm_13cm_Unkinked_Test9 = (((Force_10mm_13cm_Unkinked_Test9_Offset)*0.1535)-1.963)*4.45; %corrected Force output (N)
     Pressure_10mm_13cm_Unkinked_Test9 =Data_10mm_13cm_Unkinked_Test9(:,2);
     Time_10mm_13cm_Unkinked_Test9 = Data_10mm_13cm_Unkinked_Test9(:,3);
     
     figure
-    suptitle('10mm 13cm BPA Static Pressure and Force')
+    sgtitle('10mm 13cm BPA Static Pressure and Force')
     subplot 221
     yyaxis left
     plot(Time_10mm_13cm_Unkinked_Test9,Force_10mm_13cm_Unkinked_Test9)
@@ -23,10 +24,11 @@ Data_10mm_13cm_Unkinked_Test9 = csvread('10mm_13cm_Unkinked_Test9.csv');
     legend('Force','Pressure')
     title('Unkinked Force and Pressure vs Time')
     hold off   
+    
 %kinked 4mm    
 Data_10mm_13cm_Kinked4mm_Test9 = csvread('10mm_13cm_Kinked4mm_Test9.csv');
     Force_10mm_13cm_Kinked4mm_Test9_Wrong = Data_10mm_13cm_Kinked4mm_Test9(:,1);
-    Force_10mm_13cm_Kinked4mm_Test9_A0=((Force_10mm_13cm_Kinked4mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
+    Force_10mm_13cm_Kinked4mm_Test9_A0=((Force_10mm_13cm_Kinked4mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output 
     Force_10mm_13cm_Kinked4mm_Test9 = (((Force_10mm_13cm_Kinked4mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
     Pressure_10mm_13cm_Kinked4mm_Test9 =Data_10mm_13cm_Kinked4mm_Test9(:,2);
     Time_10mm_13cm_Kinked4mm = Data_10mm_13cm_Kinked4mm_Test9(:,3);
@@ -110,7 +112,7 @@ Data_10mm_23cm_Unkinked_Test9 = csvread('10mm_23cm_Unkinked_Test9.csv');
     Time_10mm_23cm_Unkinked_Test9 = Data_10mm_23cm_Unkinked_Test9(:,3);
     
     figure
-    suptitle('10mm 23cm BPA')
+    sgtitle('10mm 23cm BPA')
     subplot 311
     title('10mm 13cm BPA Static Pressure and Force')
     yyaxis left
@@ -194,7 +196,7 @@ Data_10mm_30cm_Unkinked_Test9 = csvread('10mm_30cm_Unkinked_Test9.csv');
     
     figure
     subplot 221
-    suptitle('10mm 30cm BPA Pressure and Force')
+    sgtitle('10mm 30cm BPA Pressure and Force')
     yyaxis left
     plot(Time_10mm_30cm_Unkinked_Test9,Force_10mm_30cm_Unkinked_Test9)
     ylim([-10,600])
@@ -298,7 +300,7 @@ figure
    
     figure
     subplot 221
-    suptitle('10mm 27cm BPA Static Pressure and Force')
+    sgtitle('10mm 27cm BPA Static Pressure and Force')
     yyaxis left
     plot(Time_10mm_27cm_Unkinked_Test9,Force_10mm_27cm_Unkinked_Test9)
     ylim([-10,600])
@@ -403,7 +405,7 @@ Data_10mm_29cm_Unkinked_Test9 = csvread('10mm_29cm_Unkinked_Test9.csv');
     Time_10mm_29cm_Unkinked_Test9 = Data_10mm_29cm_Unkinked_Test9(:,3);
     
     figure
-    suptitle('10mm 29cm BPA')
+    sgtitle('10mm 29cm BPA')
     subplot 221
     yyaxis left
     plot(Time_10mm_29cm_Unkinked_Test9,Force_10mm_29cm_Unkinked_Test9)
@@ -500,3 +502,22 @@ Data_10mm_29cm_Kinked41mm_Test9 = csvread('10mm_29cm_Kinked41mm_Test9.csv');
     ylabel('Force(N)')
     legend('Unkinked','Kinked 17mm','Kinked 28mm','Kinked 41mm')
     hold off
+    
+%% Comparing between lengths
+
+figure
+hold on
+title('Comparing 10mm at different lengths - Unkink')
+plot(Pressure_10mm_13cm_Unkinked_Test9, Force_10mm_13cm_Unkinked_Test9);
+plot(Pressure_10mm_23cm_Unkinked_Test9, Force_10mm_23cm_Unkinked_Test9)
+plot(Pressure_10mm_27cm_Unkinked_Test9, Force_10mm_27cm_Unkinked_Test9)
+plot(Pressure_10mm_29cm_Unkinked_Test9, Force_10mm_29cm_Unkinked_Test9)
+plot(Pressure_10mm_30cm_Unkinked_Test9, Force_10mm_30cm_Unkinked_Test9)
+xlabel('Pressure (kPa)');
+ylabel('Force(N)');
+legend('13cm','23cm','27cm','29cm','30cm');
+hold off;
+
+%% Dr. Hunt's model
+
+model_hunt_pressure

@@ -24,17 +24,17 @@ June 27 2021
 #include <avr/interrupt.h>
 
 // address we will assign if dual sensor is present
-#define LOX1_ADDRESS 0x30
-#define LOX2_ADDRESS 0x31
+#define ISS_ADDRESS 0x30
+#define ESS_ADDRESS 0x31
 // set the pins to shutdown
-#define SHT_LOX1 24
-#define SHT_LOX2 25
+#define SHT_ISS 24
+#define SHT_ESS 25
 // set up the sensor
-Adafruit_VL53L0X lox1 = Adafruit_VL53L0X();
-Adafruit_VL53L0X lox2 = Adafruit_VL53L0X();
+Adafruit_VL53L0X iss = Adafruit_VL53L0X();
+Adafruit_VL53L0X ess = Adafruit_VL53L0X();
 // this holds the measurement
-VL53L0X_RangingMeasurementData_t measure1;
-VL53L0X_RangingMeasurementData_t measure2;
+VL53L0X_RangingMeasurementData_t measure_iss;
+VL53L0X_RangingMeasurementData_t measure_ess;
 
 
 // set up variables using the SD utility library functions:
@@ -49,7 +49,9 @@ IntervalTimer myTimer;
 
 const int chipSelect = BUILTIN_SDCARD;
 float Ts_micro;
-float samplingFreq = 100; //define sampling frequency in Hz
+// running 2 sensors on I2C bus, do not recommend running more than 50Hz sampling frequency. 
+// Check pin 12 to verify interrupt frequency
+float samplingFreq = 50; //define sampling frequency in Hz
 float samplingPeriod = 1/samplingFreq;
 float collectPeriod = 20; //number of seconds to collect data
 volatile float randNum;
@@ -66,11 +68,19 @@ volatile float v21 = 0.0;
 volatile float v22 = 0.0;
 volatile float v23 = 0.0;
 volatile float vfin2 = 0.0; 
+//rest offset value 
+//define the rest offset value for each sensor. 
+//Use the restoffset_calibration code to find the restoffset for each sensor. 
+//The restoffset is applied at the very last step before the value is written to SD card. 
+volatile float rest_offset_iss = 0.0;
+volatile float rest_offset_ess = 0.0;
 //filter coefficients
 volatile float fc1 = 0.013359200027857;
 volatile float fc2 = -0.7008967811884;
 volatile float fc3 = 1.64745998107697655399;
-//variable for calibration
+//variables for calibration
+volatile float vfin2_m = 1.0;
+volatile float vfin2_b = 0.0;
 volatile float vfin2_cal = 0.0;
 /*
 date and time of data collection 
@@ -78,8 +88,8 @@ Format:
 date: "YYYYMMDD"
 time: "HHMM" - use military time
 */
-char collectDate[11] = "12/11/2021";
-char collectTime[6] = "23:00"; 
+char collectDate[11] = "23/01/2022";
+char collectTime[6] = "00:00"; 
 char fileName[13] = "IR_test4.txt";
 char notes[200] = "filter and calibrated data";  // add notes, make it short
 
@@ -92,15 +102,15 @@ void setup()
     }
     delay(500);
     // Set up the digital pins for sensors
-    pinMode(SHT_LOX1, OUTPUT);
-    pinMode(SHT_LOX2, OUTPUT);
+    pinMode(SHT_ISS, OUTPUT);
+    pinMode(SHT_ESS, OUTPUT);
     pinMode(11, OUTPUT); // Set pin D11 as output to control muscle
     pinMode(12, OUTPUT); // Timer pin to check sampling frequency
-    digitalWrite(12, LOW);
+    digitalWrite(12, LOW); 
     // shutdown both sensors
     Serial.println("Shutdown all sensors...");
-    digitalWrite(SHT_LOX1, LOW);
-    digitalWrite(SHT_LOX2, LOW);
+    digitalWrite(SHT_ISS, LOW);
+    digitalWrite(SHT_ESS, LOW);
 
     // Init functions
     setID();
@@ -191,23 +201,22 @@ void DataLoggingLoop() //Interrupt loop
     // String IR1_reading = String(measure1.RangeMilliMeter);
     // String IR2_reading = String(measure2.RangeMilliMeter);
 
-    // Need to filter both IR1 and IR2
-    // Need to apply calibration equation to IR2
+    // Need to filter both ISS and ESS
     v11 = v12;
     v12 = v13;
-    v13 = (fc1*lox1.readRangeResult()) + (fc2*v11) + (fc3*v12);
+    v13 = (fc1*iss.readRangeResult()) + (fc2*v11) + (fc3*v12);
     vfin1 = v11 + v12 + 2*v13;
 
     v21 = v22;
     v22 = v23;
-    v23 = (fc1*lox2.readRangeResult()) + (fc2*v21) + (fc3*v22);
+    v23 = (fc1*ess.readRangeResult()) + (fc2*v21) + (fc3*v22);
     vfin2 = v21 + v22 + 2*v23;
 
     // Apply calibration
-    vfin2_cal = 0.00810760207*vfin2*vfin2 - 0.998528132*vfin2 + 209.65191;
+    vfin2_cal = vfin2_m*vfin2 + vfin2_b;
 
-    String IR1_reading = String(vfin1);
-    String IR2_reading = String(vfin2_cal);   
+    String ISS_reading = String(vfin1);
+    String ESS_reading = String(vfin2_cal);   
 
     //open file 
     File dataFile = SD.open(fileName, FILE_WRITE);
@@ -220,9 +229,9 @@ void DataLoggingLoop() //Interrupt loop
         
         dataFile.print(counter);
         dataFile.print(", ");
-        dataFile.print(IR1_reading);
+        dataFile.print(ISS_reading);
         dataFile.print(", ");
-        dataFile.println(IR2_reading);
+        dataFile.println(ESS_reading);
         if (counter==stopCount) //print end of data
         {
             dataFile.println("=====End_data=====");
@@ -250,40 +259,40 @@ void DataLoggingLoop() //Interrupt loop
 void setID() {
     // all reset
     Serial.println("Reset all sensors.");
-    digitalWrite(SHT_LOX1, LOW);    
-    digitalWrite(SHT_LOX2, LOW);
+    digitalWrite(SHT_ISS, LOW);    
+    digitalWrite(SHT_ESS, LOW);
     delay(10);
 
     // all unreset
-    digitalWrite(SHT_LOX1, HIGH);
-    digitalWrite(SHT_LOX2, HIGH);
+    digitalWrite(SHT_ISS, HIGH);
+    digitalWrite(SHT_ESS, HIGH);
     delay(10);
 
-    // activating LOX1 and reseting LOX2
-    digitalWrite(SHT_LOX1, HIGH);
-    digitalWrite(SHT_LOX2, LOW);
+    // activating Internal and reseting External
+    digitalWrite(SHT_ISS, HIGH);
+    digitalWrite(SHT_ESS, LOW);
 
-    // initing LOX1
+    // initing Internal SS
     Serial.println("Init sensor 1.");
-    if(!lox1.begin(LOX1_ADDRESS)) {
-        Serial.println(F("Failed to boot first VL53L0X"));
+    if(!iss.begin(ISS_ADDRESS)) {
+        Serial.println(F("Failed to boot Internal VL53L0X"));
         while(1);
     }
     delay(10);
 
-    // activating LOX2
-    digitalWrite(SHT_LOX2, HIGH);
+    // activating External SS
+    digitalWrite(SHT_ESS, HIGH);
     delay(10);
 
-    //initing LOX2
+    //initing External SS
     Serial.println("Init sensor 2.");
-    if(!lox2.begin(LOX2_ADDRESS)) {
-        Serial.println(F("Failed to boot second VL53L0X"));
+    if(!ess.begin(ESS_ADDRESS)) {
+        Serial.println(F("Failed to boot External VL53L0X"));
         while(1);
     }
     delay(100);
-    lox1.startRangeContinuous();
-    lox2.startRangeContinuous();	
+    iss.startRangeContinuous();
+    ess.startRangeContinuous();	
 }
 
 // void InitSensor()

@@ -17,7 +17,7 @@
 %their default values: total:50000, pw:0, perod:1 (the default values won't
 %oscillate the valve and will keep it open for the duration of the test)
 
-function [Data, Stats] = ValvePWM(protocol_id,port,varargin) 
+function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin) 
 
     p = inputParser;
     addRequired(p,'protocol_id');
@@ -60,7 +60,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     %writes the data for the arduino, reads once to clear
     %the "running" string from the buffer before reading the data
 
-    svalues = zeros(total,3);   %creates array for the data readings
+    svalues = zeros(total,4);   %creates array for the data readings
     clf;                        %clears graph from any previous tests
 
     yyaxis left     %graph force on left axis in blue
@@ -88,6 +88,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
         svalues(i,1) = (((str2double(readline(s)))));%*0.392)-4.1786)*4.45; %Force (N)
         svalues(i,2) = ((str2double(readline(s))));%*0.7654) -18.609; %Pressure (kPa)         Aug 2
         svalues(i,3) = str2double(readline(s))/1000; %Time(s)
+        svalues(i,4) = str2double(readline(s)); %fill vs unfill ID
 
         %read data to each column and convert units when needed
         %column 1 is force, converting lbs to N

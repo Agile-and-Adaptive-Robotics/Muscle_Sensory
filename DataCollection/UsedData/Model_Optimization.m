@@ -26,10 +26,36 @@ Data_10mm_13cm_Unkinked_Test9 = csvread('10mm_13cm_Unkinked_Test9.csv');
     plot(Pressure_10mm_13cm_Unkinked_Test9,Force_10mm_13cm_Unkinked_Test9)
     ylabel('Force(N)')
     xlabel('Pressure(kPa)')
+
+Data_10mm_23cm_Unkinked_Test9 = csvread('10mm_23cm_Unkinked_Test9.csv');
+    Force_10mm_23cm_Unkinked_Test9_Wrong = Data_10mm_23cm_Unkinked_Test9(:,1);
+    Force_10mm_23cm_Unkinked_Test9_A0=((Force_10mm_23cm_Unkinked_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
+    Force_10mm_23cm_Unkinked_Test9 = (((Force_10mm_23cm_Unkinked_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
     
+    Pressure_10mm_23cm_Unkinked_Test9 =Data_10mm_23cm_Unkinked_Test9(:,2);
+    Time_10mm_23cm_Unkinked_Test9 = Data_10mm_23cm_Unkinked_Test9(:,3);
+    
+    figure
+    sgtitle('10mm 23cm BPA')
+    subplot 311
+    title('10mm 13cm BPA Static Pressure and Force')
+    yyaxis left
+    plot(Time_10mm_23cm_Unkinked_Test9,Force_10mm_23cm_Unkinked_Test9)
+    ylim([-10,600])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Time_10mm_23cm_Unkinked_Test9,Pressure_10mm_23cm_Unkinked_Test9)
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('Unkinked Force and Pressure vs Time')
+    hold off    
 % plot
 X = Pressure_10mm_13cm_Unkinked_Test9;
 Y = Force_10mm_13cm_Unkinked_Test9;
+X = [X Pressure_10mm_23cm_Unkinked_Test9];
+Y = [Y Force_10mm_23cm_Unkinked_Test9];
 figure 
 plot(X,Y,'ro')
 hold on
@@ -81,8 +107,8 @@ xo.c= [1,1];
 xo.lam = [1,0];
 
 %Function to compute response at pressure x when parameters = c & lam
-diffun = c(1)*exp(-lam(1)*X) + c(2)*exp(-lam(2)*X); %model equation to be decided. 
-
+%diffun = c(1)*exp(-lam(1)*X) + c(2)*exp(-lam(2)*X); %model equation to be decided. 
+diffun = c(1)*X+c(2)+lambda;
 %Convert diffun to optimization expression that sums the squares of
 %difference between function and data Y (force)
 diffexpr = sum((diffun-Y).^2);
@@ -116,10 +142,7 @@ fprintf(['There were %d iterations using fminunc,'...
 
 %% Nelder mead using (fminseach)
 
-%
-optimize_mod = @(a1,a2,a3,a4,a5,a6)a0+(a1.*tand(a2.*(k./(a4.*F.*kmax))+a3)) + a5.*F+a6*S; %DrHunt'sModel
-
-
+%optimize_mod = @(a1,a2,a3,a4,a5,a6)a0+(a1.*tand(a2.*(k./(a4.*F.*kmax))+a3)) + a5.*F+a6*S; %DrHunt'sModel
 [x,fval,exitflag,output] = fminsearch(optimize_mod,a1,a2,a3,a4,a5,a6)
 
 

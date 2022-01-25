@@ -231,3 +231,163 @@ csvwrite('10mm_27cm_Kinked31mm_Test7.csv',Data_10mm_27cm_Kinked31mm.Test7Data);
 csvwrite('10mm_27cm_Kinked31mm_Test8.csv',Data_10mm_27cm_Kinked31mm.Test8Data);
 csvwrite('10mm_27cm_Kinked31mm_Test9.csv',Data_10mm_27cm_Kinked31mm.Test9Data);
 csvwrite('10mm_27cm_Kinked31mm_Test10.csv',Data_10mm_27cm_Kinked31mm.Test10Data);
+
+%% 2022 Jan 19: 20mm 12 cm Unkinked (Raw Data) 
+Data_20mm_12cm_Unkinked = load('2022JAN19_20mm_12cm_Unkinked_Data.mat');
+
+csvwrite('20mm_12cm_Unkinked_Offset.csv',Data_20mm_12cm_Unkinked.Offset);
+csvwrite('20mm_12cm_Unkinked_Test1.csv',Data_20mm_12cm_Unkinked.Test1Data);
+csvwrite('20mm_12cm_Unkinked_Test2.csv',Data_20mm_12cm_Unkinked.Test2Data);
+csvwrite('20mm_12cm_Unkinked_Test3.csv',Data_20mm_12cm_Unkinked.Test3Data);
+csvwrite('20mm_12cm_Unkinked_Test4.csv',Data_20mm_12cm_Unkinked.Test4Data);
+csvwrite('20mm_12cm_Unkinked_Test5.csv',Data_20mm_12cm_Unkinked.Test5Data);
+csvwrite('20mm_12cm_Unkinked_Test6.csv',Data_20mm_12cm_Unkinked.Test6Data);
+csvwrite('20mm_12cm_Unkinked_Test7.csv',Data_20mm_12cm_Unkinked.Test7Data);
+csvwrite('20mm_12cm_Unkinked_Test8.csv',Data_20mm_12cm_Unkinked.Test8Data);
+csvwrite('20mm_12cm_Unkinked_Test9.csv',Data_20mm_12cm_Unkinked.Test9Data);
+csvwrite('20mm_12cm_Unkinked_Test10.csv',Data_20mm_12cm_Unkinked.Test10Data);
+
+%% 2022 JAN 19: 20mm 12cm Kinked 10mm (RAW)
+Data_20mm_12cm_Kinked10mm = load('2022JAN19_20mm_12cm_Kinked_10mm_Data.mat');
+
+csvwrite('20mm_12cm_Kinked10mm_Offset.csv',Data_20mm_12cm_Kinked10mm.Offset);
+csvwrite('20mm_12cm_Kinked10mm_Test1.csv',Data_20mm_12cm_Kinked10mm.Test1Data);
+csvwrite('20mm_12cm_Kinked10mm_Test2.csv',Data_20mm_12cm_Kinked10mm.Test2Data);
+csvwrite('20mm_12cm_Kinked10mm_Test3.csv',Data_20mm_12cm_Kinked10mm.Test3Data);
+csvwrite('20mm_12cm_Kinked10mm_Test4.csv',Data_20mm_12cm_Kinked10mm.Test4Data);
+csvwrite('20mm_12cm_Kinked10mm_Test5.csv',Data_20mm_12cm_Kinked10mm.Test5Data);
+csvwrite('20mm_12cm_Kinked10mm_Test6.csv',Data_20mm_12cm_Kinked10mm.Test6Data);
+csvwrite('20mm_12cm_Kinked10mm_Test7.csv',Data_20mm_12cm_Kinked10mm.Test7Data);
+csvwrite('20mm_12cm_Kinked10mm_Test8.csv',Data_20mm_12cm_Kinked10mm.Test8Data);
+csvwrite('20mm_12cm_Kinked10mm_Test9.csv',Data_20mm_12cm_Kinked10mm.Test9Data);
+csvwrite('20mm_12cm_Kinked10mm_Test10.csv',Data_20mm_12cm_Kinked10mm.Test10Data);
+
+%% 2022 JAN 19: 20mm 12cm kinked 20mm (RAW)
+Data_20mm_12cm_Kinked20mm = load('2022JAN19_20mm_12cm_Kinked_20mm_Data.mat');
+
+csvwrite('20mm_12cm_Kinked20mm_Offset.csv',Data_20mm_12cm_Kinked20mm.Offset);
+csvwrite('20mm_12cm_Kinked20mm_Test1.csv',Data_20mm_12cm_Kinked20mm.Test1Data);
+csvwrite('20mm_12cm_Kinked20mm_Test2.csv',Data_20mm_12cm_Kinked20mm.Test2Data);
+csvwrite('20mm_12cm_Kinked20mm_Test3.csv',Data_20mm_12cm_Kinked20mm.Test3Data);
+csvwrite('20mm_12cm_Kinked20mm_Test4.csv',Data_20mm_12cm_Kinked20mm.Test4Data);
+csvwrite('20mm_12cm_Kinked20mm_Test5.csv',Data_20mm_12cm_Kinked20mm.Test5Data);
+csvwrite('20mm_12cm_Kinked20mm_Test6.csv',Data_20mm_12cm_Kinked20mm.Test6Data);
+csvwrite('20mm_12cm_Kinked20mm_Test7.csv',Data_20mm_12cm_Kinked20mm.Test7Data);
+csvwrite('20mm_12cm_Kinked20mm_Test8.csv',Data_20mm_12cm_Kinked20mm.Test8Data);
+csvwrite('20mm_12cm_Kinked20mm_Test9.csv',Data_20mm_12cm_Kinked20mm.Test9Data);
+csvwrite('20mm_12cm_Kinked20mm_Test10.csv',Data_20mm_12cm_Kinked20mm.Test10Data);
+%% 2022 JAN 19 20mm 23cm Unkinked (Raw) 
+
+Data_20mm_23cm_Unkinked = load('2022JAN19_20mm_23cm_Unkinked_Data.mat');
+
+csvwrite('20mm_23cm_Unkinked_Offset.csv',Data_20mm_23cm_Unkinked.Offset);
+csvwrite('20mm_23cm_Unkinked_Test1.csv',Data_20mm_23cm_Unkinked.Test1Data);
+csvwrite('20mm_23cm_Unkinked_Test2.csv',Data_20mm_23cm_Unkinked.Test2Data);
+csvwrite('20mm_23cm_Unkinked_Test3.csv',Data_20mm_23cm_Unkinked.Test3Data);
+csvwrite('20mm_23cm_Unkinked_Test4.csv',Data_20mm_23cm_Unkinked.Test4Data);
+csvwrite('20mm_23cm_Unkinked_Test5.csv',Data_20mm_23cm_Unkinked.Test5Data);
+csvwrite('20mm_23cm_Unkinked_Test6.csv',Data_20mm_23cm_Unkinked.Test6Data);
+csvwrite('20mm_23cm_Unkinked_Test7.csv',Data_20mm_23cm_Unkinked.Test7Data);
+csvwrite('20mm_23cm_Unkinked_Test8.csv',Data_20mm_23cm_Unkinked.Test8Data);
+csvwrite('20mm_23cm_Unkinked_Test9.csv',Data_20mm_23cm_Unkinked.Test9Data);
+csvwrite('20mm_23cm_Unkinked_Test10.csv',Data_20mm_23cm_Unkinked.Test10Data);
+%% 2022 JAN 19 20mm 23cm kinked 19mm Data set 1 (RAW)
+Data_20mm_23cm_Kinked19mm1 = load('2022JAN19_20mm_23cm_Kinked_19mm_Data_1.mat');
+
+csvwrite('20mm_23cm_Kinked19mm1_Offset.csv',Data_20mm_23cm_Kinked19mm1.Offset);
+csvwrite('20mm_23cm_Kinked19mm1_Test1.csv',Data_20mm_23cm_Kinked19mm1.Test1Data);
+csvwrite('20mm_23cm_Kinked19mm1_Test2.csv',Data_20mm_23cm_Kinked19mm1.Test2Data);
+csvwrite('20mm_23cm_Kinked19mm1_Test3.csv',Data_20mm_23cm_Kinked19mm1.Test3Data);
+csvwrite('20mm_23cm_Kinked19mm1_Test4.csv',Data_20mm_23cm_Kinked19mm1.Test4Data);
+csvwrite('20mm_23cm_Kinked19mm1_Test5.csv',Data_20mm_23cm_Kinked19mm1.Test5Data);
+csvwrite('20mm_23cm_Kinked19mm1_Test6.csv',Data_20mm_23cm_Kinked19mm1.Test6Data);
+csvwrite('20mm_23cm_Kinked19mm1_Test7.csv',Data_20mm_23cm_Kinked19mm1.Test7Data);
+csvwrite('20mm_23cm_Kinked19mm1_Test8.csv',Data_20mm_23cm_Kinked19mm1.Test8Data);
+csvwrite('20mm_23cm_Kinked19mm1_Test9.csv',Data_20mm_23cm_Kinked19mm1.Test9Data);
+csvwrite('20mm_23cm_Kinked19mm1_Test10.csv',Data_20mm_23cm_Kinked19mm1.Test10Data);
+%% 2022 JAN 19 20mm 23cm kinked 19mm data 2(raw)
+Data_20mm_23cm_Kinked19mm2 = load('2022JAN19_20mm_23cm_Kinked_19mm_Data_2.mat');
+
+csvwrite('20mm_23cm_Kinked19mm2_Offset.csv',Data_20mm_23cm_Kinked19mm2.Offset);
+csvwrite('20mm_23cm_Kinked19mm2_Test1.csv',Data_20mm_23cm_Kinked19mm2.Test1Data);
+csvwrite('20mm_23cm_Kinked19mm2_Test2.csv',Data_20mm_23cm_Kinked19mm2.Test2Data);
+csvwrite('20mm_23cm_Kinked19mm2_Test3.csv',Data_20mm_23cm_Kinked19mm2.Test3Data);
+csvwrite('20mm_23cm_Kinked19mm2_Test4.csv',Data_20mm_23cm_Kinked19mm2.Test4Data);
+csvwrite('20mm_23cm_Kinked19mm2_Test5.csv',Data_20mm_23cm_Kinked19mm2.Test5Data);
+csvwrite('20mm_23cm_Kinked19mm2_Test6.csv',Data_20mm_23cm_Kinked19mm2.Test6Data);
+csvwrite('20mm_23cm_Kinked19mm2_Test7.csv',Data_20mm_23cm_Kinked19mm2.Test7Data);
+csvwrite('20mm_23cm_Kinked19mm2_Test8.csv',Data_20mm_23cm_Kinked19mm2.Test8Data);
+csvwrite('20mm_23cm_Kinked19mm2_Test9.csv',Data_20mm_23cm_Kinked19mm2.Test9Data);
+csvwrite('20mm_23cm_Kinked19mm2_Test10.csv',Data_20mm_23cm_Kinked19mm2.Test10Data);
+
+%% 2022 JAN 19 20mm 23cm kinked 9mm (raw)
+Data_20mm_23cm_Kinked9mm = load('2022JAN19_20mm_23cm_Kinked_9mm_Data.mat');
+
+csvwrite('20mm_23cm_Kinked9mm_Offset.csv',Data_20mm_23cm_Kinked9mm.Offset);
+csvwrite('20mm_23cm_Kinked9mm_Test1.csv',Data_20mm_23cm_Kinked9mm.Test1Data);
+csvwrite('20mm_23cm_Kinked9mm_Test2.csv',Data_20mm_23cm_Kinked9mm.Test2Data);
+csvwrite('20mm_23cm_Kinked9mm_Test3.csv',Data_20mm_23cm_Kinked9mm.Test3Data);
+csvwrite('20mm_23cm_Kinked9mm_Test4.csv',Data_20mm_23cm_Kinked9mm.Test4Data);
+csvwrite('20mm_23cm_Kinked9mm_Test5.csv',Data_20mm_23cm_Kinked9mm.Test5Data);
+csvwrite('20mm_23cm_Kinked9mm_Test6.csv',Data_20mm_23cm_Kinked9mm.Test6Data);
+csvwrite('20mm_23cm_Kinked9mm_Test7.csv',Data_20mm_23cm_Kinked9mm.Test7Data);
+csvwrite('20mm_23cm_Kinked9mm_Test8.csv',Data_20mm_23cm_Kinked9mm.Test8Data);
+csvwrite('20mm_23cm_Kinked9mm_Test9.csv',Data_20mm_23cm_Kinked9mm.Test9Data);
+csvwrite('20mm_23cm_Kinked9mm_Test10.csv',Data_20mm_23cm_Kinked9mm.Test10Data);
+
+%% 2022 JAN 19 20mm 30cm Unkinked (raw)
+Data_20mm_30cm_Unkinked = load('2022JAN19_20mm_30cm_Unkinked_Data.mat');
+
+csvwrite('20mm_30cm_Unkinked_Offset.csv',Data_20mm_30cm_Unkinked.Offset);
+csvwrite('20mm_30cm_Unkinked_Test1.csv',Data_20mm_30cm_Unkinked.Test1Data);
+csvwrite('20mm_30cm_Unkinked_Test2.csv',Data_20mm_30cm_Unkinked.Test2Data);
+csvwrite('20mm_30cm_Unkinked_Test3.csv',Data_20mm_30cm_Unkinked.Test3Data);
+csvwrite('20mm_30cm_Unkinked_Test4.csv',Data_20mm_30cm_Unkinked.Test4Data);
+csvwrite('20mm_30cm_Unkinked_Test5.csv',Data_20mm_30cm_Unkinked.Test5Data);
+csvwrite('20mm_30cm_Unkinked_Test6.csv',Data_20mm_30cm_Unkinked.Test6Data);
+csvwrite('20mm_30cm_Unkinked_Test7.csv',Data_20mm_30cm_Unkinked.Test7Data);
+csvwrite('20mm_30cm_Unkinked_Test8.csv',Data_20mm_30cm_Unkinked.Test8Data);
+csvwrite('20mm_30cm_Unkinked_Test9.csv',Data_20mm_30cm_Unkinked.Test9Data);
+csvwrite('20mm_30cm_Unkinked_Test10.csv',Data_20mm_30cm_Unkinked.Test10Data);
+%% 2022 JAN 19 20mm 30cm Kinked14mm (raw)
+Data_20mm_30cm_Kinked14mm = load('2022JAN19_20mm_30cm_Kinked_14mm_Data.mat');
+
+csvwrite('20mm_30cm_Kinked14mm_Offset.csv',Data_20mm_30cm_Kinked14mm.Offset);
+csvwrite('20mm_30cm_Kinked14mm_Test1.csv',Data_20mm_30cm_Kinked14mm.Test1Data);
+csvwrite('20mm_30cm_Kinked14mm_Test2.csv',Data_20mm_30cm_Kinked14mm.Test2Data);
+csvwrite('20mm_30cm_Kinked14mm_Test3.csv',Data_20mm_30cm_Kinked14mm.Test3Data);
+csvwrite('20mm_30cm_Kinked14mm_Test4.csv',Data_20mm_30cm_Kinked14mm.Test4Data);
+csvwrite('20mm_30cm_Kinked14mm_Test5.csv',Data_20mm_30cm_Kinked14mm.Test5Data);
+csvwrite('20mm_30cm_Kinked14mm_Test6.csv',Data_20mm_30cm_Kinked14mm.Test6Data);
+csvwrite('20mm_30cm_Kinked14mm_Test7.csv',Data_20mm_30cm_Kinked14mm.Test7Data);
+csvwrite('20mm_30cm_Kinked14mm_Test8.csv',Data_20mm_30cm_Kinked14mm.Test8Data);
+csvwrite('20mm_30cm_Kinked14mm_Test9.csv',Data_20mm_30cm_Kinked14mm.Test9Data);
+csvwrite('20mm_30cm_Kinked14mm_Test10.csv',Data_20mm_30cm_Kinked14mm.Test10Data);
+%% 2022 JAN 19 20mm 30cm Kinked23mm (raw)
+Data_20mm_30cm_Kinked23mm = load('2022JAN19_20mm_30cm_Kinked_23mm_Data.mat');
+
+csvwrite('20mm_30cm_Kinked23mm_Offset.csv',Data_20mm_30cm_Kinked23mm.Offset);
+csvwrite('20mm_30cm_Kinked23mm_Test1.csv',Data_20mm_30cm_Kinked23mm.Test1Data);
+csvwrite('20mm_30cm_Kinked23mm_Test2.csv',Data_20mm_30cm_Kinked23mm.Test2Data);
+csvwrite('20mm_30cm_Kinked23mm_Test3.csv',Data_20mm_30cm_Kinked23mm.Test3Data);
+csvwrite('20mm_30cm_Kinked23mm_Test4.csv',Data_20mm_30cm_Kinked23mm.Test4Data);
+csvwrite('20mm_30cm_Kinked23mm_Test5.csv',Data_20mm_30cm_Kinked23mm.Test5Data);
+csvwrite('20mm_30cm_Kinked23mm_Test6.csv',Data_20mm_30cm_Kinked23mm.Test6Data);
+csvwrite('20mm_30cm_Kinked23mm_Test7.csv',Data_20mm_30cm_Kinked23mm.Test7Data);
+csvwrite('20mm_30cm_Kinked23mm_Test8.csv',Data_20mm_30cm_Kinked23mm.Test8Data);
+csvwrite('20mm_30cm_Kinked23mm_Test9.csv',Data_20mm_30cm_Kinked23mm.Test9Data);
+csvwrite('20mm_30cm_Kinked23mm_Test10.csv',Data_20mm_30cm_Kinked23mm.Test10Data);
+%% 2022 JAN 19 20mm 30cm Kinked34mm (raw)
+Data_20mm_30cm_Kinked34mm = load('2022JAN19_20mm_30cm_Kinked_34mm_Data.mat');
+
+csvwrite('20mm_30cm_Kinked34mm_Offset.csv',Data_20mm_30cm_Kinked34mm.Offset);
+csvwrite('20mm_30cm_Kinked34mm_Test1.csv',Data_20mm_30cm_Kinked34mm.Test1Data);
+csvwrite('20mm_30cm_Kinked34mm_Test2.csv',Data_20mm_30cm_Kinked34mm.Test2Data);
+csvwrite('20mm_30cm_Kinked34mm_Test3.csv',Data_20mm_30cm_Kinked34mm.Test3Data);
+csvwrite('20mm_30cm_Kinked34mm_Test4.csv',Data_20mm_30cm_Kinked34mm.Test4Data);
+csvwrite('20mm_30cm_Kinked34mm_Test5.csv',Data_20mm_30cm_Kinked34mm.Test5Data);
+csvwrite('20mm_30cm_Kinked34mm_Test6.csv',Data_20mm_30cm_Kinked34mm.Test6Data);
+csvwrite('20mm_30cm_Kinked34mm_Test7.csv',Data_20mm_30cm_Kinked34mm.Test7Data);
+csvwrite('20mm_30cm_Kinked34mm_Test8.csv',Data_20mm_30cm_Kinked34mm.Test8Data);
+csvwrite('20mm_30cm_Kinked34mm_Test9.csv',Data_20mm_30cm_Kinked34mm.Test9Data);
+csvwrite('20mm_30cm_Kinked34mm_Test10.csv',Data_20mm_30cm_Kinked34mm.Test10Data);

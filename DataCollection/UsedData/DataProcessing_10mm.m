@@ -2,7 +2,6 @@
 %load (N) by removing the wrong calibration equation embedded in data. 
 %% 10mm 13cm BPA (Force column needs to be mod)
 Data_10mm_13cm_Unkinked_Test9 = csvread('10mm_13cm_Unkinked_Test9.csv');
-removinglowforce = find(Data_10mm_13cm_Unkinked_Test9(1,:)<10
     Force_10mm_13cm_Unkinked_Test9_Wrong = Data_10mm_13cm_Unkinked_Test9(:,1);
     Force_10mm_13cm_Unkinked_Test9_A0=((Force_10mm_13cm_Unkinked_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_13cm_Unkinked_Test9_Offset = Force_10mm_13cm_Unkinked_Test9_A0 - min(Force_10mm_13cm_Unkinked_Test9_A0);
@@ -28,7 +27,6 @@ removinglowforce = find(Data_10mm_13cm_Unkinked_Test9(1,:)<10
     
 %kinked 4mm    
 Data_10mm_13cm_Kinked4mm_Test9 = csvread('10mm_13cm_Kinked4mm_Test9.csv');
-Data_10mm_13cm_Kinked4mm_Test9([1:150],:)=[];
     Force_10mm_13cm_Kinked4mm_Test9_Wrong = Data_10mm_13cm_Kinked4mm_Test9(:,1);
     Force_10mm_13cm_Kinked4mm_Test9_A0=((Force_10mm_13cm_Kinked4mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output 
     Force_10mm_13cm_Kinked4mm_Test9 = (((Force_10mm_13cm_Kinked4mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
@@ -50,7 +48,6 @@ Data_10mm_13cm_Kinked4mm_Test9([1:150],:)=[];
     hold off   
  %Kinked 8mm
  Data_10mm_13cm_Kinked8mm_Test9 = csvread('10mm_13cm_Kinked8mm_Test9.csv');
- Data_10mm_13cm_Kinked8mm_Test9([1:150],:)=[];
     Force_10mm_13cm_Kinked8mm_Test9_Wrong = Data_10mm_13cm_Kinked8mm_Test9(:,1);
     Force_10mm_13cm_Kinked8mm_Test9_A0=((Force_10mm_13cm_Kinked8mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_13cm_Kinked8mm_Test9 = (((Force_10mm_13cm_Kinked8mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
@@ -72,7 +69,6 @@ Data_10mm_13cm_Kinked4mm_Test9([1:150],:)=[];
     hold off   
  %Kinked 12mm
  Data_10mm_13cm_Kinked12mm_Test9 = csvread('10mm_13cm_Kinked12mm_Test9.csv');
- Data_10mm_13cm_Kinked12mm_Test9([1:150],:)=[];
     Force_10mm_13cm_Kinked12mm_Test9_Wrong = Data_10mm_13cm_Kinked12mm_Test9(:,1);
     Force_10mm_13cm_Kinked12mm_Test9_A0=((Force_10mm_13cm_Kinked12mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_13cm_Kinked12mm_Test9 = (((Force_10mm_13cm_Kinked12mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
@@ -108,7 +104,6 @@ Data_10mm_13cm_Kinked4mm_Test9([1:150],:)=[];
 %% 10mm 23cm BPA (Force column = Arduino Output)
 %Unkink
 Data_10mm_23cm_Unkinked_Test9 = csvread('10mm_23cm_Unkinked_Test9.csv');
-Data_10mm_23cm_Unkinked_Test9([1:150],:)=[];
     Force_10mm_23cm_Unkinked_Test9_Wrong = Data_10mm_23cm_Unkinked_Test9(:,1);
     Force_10mm_23cm_Unkinked_Test9_A0=((Force_10mm_23cm_Unkinked_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_23cm_Unkinked_Test9 = (((Force_10mm_23cm_Unkinked_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
@@ -135,7 +130,6 @@ Data_10mm_23cm_Unkinked_Test9([1:150],:)=[];
     
 %Kinked 14mm
 Data_10mm_23cm_Kinked14mm_Test9 = csvread('10mm_23cm_Kinked14mm_Test9.csv');
-Data_10mm_23cm_Kinked14mm_Test9([1:150],:)=[];
     Force_10mm_23cm_Kinked14mm_Test9_Wrong = Data_10mm_23cm_Kinked14mm_Test9(:,1);
     Force_10mm_23cm_Kinke14mm_Test9_A0=((Force_10mm_23cm_Kinked14mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_23cm_Kinked14mm_Test9 = (((Force_10mm_23cm_Kinke14mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
@@ -159,7 +153,6 @@ Data_10mm_23cm_Kinked14mm_Test9([1:150],:)=[];
     hold off    
 %Kinked 30mm
 Data_10mm_23cm_Kinked30mm_Test9 = csvread('10mm_23cm_Kinked30mm_Test9.csv');
-Data_10mm_23cm_Kinked30mm_Test9([1:150],:)=[];
     Force_10mm_23cm_Kinked30mm_Test9_Wrong = Data_10mm_23cm_Kinked30mm_Test9(:,1);
     Force_10mm_23cm_Kinke30mm_Test9_A0=((Force_10mm_23cm_Kinked30mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_23cm_Kinked30mm_Test9 = (((Force_10mm_23cm_Kinke30mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
@@ -194,14 +187,14 @@ Data_10mm_23cm_Kinked30mm_Test9([1:150],:)=[];
     hold off
 %% 10mm 30cm BPA (Force =  Arduino Output)
 Data_10mm_30cm_Unkinked_Test9 = csvread('10mm_30cm_Unkinked_Test9.csv');
-Data_10mm_30cm_Unkinked_Test9([1:150],:)=[];
-    Force_10mm_30cm_Unkinked_Test9_Wrong = Data_10mm_30cm_Unkinked_Test9(:,1);
+    Force_10mm_30cm_Unkinked_Test9_Wrong = Data_10mm_30cm_Unkinked_Test9(:,1); %offset by 31 A0)
     Force_10mm_30cm_Unkinked_Test9_A0=((Force_10mm_30cm_Unkinked_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_30cm_Unkinked_Test9 = (((Force_10mm_30cm_Unkinked_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
     
     Pressure_10mm_30cm_Unkinked_Test9 =Data_10mm_30cm_Unkinked_Test9(:,2);
     Time_10mm_30cm_Unkinked_Test9 = Data_10mm_30cm_Unkinked_Test9(:,3);
-    
+
+
     figure
     subplot 221
     sgtitle('10mm 30cm BPA Pressure and Force')
@@ -219,7 +212,6 @@ Data_10mm_30cm_Unkinked_Test9([1:150],:)=[];
     hold off    
 %Kinked 12mm
 Data_10mm_30cm_Kinked12mm_Test9 = csvread('10mm_30cm_Kinked12mm_Test9.csv');
-Data_10mm_30cm_Kinked12mm_Test9([1:150],:)=[];
     Force_10mm_30cm_Kinked12mm_Test9_Wrong = Data_10mm_30cm_Kinked12mm_Test9(:,1);
     Force_10mm_30cm_Kinked12mm_A0=((Force_10mm_30cm_Kinked12mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_30cm_Kinked12mm_Test9 = (((Force_10mm_30cm_Kinked12mm_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
@@ -242,7 +234,6 @@ Data_10mm_30cm_Kinked12mm_Test9([1:150],:)=[];
     hold off   
 %Kinked 22mm
 Data_10mm_30cm_Kinked22mm_Test9 = csvread('10mm_30cm_Kinked22mm_Test9.csv');
-Data_10mm_30cm_Kinked22mm_Test9([1:150],:)=[];
     Force_10mm_30cm_Kinked22mm_Test9_Wrong = Data_10mm_30cm_Kinked22mm_Test9(:,1);
     Force_10mm_30cm_Kinked22mm_A0=((Force_10mm_30cm_Kinked22mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_30cm_Kinked22mm_Test9 = (((Force_10mm_30cm_Kinked22mm_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
@@ -265,7 +256,6 @@ Data_10mm_30cm_Kinked22mm_Test9([1:150],:)=[];
     hold off   
 %Kinked 33mm
 Data_10mm_30cm_Kinked33mm_Test9 = csvread('10mm_30cm_Kinked33mm_Test9.csv');
-Data_10mm_30cm_Kinked33mm_Test9([1:150],:)=[];
     Force_10mm_30cm_Kinked33mm_Test9_Wrong = Data_10mm_30cm_Kinked33mm_Test9(:,1);
     Force_10mm_30cm_Kinked33mm_A0=((Force_10mm_30cm_Kinked33mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_30cm_Kinked33mm_Test9 = (((Force_10mm_30cm_Kinked33mm_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
@@ -301,7 +291,6 @@ figure
     hold off
  %% 10mm 27cm (Force and Pressure Pin Switched)
  Data_10mm_27cm_Unkinked_Test9 = csvread('10mm_27cm_Unkinked_Test9.csv');
- Data_10mm_27cm_Unkinked_Test9([1:150],:)=[];
     Force_10mm_27cm_Unkinked_Test9_Wrong = Data_10mm_27cm_Unkinked_Test9(:,1); %this is actual pressure A0,going thru force eq)
     Pressure_10mm_27cm_Unkinked_Test9_Wrong = Data_10mm_27cm_Unkinked_Test9(:,2);
     Force_10mm_27cm_Unkinked_Test9_A0 = (Pressure_10mm_27cm_Unkinked_Test9_Wrong +18.609)/0.7654; % This is Force A0
@@ -327,7 +316,6 @@ figure
     hold off    
 % Kinked 7mm 
 Data_10mm_27cm_Kinked7mm_Test9 = csvread('10mm_27cm_Kinked7mm_Test9.csv');
-Data_10mm_27cm_Kinked7mm_Test9([1:150],:)=[];
     Force_10mm_27cm_Kinked7mm_Test9_Wrong = Data_10mm_27cm_Kinked7mm_Test9(:,1); %this is actual pressure A0,going thru force eq)
     Pressure_10mm_27cm_Kinked7mm_Test9_Wrong = Data_10mm_27cm_Kinked7mm_Test9(:,2);
     Force_10mm_27cm_Kinked7mm_Test9_A0 = (Pressure_10mm_27cm_Kinked7mm_Test9_Wrong +18.609)/0.7654; % This is Force A0
@@ -351,7 +339,6 @@ Data_10mm_27cm_Kinked7mm_Test9([1:150],:)=[];
     hold off    
 % Kinked 15mm
  Data_10mm_27cm_Kinked15mm_Test9 = csvread('10mm_27cm_Kinked15mm_Test9.csv');
- Data_10mm_27cm_Kinked15mm_Test9([1:150],:)=[];
     Force_10mm_27cm_Kinked15mm_Test9_Wrong = Data_10mm_27cm_Kinked15mm_Test9(:,1); %this is actual pressure A0,going thru force eq)
     Pressure_10mm_27cm_Kinked15mm_Test9_Wrong = Data_10mm_27cm_Kinked15mm_Test9(:,2);
     Force_10mm_27cm_Kinked15mm_Test9_A0 = (Pressure_10mm_27cm_Kinked15mm_Test9_Wrong +18.609)/0.7654; % This is Force A0
@@ -375,7 +362,6 @@ Data_10mm_27cm_Kinked7mm_Test9([1:150],:)=[];
     hold off       
 % Kinked 31mm
 Data_10mm_27cm_Kinked31mm_Test9 = csvread('10mm_27cm_Kinked31mm_Test9.csv');
-Data_10mm_27cm_Kinked31mm_Test9([1:150],:)=[];
     Force_10mm_27cm_Kinked31mm_Test9_Wrong = Data_10mm_27cm_Kinked31mm_Test9(:,1); %this is actual pressure A0,going thru force eq)
     Pressure_10mm_27cm_Kinked31mm_Test9_Wrong = Data_10mm_27cm_Kinked31mm_Test9(:,2);
 
@@ -412,7 +398,6 @@ figure
     hold off
 %% 10mm 29cm (Force and Pressure Pin Switched)
 Data_10mm_29cm_Unkinked_Test9 = csvread('10mm_29cm_Unkinked_Test9.csv');
-Data_10mm_29cm_Unkinked_Test9([1:150],:)=[];
     Force_10mm_29cm_Unkinked_Test9_Wrong = Data_10mm_29cm_Unkinked_Test9(:,1); %this is actual pressure A0,going thru force eq)
     Pressure_10mm_29cm_Unkinked_Test9_Wrong = Data_10mm_29cm_Unkinked_Test9(:,2);
     Force_10mm_29cm_Unkinked_Test9_A0 = (Pressure_10mm_29cm_Unkinked_Test9_Wrong +18.609)/0.7654; % This is Force A0
@@ -438,7 +423,6 @@ Data_10mm_29cm_Unkinked_Test9([1:150],:)=[];
     hold off    
 %Kinked 17mm
 Data_10mm_29cm_Kinked17mm_Test9 = csvread('10mm_29cm_Kinked17mm_Test9.csv');
-Data_10mm_29cm_Kinked17mm_Test9([1:150],:)=[];
     Force_10mm_29cm_Kinked17mm_Test9_Wrong = Data_10mm_29cm_Kinked17mm_Test9(:,1); %this is actual pressure A0,going thru force eq)
     Pressure_10mm_29cm_Kinked17mm_Test9_Wrong = Data_10mm_29cm_Kinked17mm_Test9(:,2);
     Force_10mm_29cm_Kinked17mm_Test9_A0 = (Pressure_10mm_29cm_Kinked17mm_Test9_Wrong +18.609)/0.7654; % This is Force A0
@@ -463,7 +447,6 @@ Data_10mm_29cm_Kinked17mm_Test9([1:150],:)=[];
     hold off 
 %Kinked 28mm
 Data_10mm_29cm_Kinked28mm_Test9 = csvread('10mm_29cm_Kinked28mm_Test9.csv');
-Data_10mm_29cm_Kinked28mm_Test9([1:150],:)=[];
     Force_10mm_29cm_Kinked28mm_Test9_Wrong = Data_10mm_29cm_Kinked28mm_Test9(:,1); %this is actual pressure A0,going thru force eq)
     Pressure_10mm_29cm_Kinked28mm_Test9_Wrong = Data_10mm_29cm_Kinked28mm_Test9(:,2);
     Force_10mm_29cm_Kinked28mm_Test9_A0 = (Pressure_10mm_29cm_Kinked28mm_Test9_Wrong +18.609)/0.7654; % This is Force A0
@@ -488,7 +471,6 @@ Data_10mm_29cm_Kinked28mm_Test9([1:150],:)=[];
     hold off   
 %Kinked 41mm
 Data_10mm_29cm_Kinked41mm_Test9 = csvread('10mm_29cm_Kinked41mm_Test9.csv');
-Data_10mm_29cm_Kinked41mm_Test9([1:150],:)=[];
     Force_10mm_29cm_Kinked41mm_Test9_Wrong = Data_10mm_29cm_Kinked41mm_Test9(:,1); %this is actual pressure A0,going thru force eq)
     Pressure_10mm_29cm_Kinked41mm_Test9_Wrong = Data_10mm_29cm_Kinked41mm_Test9(:,2);
     Force_10mm_29cm_Kinked41mm_Test9_A0 = (Pressure_10mm_29cm_Kinked41mm_Test9_Wrong +18.609)/0.7654; % This is Force A0
@@ -526,18 +508,15 @@ Data_10mm_29cm_Kinked41mm_Test9([1:150],:)=[];
 %% Comparing between lengths
 
 figure
-hold on
-title('Comparing 10mm at different lengths - Unkink')
-plot(Pressure_10mm_13cm_Unkinked_Test9, Force_10mm_13cm_Unkinked_Test9);
-plot(Pressure_10mm_23cm_Unkinked_Test9, Force_10mm_23cm_Unkinked_Test9)
-plot(Pressure_10mm_27cm_Unkinked_Test9, Force_10mm_27cm_Unkinked_Test9)
-plot(Pressure_10mm_29cm_Unkinked_Test9, Force_10mm_29cm_Unkinked_Test9)
-plot(Pressure_10mm_30cm_Unkinked_Test9, Force_10mm_30cm_Unkinked_Test9)
-xlabel('Pressure (kPa)');
-ylabel('Force(N)');
-legend('13cm','23cm','27cm','29cm','30cm');
-hold off;
+    hold on
+    title('Comparing 10mm at different lengths - Unkink')
+    plot(Pressure_10mm_13cm_Unkinked_Test9, Force_10mm_13cm_Unkinked_Test9);
+    plot(Pressure_10mm_23cm_Unkinked_Test9, Force_10mm_23cm_Unkinked_Test9)
+    plot(Pressure_10mm_27cm_Unkinked_Test9, Force_10mm_27cm_Unkinked_Test9)
+    plot(Pressure_10mm_29cm_Unkinked_Test9, Force_10mm_29cm_Unkinked_Test9)
+    plot(Pressure_10mm_30cm_Unkinked_Test9, Force_10mm_30cm_Unkinked_Test9)
+    xlabel('Pressure (kPa)');
+    ylabel('Force(N)');
+    legend('13cm','23cm','27cm','29cm','30cm');
+    hold off;
 
-%% Dr. Hunt's model
-
-%model_hunt_pressure

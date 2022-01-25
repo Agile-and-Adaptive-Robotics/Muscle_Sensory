@@ -188,7 +188,7 @@ csvwrite('10mm_27cm_Unkinked_Test9.csv',Data_10mm_27cm_Unkinked.Test9Data);
 csvwrite('10mm_27cm_Unkinked_Test10.csv',Data_10mm_27cm_Unkinked.Test10Data);
 
 %% 2022 Jan 10: 10mm 27 cm Kinked 7mm Raw Data. Convert .mat to csv. 
-Data_10mm_27cm_Kinked7mm = load('2022Jan10_10mm_27cm_Data.mat');
+Data_10mm_27cm_Kinked7mm = load('2022Jan10_10mm_27cm_Kinked7mm_Data.mat');
 
 csvwrite('10mm_27cm_Kinked7mm_Offset.csv',Data_10mm_27cm_Kinked7mm.Offset);
 csvwrite('10mm_27cm_Kinked7mm_Test1.csv',Data_10mm_27cm_Kinked7mm.Test1Data);

@@ -2,7 +2,6 @@
 %load (N) by removing the wrong calibration equation embedded in data. 
 %% 10mm 13cm BPA (Force column needs to be mod)
 Data_10mm_13cm_Unkinked_Test9 = csvread('10mm_13cm_Unkinked_Test9.csv');
-removinglowforce = find(Data_10mm_13cm_Unkinked_Test9(1,:)<10
     Force_10mm_13cm_Unkinked_Test9_Wrong = Data_10mm_13cm_Unkinked_Test9(:,1);
     Force_10mm_13cm_Unkinked_Test9_A0=((Force_10mm_13cm_Unkinked_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_13cm_Unkinked_Test9_Offset = Force_10mm_13cm_Unkinked_Test9_A0 - min(Force_10mm_13cm_Unkinked_Test9_A0);
@@ -10,22 +9,32 @@ removinglowforce = find(Data_10mm_13cm_Unkinked_Test9(1,:)<10
     Pressure_10mm_13cm_Unkinked_Test9 =Data_10mm_13cm_Unkinked_Test9(:,2);
     Time_10mm_13cm_Unkinked_Test9 = Data_10mm_13cm_Unkinked_Test9(:,3);
     
+    Data_10mm_13cm_Unkinked_Test9 = [Force_10mm_13cm_Unkinked_Test9,Pressure_10mm_13cm_Unkinked_Test9,Time_10mm_13cm_Unkinked_Test9];
+    %Removing low force data
+    Data_10mm_13cm_Unkinked_Test9(Data_10mm_13cm_Unkinked_Test9(:,1)<10,:)=[];
+    figure
+    plot(Data_10mm_13cm_Unkinked_Test9(:,1),Data_10mm_13cm_Unkinked_Test9(:,2),'ob')
+    hold on
+    plot(Force_10mm_13cm_Unkinked_Test9,Pressure_10mm_13cm_Unkinked_Test9,'.r')
+    hold off
+    legend('Removed','Nonremoved')
+    %Plot 
     figure
     sgtitle('10mm 13cm BPA Static Pressure and Force')
     subplot 221
     yyaxis left
-    plot(Time_10mm_13cm_Unkinked_Test9,Force_10mm_13cm_Unkinked_Test9)
+    plot(Data_10mm_13cm_Unkinked_Test9(:,3),Data_10mm_13cm_Unkinked_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_13cm_Unkinked_Test9,Pressure_10mm_13cm_Unkinked_Test9)
+    plot(Data_10mm_13cm_Unkinked_Test9(:,3),Data_10mm_13cm_Unkinked_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
     title('Unkinked Force and Pressure vs Time')
     hold off   
-    
+   
 %kinked 4mm    
 Data_10mm_13cm_Kinked4mm_Test9 = csvread('10mm_13cm_Kinked4mm_Test9.csv');
 Data_10mm_13cm_Kinked4mm_Test9([1:150],:)=[];
@@ -33,21 +42,32 @@ Data_10mm_13cm_Kinked4mm_Test9([1:150],:)=[];
     Force_10mm_13cm_Kinked4mm_Test9_A0=((Force_10mm_13cm_Kinked4mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output 
     Force_10mm_13cm_Kinked4mm_Test9 = (((Force_10mm_13cm_Kinked4mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
     Pressure_10mm_13cm_Kinked4mm_Test9 =Data_10mm_13cm_Kinked4mm_Test9(:,2);
-    Time_10mm_13cm_Kinked4mm = Data_10mm_13cm_Kinked4mm_Test9(:,3);
+    Time_10mm_13cm_Kinked4mm_Test9 = Data_10mm_13cm_Kinked4mm_Test9(:,3);
     
+    Data_10mm_13cm_Kinked4mm_Test9 = [Force_10mm_13cm_Kinked4mm_Test9,Pressure_10mm_13cm_Kinked4mm_Test9,Time_10mm_13cm_Kinked4mm_Test9];
+    %Removing low force data
+    Data_10mm_13cm_Kinked4mm_Test9(Data_10mm_13cm_Kinked4mm_Test9(:,1)<10,:)=[];
+%     figure
+%     plot(Data_10mm_13cm_Kinked4mm_Test9(:,1),Data_10mm_13cm_Kinked4mm_Test9(:,2),'ob')
+%     hold on
+%     plot(Force_10mm_13cm_Kinked4mm_Test9,Pressure_10mm_13cm_Kinked4mm_Test9,'.r')
+%     hold off
+%     legend('Removed','Nonremoved')
+        
     subplot 222
     yyaxis left
-    plot(Time_10mm_13cm_Kinked4mm,Force_10mm_13cm_Kinked4mm_Test9)
+    plot(Data_10mm_13cm_Kinked4mm_Test9(:,3),Data_10mm_13cm_Kinked4mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_13cm_Kinked4mm,Pressure_10mm_13cm_Kinked4mm_Test9)
+    plot(Data_10mm_13cm_Kinked4mm_Test9(:,3),Data_10mm_13cm_Kinked4mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
     title('Kinked 4mm Force and Pressure vs Time')
     hold off   
+  
  %Kinked 8mm
  Data_10mm_13cm_Kinked8mm_Test9 = csvread('10mm_13cm_Kinked8mm_Test9.csv');
  Data_10mm_13cm_Kinked8mm_Test9([1:150],:)=[];
@@ -55,38 +75,60 @@ Data_10mm_13cm_Kinked4mm_Test9([1:150],:)=[];
     Force_10mm_13cm_Kinked8mm_Test9_A0=((Force_10mm_13cm_Kinked8mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_13cm_Kinked8mm_Test9 = (((Force_10mm_13cm_Kinked8mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
     Pressure_10mm_13cm_Kinked8mm_Test9 =Data_10mm_13cm_Kinked8mm_Test9(:,2);
-    Time_10mm_13cm_Kinked8mm = Data_10mm_13cm_Kinked8mm_Test9(:,3);
+    Time_10mm_13cm_Kinked8mm_Test9 = Data_10mm_13cm_Kinked8mm_Test9(:,3);
     
+    Data_10mm_13cm_Kinked8mm_Test9 = [Force_10mm_13cm_Kinked8mm_Test9,Pressure_10mm_13cm_Kinked8mm_Test9,Time_10mm_13cm_Kinked8mm_Test9];
+    %Removing low force data
+    Data_10mm_13cm_Kinked8mm_Test9(Data_10mm_13cm_Kinked8mm_Test9(:,1)<10,:)=[];
+%     figure
+%     plot(Data_10mm_13cm_Kinked8mm_Test9(:,1),Data_10mm_13cm_Kinked8mm_Test9(:,2),'ob')
+%     hold on
+%     plot(Force_10mm_13cm_Kinked8mm_Test9,Pressure_10mm_13cm_Kinked8mm_Test9,'.r')
+%     hold off
+%     legend('Removed','Nonremoved')
+%     
     subplot 223
     yyaxis left
-    plot(Time_10mm_13cm_Kinked8mm,Force_10mm_13cm_Kinked8mm_Test9)
+    plot(Data_10mm_13cm_Kinked8mm_Test9(:,3),Data_10mm_13cm_Kinked8mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_13cm_Kinked8mm,Pressure_10mm_13cm_Kinked8mm_Test9)
+    plot(Data_10mm_13cm_Kinked8mm_Test9(:,3),Data_10mm_13cm_Kinked8mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
     title('Kinked 8mm Force and Pressure vs Time')
-    hold off   
- %Kinked 12mm
+    hold off  
+    
+ % Kinked 12mm
  Data_10mm_13cm_Kinked12mm_Test9 = csvread('10mm_13cm_Kinked12mm_Test9.csv');
  Data_10mm_13cm_Kinked12mm_Test9([1:150],:)=[];
     Force_10mm_13cm_Kinked12mm_Test9_Wrong = Data_10mm_13cm_Kinked12mm_Test9(:,1);
     Force_10mm_13cm_Kinked12mm_Test9_A0=((Force_10mm_13cm_Kinked12mm_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_13cm_Kinked12mm_Test9 = (((Force_10mm_13cm_Kinked12mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
     Pressure_10mm_13cm_Kinked12mm_Test9 =Data_10mm_13cm_Kinked12mm_Test9(:,2);
-    Time_10mm_13cm_Kinked12mm = Data_10mm_13cm_Kinked12mm_Test9(:,3);
+    Time_10mm_13cm_Kinked12mm_Test9 = Data_10mm_13cm_Kinked12mm_Test9(:,3);
+    
+    Data_10mm_13cm_Kinked12mm_Test9 = [Force_10mm_13cm_Kinked12mm_Test9,Pressure_10mm_13cm_Kinked12mm_Test9,Time_10mm_13cm_Kinked12mm_Test9];
+    %Removing low force data
+    Data_10mm_13cm_Kinked12mm_Test9(Data_10mm_13cm_Kinked12mm_Test9(:,1)<12,:)=[];
+%     figure
+%     plot(Data_10mm_13cm_Kinked12mm_Test9(:,1),Data_10mm_13cm_Kinked12mm_Test9(:,2),'ob')
+%     hold on
+%     plot(Force_10mm_13cm_Kinked12mm_Test9,Pressure_10mm_13cm_Kinked12mm_Test9,'.r')
+%     hold off
+%     legend('Removed','Nonremoved')
+    
     
     subplot 224
     yyaxis left
-    plot(Time_10mm_13cm_Kinked12mm,Force_10mm_13cm_Kinked12mm_Test9)
+    plot(Data_10mm_13cm_Kinked8mm_Test9(:,3),Data_10mm_13cm_Kinked8mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_13cm_Kinked12mm,Pressure_10mm_13cm_Kinked12mm_Test9)
+    plot(Data_10mm_13cm_Kinked8mm_Test9(:,3),Data_10mm_13cm_Kinked8mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -96,10 +138,10 @@ Data_10mm_13cm_Kinked4mm_Test9([1:150],:)=[];
     figure
     hold on
     title('10mm 13cm')
-    plot(Pressure_10mm_13cm_Unkinked_Test9, Force_10mm_13cm_Unkinked_Test9)
-    plot(Pressure_10mm_13cm_Kinked4mm_Test9, Force_10mm_13cm_Kinked4mm_Test9)
-    plot(Pressure_10mm_13cm_Kinked8mm_Test9, Force_10mm_13cm_Kinked8mm_Test9)
-    plot(Pressure_10mm_13cm_Kinked12mm_Test9,Force_10mm_13cm_Kinked12mm_Test9)
+    plot(Data_10mm_13cm_Unkinked_Test9(:,2), Data_10mm_13cm_Unkinked_Test9(:,1))
+    plot(Data_10mm_13cm_Kinked4mm_Test9(:,2), Data_10mm_13cm_Kinked4mm_Test9(:,1))
+    plot(Data_10mm_13cm_Kinked8mm_Test9(:,2), Data_10mm_13cm_Kinked8mm_Test9(:,1))
+    plot(Data_10mm_13cm_Kinked12mm_Test9(:,2),Data_10mm_13cm_Kinked12mm_Test9(:,1))
     xlabel('Pressure (kPa)')
     ylabel('Force(N)')
     legend('Unkinked','Kinked 4mm','Kinked 8mm','Kinked 12mm')
@@ -112,21 +154,25 @@ Data_10mm_23cm_Unkinked_Test9([1:150],:)=[];
     Force_10mm_23cm_Unkinked_Test9_Wrong = Data_10mm_23cm_Unkinked_Test9(:,1);
     Force_10mm_23cm_Unkinked_Test9_A0=((Force_10mm_23cm_Unkinked_Test9_Wrong/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_23cm_Unkinked_Test9 = (((Force_10mm_23cm_Unkinked_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
-    
     Pressure_10mm_23cm_Unkinked_Test9 =Data_10mm_23cm_Unkinked_Test9(:,2);
     Time_10mm_23cm_Unkinked_Test9 = Data_10mm_23cm_Unkinked_Test9(:,3);
     
+    %Removing Low Force data
+    Data_10mm_23cm_Unkinked_Test9 = [Force_10mm_23cm_Unkinked_Test9,Pressure_10mm_23cm_Unkinked_Test9,Time_10mm_23cm_Unkinked_Test9];
+    Data_10mm_23cm_Unkinked_Test9(Data_10mm_23cm_Unkinked_Test9(:,1)<12,:)=[];
+    
+    %Plot
     figure
     sgtitle('10mm 23cm BPA')
     subplot 311
     title('10mm 13cm BPA Static Pressure and Force')
     yyaxis left
-    plot(Time_10mm_23cm_Unkinked_Test9,Force_10mm_23cm_Unkinked_Test9)
+    plot(Data_10mm_23cm_Unkinked_Test9(:,3),Data_10mm_23cm_Unkinked_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_23cm_Unkinked_Test9,Pressure_10mm_23cm_Unkinked_Test9)
+    plot(Data_10mm_23cm_Unkinked_Test9(:,3),Data_10mm_23cm_Unkinked_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -139,19 +185,24 @@ Data_10mm_23cm_Kinked14mm_Test9([1:150],:)=[];
     Force_10mm_23cm_Kinked14mm_Test9_Wrong = Data_10mm_23cm_Kinked14mm_Test9(:,1);
     Force_10mm_23cm_Kinke14mm_Test9_A0=((Force_10mm_23cm_Kinked14mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_23cm_Kinked14mm_Test9 = (((Force_10mm_23cm_Kinke14mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
-    
     Pressure_10mm_23cm_Kinked14mm_Test9 =Data_10mm_23cm_Kinked14mm_Test9(:,2);
     Time_10mm_23cm_Kinked14mm_Test9 = Data_10mm_23cm_Kinked14mm_Test9(:,3);
+    %Removing Low Force data
+    Data_10mm_23cm_Kinked14mm_Test9 = [Force_10mm_23cm_Kinked14mm_Test9,Pressure_10mm_23cm_Kinked14mm_Test9,Time_10mm_23cm_Kinked14mm_Test9];
+    Data_10mm_23cm_Kinked14mm_Test9(Data_10mm_23cm_Kinked14mm_Test9(:,1)<12,:)=[];
+    
+    
+    
     
     subplot 312
-    title('10mm 13cm BPA Static Pressure and Force')
+    title('10mm 23cm BPA Static Pressure and Force')
     yyaxis left
-    plot(Time_10mm_23cm_Kinked14mm_Test9,Force_10mm_23cm_Kinked14mm_Test9)
+    plot(Data_10mm_23cm_Kinked14mm_Test9(:,3),Data_10mm_23cm_Kinked14mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_23cm_Kinked14mm_Test9,Pressure_10mm_23cm_Kinked14mm_Test9)
+    plot(Data_10mm_23cm_Kinked14mm_Test9(:,3),Data_10mm_23cm_Kinked14mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -163,19 +214,22 @@ Data_10mm_23cm_Kinked30mm_Test9([1:150],:)=[];
     Force_10mm_23cm_Kinked30mm_Test9_Wrong = Data_10mm_23cm_Kinked30mm_Test9(:,1);
     Force_10mm_23cm_Kinke30mm_Test9_A0=((Force_10mm_23cm_Kinked30mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_23cm_Kinked30mm_Test9 = (((Force_10mm_23cm_Kinke30mm_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
-    
     Pressure_10mm_23cm_Kinked30mm_Test9 =Data_10mm_23cm_Kinked30mm_Test9(:,2);
     Time_10mm_23cm_Kinked30mm_Test9 = Data_10mm_23cm_Kinked30mm_Test9(:,3);
+    
+    %Removing Low Force data
+    Data_10mm_23cm_Kinked30mm_Test9 = [Force_10mm_23cm_Kinked30mm_Test9,Pressure_10mm_23cm_Kinked30mm_Test9,Time_10mm_23cm_Kinked30mm_Test9];
+    Data_10mm_23cm_Kinked30mm_Test9(Data_10mm_23cm_Kinked30mm_Test9(:,1)<12,:)=[];
     
     subplot 313
     title('10mm 13cm BPA Static Pressure and Force')
     yyaxis left
-    plot(Time_10mm_23cm_Kinked30mm_Test9,Force_10mm_23cm_Kinked30mm_Test9)
+    plot(Data_10mm_23cm_Kinked30mm_Test9(:,3),Data_10mm_23cm_Kinked30mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_23cm_Kinked30mm_Test9,Pressure_10mm_23cm_Kinked30mm_Test9)
+    plot(Data_10mm_23cm_Kinked30mm_Test9(:,3),Data_10mm_23cm_Kinked30mm_Test9(:,1))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -185,9 +239,9 @@ Data_10mm_23cm_Kinked30mm_Test9([1:150],:)=[];
  figure
     hold on
     title('10mm 23cm')
-    plot(Pressure_10mm_23cm_Unkinked_Test9, Force_10mm_23cm_Unkinked_Test9)
-    plot(Pressure_10mm_23cm_Kinked14mm_Test9, Force_10mm_23cm_Kinked14mm_Test9)
-    plot(Pressure_10mm_23cm_Kinked30mm_Test9, Force_10mm_23cm_Kinked30mm_Test9)
+    plot(Data_10mm_23cm_Unkinked_Test9(:,2), Data_10mm_23cm_Unkinked_Test9(:,1))
+    plot(Data_10mm_23cm_Kinked14mm_Test9(:,2), Data_10mm_23cm_Kinked14mm_Test9(:,1))
+    plot(Data_10mm_23cm_Kinked30mm_Test9(:,2), Data_10mm_23cm_Kinked30mm_Test9(:,1))
     xlabel('Pressure (kPa)')
     ylabel('Force(N)')
     legend('Unkinked','Kinked 14mm','Kinked 30mm')
@@ -198,20 +252,23 @@ Data_10mm_30cm_Unkinked_Test9([1:150],:)=[];
     Force_10mm_30cm_Unkinked_Test9_Wrong = Data_10mm_30cm_Unkinked_Test9(:,1);
     Force_10mm_30cm_Unkinked_Test9_A0=((Force_10mm_30cm_Unkinked_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_30cm_Unkinked_Test9 = (((Force_10mm_30cm_Unkinked_Test9_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
-    
     Pressure_10mm_30cm_Unkinked_Test9 =Data_10mm_30cm_Unkinked_Test9(:,2);
     Time_10mm_30cm_Unkinked_Test9 = Data_10mm_30cm_Unkinked_Test9(:,3);
+    
+    %Removing Low Force data
+    Data_10mm_30cm_Unkinked_Test9 = [Force_10mm_30cm_Unkinked_Test9,Pressure_10mm_30cm_Unkinked_Test9,Time_10mm_30cm_Unkinked_Test9];
+    Data_10mm_30cm_Unkinked_Test9(Data_10mm_30cm_Unkinked_Test9(:,1)<12,:)=[];
     
     figure
     subplot 221
     sgtitle('10mm 30cm BPA Pressure and Force')
     yyaxis left
-    plot(Time_10mm_30cm_Unkinked_Test9,Force_10mm_30cm_Unkinked_Test9)
+    plot(Data_10mm_30cm_Unkinked_Test9(:,3),Data_10mm_30cm_Unkinked_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_30cm_Unkinked_Test9,Pressure_10mm_30cm_Unkinked_Test9)
+    plot(Data_10mm_30cm_Unkinked_Test9(:,3),Data_10mm_30cm_Unkinked_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -223,18 +280,21 @@ Data_10mm_30cm_Kinked12mm_Test9([1:150],:)=[];
     Force_10mm_30cm_Kinked12mm_Test9_Wrong = Data_10mm_30cm_Kinked12mm_Test9(:,1);
     Force_10mm_30cm_Kinked12mm_A0=((Force_10mm_30cm_Kinked12mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_30cm_Kinked12mm_Test9 = (((Force_10mm_30cm_Kinked12mm_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
-    
     Pressure_10mm_30cm_Kinked12mm_Test9 =Data_10mm_30cm_Kinked12mm_Test9(:,2);
     Time_10mm_30cm_Kinked12mm_Test9 = Data_10mm_30cm_Kinked12mm_Test9(:,3);
     
+    %Removing Low Force data
+    Data_10mm_30cm_Kinked12mm_Test9 = [Force_10mm_30cm_Kinked12mm_Test9,Pressure_10mm_30cm_Kinked12mm_Test9,Time_10mm_30cm_Kinked12mm_Test9];
+    Data_10mm_30cm_Kinked12mm_Test9(Data_10mm_30cm_Kinked12mm_Test9(:,1)<12,:)=[];
+    
     subplot 222
     yyaxis left
-    plot(Time_10mm_30cm_Kinked12mm_Test9,Force_10mm_30cm_Kinked12mm_Test9)
+    plot(Data_10mm_30cm_Kinked12mm_Test9(:,3),Data_10mm_30cm_Kinked12mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_30cm_Kinked12mm_Test9,Pressure_10mm_30cm_Kinked12mm_Test9)
+    plot(Data_10mm_30cm_Kinked12mm_Test9(:,3),Data_10mm_30cm_Kinked12mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -246,18 +306,21 @@ Data_10mm_30cm_Kinked22mm_Test9([1:150],:)=[];
     Force_10mm_30cm_Kinked22mm_Test9_Wrong = Data_10mm_30cm_Kinked22mm_Test9(:,1);
     Force_10mm_30cm_Kinked22mm_A0=((Force_10mm_30cm_Kinked22mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_30cm_Kinked22mm_Test9 = (((Force_10mm_30cm_Kinked22mm_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
-    
     Pressure_10mm_30cm_Kinked22mm_Test9 =Data_10mm_30cm_Kinked22mm_Test9(:,2);
     Time_10mm_30cm_Kinked22mm_Test9 = Data_10mm_30cm_Kinked22mm_Test9(:,3);
     
+    %Removing Low Force data
+    Data_10mm_30cm_Kinked22mm_Test9 = [Force_10mm_30cm_Kinked22mm_Test9,Pressure_10mm_30cm_Kinked22mm_Test9,Time_10mm_30cm_Kinked22mm_Test9];
+    Data_10mm_30cm_Kinked22mm_Test9(Data_10mm_30cm_Kinked22mm_Test9(:,1)<12,:)=[];
+    
    	subplot 223
     yyaxis left
-    plot(Time_10mm_30cm_Kinked22mm_Test9,Force_10mm_30cm_Kinked22mm_Test9)
+    plot(Data_10mm_30cm_Kinked22mm_Test9(:,3),Data_10mm_30cm_Kinked22mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_30cm_Kinked22mm_Test9,Pressure_10mm_30cm_Kinked22mm_Test9)
+    plot(Data_10mm_30cm_Kinked22mm_Test9(:,3),Data_10mm_30cm_Kinked22mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -269,18 +332,21 @@ Data_10mm_30cm_Kinked33mm_Test9([1:150],:)=[];
     Force_10mm_30cm_Kinked33mm_Test9_Wrong = Data_10mm_30cm_Kinked33mm_Test9(:,1);
     Force_10mm_30cm_Kinked33mm_A0=((Force_10mm_30cm_Kinked33mm_Test9_Wrong));%/4.45) +30.882)/1.6475; %convert back to Arduino Output
     Force_10mm_30cm_Kinked33mm_Test9 = (((Force_10mm_30cm_Kinked33mm_A0)*0.1535)-1.963)*4.45; %corrected Force output (N)
-    
     Pressure_10mm_30cm_Kinked33mm_Test9 =Data_10mm_30cm_Kinked33mm_Test9(:,2);
     Time_10mm_30cm_Kinked33mm_Test9 = Data_10mm_30cm_Kinked33mm_Test9(:,3);
+        %Removing Low Force data
+    Data_10mm_30cm_Kinked33mm_Test9 = [Force_10mm_30cm_Kinked33mm_Test9,Pressure_10mm_30cm_Kinked33mm_Test9,Time_10mm_30cm_Kinked33mm_Test9];
+    Data_10mm_30cm_Kinked33mm_Test9(Data_10mm_30cm_Kinked33mm_Test9(:,1)<12,:)=[];
+    
     
     subplot 224
     yyaxis left
-    plot(Time_10mm_30cm_Kinked33mm_Test9,Force_10mm_30cm_Kinked33mm_Test9)
+    plot(Data_10mm_30cm_Kinked33mm_Test9(:,3),Data_10mm_30cm_Kinked33mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_30cm_Kinked33mm_Test9,Pressure_10mm_30cm_Kinked33mm_Test9)
+    plot(Data_10mm_30cm_Kinked33mm_Test9(:,3),Data_10mm_30cm_Kinked33mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -291,10 +357,10 @@ Data_10mm_30cm_Kinked33mm_Test9([1:150],:)=[];
 figure
     hold on
     title('10mm 30cm')
-    plot(Pressure_10mm_30cm_Unkinked_Test9, Force_10mm_30cm_Unkinked_Test9)
-    plot(Pressure_10mm_30cm_Kinked12mm_Test9, Force_10mm_30cm_Kinked12mm_Test9)
-    plot(Pressure_10mm_30cm_Kinked22mm_Test9, Force_10mm_30cm_Kinked22mm_Test9)
-    plot(Pressure_10mm_30cm_Kinked33mm_Test9,Force_10mm_30cm_Kinked33mm_Test9)
+    plot(Data_10mm_30cm_Unkinked_Test9(:,2), Data_10mm_30cm_Unkinked_Test9(:,1))
+    plot(Data_10mm_30cm_Kinked12mm_Test9(:,2), Data_10mm_30cm_Kinked12mm_Test9(:,1))
+    plot(Data_10mm_30cm_Kinked22mm_Test9(:,2), Data_10mm_30cm_Kinked22mm_Test9(:,1))
+    plot(Data_10mm_30cm_Kinked33mm_Test9(:,2),Data_10mm_30cm_Kinked33mm_Test9(:,1))
     xlabel('Pressure (kPa)')
     ylabel('Force(N)')
     legend('Unkinked','Kinked 12mm','Kinked 22mm','Kinked 33mm')
@@ -310,20 +376,24 @@ figure
     Force_10mm_27cm_Unkinked_Test9 = ((Force_10mm_27cm_Unkinked_Test9_A0*0.1535)-1.963)*4.45;
     Time_10mm_27cm_Unkinked_Test9 = Data_10mm_27cm_Unkinked_Test9(:,3);
    
+    %Removing Low Force data
+    Data_10mm_27cm_Unkinked_Test9 = [Force_10mm_27cm_Unkinked_Test9,Pressure_10mm_27cm_Unkinked_Test9,Time_10mm_27cm_Unkinked_Test9];
+    Data_10mm_27cm_Unkinked_Test9(Data_10mm_27cm_Unkinked_Test9(:,1)<12,:)=[];
+    
     figure
     subplot 221
     sgtitle('10mm 27cm BPA Static Pressure and Force')
     yyaxis left
-    plot(Time_10mm_27cm_Unkinked_Test9,Force_10mm_27cm_Unkinked_Test9)
+    plot(Data_10mm_27cm_Unkinked_Test9(:,3),Data_10mm_27cm_Unkinked_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_27cm_Unkinked_Test9,Pressure_10mm_27cm_Unkinked_Test9)
+    plot(Data_10mm_27cm_Unkinked_Test9(:,3),Data_10mm_27cm_Unkinked_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
-    title('Kinked 33mm Force and Pressure vs Time')
+    title('Unkinked Force and Pressure vs Time')
     hold off    
 % Kinked 7mm 
 Data_10mm_27cm_Kinked7mm_Test9 = csvread('10mm_27cm_Kinked7mm_Test9.csv');
@@ -335,15 +405,18 @@ Data_10mm_27cm_Kinked7mm_Test9([1:150],:)=[];
     Pressure_10mm_27cm_Kinked7mm_Test9 = (Pressure_10mm_27cm_Kinked7mm_Test9_A0*0.7654) -18.609;
     Force_10mm_27cm_Kinked7mm_Test9 = ((Force_10mm_27cm_Kinked7mm_Test9_A0*0.1535)-1.963)*4.45;
     Time_10mm_27cm_Kinked7mm_Test9 = Data_10mm_27cm_Kinked7mm_Test9(:,3);
+    %Removing Low Force data
+    Data_10mm_27cm_Kinked7mm_Test9 = [Force_10mm_27cm_Kinked7mm_Test9,Pressure_10mm_27cm_Kinked7mm_Test9,Time_10mm_27cm_Kinked7mm_Test9];
+    Data_10mm_27cm_Kinked7mm_Test9(Data_10mm_27cm_Kinked7mm_Test9(:,1)<12,:)=[];
    
     subplot 222
     yyaxis left
-    plot(Time_10mm_27cm_Kinked7mm_Test9,Force_10mm_27cm_Kinked7mm_Test9)
+    plot(Data_10mm_27cm_Kinked7mm_Test9(:,3),Data_10mm_27cm_Kinked7mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_27cm_Kinked7mm_Test9,Pressure_10mm_27cm_Kinked7mm_Test9)
+    plot(Data_10mm_27cm_Kinked7mm_Test9(:,3),Data_10mm_27cm_Kinked7mm_Test9(:,1))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -359,15 +432,19 @@ Data_10mm_27cm_Kinked7mm_Test9([1:150],:)=[];
     Pressure_10mm_27cm_Kinked15mm_Test9 = (Pressure_10mm_27cm_Kinked15mm_Test9_A0*0.7654) -18.609;
     Force_10mm_27cm_Kinked15mm_Test9 = ((Force_10mm_27cm_Kinked15mm_Test9_A0*0.1535)-1.963)*4.45;
     Time_10mm_27cm_Kinked15mm_Test9 = Data_10mm_27cm_Kinked15mm_Test9(:,3);
+    %Removing Low Force data
+    Data_10mm_27cm_Kinked15mm_Test9 = [Force_10mm_27cm_Kinked15mm_Test9,Pressure_10mm_27cm_Kinked15mm_Test9,Time_10mm_27cm_Kinked15mm_Test9];
+    Data_10mm_27cm_Kinked15mm_Test9(Data_10mm_27cm_Kinked15mm_Test9(:,1)<12,:)=[];
    
+    
     subplot 223
     yyaxis left
-    plot(Time_10mm_27cm_Kinked15mm_Test9,Force_10mm_27cm_Kinked15mm_Test9)
+    plot(Data_10mm_27cm_Kinked15mm_Test9(:,3),Data_10mm_27cm_Kinked15mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_27cm_Kinked15mm_Test9,Pressure_10mm_27cm_Kinked15mm_Test9)
+    plot(Data_10mm_27cm_Kinked15mm_Test9(:,3),Data_10mm_27cm_Kinked15mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -378,21 +455,23 @@ Data_10mm_27cm_Kinked31mm_Test9 = csvread('10mm_27cm_Kinked31mm_Test9.csv');
 Data_10mm_27cm_Kinked31mm_Test9([1:150],:)=[];
     Force_10mm_27cm_Kinked31mm_Test9_Wrong = Data_10mm_27cm_Kinked31mm_Test9(:,1); %this is actual pressure A0,going thru force eq)
     Pressure_10mm_27cm_Kinked31mm_Test9_Wrong = Data_10mm_27cm_Kinked31mm_Test9(:,2);
-
     Pressure_10mm_27cm_Kinked31mm_Test9_A0 = ((Force_10mm_27cm_Kinked31mm_Test9_Wrong/4.45)+1.963)/0.1535;% This is pressure A0
     Pressure_10mm_27cm_Kinked31mm_Test9 = (Pressure_10mm_27cm_Kinked31mm_Test9_A0*0.7654) -18.609;
     Force_10mm_27cm_Kinked31mm_Test9_A0 = (Pressure_10mm_27cm_Kinked31mm_Test9_Wrong +18.609)/0.7654; % This is Force A0
     Force_10mm_27cm_Kinked31mm_Test9 = ((Force_10mm_27cm_Kinked31mm_Test9_A0*0.1535)-1.963)*4.45;
     Time_10mm_27cm_Kinked31mm_Test9 = Data_10mm_27cm_Kinked31mm_Test9(:,3);
-   
+    
+    %Removing Low Force data
+    Data_10mm_27cm_Kinked31mm_Test9 = [Force_10mm_27cm_Kinked31mm_Test9,Pressure_10mm_27cm_Kinked31mm_Test9,Time_10mm_27cm_Kinked31mm_Test9];
+    Data_10mm_27cm_Kinked31mm_Test9(Data_10mm_27cm_Kinked31mm_Test9(:,1)<12,:)=[];
     subplot 224
     yyaxis left
-    plot(Time_10mm_27cm_Kinked31mm_Test9,Force_10mm_27cm_Kinked31mm_Test9)
+    plot(Data_10mm_27cm_Kinked31mm_Test9(:,3),Data_10mm_27cm_Kinked31mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_27cm_Kinked31mm_Test9,Pressure_10mm_27cm_Kinked31mm_Test9)
+    plot(Data_10mm_27cm_Kinked31mm_Test9(:,3),Data_10mm_27cm_Kinked31mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -400,12 +479,11 @@ Data_10mm_27cm_Kinked31mm_Test9([1:150],:)=[];
     hold off    
     
 figure
+    plot(Data_10mm_27cm_Unkinked_Test9(:,2), Data_10mm_27cm_Unkinked_Test9(:,1),'or')
     hold on
-    title('10mm 27cm')
-    plot(Pressure_10mm_27cm_Unkinked_Test9, Force_10mm_27cm_Unkinked_Test9)
-    plot(Pressure_10mm_27cm_Kinked7mm_Test9, Force_10mm_27cm_Kinked7mm_Test9)
-    plot(Pressure_10mm_27cm_Kinked15mm_Test9, Force_10mm_27cm_Kinked15mm_Test9)
-    plot(Pressure_10mm_27cm_Kinked31mm_Test9,Force_10mm_27cm_Kinked31mm_Test9)
+    plot(Data_10mm_27cm_Kinked15mm_Test9(:,2), Data_10mm_27cm_Kinked15mm_Test9(:,1))
+    plot(Data_10mm_27cm_Kinked31mm_Test9(:,2),Data_10mm_27cm_Kinked31mm_Test9(:,1))
+    plot(Data_10mm_27cm_Kinked7mm_Test9(:,2), Data_10mm_27cm_Kinked7mm_Test9(:,1),'.b')
     xlabel('Pressure (kPa)')
     ylabel('Force(N)')
     legend('Unkinked','Kinked 7mm','Kinked 15mm','Kinked 31mm')
@@ -421,16 +499,20 @@ Data_10mm_29cm_Unkinked_Test9([1:150],:)=[];
     Force_10mm_29cm_Unkinked_Test9 = ((Force_10mm_29cm_Unkinked_Test9_A0*0.1535)-1.963)*4.45;
     Time_10mm_29cm_Unkinked_Test9 = Data_10mm_29cm_Unkinked_Test9(:,3);
     
+    %Removing Low Force data
+    Data_10mm_29cm_Unkinked_Test9 = [Force_10mm_29cm_Unkinked_Test9,Pressure_10mm_29cm_Unkinked_Test9,Time_10mm_29cm_Unkinked_Test9];
+    Data_10mm_29cm_Unkinked_Test9(Data_10mm_29cm_Unkinked_Test9(:,1)<12,:)=[];
+    
     figure
     sgtitle('10mm 29cm BPA')
     subplot 221
     yyaxis left
-    plot(Time_10mm_29cm_Unkinked_Test9,Force_10mm_29cm_Unkinked_Test9)
+    plot(Data_10mm_29cm_Unkinked_Test9(:,3),Data_10mm_29cm_Unkinked_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_29cm_Unkinked_Test9,Pressure_10mm_29cm_Unkinked_Test9)
+    plot(Data_10mm_29cm_Unkinked_Test9(:,3),Data_10mm_29cm_Unkinked_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -446,16 +528,19 @@ Data_10mm_29cm_Kinked17mm_Test9([1:150],:)=[];
     Pressure_10mm_29cm_Kinked17mm_Test9 = (Pressure_10mm_29cm_Kinked17mm_Test9_A0*0.7654) -18.609;
     Force_10mm_29cm_Kinked17mm_Test9 = ((Force_10mm_29cm_Kinked17mm_Test9_A0*0.1535)-1.963)*4.45;
     Time_10mm_29cm_Kinked17mm_Test9 = Data_10mm_29cm_Kinked17mm_Test9(:,3);
+    %Removing Low Force data
+    Data_10mm_29cm_Kinked17mm_Test9 = [Force_10mm_29cm_Kinked17mm_Test9,Pressure_10mm_29cm_Kinked17mm_Test9,Time_10mm_29cm_Kinked17mm_Test9];
+    Data_10mm_29cm_Kinked17mm_Test9(Data_10mm_29cm_Kinked17mm_Test9(:,1)<12,:)=[];
     
     
     subplot 222
     yyaxis left
-    plot(Time_10mm_29cm_Kinked17mm_Test9,Force_10mm_29cm_Kinked17mm_Test9)
+    plot(Data_10mm_29cm_Kinked17mm_Test9(:,3),Data_10mm_29cm_Kinked17mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_29cm_Kinked17mm_Test9,Pressure_10mm_29cm_Kinked17mm_Test9)
+    plot(Data_10mm_29cm_Kinked17mm_Test9(:,3),Data_10mm_29cm_Kinked17mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -471,16 +556,18 @@ Data_10mm_29cm_Kinked28mm_Test9([1:150],:)=[];
     Pressure_10mm_29cm_Kinked28mm_Test9 = (Pressure_10mm_29cm_Kinked28mm_Test9_A0*0.7654) -18.609;
     Force_10mm_29cm_Kinked28mm_Test9 = ((Force_10mm_29cm_Kinked28mm_Test9_A0*0.1535)-1.963)*4.45;
     Time_10mm_29cm_Kinked28mm_Test9 = Data_10mm_29cm_Kinked28mm_Test9(:,3);
-    
+    %Removing Low Force data
+    Data_10mm_29cm_Kinked28mm_Test9 = [Force_10mm_29cm_Kinked28mm_Test9,Pressure_10mm_29cm_Kinked28mm_Test9,Time_10mm_29cm_Kinked28mm_Test9];
+    Data_10mm_29cm_Kinked28mm_Test9(Data_10mm_29cm_Kinked28mm_Test9(:,1)<12,:)=[];
     
     subplot 223
     yyaxis left
-    plot(Time_10mm_29cm_Kinked28mm_Test9,Force_10mm_29cm_Kinked28mm_Test9)
+    plot(Data_10mm_29cm_Kinked28mm_Test9(:,3),Data_10mm_29cm_Kinked28mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_29cm_Kinked28mm_Test9,Pressure_10mm_29cm_Kinked28mm_Test9)
+    plot(Data_10mm_29cm_Kinked28mm_Test9(:,3),Data_10mm_29cm_Kinked28mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -496,16 +583,18 @@ Data_10mm_29cm_Kinked41mm_Test9([1:150],:)=[];
     Pressure_10mm_29cm_Kinked41mm_Test9 = (Pressure_10mm_29cm_Kinked41mm_Test9_A0*0.7654) -18.609;
     Force_10mm_29cm_Kinked41mm_Test9 = ((Force_10mm_29cm_Kinked41mm_Test9_A0*0.1535)-1.963)*4.45;
     Time_10mm_29cm_Kinked41mm_Test9 = Data_10mm_29cm_Kinked41mm_Test9(:,3);
-    
+        %Removing Low Force data
+    Data_10mm_29cm_Kinked41mm_Test9 = [Force_10mm_29cm_Kinked41mm_Test9,Pressure_10mm_29cm_Kinked41mm_Test9,Time_10mm_29cm_Kinked41mm_Test9];
+    Data_10mm_29cm_Kinked41mm_Test9(Data_10mm_29cm_Kinked41mm_Test9(:,1)<12,:)=[];
     
     subplot 224
     yyaxis left
-    plot(Time_10mm_29cm_Kinked41mm_Test9,Force_10mm_29cm_Kinked41mm_Test9)
+    plot(Data_10mm_29cm_Kinked41mm_Test9(:,3),Data_10mm_29cm_Kinked41mm_Test9(:,1))
     ylim([-10,600])
     ylabel('Force(N)')
     hold on
     yyaxis right
-    plot(Time_10mm_29cm_Kinked41mm_Test9,Pressure_10mm_29cm_Kinked41mm_Test9)
+    plot(Data_10mm_29cm_Kinked41mm_Test9(:,3),Data_10mm_29cm_Kinked41mm_Test9(:,2))
     ylim([-50,700])
     ylabel('Pressure(kPa)')
     legend('Force','Pressure')
@@ -514,10 +603,10 @@ Data_10mm_29cm_Kinked41mm_Test9([1:150],:)=[];
  figure
     hold on
     title('10mm 29cm')
-    plot(Pressure_10mm_29cm_Unkinked_Test9, Force_10mm_29cm_Unkinked_Test9)
-    plot(Pressure_10mm_29cm_Kinked17mm_Test9, Force_10mm_29cm_Kinked17mm_Test9)
-    plot(Pressure_10mm_29cm_Kinked28mm_Test9, Force_10mm_29cm_Kinked28mm_Test9)
-    plot(Pressure_10mm_29cm_Kinked41mm_Test9,Force_10mm_29cm_Kinked41mm_Test9)
+    plot(Data_10mm_29cm_Unkinked_Test9(:,2), Data_10mm_29cm_Unkinked_Test9(:,1))
+    plot(Data_10mm_29cm_Kinked17mm_Test9(:,2), Data_10mm_29cm_Kinked17mm_Test9(:,1))
+    plot(Data_10mm_29cm_Kinked28mm_Test9(:,2), Data_10mm_29cm_Kinked28mm_Test9(:,1))
+    plot(Data_10mm_29cm_Kinked41mm_Test9(:,2),Data_10mm_29cm_Kinked41mm_Test9(:,1))
     xlabel('Pressure (kPa)')
     ylabel('Force(N)')
     legend('Unkinked','Kinked 17mm','Kinked 28mm','Kinked 41mm')
@@ -528,16 +617,14 @@ Data_10mm_29cm_Kinked41mm_Test9([1:150],:)=[];
 figure
 hold on
 title('Comparing 10mm at different lengths - Unkink')
-plot(Pressure_10mm_13cm_Unkinked_Test9, Force_10mm_13cm_Unkinked_Test9);
-plot(Pressure_10mm_23cm_Unkinked_Test9, Force_10mm_23cm_Unkinked_Test9)
-plot(Pressure_10mm_27cm_Unkinked_Test9, Force_10mm_27cm_Unkinked_Test9)
-plot(Pressure_10mm_29cm_Unkinked_Test9, Force_10mm_29cm_Unkinked_Test9)
-plot(Pressure_10mm_30cm_Unkinked_Test9, Force_10mm_30cm_Unkinked_Test9)
+plot(Data_10mm_13cm_Unkinked_Test9(:,2), Data_10mm_13cm_Unkinked_Test9(:,1));
+plot(Data_10mm_23cm_Unkinked_Test9(:,2), Data_10mm_23cm_Unkinked_Test9(:,1))
+plot(Data_10mm_27cm_Unkinked_Test9(:,2), Data_10mm_27cm_Unkinked_Test9(:,1))
+plot(Data_10mm_29cm_Unkinked_Test9(:,2), Data_10mm_29cm_Unkinked_Test9(:,1))
+plot(Data_10mm_30cm_Unkinked_Test9(:,2), Data_10mm_30cm_Unkinked_Test9(:,1))
 xlabel('Pressure (kPa)');
 ylabel('Force(N)');
 legend('13cm','23cm','27cm','29cm','30cm');
 hold off;
 
-%% Dr. Hunt's model
 
-%model_hunt_pressure

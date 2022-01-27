@@ -1,0 +1,53 @@
+figure %20mm 23cm
+    sgtitle('20mm 23cm BPA Static Pressure and Force')
+    subplot 311
+    yyaxis left
+    plot(Data_20mm_23cm_Unkinked_Test9(:,3),Data_20mm_23cm_Unkinked_Test9(:,1));
+    ylim([-10,1500])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Data_20mm_23cm_Unkinked_Test9(:,3),Data_20mm_23cm_Unkinked_Test9(:,2));
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('Unkinked Force and Pressure vs Time')
+
+    subplot 312
+    yyaxis left
+    plot(Data_20mm_23cm_Kinked9mm_Test9(:,3),Data_20mm_23cm_Kinked9mm_Test9(:,1));
+    ylim([-10,1500])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Data_20mm_23cm_Kinked9mm_Test9(:,3),Data_20mm_23cm_Kinked9mm_Test9(:,2));
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('9mm Kinked Force and Pressure vs Time')
+
+    subplot 313
+    yyaxis left
+    plot(Data_20mm_23cm_Kinked19mm_Test9(:,3),Data_20mm_23cm_Kinked19mm_Test9(:,1));
+    ylim([-10,1500])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Data_20mm_23cm_Kinked19mm_Test9(:,3),Data_20mm_23cm_Kinked19mm_Test9(:,2));
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('19mm Kinked Force and Pressure vs Time')
+
+    subplot 224
+    yyaxis left
+    plot(Data_20mm_23cm_Kinked19mm_Test9(:,3),Data_20mm_23cm_Kinked19mm_Test9(:,1));
+    ylim([-10,1500])
+    ylabel('Force(N)')
+    hold on
+    yyaxis right
+    plot(Data_20mm_23cm_Kinked19mm_Test9(:,3),Data_20mm_23cm_Kinked19mm_Test9(:,2));
+    ylim([-50,700])
+    ylabel('Pressure(kPa)')
+    legend('Force','Pressure')
+    title('19mm Kinked Force and Pressure vs Time')

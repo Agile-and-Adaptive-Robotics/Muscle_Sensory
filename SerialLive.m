@@ -15,7 +15,7 @@ a = arduino;
 %
 % We can read the output voltage, convert it to Celsius and convert the
 % result to Farenheit as follows:
-v = readVoltage(a,'A1');
+v = readVoltage(a,'A0');
 Pressure = v
 fprintf('Temperature Reading:\n  %.1f kPa\n',Pressure)
 
@@ -29,7 +29,7 @@ tic
 while toc < 10
     ii = ii + 1;
     % Read current voltage value
-    v = readVoltage(a,'A1');
+    v = readVoltage(a,'A0');
     % Calculate temperature from voltage (based on data sheet)
     Pressure = (v - 0.5)*100;
     TempF(ii) = 9/5*Pressure + 32;
@@ -77,7 +77,7 @@ stop = false;
 startTime = datetime('now');
 while ~stop
     % Read current voltage value
-    v = readVoltage(a,'A1');
+    v = readVoltage(a,'A0');
     % Calculate temperature from voltage (based on data sheet)
     Pressure = ((v*1023/5)*0.7654)-18.609;
     TempF = Pressure;    

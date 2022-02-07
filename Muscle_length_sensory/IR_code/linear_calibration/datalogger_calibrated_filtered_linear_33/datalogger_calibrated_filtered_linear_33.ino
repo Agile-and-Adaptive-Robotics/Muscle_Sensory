@@ -69,11 +69,12 @@ volatile float v22 = 0.0;
 volatile float v23 = 0.0;
 volatile float vfin2 = 0.0; 
 //rest offset value 
-//define the rest offset value for each sensor. 
+//define the rest offset linear equation for each sensor. 
 //Use the restoffset_calibration code to find the restoffset for each sensor. 
-//The restoffset is applied at the very last step before the value is written to SD card. 
-volatile float rest_offset_iss = 0.0;
-volatile float rest_offset_ess = 0.0;
+volatile float rest_m_iss = 0.0;
+volatile float rest_b_iss = 0.0;
+volatile float rest_m_ess = 0.0;
+volatile float rest_b_ess = 0.0;
 //filter coefficients
 volatile float fc1 = 0.013359200027857;
 volatile float fc2 = -0.7008967811884;
@@ -86,7 +87,7 @@ volatile float vfin2_cal = 0.0;
 date and time of data collection 
 Format:
 date: "YYYYMMDD"
-time: "HHMM" - use military time
+time: "HHMM" - use military time5
 */
 char collectDate[11] = "23/01/2022";
 char collectTime[6] = "00:00"; 
@@ -212,7 +213,11 @@ void DataLoggingLoop() //Interrupt loop
     v23 = (fc1*ess.readRangeResult()) + (fc2*v21) + (fc3*v22);
     vfin2 = v21 + v22 + 2*v23;
 
-    // Apply calibration
+    // Apply calibration to correct for sensor offset
+    vfin1 = rest_m_iss*vfin1 + rest_b_iss;
+    vfin2 = rest_m_ess*vfin2 + rest_b_ess;
+
+    // Apply calibration to shift the internal sensor to match the external sensor
     vfin2_cal = vfin2_m*vfin2 + vfin2_b;
 
     String ISS_reading = String(vfin1);

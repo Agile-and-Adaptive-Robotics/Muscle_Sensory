@@ -16,7 +16,8 @@ class DataHandler(object):
     """
 
     def __init__(self, path2file):
-        self._path = Path(path2file)
+        # self._path = Path(path2file)
+        self._path = path2file
         self._init_paths()
         self._parse_data()
         self._find_start()
@@ -167,8 +168,8 @@ class DataHandler(object):
         time = data[:, 0]*1/sampF
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        sen1 = data[:, 1]
-        sen2 = data[:, 2]
+        sen1 = data[:, 1]  # should be Internal sensor
+        sen2 = data[:, 2]  # should be External sensor
         if norm:
             title = f'Normalized dual sensor comparison. Data ID {idx}'
             sen1 = self.normalize_data(sen1)
@@ -181,10 +182,11 @@ class DataHandler(object):
         ax.plot(time, sen2)
         ax.set(ylabel='Distance',
                xlabel='Time(s)')
-        ax.legend(['External', 'Internal'])
+        ax.legend(['Internal', 'External'])
         # self._basic_stats(sen1, sen2)
         if save:
             plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
+        plt.close(fig)
 
     def plot_scatter(self, idx, save=False):
         """Plot the scattered data"""
@@ -249,7 +251,7 @@ class DataHandler(object):
     def calculate_lin_fit_params_combined_data(self, indices):
         """calculate linear fit parameters of the combined data"""
         cdata = self.combine_data(indices=indices)
-        scipy_fit_params = stats.linregress(cdata[:, 2], cdata[:, 1])
+        scipy_fit_params = stats.linregress(cdata[:, 1], cdata[:, 2])
         # np_fit_params = np.polyfit(cdata[:, 0], cdata[:, 1], deg=1, full=True)
         print(f'R value for fit {scipy_fit_params.rvalue}')
         return scipy_fit_params
@@ -284,13 +286,14 @@ class DataHandler(object):
         title = 'Combined Data'
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.plot(cdata[:, 2], cdata[:, 1], linewidth=0, marker='o', markersize=2)
-        fitted_data = fit_params.slope*cdata[:, 2] + fit_params.intercept
-        ax.plot(cdata[:, 2], fitted_data)
+        ax.plot(cdata[:, 1], cdata[:, 2], linewidth=0, marker='o', markersize=2)
+        fitted_data = fit_params.slope*cdata[:, 1] + fit_params.intercept
+        ax.plot(cdata[:, 1], fitted_data)
         ax.set_aspect('equal')
         ax.set(title=title,
-               ylabel='Internal sensor',
-               xlabel='External sensor')
+               ylabel='External sensor',
+               xlabel='Internal sensor')
+        print(fit_params)
 
     def test_fit_to_data_set(self, indices, data_index, save=False):
         """use the fit params from calculate_lin_fit_params_combined_data to estimate how good the fit is
@@ -320,28 +323,28 @@ class DataHandler(object):
             plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
 
-RunAll = False
+RunAll = True
 if RunAll and __name__ == "__main__":
     # define path
-    # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\dualsensor_teststand_data\IR_data2.txt"
-    # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\dualsensor_teststand_data\IR_data_short_cap.txt"
-    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
+    file = 'IR_data8.txt'
+    path = Path(__file__).parent / file
     IR_data = DataHandler(path)
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
     IR_data.full_report(norm=False)
-    idx_list = [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
+    idx_list = [6, 7, 8]
     IR_data.combine_data(indices=idx_list)
-    IR_data.plot_combine_data(indices=idx_list, save=True)
-    # IR_data.plot_cdata_add_poly_fit(indices=idx_list)
+    # IR_data.plot_combine_data(indices=idx_list, save=True)
+    IR_data.plot_cdata_add_fit(indices=idx_list)
     # IR_data.test_fit_to_data_set(indices=idx_list, data_index=1, save=True)
     plt.show()
 
-makeReport = True
+makeReport = False
 if makeReport and __name__ == "__main__":
     # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
-    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_TEST4.TXT"
+    file = 'IR_data8.txt'
+    path = Path(__file__).parent / file
     IR_data = DataHandler(path)
     for each in IR_data.data_index:
         IR_data.report(each)

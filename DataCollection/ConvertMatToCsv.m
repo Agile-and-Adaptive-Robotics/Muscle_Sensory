@@ -1,9 +1,10 @@
 %% Convert mat file to csv.
 
 Data_10mm_23cm_Unkinked=load('2021Dec21_10mm23cm_Data.mat');
-csvwrite('10mm_23cm_Unkinked_Test1.csv',Data_10mm_23cm_Unkinked.Test1Data);
+
 csvwrite('10mm_23cm_Unkinked_Test2.csv',Data_10mm_23cm_Unkinked.Test2Data);
 csvwrite('10mm_23cm_Unkinked_Test3.csv',Data_10mm_23cm_Unkinked.Test3Data);
+csvwrite('10mm_23cm_Unkinked_Test1.csv',Data_10mm_23cm_Unkinked.Test1Data);
 csvwrite('10mm_23cm_Unkinked_Test4.csv',Data_10mm_23cm_Unkinked.Test4Data);
 csvwrite('10mm_23cm_Unkinked_Test5.csv',Data_10mm_23cm_Unkinked.Test5Data);
 csvwrite('10mm_23cm_Unkinked_Test6.csv',Data_10mm_23cm_Unkinked.Test6Data);

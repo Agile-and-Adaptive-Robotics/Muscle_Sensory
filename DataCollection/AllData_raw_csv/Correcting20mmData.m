@@ -17,7 +17,7 @@ for a = 1:length(Kinks_20mm10cm)
         Pressure = (Data(:,2)*0.7654)-18.609
         Data(:,1) = Force;
         Data(:,2) = Pressure;
-
+        csvwrite(k,Data);
     end
 end
 
@@ -34,6 +34,7 @@ for a = 1:length(Kinks_20mm12cm)
         Data=csvread(k);
         Force = ((Data(:,1)*0.392) - 4.1786)*4.45;
         Data(:,1) = Force;
+        csvwrite(k,Data);
 
     end
 end
@@ -50,6 +51,7 @@ for a = 1:length(Kinks_20mm23cm)
         Data=csvread(k);
         Force = ((Data(:,1)*0.392) - 4.1786)*4.45;
         Data(:,1) = Force;
+        csvwrite(k,Data);
     end
 end
 
@@ -66,6 +68,7 @@ for a = 1:length(Kinks_20mm30cm)
         Data=csvread(k);
         Force = ((Data(:,1)*0.392) - 4.1786)*4.45;
         Data(:,1) = Force;
+        csvwrite(k,Data);
     end
 end
 
@@ -84,5 +87,6 @@ for a = 1:length(Kinks_20mm40cm)
         Pressure = (Data(:,2)*0.7654)-18.609
         Data(:,1) = Force;
         Data(:,2) = Pressure;
+        csvwrite(k,Data);
     end
 end

@@ -134,23 +134,7 @@ for a =1:length(Kinks_10mm30cm)
     end
 end
 
-% diameter = {'10','20'}
-% diameter10mm_lengths = {'13','23','27','29','30'};
-% diameter10mm_13cm_kinks = {'0','4','8','12'};
-% diameter10mm_23cm_kinks = {'0','14','30'};
-% diameter10mm_27cm_kinks = {'0','7','15','31'};
-% diameter10mm_29cm_kinks = {'0','12','22','33'};
-% diameter10mm_30cm_kinks = {'0','12','22','33'};
-% 
-% diameter20mm_lengths = {'10','12','23','30','40'};
-% diameter20mm_10cm_kinks = {'0','12','20'};
-% diameter20mm_12cm_kinks = {'0','10','20'};
-% diameter20mm_23cm_kinks = {'0','9','19'};
-% diameter20mm_30cm_kinks = {'0','14','23','34'};
-% diameter20mm_40cm_kinks = {'0','35','46','69'};
+%% Combine all 10mm data into a single array
 
+AllBPA10mm = vertcat(AllBPA10mm13cm,AllBPA10mm23cm,AllBPA10mm27cm,AllBPA10mm29cm,AllBPA10mm30cm);
 
-
-
-% Kinks_10mm30cm = {'30cm_Unkinked_Test','30cm_Kinked12mm_Test','30cm_Kinked22mm_Test','30cm_Kinked33mm_Test'}; 
-%     vals_30cm=[0,12,22,33];

@@ -1,7 +1,7 @@
 % Function to plot all BPA data per diameter 
 
 %function BPAdataplot(BPAdiameter)
-BPAdiameter = '20mm'
+BPAdiameter = '10mm'
 %BPAlengths = 
 BPAdiameter_dir = sprintf('%s*.csv',BPAdiameter)
 importcsv = dir(BPAdiameter_dir)

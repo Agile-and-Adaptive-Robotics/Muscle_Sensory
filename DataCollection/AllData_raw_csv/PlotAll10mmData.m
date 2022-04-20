@@ -54,8 +54,8 @@ end
 
 
 
-
-%% testnumber = 9; %choosing test numner 9 as the standard
+%%
+ testnumber = 9; %choosing test numner 9 as the standard
 %13cm
 figure
 hold on

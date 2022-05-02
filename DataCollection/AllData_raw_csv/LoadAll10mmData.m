@@ -26,7 +26,7 @@ AllBPA10mm13cm =BPA10mm13cm{1};
 for a =1:length(Kinks_10mm13cm)
     for i=2:10
         CurrentData= BPA10mm13cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>0,:);
+        RealData= CurrentData(CurrentData(:,1)>15,:);
         AllBPA10mm13cm=vertcat(AllBPA10mm13cm,RealData);
     end
 end
@@ -91,7 +91,7 @@ Kinks_10mm29cm = {'29cm_Unkinked_Test', '29cm_Kinked17mm_Test','29cm_Kinked28mm_
             BPA10mm29cm{i,a} = csvread(['10mm_',Kinks_10mm29cm{a},test,'.csv'])
             BPA10mm29cm{i,a}(:,4) = ones(length(BPA10mm29cm{i}),1)*10;  %col 4 = diameter
             BPA10mm29cm{i,a}(:,5) =29;
-            BPA10mm29cm{i,a}(:,6) = ones(length(BPA10mm29cm{i}),1)*vals_27cm(a); %col5 = kinks
+            BPA10mm29cm{i,a}(:,6) = ones(length(BPA10mm29cm{i}),1)*vals_29cm(a); %col5 = kinks
             BPA10mm29cm{i,a}(:,7) = ones(length(BPA10mm29cm{i}),1)*i%col6 = Test#
         end
     end
@@ -118,7 +118,7 @@ Kinks_10mm30cm = {'30cm_Unkinked_Test','30cm_Kinked12mm_Test','30cm_Kinked22mm_T
             BPA10mm30cm{i,a} = csvread(['10mm_',Kinks_10mm30cm{a},test,'.csv'])
             BPA10mm30cm{i,a}(:,4) = ones(length(BPA10mm30cm{i}),1)*10;  %col 4 = diameter
             BPA10mm30cm{i,a}(:,5) =30;
-            BPA10mm30cm{i,a}(:,6) = ones(length(BPA10mm30cm{i}),1)*vals_27cm(a); %col5 = kinks
+            BPA10mm30cm{i,a}(:,6) = ones(length(BPA10mm30cm{i}),1)*vals_30cm(a); %col5 = kinks
             BPA10mm30cm{i,a}(:,7) = ones(length(BPA10mm30cm{i}),1)*i%col6 = Test#
         end
     end

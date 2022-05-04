@@ -6,8 +6,8 @@
 %Eg: model equation:  y = Aexp(-lamda*t); A & lamda are parameters to be
 %tuned. To fit curve, we need to minimize sum of squared error
 testnumber = 9;
-kinks = [0,12,22,33] 
-data= AllBPA10mm30cm(AllBPA10mm30cm(:,5)==30& AllBPA10mm30cm(:,6)==33&AllBPA10mm30cm(:,7)==testnumber,:); %Data: 10mm13cm (all kinks) 
+kinks = [0,13,20] 
+data= AllBPA20mm10cm(AllBPA20mm10cm(:,5)==10& AllBPA20mm10cm(:,6)==20&AllBPA20mm10cm(:,7)==testnumber,:); %Data 
 data_pressure = data(:,2)
 data_force = data(:,1)
 

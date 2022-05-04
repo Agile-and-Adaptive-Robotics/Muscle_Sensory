@@ -51,7 +51,7 @@ AllBPA10mm23cm =BPA10mm23cm{1};
 for a =1:length(Kinks_10mm23cm)
     for i=2:10
         CurrentData= BPA10mm23cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>0,:);
+        RealData= CurrentData(CurrentData(:,1)>15,:);
         AllBPA10mm23cm=vertcat(AllBPA10mm23cm,RealData);
     end
 end
@@ -76,7 +76,7 @@ AllBPA10mm27cm =BPA10mm27cm{1};
 for a =1:length(Kinks_10mm27cm)
     for i=2:10
         CurrentData= BPA10mm27cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>0,:);
+        RealData= CurrentData(CurrentData(:,1)>15,:);
         AllBPA10mm27cm=vertcat(AllBPA10mm27cm,RealData);
     end
 end
@@ -102,7 +102,7 @@ AllBPA10mm29cm =BPA10mm29cm{1};
 for a =1:length(Kinks_10mm29cm)
     for i=2:10
         CurrentData= BPA10mm29cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>0,:);
+        RealData= CurrentData(CurrentData(:,1)>15,:);
         AllBPA10mm29cm=vertcat(AllBPA10mm29cm,RealData);
     end
 end
@@ -129,7 +129,7 @@ AllBPA10mm30cm =BPA10mm30cm{1};
 for a =1:length(Kinks_10mm30cm)
     for i=2:10
         CurrentData= BPA10mm30cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>0,:);
+        RealData= CurrentData(CurrentData(:,1)>15,:);
         AllBPA10mm30cm=vertcat(AllBPA10mm30cm,RealData);
     end
 end

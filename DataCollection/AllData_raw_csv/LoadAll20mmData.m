@@ -37,7 +37,7 @@ Kinks_20mm12cm = {'12cm_Unkinked_Test','12cm_Kinked10mm_Test','12cm_Kinked20mm_T
             BPA20mm12cm{i,a} = csvread(['20mm_',Kinks_20mm12cm{a},test,'.csv'])
             BPA20mm12cm{i,a}(:,4) = ones(length(BPA20mm12cm{i}),1)*20;  %col 4 = diameter
             BPA20mm12cm{i,a}(:,5) = 12;                                 %col 5 = length 
-            BPA20mm12cm{i,a}(:,6) = ones(length(BPA20mm12cm{i}),1)*vals_10cm(a); %col6 = kinks
+            BPA20mm12cm{i,a}(:,6) = ones(length(BPA20mm12cm{i}),1)*vals_12cm(a); %col6 = kinks
             BPA20mm12cm{i,a}(:,7) = ones(length(BPA20mm12cm{i}),1)*i;%col7 = Test#
         end
     end
@@ -126,7 +126,7 @@ AllBPA20mm40cm = BPA20mm40cm{1}
 for a = 1:length(Kinks_20mm40cm)
     for i =2:10
         CurrentData = BPA20mm40cm{i,a};
-        RealData = CurrentData(CurrentData(:,1)>15,:); %remove data points with force below 15N
+        RealData = CurrentData(CurrentData(:,1)>15&CurrentData(:,2)<700,:); %remove data points with force below 15N
         AllBPA20mm40cm = vertcat(AllBPA20mm40cm,RealData);
     end
 end

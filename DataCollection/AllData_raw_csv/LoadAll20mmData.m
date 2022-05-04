@@ -56,7 +56,7 @@ end
 
 
 %% 20mm 23cm
-Kinks_20mm23cm = {'23cm_Unkinked_Test','23cm_Kinked19mm_Test','23cm_Kinked19mm_Test'};
+Kinks_20mm23cm = {'23cm_Unkinked_Test','23cm_Kinked9mm_Test','23cm_Kinked19mm_Test'};
     vals_23cm = [0,9,19];
     
     for a = 1:length(Kinks_20mm23cm)

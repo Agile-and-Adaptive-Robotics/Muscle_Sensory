@@ -9,7 +9,7 @@ testnumber = 9;
 li= 12;
 lo= 10; 
 kinks = [0,4,8,12] 
-data= AllBPA10mm13cm(AllBPA10mm13cm(:,5)==13& AllBPA10mm13cm(:,6)==0&AllBPA10mm13cm(:,7)==testnumber,:); %Data 
+data= AllBPA10mm13cm(AllBPA10mm13cm(:,5)==13& AllBPA10mm13cm(:,6)==4&AllBPA10mm13cm(:,7)==testnumber,:); %Data for optimization (F,P,t,d,l,kink,test#)
 data_pressure = data(:,2)
 data_force = data(:,1)
 

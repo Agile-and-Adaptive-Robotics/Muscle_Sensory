@@ -198,4 +198,10 @@ xlabel('Pressure(kPa)')
 ylabel('Force(N)')
 title('10mm 30cm all Kinks')
 
+%% Plot 10mm Pressurizing only
+
+figure
+hold on
+
+
 

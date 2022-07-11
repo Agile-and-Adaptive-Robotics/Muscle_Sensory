@@ -33,6 +33,20 @@ for a =1:length(Kinks_10mm13cm)
     end
 end
 
+%Separating the pressurizing and depressurizing data
+id_P = (AllBPA10mm13cm(:,8)==1);
+id_DP = (AllBPA10mm13cm(:,8)==0);
+
+AllBPA10mm13cm_P = AllBPA10mm13cm(id_P,1:8);
+AllBPA10mm13cm_DP = AllBPA10mm13cm(id_DP,1:8);
+
+figure
+plot(AllBPA10mm13cm(id_P,3),AllBPA10mm13cm(id_P,1),'bo');
+figure 
+plot(AllBPA10mm13cm(id_DP,3),AllBPA10mm13cm(id_DP,1),'ro');
+
+
+
 %% 10mm 23cm data for all lengths and kinks
 Kinks_10mm23cm = {'23cm_Unkinked_Test', '23cm_Kinked14mm_Test','23cm_Kinked30mm_Test'};
     vals_23cm= [0,14,30];
@@ -60,6 +74,16 @@ for a =1:length(Kinks_10mm23cm)
     end
 end
 
+%Separating the pressurizing and depressurizing data
+id_P = (AllBPA10mm23cm(:,8)==1);
+id_DP = (AllBPA10mm23cm(:,8)==0);
+AllBPA10mm23cm_P = AllBPA10mm23cm(id_P,1:8);
+AllBPA10mm23cm_DP = AllBPA10mm23cm(id_DP,1:8);
+figure
+plot(AllBPA10mm23cm(id_P,3),AllBPA10mm23cm(id_P,1),'bo');
+figure 
+plot(AllBPA10mm23cm(id_DP,3),AllBPA10mm23cm(id_DP,1),'ro');
+
 %% 10mm 27cm data for all lengths and kinks
 Kinks_10mm27cm = {'27cm_Unkinked_Test', '27cm_Kinked7mm_Test','27cm_Kinked15mm_Test','27cm_Kinked31mm_Test'};
     vals_27cm= [0,7,15,31];
@@ -86,6 +110,16 @@ for a =1:length(Kinks_10mm27cm)
         AllBPA10mm27cm=vertcat(AllBPA10mm27cm,RealData);
     end
 end
+
+%Separating the pressurizing and depressurizing data
+id_P = (AllBPA10mm27cm(:,8)==1);
+id_DP = (AllBPA10mm27cm(:,8)==0);
+AllBPA10mm27cm_P = AllBPA10mm27cm(id_P,1:8);
+AllBPA10mm27cm_DP = AllBPA10mm27cm(id_DP,1:8);
+figure
+plot(AllBPA10mm27cm(id_P,3),AllBPA10mm27cm(id_P,1),'bo');
+figure 
+plot(AllBPA10mm27cm(id_DP,3),AllBPA10mm27cm(id_DP,1),'ro');
 
 %% 10mm29cm 
 Kinks_10mm29cm = {'29cm_Unkinked_Test', '29cm_Kinked17mm_Test','29cm_Kinked28mm_Test','29cm_Kinked41mm_Test'};
@@ -115,6 +149,16 @@ for a =1:length(Kinks_10mm29cm)
     end
 end
 
+%Separating the pressurizing and depressurizing data
+id_P = (AllBPA10mm29cm(:,8)==1);
+id_DP = (AllBPA10mm29cm(:,8)==0);
+AllBPA10mm29cm_P = AllBPA10mm29cm(id_P,1:8);
+AllBPA10mm29cm_DP = AllBPA10mm29cm(id_DP,1:8);
+figure
+plot(AllBPA10mm29cm(id_P,3),AllBPA10mm29cm(id_P,1),'bo');
+figure 
+plot(AllBPA10mm29cm(id_DP,3),AllBPA10mm29cm(id_DP,1),'ro');
+
 
 %% 10mm30cm 
 Kinks_10mm30cm = {'30cm_Unkinked_Test','30cm_Kinked12mm_Test','30cm_Kinked22mm_Test','30cm_Kinked33mm_Test'}; 
@@ -134,7 +178,7 @@ Kinks_10mm30cm = {'30cm_Unkinked_Test','30cm_Kinked12mm_Test','30cm_Kinked22mm_T
     end
 
 
-% Combine all 10cm 29cm data into one array
+% Combine all 10cm 30cm data into one array
 AllBPA10mm30cm =BPA10mm30cm{1};
 for a =1:length(Kinks_10mm30cm)
     for i=2:10
@@ -143,8 +187,18 @@ for a =1:length(Kinks_10mm30cm)
         AllBPA10mm30cm=vertcat(AllBPA10mm30cm,RealData);
     end
 end
+%Separating the pressurizing and depressurizing data
+id_P = (AllBPA10mm30cm(:,8)==1);
+id_DP = (AllBPA10mm30cm(:,8)==0);
+AllBPA10mm30cm_P = AllBPA10mm30cm(id_P,1:8);
+AllBPA10mm30cm_DP = AllBPA10mm30cm(id_DP,1:8);
+figure
+plot(AllBPA10mm30cm(id_P,3),AllBPA10mm30cm(id_P,1),'bo');
+figure 
+plot(AllBPA10mm30cm(id_DP,3),AllBPA10mm30cm(id_DP,1),'ro');
 
 %% Combine all 10mm data into a single array
 
 AllBPA10mm = vertcat(AllBPA10mm13cm,AllBPA10mm23cm,AllBPA10mm27cm,AllBPA10mm29cm,AllBPA10mm30cm);
+
 

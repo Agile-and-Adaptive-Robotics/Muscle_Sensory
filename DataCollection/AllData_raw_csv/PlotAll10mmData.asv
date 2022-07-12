@@ -198,7 +198,9 @@ xlabel('Pressure(kPa)')
 ylabel('Force(N)')
 title('10mm 30cm all Kinks')
 
-%% Plot 10mm Separating Pressurizing and Depressurizing
+%% Plot 10mm Pressurizing only
+
+figure
 subplot 211
 plot(AllBPA10mm_P(:,2),AllBPA10mm_P(:,1),'.')
 title('10mm BPA - Pressurizing')
@@ -213,39 +215,11 @@ ylabel('Force(N)')
 
 %color labeling each lengths and its respective kinks
 figure
-subplot(121)
 plot(AllBPA10mm13cm_P(:,2),AllBPA10mm13cm_P(:,1),'.')
 hold on
 plot(AllBPA10mm23cm_P(:,2),AllBPA10mm23cm_P(:,1),'.')
-plot(AllBPA10mm27cm_P(:,2),AllBPA10mm27cm_P(:,1),'.')
-plot(AllBPA10mm29cm_P(:,2),AllBPA10mm29cm_P(:,1),'.')
-plot(AllBPA10mm30cm_P(:,2),AllBPA10mm30cm_P(:,1),'.')
-grid on
-legend('13cm','23cm','27cm','29cm','30cm')
-title('10mm BPA force-pressure relationship at various lengths (Pressurizing)')
-
-subplot(122)
-plot(AllBPA10mm13cm_DP(:,2),AllBPA10mm13cm_DP(:,1),'.')
-hold on
-plot(AllBPA10mm23cm_DP(:,2),AllBPA10mm23cm_DP(:,1),'.')
-plot(AllBPA10mm27cm_DP(:,2),AllBPA10mm27cm_DP(:,1),'.')
-plot(AllBPA10mm29cm_DP(:,2),AllBPA10mm29cm_DP(:,1),'.')
-plot(AllBPA10mm30cm_DP(:,2),AllBPA10mm30cm_DP(:,1),'.')
-grid on
-legend('13cm','23cm','27cm','29cm','30cm')
-title('10mm BPA force-pressure relationship at various lengths (Depressurizing)')
-hold off
-
-figure
-plot(AllBPA10mm_P(:,2),AllBPA10mm_P(:,1),'b.')
-hold on
-plot(AllBPA10mm_DP(:,2),AllBPA10mm_DP(:,1),'r.')
-title('Comparing Pressurizing and Depressurizing for 10mm')
-legend('Pressurizing','Depressurizing')
-grid on
-hold off
-
-
+plot(AllBPA10mm27cm_P(:,2),AllBPA10mm23cm_P(:,1),'.
+legend
 
 
 

@@ -10,13 +10,9 @@ cutlength = 13; %resting length
 restinglength = 12;
 lo = restinglength;
 li = 12; %kink length
-
-
-
-li= 10.8;
 lo= 12; 
 kinks = [0,4,8,12] 
-data= AllBPA10mm13cm_DP(AllBPA10mm13cm_DP(:,5)==cutlength& AllBPA10mm13cm_DP(:,6)==8&AllBPA10mm13cm_DP(:,7)==testnumber,:); %Data for optimization (F,P,t,d,l,kink,test#)
+data= AllBPA10mm13cm_DP(AllBPA10mm13cm_DP(:,5)==cutlength& AllBPA10mm13cm_DP(:,6)==0&AllBPA10mm13cm_DP(:,7)==testnumber,:); %Data for optimization (F,P,t,d,l,kink,test#,P/DP status)
 data_pressure = data(:,2)
 data_force = data(:,1)
 data_time = data(:,3)
@@ -28,7 +24,7 @@ title('data')
 xlabel('Pressure (kPa)')
 ylabel('Force (N)')
 figure
-plot(data_time,data_pressure,data_time,data_force,'
+plot(data_time,data_pressure,data_time,data_force,'.')
 
 %% using fmin search to optimize
 fun = @(x)sseval(x,data_pressure,data_force,li,lo);

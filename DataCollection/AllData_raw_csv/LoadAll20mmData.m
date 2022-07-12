@@ -59,7 +59,7 @@ Kinks_20mm12cm = {'12cm_Unkinked_Test','12cm_Kinked10mm_Test','12cm_Kinked20mm_T
     end
     
 %Combine all 10mm10cm data into a single array
-AllBPA20mm12cm = BPA20mm12cm{1}
+AllBPA20mm12cm = BPA20mm12cm{1};
 for a = 1:length(Kinks_20mm12cm)
     for i =2:10
         CurrentData = BPA20mm12cm{i,a};
@@ -99,7 +99,7 @@ Kinks_20mm23cm = {'23cm_Unkinked_Test','23cm_Kinked9mm_Test','23cm_Kinked19mm_Te
     end
     
 %Combine all 10mm10cm data into a single array
-AllBPA20mm23cm = BPA20mm23cm{1}
+AllBPA20mm23cm = BPA20mm23cm{1};
 for a = 1:length(Kinks_20mm23cm)
     for i =2:10
         CurrentData = BPA20mm23cm{i,a};
@@ -137,8 +137,8 @@ Kinks_20mm30cm = {'30cm_Unkinked_Test','30cm_Kinked14mm_Test','30cm_Kinked23mm_T
         end
     end
     
-%Combine all 10mm10cm data into a single array
-AllBPA20mm30cm = BPA20mm30cm{1}
+%Combine all 20mm30cm data into a single array
+AllBPA20mm30cm = BPA20mm30cm{1};
 for a = 1:length(Kinks_20mm30cm)
     for i =2:10
         CurrentData = BPA20mm30cm{i,a};
@@ -177,7 +177,7 @@ Kinks_20mm40cm = {'40cm_Unkinked_Test','40cm_Kinked35mm_Test','40cm_Kinked46mm_T
     end
     
 %Combine all 10mm10cm data into a single array
-AllBPA20mm40cm = BPA20mm40cm{1}
+AllBPA20mm40cm = BPA20mm40cm{1};
 for a = 1:length(Kinks_20mm40cm)
     for i =2:10
         CurrentData = BPA20mm40cm{i,a};
@@ -199,4 +199,6 @@ plot(AllBPA20mm40cm(id_DP,3),AllBPA20mm40cm(id_DP,1),'ro');
 %% Combine all 20mm data into a single array 
 
 AllBPA20mm = vertcat(AllBPA20mm10cm,AllBPA20mm12cm,AllBPA20mm23cm,AllBPA20mm30cm,AllBPA20mm40cm);
+AllBPA20mm_P = vertcat(AllBPA20mm10cm_P,AllBPA20mm12cm_P,AllBPA20mm23cm_P,AllBPA20mm30cm_P,AllBPA20mm40cm_P);
+AllBPA20mm_DP = vertcat(AllBPA20mm10cm_DP,AllBPA20mm12cm_DP,AllBPA20mm23cm_DP,AllBPA20mm30cm_DP,AllBPA20mm40cm_DP);
 

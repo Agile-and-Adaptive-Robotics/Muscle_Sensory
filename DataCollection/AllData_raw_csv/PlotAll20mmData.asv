@@ -135,7 +135,7 @@ plot(AllBPA20mm23cm_P(:,2),AllBPA20mm23cm_P(:,1),'.')
 plot(AllBPA20mm30cm_P(:,2),AllBPA20mm30cm_P(:,1),'.')
 plot(AllBPA20mm40cm_P(:,2),AllBPA20mm40cm_P(:,1),'.')
 grid on
-ylim([0,1400])
+ylim([0,1400]
 legend('10cm','12cm','23cm','30cm','40cm')
 title('20mm BPA force-pressure relationship at various lengths (Pressurizing)')
 

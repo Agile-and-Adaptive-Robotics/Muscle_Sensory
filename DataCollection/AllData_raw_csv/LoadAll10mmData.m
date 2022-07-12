@@ -200,5 +200,7 @@ plot(AllBPA10mm30cm(id_DP,3),AllBPA10mm30cm(id_DP,1),'ro');
 %% Combine all 10mm data into a single array
 
 AllBPA10mm = vertcat(AllBPA10mm13cm,AllBPA10mm23cm,AllBPA10mm27cm,AllBPA10mm29cm,AllBPA10mm30cm);
+AllBPA10mm_P = vertcat(AllBPA10mm13cm_P,AllBPA10mm23cm_P,AllBPA10mm27cm_P,AllBPA10mm29cm_P,AllBPA10mm30cm_P);
+AllBPA10mm_DP = vertcat(AllBPA10mm13cm_DP,AllBPA10mm23cm_DP,AllBPA10mm27cm_DP,AllBPA10mm29cm_DP,AllBPA10mm30cm_DP);
 
 

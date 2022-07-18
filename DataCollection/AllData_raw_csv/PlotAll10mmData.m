@@ -125,6 +125,7 @@ end
  testnumber = 9; %choosing test numner 9 as the standard
 %13cm
 figure
+subplot 321
 hold on
 for a = 1:length(vals_13cmkinks)
     b=vals_13cmkinks(a)
@@ -139,7 +140,7 @@ ylabel('Force(N)')
 title('10mm 13cm all Kinks')
 
 %23cm
-figure
+subplot 322
 hold on
 for a = 1:length(vals_23cmkinks)
     b=vals_23cmkinks(a)
@@ -154,7 +155,7 @@ ylabel('Force(N)')
 title('10mm 23cm all Kinks')
 
 %27cm
-figure
+subplot 323
 hold on
 for a = 1:length(vals_27cmkinks)
     b = vals_27cmkinks(a)
@@ -169,7 +170,7 @@ ylabel('Force(N)')
 title('10mm 27cm all Kinks')
 
 %29cm
-figure
+subplot 324
 hold on
 for a = 1:length(vals_29cmkinks)
     b = vals_29cmkinks(a)
@@ -184,7 +185,7 @@ ylabel('Force(N)')
 title('10mm 29cm all Kinks')
 
 %30cm
-figure
+subplot 325
 hold on
 for a = 1:length(vals_30cmkinks)
     b = vals_30cmkinks(a)
@@ -199,6 +200,7 @@ ylabel('Force(N)')
 title('10mm 30cm all Kinks')
 
 %% Plot 10mm Separating Pressurizing and Depressurizing
+figure
 subplot 211
 plot(AllBPA10mm_P(:,2),AllBPA10mm_P(:,1),'.')
 title('10mm BPA - Pressurizing')

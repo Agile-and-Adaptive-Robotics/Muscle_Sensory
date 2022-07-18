@@ -1,4 +1,5 @@
 %Plot all 20mm data
+
 % 20mm10cm 
 bpalength = 10;
 vals_10cmkinks = [0,13,20];
@@ -111,6 +112,60 @@ for a = 1:length(vals_40cmkinks)
     xlabel('Pressure(kPa)')
     ylabel('Force (N)')
 end
+%% Plot only test 9: 
+testnumber = 9; %using test 9 as standard 
+
+    %10cm
+        figure
+        hold on
+        for a = 1:length(vals_10cmkinks)
+            b= vals_10cmkinks(a)
+            data10cm_test9 = AllBPA20mm10cm(AllBPA20mm10cm(:,5)==10& AllBPA20mm10cm(:,6)==b&AllBPA20mm10cm(:,7)==testnumber,:);
+            txt = sprintf('%dmm',vals_10cmkinks(a))
+            plot(data10cm_test9(:,2),data10cm_test9(:,1),'DisplayName',txt)
+        end
+        hold off
+        legend
+        xlabel('Pressure(kPa)')
+        ylabel('Force(N)')
+        title('20mm 10cm all Kinks')
+
+    %12cm
+        figure
+        hold on
+        for a = 1:length(vals_12cmkinks)
+            b= vals_12cmkinks(a)
+            data12cm_test9 = AllBPA20mm12cm(AllBPA20mm12cm(:,5)==12& AllBPA20mm12cm(:,6)==b&AllBPA20mm12cm(:,7)==testnumber,:);
+            txt = sprintf('%dmm',vals_12cmkinks(a))
+            plot(data12cm_test9(:,2),data12cm_test9(:,1),'DisplayName',txt)
+        end
+        hold off
+        legend
+        xlabel('Pressure(kPa)')
+        ylabel('Force(N)')
+        title('20mm 12cm all Kinks')
+    %23cm
+        figure
+        hold on
+        for a = 1:length(vals_23cmkinks)
+            b= vals_23cmkinks(a)
+            data23cm_test9 = AllBPA20mm12cm(AllBPA20mm12cm(:,5)==12& AllBPA20mm12cm(:,6)==b&AllBPA20mm12cm(:,7)==testnumber,:);
+            txt = sprintf('%dmm',vals_12cmkinks(a))
+            plot(data23cm_test9(:,2),data12cm_test9(:,1),'DisplayName',txt)
+        end
+        hold off
+        legend
+        xlabel('Pressure(kPa)')
+        ylabel('Force(N)')
+        title('20mm 12cm all Kinks')
+
+    %30cm
+
+    %40cm
+
+
+
+
 %% Plot 20mm separating pressurizing and depressurizing data
 figure
 subplot 211
@@ -135,7 +190,7 @@ plot(AllBPA20mm23cm_P(:,2),AllBPA20mm23cm_P(:,1),'.')
 plot(AllBPA20mm30cm_P(:,2),AllBPA20mm30cm_P(:,1),'.')
 plot(AllBPA20mm40cm_P(:,2),AllBPA20mm40cm_P(:,1),'.')
 grid on
-ylim([0,1400]
+ylim([0,1400])
 legend('10cm','12cm','23cm','30cm','40cm')
 title('20mm BPA force-pressure relationship at various lengths (Pressurizing)')
 
@@ -159,6 +214,11 @@ title('Comparing Pressurizing and Depressurizing for 20mm')
 legend('Pressurizing','Depressurizing')
 grid on
 hold off
+
+
+%% Plotting only test 9 
+testnumber = 9;
+
 
 
 

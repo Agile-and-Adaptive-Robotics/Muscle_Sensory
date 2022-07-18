@@ -1,6 +1,5 @@
 %% 10mm - 3d plot for selected data with strain calculations (Test 9 only) 
 % 10mm all
-close all;
 % figure
 % 
 % strain_10mm = 100*(AllBPA10mm(:,9)-AllBPA10mm(:,11))./AllBPA10mm(:,9); %percent
@@ -33,10 +32,12 @@ close all;
     relative_strain_10mm27cm = strain_10mm27cm./maxstrain_27cm;
     relative_strain_10mm29cm = strain_10mm29cm./maxstrain_29cm;
     relative_strain_10mm30cm = strain_10mm30cm./maxstrain_30cm;
-    
+%separate strains into P/DP
+
+
 
 %% Plot all separately to see the differences (10mm all lengths and kinks) 
-%10mm 13cm
+%10mm (13cm,23cm,27cm,29cm,30cm) 
 figure
 plot3(AllBPA10mm13cm(:,2),relative_strain_10mm13cm,AllBPA10mm13cm(:,1),'.');
 hold on
@@ -51,4 +52,39 @@ title('10mm: Force-pressure-normalized strain relationship')
 legend('13cm','23cm','27cm','29cm','30cm');
 grid on
 hold off
+%% Separate in to P and DP (3D plot) 
+figure
+subplot 121
+plot3(AllBPA10mm13cm_P(:,2),AllBPA10mm13cm_P(:,13),AllBPA10mm13cm_P(:,1),'.');
+hold on
+plot3(AllBPA10mm23cm_P(:,2),AllBPA10mm23cm_P(:,13),AllBPA10mm23cm_P(:,1),'.');
+plot3(AllBPA10mm27cm_P(:,2),AllBPA10mm27cm_P(:,13),AllBPA10mm27cm_P(:,1),'.');
+plot3(AllBPA10mm29cm_P(:,2),AllBPA10mm29cm_P(:,13),AllBPA10mm29cm_P(:,1),'.');
+plot3(AllBPA10mm30cm_P(:,2),AllBPA10mm30cm_P(:,13),AllBPA10mm30cm_P(:,1),'.');
+xlabel('pressure (kPa)')
+zlabel('Force(N)')
+ylabel('Relative Strain')
+title('10mm: (P) Force-pressure-normalized strain relationship')
+legend('13cm','23cm','27cm','29cm','30cm');
+grid on
+hold off
+
+subplot 122
+plot3(AllBPA10mm13cm_DP(:,2),AllBPA10mm13cm_DP(:,13),AllBPA10mm13cm_DP(:,1),'.');
+hold on
+plot3(AllBPA10mm23cm_DP(:,2),AllBPA10mm23cm_DP(:,13),AllBPA10mm23cm_DP(:,1),'.');
+plot3(AllBPA10mm27cm_DP(:,2),AllBPA10mm27cm_DP(:,13),AllBPA10mm27cm_DP(:,1),'.');
+plot3(AllBPA10mm29cm_DP(:,2),AllBPA10mm29cm_DP(:,13),AllBPA10mm29cm_DP(:,1),'.');
+plot3(AllBPA10mm30cm_DP(:,2),AllBPA10mm30cm_DP(:,13),AllBPA10mm30cm_DP(:,1),'.');
+xlabel('pressure (kPa)')
+zlabel('Force(N)')
+ylabel('Relative Strain')
+title('10mm: (DP) Force-pressure-normalized strain relationship')
+legend('13cm','23cm','27cm','29cm','30cm');
+grid on
+hold off
+
+
+%% Plot only test 9 
+
 

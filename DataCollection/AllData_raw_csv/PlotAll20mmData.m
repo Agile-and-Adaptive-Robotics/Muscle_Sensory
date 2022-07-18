@@ -1,3 +1,4 @@
+clc;
 %Plot all 20mm data
 % 20mm10cm 
 bpalength = 10;
@@ -111,6 +112,86 @@ for a = 1:length(vals_40cmkinks)
     xlabel('Pressure(kPa)')
     ylabel('Force (N)')
 end
+%% Plot only test 9: 
+testnumber = 9; %using test 9 as standard 
+
+    %10cm
+        figure
+        hold on
+        for a = 1:length(vals_10cmkinks)
+            b= vals_10cmkinks(a)
+            data10cm_test9 = AllBPA20mm10cm(AllBPA20mm10cm(:,5)==10& AllBPA20mm10cm(:,6)==b&AllBPA20mm10cm(:,7)==testnumber,:);
+            txt = sprintf('%dmm',vals_10cmkinks(a))
+            plot(data10cm_test9(:,2),data10cm_test9(:,1),'DisplayName',txt)
+        end
+        hold off
+        legend
+        xlabel('Pressure(kPa)')
+        ylabel('Force(N)')
+        title('20mm 10cm all Kinks - Test 9')
+
+    %12cm
+        figure
+        hold on
+        for a = 1:length(vals_12cmkinks)
+            b= vals_12cmkinks(a)
+            data12cm_test9 = AllBPA20mm12cm(AllBPA20mm12cm(:,5)==12& AllBPA20mm12cm(:,6)==b&AllBPA20mm12cm(:,7)==testnumber,:);
+            txt = sprintf('%dmm',vals_12cmkinks(a))
+            plot(data12cm_test9(:,2),data12cm_test9(:,1),'DisplayName',txt)
+        end
+        hold off
+        legend
+        xlabel('Pressure(kPa)')
+        ylabel('Force(N)')
+        title('20mm 12cm all Kinks - Test 9')
+    %23cm
+        figure
+        hold on
+        for a = 1:length(vals_23cmkinks)
+            b= vals_23cmkinks(a)
+            data23cm_test9 = AllBPA20mm23cm(AllBPA20mm23cm(:,5)==23& AllBPA20mm23cm(:,6)==b&AllBPA20mm23cm(:,7)==testnumber,:);
+            txt = sprintf('%dmm',vals_23cmkinks(a))
+            plot(data23cm_test9(:,2),data23cm_test9(:,1),'DisplayName',txt)
+        end
+        hold off
+        legend
+        xlabel('Pressure(kPa)')
+        ylabel('Force(N)')
+        title('20mm 23cm all Kinks - Test 9')
+
+    %30cm
+        figure
+        hold on
+        for a = 1:length(vals_30cmkinks)
+            b= vals_30cmkinks(a)
+            data30cm_test9 = AllBPA20mm30cm(AllBPA20mm30cm(:,5)==30& AllBPA20mm30cm(:,6)==b&AllBPA20mm30cm(:,7)==testnumber,:);
+            txt = sprintf('%dmm',vals_30cmkinks(a))
+            plot(data30cm_test9(:,2),data30cm_test9(:,1),'DisplayName',txt)
+        end
+        hold off
+        legend
+        xlabel('Pressure(kPa)')
+        ylabel('Force(N)')
+        title('20mm 30cm all Kinks - Test 9')
+
+    %40cm
+        figure
+        hold on
+        for a = 1:length(vals_40cmkinks)
+            b= vals_40cmkinks(a)
+            data40cm_test9 = AllBPA20mm40cm(AllBPA20mm40cm(:,5)==40& AllBPA20mm40cm(:,6)==b&AllBPA20mm40cm(:,7)==testnumber,:);
+            txt = sprintf('%dmm',vals_40cmkinks(a))
+            plot(data40cm_test9(:,2),data40cm_test9(:,1),'DisplayName',txt)
+        end
+        hold off
+        legend
+        xlabel('Pressure(kPa)')
+        ylabel('Force(N)')
+        title('20mm 40cm all Kinks - Test 9')
+
+
+
+
 %% Plot 20mm separating pressurizing and depressurizing data
 figure
 subplot 211
@@ -159,6 +240,11 @@ title('Comparing Pressurizing and Depressurizing for 20mm')
 legend('Pressurizing','Depressurizing')
 grid on
 hold off
+
+
+%% Plotting only test 9 
+testnumber = 9;
+
 
 
 

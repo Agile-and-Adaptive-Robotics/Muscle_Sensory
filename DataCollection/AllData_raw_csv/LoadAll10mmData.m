@@ -54,10 +54,17 @@ id_DP = (AllBPA10mm13cm(:,8)==0);
 AllBPA10mm13cm_P = AllBPA10mm13cm(id_P,1:13);
 AllBPA10mm13cm_DP = AllBPA10mm13cm(id_DP,1:13);
 
-figure
-plot(AllBPA10mm13cm(id_P,3),AllBPA10mm13cm(id_P,1),'bo');
-figure 
-plot(AllBPA10mm13cm(id_DP,3),AllBPA10mm13cm(id_DP,1),'ro');
+% figure
+% subplot 121
+% plot(AllBPA10mm13cm(id_P,3),AllBPA10mm13cm(id_P,1),'b.');
+% xlabel('time (s)')
+% ylabel('Force(N)')
+% title('10mm 13cm Pressurizing - all kinks')
+% subplot 122
+% plot(AllBPA10mm13cm(id_DP,3),AllBPA10mm13cm(id_DP,1),'r.');
+% title('10mm 13cm Depressurizing - all kinks')
+% xlabel('time (s)')
+% ylabel('Force(N)')
 
 
 
@@ -146,10 +153,10 @@ id_P = (AllBPA10mm27cm(:,8)==1);
 id_DP = (AllBPA10mm27cm(:,8)==0);
 AllBPA10mm27cm_P = AllBPA10mm27cm(id_P,1:13);
 AllBPA10mm27cm_DP = AllBPA10mm27cm(id_DP,1:13);
-figure
-plot(AllBPA10mm27cm(id_P,3),AllBPA10mm27cm(id_P,1),'bo');
-figure 
-plot(AllBPA10mm27cm(id_DP,3),AllBPA10mm27cm(id_DP,1),'ro');
+% figure
+% plot(AllBPA10mm27cm(id_P,3),AllBPA10mm27cm(id_P,1),'bo');
+% figure 
+% plot(AllBPA10mm27cm(id_DP,3),AllBPA10mm27cm(id_DP,1),'ro');
 
 %% 10mm29cm 
 Kinks_10mm29cm = {'29cm_Unkinked_Test', '29cm_Kinked17mm_Test','29cm_Kinked28mm_Test','29cm_Kinked41mm_Test'};
@@ -192,10 +199,10 @@ id_P = (AllBPA10mm29cm(:,8)==1);
 id_DP = (AllBPA10mm29cm(:,8)==0);
 AllBPA10mm29cm_P = AllBPA10mm29cm(id_P,1:13);
 AllBPA10mm29cm_DP = AllBPA10mm29cm(id_DP,1:13);
-figure
-plot(AllBPA10mm29cm(id_P,3),AllBPA10mm29cm(id_P,1),'bo');
-figure 
-plot(AllBPA10mm29cm(id_DP,3),AllBPA10mm29cm(id_DP,1),'ro');
+% figure
+% plot(AllBPA10mm29cm(id_P,3),AllBPA10mm29cm(id_P,1),'bo');
+% figure 
+% plot(AllBPA10mm29cm(id_DP,3),AllBPA10mm29cm(id_DP,1),'ro');
 
 
 %% 10mm30cm 
@@ -238,10 +245,10 @@ id_P = (AllBPA10mm30cm(:,8)==1);
 id_DP = (AllBPA10mm30cm(:,8)==0);
 AllBPA10mm30cm_P = AllBPA10mm30cm(id_P,1:13);
 AllBPA10mm30cm_DP = AllBPA10mm30cm(id_DP,1:13);
-figure
-plot(AllBPA10mm30cm(id_P,3),AllBPA10mm30cm(id_P,1),'bo');
-figure 
-plot(AllBPA10mm30cm(id_DP,3),AllBPA10mm30cm(id_DP,1),'ro');
+% figure
+% plot(AllBPA10mm30cm(id_P,3),AllBPA10mm30cm(id_P,1),'bo');
+% figure 
+% plot(AllBPA10mm30cm(id_DP,3),AllBPA10mm30cm(id_DP,1),'ro');
 
 %% Combine all 10mm data into a single array
 

@@ -24,6 +24,7 @@ for a = 1:length(vals_13cmkinks)
     title(str)
     xlabel('Pressure(kPa)')
     ylabel('Force(N)')
+    legend
 end
 
 %% 10mm23cm

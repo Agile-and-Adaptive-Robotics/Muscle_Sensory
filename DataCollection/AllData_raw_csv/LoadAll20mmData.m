@@ -52,10 +52,10 @@ id_DP = (AllBPA20mm10cm(:,8)==0);
 AllBPA20mm10cm_P = AllBPA20mm10cm(id_P,1:13);
 AllBPA20mm10cm_DP = AllBPA20mm10cm(id_DP,1:13);
 
-figure
-plot(AllBPA20mm10cm(id_P,3),AllBPA20mm10cm(id_P,1),'bo');
-figure 
-plot(AllBPA20mm10cm(id_DP,3),AllBPA20mm10cm(id_DP,1),'ro');
+% figure
+% plot(AllBPA20mm10cm(id_P,3),AllBPA20mm10cm(id_P,1),'bo');
+% figure 
+% plot(AllBPA20mm10cm(id_DP,3),AllBPA20mm10cm(id_DP,1),'ro');
 
 %% 20mm12cm
 Kinks_20mm12cm = {'12cm_Unkinked_Test','12cm_Kinked10mm_Test','12cm_Kinked20mm_Test'};
@@ -97,11 +97,11 @@ id_P = (AllBPA20mm12cm(:,8)==1);
 id_DP = (AllBPA20mm12cm(:,8)==0);
 AllBPA20mm12cm_P = AllBPA20mm12cm(id_P,1:13);
 AllBPA20mm12cm_DP = AllBPA20mm12cm(id_DP,1:13);
-
-figure
-plot(AllBPA20mm12cm(id_P,3),AllBPA20mm12cm(id_P,1),'bo');
-figure 
-plot(AllBPA20mm12cm(id_DP,3),AllBPA20mm12cm(id_DP,1),'ro');
+% 
+% figure
+% plot(AllBPA20mm12cm(id_P,3),AllBPA20mm12cm(id_P,1),'bo');
+% figure 
+% plot(AllBPA20mm12cm(id_DP,3),AllBPA20mm12cm(id_DP,1),'ro');
 
 
 
@@ -146,10 +146,10 @@ id_DP = (AllBPA20mm23cm(:,8)==0);
 AllBPA20mm23cm_P = AllBPA20mm23cm(id_P,1:13);
 AllBPA20mm23cm_DP = AllBPA20mm23cm(id_DP,1:13);
 
-figure
-plot(AllBPA20mm23cm(id_P,3),AllBPA20mm23cm(id_P,1),'bo');
-figure 
-plot(AllBPA20mm23cm(id_DP,3),AllBPA20mm23cm(id_DP,1),'ro');
+% figure
+% plot(AllBPA20mm23cm(id_P,3),AllBPA20mm23cm(id_P,1),'bo');
+% figure 
+% plot(AllBPA20mm23cm(id_DP,3),AllBPA20mm23cm(id_DP,1),'ro');
 
 
 %% 20mm 30cm
@@ -194,10 +194,10 @@ id_DP = (AllBPA20mm30cm(:,8)==0);
 AllBPA20mm30cm_P = AllBPA20mm30cm(id_P,1:13);
 AllBPA20mm30cm_DP =AllBPA20mm30cm(id_DP,1:13);
 
-figure
-plot(AllBPA20mm30cm(id_P,3),AllBPA20mm30cm(id_P,1),'bo');
-figure 
-plot(AllBPA20mm30cm(id_DP,3),AllBPA20mm30cm(id_DP,1),'ro');
+% figure
+% plot(AllBPA20mm30cm(id_P,3),AllBPA20mm30cm(id_P,1),'bo');
+% figure 
+% plot(AllBPA20mm30cm(id_DP,3),AllBPA20mm30cm(id_DP,1),'ro');
 
 %% 20mm 40cm 
 Kinks_20mm40cm = {'40cm_Unkinked_Test','40cm_Kinked35mm_Test','40cm_Kinked46mm_Test','40cm_Kinked69mm_Test'};
@@ -241,10 +241,10 @@ AllBPA20mm40cm_P = AllBPA20mm40cm(id_P,1:13);
 AllBPA20mm40cm_DP = AllBPA20mm40cm(id_DP,1:13);
 
 
-figure
-plot(AllBPA20mm40cm(id_P,3),AllBPA20mm40cm(id_P,1),'bo');
-figure 
-plot(AllBPA20mm40cm(id_DP,3),AllBPA20mm40cm(id_DP,1),'ro');
+% figure
+% plot(AllBPA20mm40cm(id_P,3),AllBPA20mm40cm(id_P,1),'bo');
+% figure 
+% plot(AllBPA20mm40cm(id_DP,3),AllBPA20mm40cm(id_DP,1),'ro');
 %% Combine all 20mm data into a single array 
 
 AllBPA20mm = vertcat(AllBPA20mm10cm,AllBPA20mm12cm,AllBPA20mm23cm,AllBPA20mm30cm,AllBPA20mm40cm);

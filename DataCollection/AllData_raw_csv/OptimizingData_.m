@@ -1,16 +1,18 @@
 %% Optimizing Data - Curve fitting via optimization
-% BPA Parameters
+% BPA Parameters (parameters to enter to select a specific set of data)
     lo = 12;
     li = 12;
     l620 = 10;
     diameter = 10;
     lengths = 29;
+    kink = 0; 
+    initiallength = ;
     testnumber = 3;
-    %state = 'P'; %P= pressurizig, DP = depressurizing
+    state = 'P'; %P= pressurizig, DP = depressurizing
 
 %assigning data: P,F,t   k = sprintf('10mm_%s%s.csv',Kinks_10mm13cm{a},test)
     %Pressurizing
-        data_P = eval(sprintf('AllBPA%dmm%dcm_P',diameter,lengths));
+        data_P = eval(sprintf('AllBPA%dmm%dcm_P',diameter,lengths)); %mod this to select one specific set of data only. 
         data_force_P = data_P(:,1);
         data_pressure_P = data_P(:,2);
         data_time_P = data_P(:,3);

@@ -122,7 +122,7 @@ end
 
 
 
-%%
+%% Plot test 9 only
  testnumber = 9; %choosing test numner 9 as the standard
 %13cm
 figure

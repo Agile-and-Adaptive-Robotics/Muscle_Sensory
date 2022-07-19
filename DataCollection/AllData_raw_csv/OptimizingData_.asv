@@ -1,0 +1,41 @@
+%% Optimizing Data - Curve fitting via optimization
+% BPA Parameters (parameters to enter to select a specific set of data)
+    lo = 12;
+    li = 12;
+    l620 = 10;
+    diameter = 10;
+    lengths = 13;
+    kink = 0; 
+    initiallength =0;
+    testnum = 3;
+    state = 'P'; %P= pressurizig, DP = depressurizing
+
+ %extracting specific set of data
+     data_chosen = data_select(diameter,lengths,kink,testnum,state); %selected diameter|length|state
+     data_eval = eval(data_chosen);
+     data = data_eval(data_eval(:,6)==kink& data_eval(:,7)==testnum,:); %selected kink|testnumber
+     
+ %Assigning P|F|t
+ da
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+% data_P = eval(data_select(diameter,lengths,kink,testnum,'P'));  %choosing specified data(function data_select) 
+% data_DP = eval(data_select(diameter,lengths,kink,testnum,'DP'));
+    
+    
+

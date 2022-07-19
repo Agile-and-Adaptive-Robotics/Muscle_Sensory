@@ -2,7 +2,7 @@ close all; clc;
 
 %% Diameter: 10mm
 diameter = {'10'};
-lengths = {'13','23','27','29','30'}
+lengths_10mm = {'13','23','27','29','30'}
 
 % Calculating strains and relative strains
 %10mm

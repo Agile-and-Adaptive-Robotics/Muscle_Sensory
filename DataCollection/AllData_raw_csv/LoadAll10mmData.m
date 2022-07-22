@@ -44,7 +44,7 @@ AllBPA10mm13cm =BPA10mm13cm{1};
 for a =1:length(Kinks_10mm13cm)
     for i=2:10
         CurrentData= BPA10mm13cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>5,:); %%%
+        RealData= CurrentData(CurrentData(:,1)>10,:); %%%
         AllBPA10mm13cm=vertcat(AllBPA10mm13cm,RealData);%CurrentData);%RealData);
     end
 end

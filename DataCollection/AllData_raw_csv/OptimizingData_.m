@@ -7,7 +7,7 @@ close all;clc;
     diameter = 10;
     lengths = 13;
     %kink =12;  
-    kink= [0,4,8,12];
+    kink= [0 4 8 12];
     initiallength =0;
     testnum = 9;
     state = 'DP'; %P= pressurizig, DP = depressurizing
@@ -26,7 +26,7 @@ close all;clc;
         data_relativestrain{i} = data{i}(:,13);
         figure
         plot(data_pressure{i},data_force{i},'b.')
-        title(data_chosen)
+        title('10mm13cm',kink(i))
         xlabel('Pressure(kPa)')
         ylabel('Force(N)')
         grid on
@@ -37,7 +37,7 @@ fun = @(x)sseval(x,data_pressure{i},data_force{i},li,lo);
 
 %Best fitting parameters(x0)
 x0 = [0.6184,-41.219,2.1,3]; %random values (#of parameters = # of entries) 
-bestx =fminsearch(fun,x0) 
+bestx = fminsearch(fun,x0) 
 
 %Test fit quality
 a0 = bestx(1);
@@ -53,7 +53,7 @@ hold on
 plot(data_pressure{i},yfit{i}, 'r');
 xlabel('Pressure(kPa)');
 ylabel('Force (N)');
-title('Data and Fitting Curve')
+title('Data and Fitting Curve',kink(i))
 legend('Data','Fit');
 grid on
 hold off

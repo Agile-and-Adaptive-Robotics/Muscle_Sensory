@@ -78,8 +78,8 @@ for a = 1:length(vals_12cmkinks)
     hold off
     legend
     title(str)
-    xlabel('Pressure(kPa)')
-    ylabel('Time(s)')
+    ylabel('Pressure(kPa)')
+    xlabel('Time(s)')
 end
 
 
@@ -119,8 +119,8 @@ for a = 1:length(vals_23cmkinks)
     hold off
     legend
     title(str)
-    xlabel('Pressure(kPa)')
-    ylabel('Time(s)')
+    ylabel('Pressure(kPa)')
+    xlabel('Time(s)')
 end
 
 
@@ -145,7 +145,7 @@ for a = 1:length(vals_30cmkinks)
     xlabel('Pressure(kPa)')
     ylabel('Force (N)')
 end
-figure
+
 bpalength = 30;
 vals_30cmkinks = [0,14,23,34]
 figure
@@ -163,8 +163,8 @@ for a = 1:length(vals_30cmkinks)
     hold off
     legend
     title(str)
-    xlabel('Pressure(kPa)')
-    ylabel('Time(s)')
+    ylabel('Pressure(kPa)')
+    xlabel('Time(s)')
 end
 
 
@@ -198,14 +198,14 @@ for a = 1:length(vals_40cmkinks)
     for i = 1:10
         test = num2str(i);
         data40cm = AllBPA20mm40cm(AllBPA20mm40cm(:,5)==bpalength&AllBPA20mm40cm(:,6)==b&AllBPA20mm40cm(:,7)==i,:); 
-        txt = sprintf('%sTest%s',str,test)
+        txt = sprintf('%sTest%s',str,test);
         plot(data40cm(:,3),data40cm(:,1),'DisplayName',txt)
     end
     hold off
     legend
     title(str)
-    xlabel('Pressure(kPa)')
-    ylabel('Time(s)')
+    ylabel('Pressure(kPa)')
+    xlabel('Time(s)')
 end
 
 %% Check test 9 if they're consistent(find best test)
@@ -253,6 +253,7 @@ testnumber = 9; %using test 9 as standard
 
     %10cm
         figure
+        subplot 321
         hold on
         for a = 1:length(vals_10cmkinks)
             b= vals_10cmkinks(a);
@@ -267,7 +268,7 @@ testnumber = 9; %using test 9 as standard
         title('20mm 10cm all Kinks - Test 9')
 
     %12cm
-        figure
+        subplot 322
         hold on
         for a = 1:length(vals_12cmkinks)
             b= vals_12cmkinks(a);
@@ -281,7 +282,7 @@ testnumber = 9; %using test 9 as standard
         ylabel('Force(N)')
         title('20mm 12cm all Kinks - Test 9')
     %23cm
-        figure
+        subplot 323
         hold on
         for a = 1:length(vals_23cmkinks)
             b= vals_23cmkinks(a);
@@ -296,7 +297,7 @@ testnumber = 9; %using test 9 as standard
         title('20mm 23cm all Kinks - Test 9')
 
     %30cm
-        figure
+        subplot 324
         hold on
         for a = 1:length(vals_30cmkinks)
             b= vals_30cmkinks(a);
@@ -311,7 +312,7 @@ testnumber = 9; %using test 9 as standard
         title('20mm 30cm all Kinks - Test 9')
 
     %40cm
-        figure
+        subplot 325
         hold on
         for a = 1:length(vals_40cmkinks)
             b= vals_40cmkinks(a);

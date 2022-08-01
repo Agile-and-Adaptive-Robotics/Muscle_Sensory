@@ -25,7 +25,7 @@ Kinks_20mm10cm = {'10cm_Unkinked_Test','10cm_Kinked13mm_Test','10cm_Kinked20mm_T
             BPA20mm10cm{i,a}(:,5) = 10;
             BPA20mm10cm{i,a}(:,6) = ones(length(BPA20mm10cm{i}),1)*vals_10cm(a); %col5 = kinks
             BPA20mm10cm{i,a}(:,7) = ones(length(BPA20mm10cm{i}),1)*i;%col6 = Test#
-            idx = BPA20mm10cm{i,a}(:,3) <=20; %indexing the pressurizing part
+            idx = BPA20mm10cm{i,a}(:,3) <=27; %indexing the pressurizing part
             BPA20mm10cm{i,a}(idx,8) = 1; %pressurizing = #1 on column 8, depressurizing = 0;
             BPA20mm10cm{i,a}(:,9) = lo;
             BPA20mm10cm{i,a}(:,10) = l620;
@@ -78,7 +78,7 @@ Kinks_20mm12cm = {'12cm_Unkinked_Test','12cm_Kinked10mm_Test','12cm_Kinked20mm_T
             BPA20mm12cm{i,a}(:,5) = 12;                                 %col 5 = length 
             BPA20mm12cm{i,a}(:,6) = ones(length(BPA20mm12cm{i}),1)*vals_12cm(a); %col6 = kinks
             BPA20mm12cm{i,a}(:,7) = ones(length(BPA20mm12cm{i}),1)*i;%col7 = Test#
-            idx = BPA20mm12cm{i,a}(:,3) <=23; %indexing the pressurizing part
+            idx = BPA20mm12cm{i,a}(:,3) <=27; %indexing the pressurizing part
             BPA20mm12cm{i,a}(idx,8) = 1; %pressurizing = #1 on column 8, depressurizing = 0;
             BPA20mm12cm{i,a}(:,9) = lo;
             BPA20mm12cm{i,a}(:,10) = l620;
@@ -131,7 +131,7 @@ Kinks_20mm23cm = {'23cm_Unkinked_Test','23cm_Kinked9mm_Test','23cm_Kinked19mm_Te
             BPA20mm23cm{i,a}(:,5) = 23;                                 %col 5 = length 
             BPA20mm23cm{i,a}(:,6) = ones(length(BPA20mm23cm{i}),1)*vals_23cm(a); %col6 = kinks
             BPA20mm23cm{i,a}(:,7) = ones(length(BPA20mm23cm{i}),1)*i;%col7 = Test#
-            idx = BPA20mm23cm{i,a}(:,3) <=25; %indexing the pressurizing part
+            idx = BPA20mm23cm{i,a}(:,3) <=27; %indexing the pressurizing part
             BPA20mm23cm{i,a}(idx,8) = 1 ;%pressurizing = #1 on column 8, depressurizing = 0;
             BPA20mm23cm{i,a}(:,9) = lo;
             BPA20mm23cm{i,a}(:,10) = l620;
@@ -181,7 +181,7 @@ Kinks_20mm30cm = {'30cm_Unkinked_Test','30cm_Kinked14mm_Test','30cm_Kinked23mm_T
             BPA20mm30cm{i,a}(:,5) = 30;                                 %col 5 = length 
             BPA20mm30cm{i,a}(:,6) = ones(length(BPA20mm30cm{i}),1)*vals_30cm(a); %col6 = kinks
             BPA20mm30cm{i,a}(:,7) = ones(length(BPA20mm30cm{i}),1)*i;%col7 = Test#
-            idx = BPA20mm30cm{i,a}(:,3) <=25; %indexing the pressurizing part
+            idx = BPA20mm30cm{i,a}(:,3) <=27; %indexing the pressurizing part
             BPA20mm30cm{i,a}(idx,8) = 1; %pressurizing = #1 on column 8, depressurizing = 0;
             BPA20mm30cm{i,a}(:,9) = lo;
             BPA20mm30cm{i,a}(:,10) = l620;
@@ -233,7 +233,7 @@ Kinks_20mm40cm = {'40cm_Unkinked_Test','40cm_Kinked35mm_Test','40cm_Kinked46mm_T
             BPA20mm40cm{i,a}(:,5) = 40;                                 %col 5 = length 
             BPA20mm40cm{i,a}(:,6) = ones(length(BPA20mm40cm{i}),1)*vals_40cm(a); %col6 = kinks
             BPA20mm40cm{i,a}(:,7) = ones(length(BPA20mm40cm{i}),1)*i;   %col7 = Test#
-            idx = BPA20mm40cm{i,a}(:,3) <=29; %indexing the pressurizing part
+            idx = BPA20mm40cm{i,a}(:,3) <=27; %indexing the pressurizing part
             BPA20mm40cm{i,a}(idx,8) = 1 ;%pressurizing = #1 on column 8, depressurizing = 0;
             BPA20mm40cm{i,a}(:,9) = lo;
             BPA20mm40cm{i,a}(:,10) = l620;
@@ -259,13 +259,13 @@ AllBPA20mm40cm_P = AllBPA20mm40cm(id_P,1:13);
 AllBPA20mm40cm_DP = AllBPA20mm40cm(id_DP,1:13);
 
 
-figure
-subplot 121
-plot(AllBPA20mm40cm(id_P,3),AllBPA20mm40cm(id_P,1),'bo');
+% figure
+subplot 
+% plot(AllBPA20mm40cm(id_P,3),AllBPA20mm40cm(id_P,1),'bo');
 subplot 122 
-plot(AllBPA20mm40cm(id_DP,3),AllBPA20mm40cm(id_DP,1),'ro');
+% plot(AllBPA20mm40cm(id_DP,3),AllBPA20mm40cm(id_DP,1),'ro');
 
-title('20mm40cm all kinks')
+title('20mm10cm all kinks')
 xlabel('Time(s)')
 ylabel('Force(N)')
 %% Combine all 20mm data into a single array 

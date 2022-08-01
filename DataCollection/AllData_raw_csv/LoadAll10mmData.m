@@ -26,8 +26,8 @@ li = [12,11.6,11.2,10.8];
             BPA10mm13cm{i,a}(:,5) = 13;
             BPA10mm13cm{i,a}(:,6) = ones(length(BPA10mm13cm{i}),1)*vals_13cm(a); %col6 = kinks
             BPA10mm13cm{i,a}(:,7) = ones(length(BPA10mm13cm{i}),1)*i%col7 = Test#
-            idx = BPA10mm13cm{i,a}(:,3) <27; %indexing the pressurizing part
-            idx_DP = BPA10mm13cm{i,a}(:,3) >=27;
+            idx = BPA10mm13cm{i,a}(:,3) <17; %indexing the pressurizing part
+            idx_DP = BPA10mm13cm{i,a}(:,3) >=17;
             BPA10mm13cm{i,a}(idx_DP,8) =0;
             BPA10mm13cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
             BPA10mm13cm{i,a}(:,9) = lo;
@@ -84,7 +84,7 @@ Kinks_10mm23cm = {'23cm_Unkinked_Test', '23cm_Kinked14mm_Test','23cm_Kinked30mm_
             BPA10mm23cm{i,a}(:,5) = 23;
             BPA10mm23cm{i,a}(:,6) = ones(length(BPA10mm23cm{i}),1)*vals_23cm(a); %col5 = kinks
             BPA10mm23cm{i,a}(:,7) = ones(length(BPA10mm23cm{i}),1)*i%col6 = Test#
-            idx = BPA10mm23cm{i,a}(:,3) <=27; %indexing the pressurizing part
+            idx = BPA10mm23cm{i,a}(:,3) <=17; %indexing the pressurizing part
             BPA10mm23cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
             BPA10mm23cm{i,a}(:,9) = lo;
             BPA10mm23cm{i,a}(:,10)= l620;
@@ -110,10 +110,15 @@ id_P = (AllBPA10mm23cm(:,8)==1);
 id_DP = (AllBPA10mm23cm(:,8)==0);
 AllBPA10mm23cm_P = AllBPA10mm23cm(id_P,1:13);
 AllBPA10mm23cm_DP = AllBPA10mm23cm(id_DP,1:13);
-% figure
-% plot(AllBPA10mm23cm(id_P,3),AllBPA10mm23cm(id_P,1),'bo');
-% figure 
-% plot(AllBPA10mm23cm(id_DP,3),AllBPA10mm23cm(id_DP,1),'ro');
+figure
+subplot 121
+plot(AllBPA10mm23cm(id_P,3),AllBPA10mm23cm(id_P,1),'bo');
+subplot 122
+plot(AllBPA10mm23cm(id_DP,3),AllBPA10mm23cm(id_DP,1),'ro');
+title('10mm23cm all kinks')
+xlabel('Time(s)')
+ylabel('Force(N)')
+grid on
 
 %% 10mm 27cm data for all lengths and kinks
 Kinks_10mm27cm = {'27cm_Unkinked_Test', '27cm_Kinked7mm_Test','27cm_Kinked15mm_Test','27cm_Kinked31mm_Test'};
@@ -129,7 +134,7 @@ Kinks_10mm27cm = {'27cm_Unkinked_Test', '27cm_Kinked7mm_Test','27cm_Kinked15mm_T
             BPA10mm27cm{i,a}(:,5) = 27;
             BPA10mm27cm{i,a}(:,6) = ones(length(BPA10mm27cm{i}),1)*vals_27cm(a); %col5 = kinks
             BPA10mm27cm{i,a}(:,7) = ones(length(BPA10mm27cm{i}),1)*i%col6 = Test#
-            idx = BPA10mm27cm{i,a}(:,3) <=27; %indexing the pressurizing part
+            idx = BPA10mm27cm{i,a}(:,3) <=17; %indexing the pressurizing part
             BPA10mm27cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
             BPA10mm27cm{i,a}(:,9) = lo;
             BPA10mm27cm{i,a}(:,10)= l620;
@@ -155,10 +160,15 @@ id_P = (AllBPA10mm27cm(:,8)==1);
 id_DP = (AllBPA10mm27cm(:,8)==0);
 AllBPA10mm27cm_P = AllBPA10mm27cm(id_P,1:13);
 AllBPA10mm27cm_DP = AllBPA10mm27cm(id_DP,1:13);
-% figure
-% plot(AllBPA10mm27cm(id_P,3),AllBPA10mm27cm(id_P,1),'bo');
-% figure 
-% plot(AllBPA10mm27cm(id_DP,3),AllBPA10mm27cm(id_DP,1),'ro');
+figure
+subplot 121
+plot(AllBPA10mm27cm(id_P,3),AllBPA10mm27cm(id_P,1),'bo');
+subplot 122
+plot(AllBPA10mm27cm(id_DP,3),AllBPA10mm27cm(id_DP,1),'ro');
+title('10mm27cm all kinks')
+xlabel('Time(s)')
+ylabel('Force(N)')
+grid on
 
 %% 10mm29cm 
 Kinks_10mm29cm = {'29cm_Unkinked_Test', '29cm_Kinked17mm_Test','29cm_Kinked28mm_Test','29cm_Kinked41mm_Test'};
@@ -175,7 +185,7 @@ Kinks_10mm29cm = {'29cm_Unkinked_Test', '29cm_Kinked17mm_Test','29cm_Kinked28mm_
             BPA10mm29cm{i,a}(:,5) =29;
             BPA10mm29cm{i,a}(:,6) = ones(length(BPA10mm29cm{i}),1)*vals_29cm(a); %col5 = kinks
             BPA10mm29cm{i,a}(:,7) = ones(length(BPA10mm29cm{i}),1)*i%col6 = Test#
-            idx = BPA10mm29cm{i,a}(:,3) <=27; %indexing the pressurizing part
+            idx = BPA10mm29cm{i,a}(:,3) <=17; %indexing the pressurizing part
             BPA10mm29cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
             BPA10mm29cm{i,a}(:,9) = lo;
             BPA10mm29cm{i,a}(:,10)= l620;
@@ -201,10 +211,15 @@ id_P = (AllBPA10mm29cm(:,8)==1);
 id_DP = (AllBPA10mm29cm(:,8)==0);
 AllBPA10mm29cm_P = AllBPA10mm29cm(id_P,1:13);
 AllBPA10mm29cm_DP = AllBPA10mm29cm(id_DP,1:13);
-% figure
-% plot(AllBPA10mm29cm(id_P,3),AllBPA10mm29cm(id_P,1),'bo');
-% figure 
-% plot(AllBPA10mm29cm(id_DP,3),AllBPA10mm29cm(id_DP,1),'ro');
+figure
+subplot 121
+plot(AllBPA10mm29cm(id_P,3),AllBPA10mm29cm(id_P,1),'bo');
+subplot 122
+plot(AllBPA10mm29cm(id_DP,3),AllBPA10mm29cm(id_DP,1),'ro');
+title('10mm29cm all kinks')
+xlabel('Time(s)')
+ylabel('Force(N)')
+grid on
 
 
 %% 10mm30cm 
@@ -222,7 +237,7 @@ Kinks_10mm30cm = {'30cm_Unkinked_Test','30cm_Kinked12mm_Test','30cm_Kinked22mm_T
             BPA10mm30cm{i,a}(:,5) =30;
             BPA10mm30cm{i,a}(:,6) = ones(length(BPA10mm30cm{i}),1)*vals_30cm(a); %col5 = kinks
             BPA10mm30cm{i,a}(:,7) = ones(length(BPA10mm30cm{i}),1)*i%col6 = Test#
-            idx = BPA10mm30cm{i,a}(:,3) <=27; %indexing the pressurizing part
+            idx = BPA10mm30cm{i,a}(:,3) <=17; %indexing the pressurizing part
             BPA10mm30cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
             BPA10mm30cm{i,a}(:,9) = lo;
             BPA10mm30cm{i,a}(:,10)= l620;
@@ -247,10 +262,15 @@ id_P = (AllBPA10mm30cm(:,8)==1);
 id_DP = (AllBPA10mm30cm(:,8)==0);
 AllBPA10mm30cm_P = AllBPA10mm30cm(id_P,1:13);
 AllBPA10mm30cm_DP = AllBPA10mm30cm(id_DP,1:13);
-% figure
-% plot(AllBPA10mm30cm(id_P,3),AllBPA10mm30cm(id_P,1),'bo');
-% figure 
-% plot(AllBPA10mm30cm(id_DP,3),AllBPA10mm30cm(id_DP,1),'ro');
+figure
+subplot 121
+plot(AllBPA10mm30cm(id_P,3),AllBPA10mm30cm(id_P,1),'bo');
+subplot 122
+plot(AllBPA10mm30cm(id_DP,3),AllBPA10mm30cm(id_DP,1),'ro');
+title('10mm30cm all kinks')
+xlabel('Time(s)')
+ylabel('Force(N)')
+grid on
 
 %% Combine all 10mm data into a single array
 

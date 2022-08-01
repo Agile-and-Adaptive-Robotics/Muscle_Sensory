@@ -198,7 +198,7 @@ for a = 1:length(vals_40cmkinks)
     for i = 1:10
         test = num2str(i);
         data40cm = AllBPA20mm40cm(AllBPA20mm40cm(:,5)==bpalength&AllBPA20mm40cm(:,6)==b&AllBPA20mm40cm(:,7)==i,:); 
-        txt = sprintf('%sTest%s',str,test)
+        txt = sprintf('%sTest%s',str,test);
         plot(data40cm(:,3),data40cm(:,1),'DisplayName',txt)
     end
     hold off
@@ -208,37 +208,38 @@ for a = 1:length(vals_40cmkinks)
     ylabel('Time(s)')
 end
 
-%% Check test 9 if they're consistent
+%% Check test 9 if they're consistent(find best test)
+testnumber= 10;
 
-data_10cm_t9 = AllBPA20mm10cm(AllBPA20mm10cm(:,5)==10&AllBPA20mm10cm(:,6)==0&AllBPA20mm10cm(:,7)==9,:)
-data_12cm_t9 = AllBPA20mm12cm(AllBPA20mm10cm(:,5)==12&AllBPA20mm10cm(:,6)==0&AllBPA20mm10cm(:,7)==9,:)
-data_23cm_t9 = AllBPA20mm23cm(AllBPA20mm10cm(:,5)==23&AllBPA20mm10cm(:,6)==0&AllBPA20mm10cm(:,7)==9,:)
-data_30cm_t9 = AllBPA20mm40cm(AllBPA20mm10cm(:,5)==30&AllBPA20mm10cm(:,6)==0&AllBPA20mm10cm(:,7)==9,:)
-data_40cm_t9 = AllBPA20mm10cm(AllBPA20mm10cm(:,5)==40&AllBPA20mm10cm(:,6)==0&AllBPA20mm10cm(:,7)==9,:)
+data_10cm_t9 = AllBPA20mm10cm(AllBPA20mm10cm(:,5)==10&AllBPA20mm10cm(:,6)==0&AllBPA20mm10cm(:,7)==testnumber,:);
+data_12cm_t9 = AllBPA20mm12cm(AllBPA20mm12cm(:,5)==12&AllBPA20mm12cm(:,6)==0&AllBPA20mm12cm(:,7)==testnumber,:);
+data_23cm_t9 = AllBPA20mm23cm(AllBPA20mm23cm(:,5)==23&AllBPA20mm23cm(:,6)==0&AllBPA20mm23cm(:,7)==testnumber,:);
+data_30cm_t9 = AllBPA20mm30cm(AllBPA20mm30cm(:,5)==30&AllBPA20mm30cm(:,6)==0&AllBPA20mm30cm(:,7)==testnumber,:);
+data_40cm_t9 = AllBPA20mm40cm(AllBPA20mm40cm(:,5)==40&AllBPA20mm40cm(:,6)==0&AllBPA20mm40cm(:,7)==testnumber,:);
 figure 
 subplot 321
 plot(data_10cm_t9(:,3),data_10cm_t9(:,1))
-title('20cm10mm Unkink (test 9)')
+title('20mm10cm Unkink',testnumber)
 xlabel('time(s)')
 ylabel('Force(N)')
 subplot 322
 plot(data_12cm_t9(:,3),data_12cm_t9(:,1))
-title('20cm12mm Unkink (test 9)')
+title('20mm12cm Unkink',testnumber)
 xlabel('time(s)')
 ylabel('Force(N)')
 subplot 323
 plot(data_23cm_t9(:,3),data_23cm_t9(:,1))
-title('20cm23mm Unkink (test 9)')
+title('20mm23cm Unkink',testnumber)
 xlabel('time(s)')
 ylabel('Force(N)')
 subplot 324
 plot(data_30cm_t9(:,3),data_30cm_t9(:,1))
-title('20cm30mm Unkink (test 9)')
+title('20mm30cm Unkink',testnumber)
 xlabel('time(s)')
 ylabel('Force(N)')
 subplot 325
 plot(data_40cm_t9(:,3),data_40cm_t9(:,1))
-title('20cm40mm Unkink (test 9)')
+title('20mm40cm Unkink',testnumber)
 xlabel('time(s)')
 ylabel('Force(N)')
 

@@ -9,7 +9,7 @@ vals_13cmkinks = [0,4,8,12];
 bpalength = 13;
 
 for a = 1:length(vals_13cmkinks)
-    b = vals_13cmkinks(a)
+    b = vals_13cmkinks(a);
     str = sprintf('10mm13cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -30,7 +30,7 @@ end
 %check timing to split P and DP
 figure
 for a = 1:length(vals_13cmkinks)
-    b = vals_13cmkinks(a)
+    b = vals_13cmkinks(a);
     str = sprintf('10mm13cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -53,7 +53,7 @@ bpalength = 23;
 vals_23cmkinks = [0,14,30];
 figure
 for a = 1:length(vals_23cmkinks)
-    b = vals_23cmkinks(a)
+    b = vals_23cmkinks(a);
     str = sprintf('10mm23cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -71,7 +71,7 @@ for a = 1:length(vals_23cmkinks)
 end
 figure
 for a = 1:length(vals_23cmkinks)
-    b = vals_23cmkinks(a)
+    b = vals_23cmkinks(a);
     str = sprintf('10mm23cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -95,7 +95,7 @@ bpalength = 27;
 vals_27cmkinks = [0,7,15,31];
 figure
 for a = 1:length(vals_27cmkinks)
-    b = vals_27cmkinks(a)
+    b = vals_27cmkinks(a);
     str = sprintf('10mm27cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -113,7 +113,7 @@ for a = 1:length(vals_27cmkinks)
 end
 figure
 for a = 1:length(vals_27cmkinks)
-    b = vals_27cmkinks(a)
+    b = vals_27cmkinks(a);
     str = sprintf('10mm27cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -135,7 +135,7 @@ bpalength = 29;
 vals_29cmkinks = [0,17,28,41];
 figure
 for a = 1:length(vals_29cmkinks)
-    b = vals_29cmkinks(a)
+    b = vals_29cmkinks(a);
     str = sprintf('10mm29cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -153,7 +153,7 @@ for a = 1:length(vals_29cmkinks)
 end
 figure
 for a = 1:length(vals_29cmkinks)
-    b = vals_29cmkinks(a)
+    b = vals_29cmkinks(a);
     str = sprintf('10mm29cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -175,7 +175,7 @@ bpalength = 30;
 vals_30cmkinks = [0,12,22,33];
 figure
 for a = 1:length(vals_30cmkinks)
-    b = vals_30cmkinks(a)
+    b = vals_30cmkinks(a);
     str = sprintf('10mm30cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -193,7 +193,7 @@ for a = 1:length(vals_30cmkinks)
 end
 figure
 for a = 1:length(vals_30cmkinks)
-    b = vals_30cmkinks(a)
+    b = vals_30cmkinks(a);
     str = sprintf('10mm30cm%dmm',b);
     subplot(2,2,a)
     hold on
@@ -221,7 +221,7 @@ figure
 subplot 321
 hold on
 for a = 1:length(vals_13cmkinks)
-    b=vals_13cmkinks(a)
+    b=vals_13cmkinks(a);
     data13cm_test9 = AllBPA10mm13cm(AllBPA10mm13cm(:,5)==13& AllBPA10mm13cm(:,6)==b&AllBPA10mm13cm(:,7)==testnumber,:);
     txt = sprintf('%dmm',vals_13cmkinks(a));
     plot(data13cm_test9(:,2),data13cm_test9(:,1),'DisplayName',txt)
@@ -236,7 +236,7 @@ title('10mm 13cm all Kinks(Test 9 only)')
 subplot 322
 hold on
 for a = 1:length(vals_23cmkinks)
-    b=vals_23cmkinks(a)
+    b=vals_23cmkinks(a);
     data23cm_test9 = AllBPA10mm23cm(AllBPA10mm23cm(:,5)==23& AllBPA10mm23cm(:,6)==b&AllBPA10mm23cm(:,7)==testnumber,:);
     txt = sprintf('%dmm',vals_23cmkinks(a));
     plot(data23cm_test9(:,2),data23cm_test9(:,1),'DisplayName',txt)
@@ -251,7 +251,7 @@ title('10mm 23cm all Kinks(Test 9 only)')
 subplot 323
 hold on
 for a = 1:length(vals_27cmkinks)
-    b = vals_27cmkinks(a)
+    b = vals_27cmkinks(a);
     data27cm_test9 = AllBPA10mm27cm(AllBPA10mm27cm(:,5)==27&AllBPA10mm27cm(:,6)==b&AllBPA10mm27cm(:,7)==testnumber,:);
     txt = sprintf('%dmm',vals_27cmkinks(a));
     plot(data27cm_test9(:,2),data27cm_test9(:,1),'DisplayName',txt)
@@ -266,7 +266,7 @@ title('10mm 27cm all Kinks(Test 9 only)')
 subplot 324
 hold on
 for a = 1:length(vals_29cmkinks)
-    b = vals_29cmkinks(a)
+    b = vals_29cmkinks(a);
     data29cm_test9 = AllBPA10mm29cm(AllBPA10mm29cm(:,5)==29& AllBPA10mm29cm(:,6)==b&AllBPA10mm29cm(:,7)==testnumber,:);
     txt = sprintf('%dmm',vals_29cmkinks(a));
     plot(data29cm_test9(:,2),data29cm_test9(:,1),'DisplayName',txt)
@@ -281,7 +281,7 @@ title('10mm 29cm all Kinks(Test 9 only)')
 subplot 325
 hold on
 for a = 1:length(vals_30cmkinks)
-    b = vals_30cmkinks(a)
+    b = vals_30cmkinks(a);
     data30cm_test9 = AllBPA10mm30cm(AllBPA10mm30cm(:,5)==30& AllBPA10mm30cm(:,6)==b&AllBPA10mm30cm(:,7)==testnumber,:);
     txt = sprintf('%dmm',vals_30cmkinks(a));
     plot(data30cm_test9(:,2),data30cm_test9(:,1),'DisplayName',txt)
@@ -297,7 +297,7 @@ testnum = 10 ;
 figure
 subplot 321
 for a = 1:length(vals_13cmkinks)
-    b=vals_13cmkinks(a)
+    b=vals_13cmkinks(a);
     data13cm_test9 = AllBPA10mm13cm(AllBPA10mm13cm(:,5)==13& AllBPA10mm13cm(:,6)==0&AllBPA10mm13cm(:,7)==testnum,:);
     txt = sprintf('%dmm',vals_13cmkinks(a));
     plot(data13cm_test9(:,3),data13cm_test9(:,1),'DisplayName',txt)
@@ -308,7 +308,7 @@ ylabel('Force(N)')
 title('10mm 13cm all Kinks',testnum)
 subplot 322
 for a = 1:length(vals_23cmkinks)
-    b=vals_23cmkinks(a)
+    b=vals_23cmkinks(a);
     data23cm_test9 = AllBPA10mm23cm(AllBPA10mm23cm(:,5)==23& AllBPA10mm23cm(:,6)==0&AllBPA10mm23cm(:,7)==testnumber,:);
     txt = sprintf('%dmm',vals_23cmkinks(a));
     plot(data23cm_test9(:,3),data23cm_test9(:,1),'DisplayName',txt)
@@ -321,7 +321,7 @@ title('10mm 23cm all Kinks',testnum)
 
 subplot 323
 for a = 1:length(vals_27cmkinks)
-    b = vals_27cmkinks(a)
+    b = vals_27cmkinks(a);
     data27cm_test9 = AllBPA10mm27cm(AllBPA10mm27cm(:,5)==27&AllBPA10mm27cm(:,6)==0&AllBPA10mm27cm(:,7)==testnumber,:);
     txt = sprintf('%dmm',vals_27cmkinks(a));
     plot(data27cm_test9(:,3),data27cm_test9(:,1),'DisplayName',txt)
@@ -333,7 +333,7 @@ title('10mm 27cm all Kinks',testnum)
 
 subplot 324
 for a = 1:length(vals_29cmkinks)
-    b = vals_29cmkinks(a)
+    b = vals_29cmkinks(a);
     data29cm_test9 = AllBPA10mm29cm(AllBPA10mm29cm(:,5)==29& AllBPA10mm29cm(:,6)==0&AllBPA10mm29cm(:,7)==testnumber,:);
     txt = sprintf('%dmm',vals_29cmkinks(a));
     plot(data29cm_test9(:,3),data29cm_test9(:,1),'DisplayName',txt)
@@ -345,7 +345,7 @@ title('10mm 29cm all Kinks',testnum)
 
 subplot 325
 for a = 1:length(vals_30cmkinks)
-    b = vals_30cmkinks(a)
+    b = vals_30cmkinks(a);
     data30cm_test9 = AllBPA10mm30cm(AllBPA10mm30cm(:,5)==30& AllBPA10mm30cm(:,6)==0&AllBPA10mm30cm(:,7)==testnumber,:);
     txt = sprintf('%dmm',vals_30cmkinks(a));
     plot(data30cm_test9(:,3),data30cm_test9(:,1),'DisplayName',txt)

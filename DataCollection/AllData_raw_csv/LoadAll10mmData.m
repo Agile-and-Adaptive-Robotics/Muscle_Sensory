@@ -56,20 +56,6 @@ id_DP = (AllBPA10mm13cm(:,8)==0);
 AllBPA10mm13cm_P = AllBPA10mm13cm(id_P,1:13);
 AllBPA10mm13cm_DP = AllBPA10mm13cm(id_DP,1:13);
 
-figure
-subplot 121
-plot(AllBPA10mm13cm(id_P,3),AllBPA10mm13cm(id_P,1),'b.');
-xlabel('time (s)')
-ylabel('Force(N)')
-title('10mm 13cm Pressurizing - all kinks')
-subplot 122
-plot(AllBPA10mm13cm(id_DP,3),AllBPA10mm13cm(id_DP,1),'r.');
-title('10mm 13cm Depressurizing - all kinks')
-xlabel('time (s)')
-ylabel('Force(N)')
-
-
-
 %% 10mm 23cm data for all lengths and kinks
 Kinks_10mm23cm = {'23cm_Unkinked_Test', '23cm_Kinked14mm_Test','23cm_Kinked30mm_Test'};
     vals_23cm= [0,14,30];
@@ -110,15 +96,6 @@ id_P = (AllBPA10mm23cm(:,8)==1);
 id_DP = (AllBPA10mm23cm(:,8)==0);
 AllBPA10mm23cm_P = AllBPA10mm23cm(id_P,1:13);
 AllBPA10mm23cm_DP = AllBPA10mm23cm(id_DP,1:13);
-figure
-subplot 121
-plot(AllBPA10mm23cm(id_P,3),AllBPA10mm23cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA10mm23cm(id_DP,3),AllBPA10mm23cm(id_DP,1),'ro');
-title('10mm23cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
-grid on
 
 %% 10mm 27cm data for all lengths and kinks
 Kinks_10mm27cm = {'27cm_Unkinked_Test', '27cm_Kinked7mm_Test','27cm_Kinked15mm_Test','27cm_Kinked31mm_Test'};
@@ -160,15 +137,7 @@ id_P = (AllBPA10mm27cm(:,8)==1);
 id_DP = (AllBPA10mm27cm(:,8)==0);
 AllBPA10mm27cm_P = AllBPA10mm27cm(id_P,1:13);
 AllBPA10mm27cm_DP = AllBPA10mm27cm(id_DP,1:13);
-figure
-subplot 121
-plot(AllBPA10mm27cm(id_P,3),AllBPA10mm27cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA10mm27cm(id_DP,3),AllBPA10mm27cm(id_DP,1),'ro');
-title('10mm27cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
-grid on
+
 
 %% 10mm29cm 
 Kinks_10mm29cm = {'29cm_Unkinked_Test', '29cm_Kinked17mm_Test','29cm_Kinked28mm_Test','29cm_Kinked41mm_Test'};
@@ -211,16 +180,6 @@ id_P = (AllBPA10mm29cm(:,8)==1);
 id_DP = (AllBPA10mm29cm(:,8)==0);
 AllBPA10mm29cm_P = AllBPA10mm29cm(id_P,1:13);
 AllBPA10mm29cm_DP = AllBPA10mm29cm(id_DP,1:13);
-figure
-subplot 121
-plot(AllBPA10mm29cm(id_P,3),AllBPA10mm29cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA10mm29cm(id_DP,3),AllBPA10mm29cm(id_DP,1),'ro');
-title('10mm29cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
-grid on
-
 
 %% 10mm30cm 
 Kinks_10mm30cm = {'30cm_Unkinked_Test','30cm_Kinked12mm_Test','30cm_Kinked22mm_Test','30cm_Kinked33mm_Test'}; 
@@ -262,15 +221,6 @@ id_P = (AllBPA10mm30cm(:,8)==1);
 id_DP = (AllBPA10mm30cm(:,8)==0);
 AllBPA10mm30cm_P = AllBPA10mm30cm(id_P,1:13);
 AllBPA10mm30cm_DP = AllBPA10mm30cm(id_DP,1:13);
-figure
-subplot 121
-plot(AllBPA10mm30cm(id_P,3),AllBPA10mm30cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA10mm30cm(id_DP,3),AllBPA10mm30cm(id_DP,1),'ro');
-title('10mm30cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
-grid on
 
 %% Combine all 10mm data into a single array
 
@@ -278,4 +228,59 @@ AllBPA10mm = vertcat(AllBPA10mm13cm,AllBPA10mm23cm,AllBPA10mm27cm,AllBPA10mm29cm
 AllBPA10mm_P = vertcat(AllBPA10mm13cm_P,AllBPA10mm23cm_P,AllBPA10mm27cm_P,AllBPA10mm29cm_P,AllBPA10mm30cm_P);
 AllBPA10mm_DP = vertcat(AllBPA10mm13cm_DP,AllBPA10mm23cm_DP,AllBPA10mm27cm_DP,AllBPA10mm29cm_DP,AllBPA10mm30cm_DP);
 
+
+% %% plots to check data
+% % 10mm 13cm
+%     figure
+%     subplot 121
+%     plot(AllBPA10mm13cm(id_P,3),AllBPA10mm13cm(id_P,1),'b.');
+%     xlabel('time (s)')
+%     ylabel('Force(N)')
+%     title('10mm 13cm Pressurizing - all kinks')
+%     subplot 122
+%     plot(AllBPA10mm13cm(id_DP,3),AllBPA10mm13cm(id_DP,1),'r.');
+%     title('10mm 13cm Depressurizing - all kinks')
+%     xlabel('time (s)')
+%     ylabel('Force(N)')
+% % 10mm 23cm
+%     figure
+%     subplot 121
+%     plot(AllBPA10mm23cm(id_P,3),AllBPA10mm23cm(id_P,1),'bo');
+%     subplot 122
+%     plot(AllBPA10mm23cm(id_DP,3),AllBPA10mm23cm(id_DP,1),'ro');
+%     title('10mm23cm all kinks')
+%     xlabel('Time(s)')
+%     ylabel('Force(N)')
+%     grid on
+% % 10mm 27cm
+%     figure
+%     subplot 121
+%     plot(AllBPA10mm27cm(id_P,3),AllBPA10mm27cm(id_P,1),'bo');
+%     subplot 122
+%     plot(AllBPA10mm27cm(id_DP,3),AllBPA10mm27cm(id_DP,1),'ro');
+%     title('10mm27cm all kinks')
+%     xlabel('Time(s)')
+%     ylabel('Force(N)')
+%     grid on
+% %10mm 29cm
+%     figure
+%     subplot 121
+%     plot(AllBPA10mm29cm(id_P,3),AllBPA10mm29cm(id_P,1),'bo');
+%     subplot 122
+%     plot(AllBPA10mm29cm(id_DP,3),AllBPA10mm29cm(id_DP,1),'ro');
+%     title('10mm29cm all kinks')
+%     xlabel('Time(s)')
+%     ylabel('Force(N)')
+%     grid on
+% 
+% %10mm 30cm
+%     figure
+%     subplot 121
+%     plot(AllBPA10mm30cm(id_P,3),AllBPA10mm30cm(id_P,1),'bo');
+%     subplot 122
+%     plot(AllBPA10mm30cm(id_DP,3),AllBPA10mm30cm(id_DP,1),'ro');
+%     title('10mm30cm all kinks')
+%     xlabel('Time(s)')
+%     ylabel('Force(N)')
+%     grid on
 

@@ -295,7 +295,7 @@ title('10mm 30cm all Kinks(Test 9 only)')
 
 testnum = 9 ;
 figure
-title('Plot all data for a specific test numnber')
+title('Plot all data for a 
 subplot 321
 hold on
 for a = 1:length(vals_13cmkinks)

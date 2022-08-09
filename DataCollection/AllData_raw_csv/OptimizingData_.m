@@ -1,12 +1,18 @@
 %% Optimizing Data - Curve fitting via optimization
 close all;clc;
 % BPA Parameters (parameters to enter to select a specific set of data)
-    lo = 12; %resting length
-    li = [12 11.6 11.2 10.8]; %intial kinked length: needs to be changed every run
-    l620 = 10; %minimum contraction length
+%     lo = 22; %resting length
+%     li = [22 20.5 18.9]; %intial kinked length: needs to be changed every run
+%     l620 = 18.5; %minimum contraction length
+%     diameter = 10;
+%     lengths = 23;
+%     kink = [0 14 30];
+    lo = 25.7; %resting length
+    li = [25.7 25 24.2 22.6]; %intial kinked length: needs to be changed every run
+    l620 = 21.8; %minimum contraction length
     diameter = 10;
-    lengths = 13;
-    kink = [0 4 8 12];
+    lengths = 27;
+    kink = [0 7 15 31];
     testnum = 10;
     state = ["P","DP"]; %P= pressurizig, DP = depressurizing
     
@@ -37,7 +43,7 @@ end
         
 %% plotting data to check(P and DP)
 for k=1:length(state)
-    figure(k)
+    figure
     strtitle{k} = sprintf('%s',data_chosen{k})
     sgtitle(strtitle{k})
     hold on
@@ -52,9 +58,12 @@ for k=1:length(state)
         end
     hold off
 end
-   
+%% Need a new section to remove outlier data
+
+
         
 %% Optimization - using fmin search to optimize data
+r = cell(length(state),length(kink));
 for k = 1:length(state)
     figure
     sgtitle(data_chosen{k})
@@ -73,7 +82,7 @@ for k = 1:length(state)
             a3 = bestx{k,i}(4);
 
             yfit{k,i} =  (a0 + a1*(li(i)-lo)/lo)*data_pressure{k,i} + a2*(li(i)-lo)/lo + a3;
-
+            r{k,i} = data_force{k,i} - yfit{k,i};
             subplot (2,2,i)
             plot(data_pressure{k,i}, data_force{k,i},'*');
             hold on
@@ -85,21 +94,62 @@ for k = 1:length(state)
             legend('Data','Fit');
             grid on
             hold off
-
         end
 end
+%% plotting residuals
+for k = 1:length(state)
+    figure
+    sgtitle(data_chosen{k})
+    hold on
+        for i=1:length(kink)
+            subplot(2,2,i)
+            plot(data_pressure{k,i},r{k,i},'.')
+            hold on
+            xlabel('pressure(kPa)')
+            ylabel('Force(N)')
+            subtitlestr2 = sprintf('Test%d|%gcm|%s',testnum,li(i),state(k));
+            title(subtitlestr2)
+            grid on
+            yline(0)
+            hold off
+        end
+    hold off
+end
+           
+
+
+
+
 bestparameters = bestx'
 %% save bestx in a csv file (row 1: kink 1, row 2= kink 2; col 1 = ao, col 2= a1...etc) 
     para_p  = bestparameters{1,1}
     for i=2:length(kink)
-        currentpara = bestparameters{i,1}
-        para_p = vertcat(para_p,currentpara)
+        currentpara = bestparameters{i,1};
+        para_p = vertcat(para_p,currentpara);
     end
+    para_name_p = char(data_chosen(1));
+    str = strcat(para_name_p,'_test',num2str(testnum),'parameters'); %creating a new string to save parameters
+    eval([str,'=para_p;']) %create variable named: str with data from para_p
+    pname = str;
+    k = eval(pname);
+    str_title = sprintf('%s.csv',str);
+   % csvwrite(str_title,k)
+    
+    
+  
     para_dp = bestparameters{1,2}
     for i=2:length(kink)
-        currentpara = bestparameters{i,2}
-        para_dp = vertcat(para_dp,currentpara)
+        currentpara = bestparameters{i,2};
+        para_dp = vertcat(para_dp,currentpara);
     end
+    para_name_dp = char(data_chosen(2));
+    str2 = strcat(para_name_dp,'_test',num2str(testnum),'parameters');
+    eval([str2 '=para_dp;'])
+    pname2 = str2;
+    k2 =eval(pname2);
+    str_title2 = sprintf('%s.csv',str2);
+   % csvwrite(str_title2,k2);
+
 
 
 

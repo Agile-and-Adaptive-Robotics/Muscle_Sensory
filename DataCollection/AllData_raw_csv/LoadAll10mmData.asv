@@ -14,7 +14,7 @@ lengths_10mm = {'13','23','27','29','30'}
     
  %removing low forces data
     low_force = 20; %removing force below 20N
-    high_pressure = 630; %remove pressure above 620kPa
+    high_pressure = 620; %remove pressure above 620kPa
 
 %% 10mm 13cm data for all lengths and kinks
 Kinks_10mm13cm = {'13cm_Unkinked_Test','13cm_Kinked4mm_Test','13cm_Kinked8mm_Test','13cm_Kinked12mm_Test'};
@@ -90,7 +90,7 @@ AllBPA10mm23cm =BPA10mm23cm{1};
 for a =1:length(Kinks_10mm23cm)
     for i=2:10
         CurrentData= BPA10mm23cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:);
+        RealData= CurrentData(CurrentData(:,1)>low_forceCurrentData(:,2)<high_pressure,:);
         AllBPA10mm23cm=vertcat(AllBPA10mm23cm,RealData);
     end
 end
@@ -131,7 +131,7 @@ AllBPA10mm27cm =BPA10mm27cm{1};
 for a =1:length(Kinks_10mm27cm)
     for i=2:10
         CurrentData= BPA10mm27cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:);
+        RealData= CurrentData(CurrentData(:,1)>low_force,:);
         AllBPA10mm27cm=vertcat(AllBPA10mm27cm,RealData);
     end
 end
@@ -174,7 +174,7 @@ AllBPA10mm29cm =BPA10mm29cm{1};
 for a =1:length(Kinks_10mm29cm)
     for i=2:10
         CurrentData= BPA10mm29cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:);
+        RealData= CurrentData(CurrentData(:,1)>low_force,:);
         AllBPA10mm29cm=vertcat(AllBPA10mm29cm,RealData);
     end
 end
@@ -216,7 +216,7 @@ AllBPA10mm30cm =BPA10mm30cm{1};
 for a =1:length(Kinks_10mm30cm)
     for i=2:10
         CurrentData= BPA10mm30cm{i,a};
-        RealData= CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:);
+        RealData= CurrentData(CurrentData(:,1)>low_force,:);
         AllBPA10mm30cm=vertcat(AllBPA10mm30cm,RealData);
     end
 end

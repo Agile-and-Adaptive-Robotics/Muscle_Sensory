@@ -58,10 +58,7 @@ for k=1:length(state)
         end
     hold off
 end
-%% Need a new section to remove outlier data
 
-
-        
 %% Optimization - using fmin search to optimize data
 r = cell(length(state),length(kink));
 for k = 1:length(state)
@@ -70,7 +67,6 @@ for k = 1:length(state)
     hold on
         for i=1:length(kink)
             fun = @(x)sseval(x,data_pressure{k,i},data_force{k,i},li(i),lo);
-
             %Best fitting parameters(x0)
             x0 = [0.6184,-41.219,2.1,3]; %random values (#of parameters = # of entries) 
             bestx{k,i} = fminsearch(fun,x0) 
@@ -115,10 +111,6 @@ for k = 1:length(state)
         end
     hold off
 end
-           
-
-
-
 
 bestparameters = bestx'
 %% save bestx in a csv file (row 1: kink 1, row 2= kink 2; col 1 = ao, col 2= a1...etc) 
@@ -135,8 +127,6 @@ bestparameters = bestx'
     str_title = sprintf('%s.csv',str);
     csvwrite(str_title,k)
     
-    
-  
     para_dp = bestparameters{1,2}
     for i=2:length(kink)
         currentpara = bestparameters{i,2};

@@ -7,12 +7,12 @@ close all;clc;
 %     diameter = 10;
 %     lengths = 23;
 %     kink = [0 14 30];
-    lo = 25.7; %resting length
-    li = [25.7 25 24.2 22.6]; %intial kinked length: needs to be changed every run
-    l620 = 21.8; %minimum contraction length
-    diameter = 10;
-    lengths = 27;
-    kink = [0 7 15 31];
+    lo = 39.8; 
+    li = [39.8 36.2 35.1 32.8]; 
+    l620 = 29.9; 
+    diameter =20 ;
+    lengths =40;
+    kink = [0 35 46 69];
     testnum = 10;
     state = ["P","DP"]; %P= pressurizig, DP = depressurizing
     
@@ -133,7 +133,7 @@ bestparameters = bestx'
     pname = str;
     k = eval(pname);
     str_title = sprintf('%s.csv',str);
-   % csvwrite(str_title,k)
+    csvwrite(str_title,k)
     
     
   
@@ -148,7 +148,7 @@ bestparameters = bestx'
     pname2 = str2;
     k2 =eval(pname2);
     str_title2 = sprintf('%s.csv',str2);
-   % csvwrite(str_title2,k2);
+    csvwrite(str_title2,k2);
 
 
 

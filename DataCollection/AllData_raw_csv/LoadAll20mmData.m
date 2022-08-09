@@ -8,7 +8,8 @@ lengths = {'10','12','23','30','40'};
     maxstrain_23cm = (22.5-17)/22.5;
     maxstrain_30cm = (27.4-20.7)/27.4;
     maxstrain_40cm = (39.8-29.9)/39.8;
-
+    high_pressure = 620;
+    low_force = 20;
 
 %% 20mm 10cm 
 Kinks_20mm10cm = {'10cm_Unkinked_Test','10cm_Kinked13mm_Test','10cm_Kinked20mm_Test'};
@@ -40,7 +41,7 @@ AllBPA20mm10cm = BPA20mm10cm{1};
 for a = 1:length(Kinks_20mm10cm)
     for i =2:10
         CurrentData = BPA20mm10cm{i,a};
-        RealData = CurrentData(CurrentData(:,1)>15,:); %remove data points with force below 15N
+        RealData = CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %remove data points with force below 15N
         AllBPA20mm10cm = vertcat(AllBPA20mm10cm,RealData);
     end
 end
@@ -93,7 +94,7 @@ AllBPA20mm12cm = BPA20mm12cm{1};
 for a = 1:length(Kinks_20mm12cm)
     for i =2:10
         CurrentData = BPA20mm12cm{i,a};
-        RealData = CurrentData(CurrentData(:,1)>15,:); %remove data points with force below 15N
+        RealData = CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %remove data points with force below 15N
         AllBPA20mm12cm = vertcat(AllBPA20mm12cm,RealData);
     end
 end
@@ -146,7 +147,7 @@ AllBPA20mm23cm = BPA20mm23cm{1};
 for a = 1:length(Kinks_20mm23cm)
     for i =2:10
         CurrentData = BPA20mm23cm{i,a};
-        RealData = CurrentData(CurrentData(:,1)>15,:); %remove data points with force below 15N
+        RealData = CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %remove data points with force below 15N
         AllBPA20mm23cm = vertcat(AllBPA20mm23cm,RealData);
     end
 end
@@ -196,7 +197,7 @@ AllBPA20mm30cm = BPA20mm30cm{1};
 for a = 1:length(Kinks_20mm30cm)
     for i =2:10
         CurrentData = BPA20mm30cm{i,a};
-        RealData = CurrentData(CurrentData(:,1)>15,:); %remove data points with force below 15N
+        RealData = CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %remove data points with force below 15N
         AllBPA20mm30cm = vertcat(AllBPA20mm30cm,RealData);
     end
 end
@@ -248,7 +249,7 @@ AllBPA20mm40cm = BPA20mm40cm{1};
 for a = 1:length(Kinks_20mm40cm)
     for i =2:10
         CurrentData = BPA20mm40cm{i,a};
-        RealData = CurrentData(CurrentData(:,1)>15&CurrentData(:,2)<700,:); %remove data points with force below 15N
+        RealData = CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %remove data points with force below 15N
         AllBPA20mm40cm = vertcat(AllBPA20mm40cm,RealData);
     end
 end

@@ -1,20 +1,8 @@
 %% Optimizing Data - Curve fitting via optimization
 close all;clc;
 % BPA Parameters (parameters to enter to select a specific set of data)
-%     lo = 22; %resting length
-%     li = [22 20.5 18.9]; %intial kinked length: needs to be changed every run
-%     l620 = 18.5; %minimum contraction length
-%     diameter = 10;
-%     lengths = 23;
-%     kink = [0 14 30];
-    lo = 39.8; 
-    li = [39.8 36.2 35.1 32.8]; 
-    l620 = 29.9; 
-    diameter =20 ;
-    lengths =40;
-    kink = [0 35 46 69];
-    testnum = 10;
-    state = ["P","DP"]; %P= pressurizig, DP = depressurizing
+[diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,lengths,test) %choosing BPA parameters set from a function
+state = ["P","DP"]; %P= pressurizig, DP = depressurizing
     
 
 %% calling function to choose data in a loop for different (P/DP) state

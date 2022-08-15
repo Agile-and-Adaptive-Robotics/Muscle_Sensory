@@ -1,4 +1,4 @@
-function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,lengths,test)
+function [diameter,lengths,lo,li,l620,kink,kmax,testnum] = choosedata(diameter,lengths,test)
     if diameter == 10
          if lengths == 13
             lo = 12;
@@ -8,6 +8,7 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             lengths = 13;
             kink = [0 4 8 12];
             testnum = test;
+            kmax = (12-10)/12;
          elseif lengths == 23
             lo = 22;
             li = [22 20.5 18.9]; 
@@ -16,6 +17,7 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             lengths = 23;
             kink = [0 14 30];  
             testnum = test;
+            kmax = (22-18.5)/22;
          elseif lengths == 27
             lo = 25.7; 
             li = [25.7 25 24.2 22.6];
@@ -23,6 +25,7 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             diameter = 10;
             lengths = 27;
             kink = [0 7 15 31];
+            kmax = (25.7-21.8)/25.7;
             testnum = test;
          elseif lengths == 29
             lo = 28.1;
@@ -31,6 +34,7 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             diameter = 10;
             lengths = 29;
             kink = [0 17 28 41];
+            kmax = (28.1-23.5)/28.1;
             testnum = test;
          elseif lengths ==30
             lo = 28.1;
@@ -39,9 +43,9 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             diameter = 10;
             lengths = 30;
             kink = [0 12 22 33];
+            kmax = (28.1-24)/28.1;
             testnum = test;
          end
-         
       elseif diameter == 20
           if lengths == 10
             lo = 9.8;
@@ -50,6 +54,7 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             diameter = 20;
             lengths = 10;
             kink = [0 13 20];
+            kmax = (9.8-7.6)/9.8;
             testnum = test;
           elseif lengths == 12
             lo = 12;
@@ -58,6 +63,7 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             diameter = 20;
             lengths =12;
             kink = [0 10 20];
+            kmax = (12-9.1)/12;
             testnum = test;
           elseif lengths == 23
             lo = 22.5
@@ -66,6 +72,7 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             diameter =20 ;
             lengths = 23;
             kink = [0 9 19];
+            kmax =(22.5-17)/22.5;
             testnum = test;
           elseif lengths == 30
             lo = 27.4; 
@@ -73,9 +80,9 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             l620 = 20.7; 
             diameter =20 ;
             lengths =30;
+            kmax = (27.4-20.7)/27.4;
             kink = [0 14 23 34];
             testnum = test;
-            
           elseif lengths == 40
             lo = 39.8; 
             li = [39.8 36.2 35.1 32.8]; 
@@ -83,9 +90,8 @@ function [diameter,lengths,lo,li,l620,kink,testnum] = choosedata(diameter,length
             diameter =20 ;
             lengths =40;
             kink = [0 35 46 69];
+            kmax =(39.8-29.9)/39.8;
             testnum = test;
           end
-           
-    end
-
+    end]
 end

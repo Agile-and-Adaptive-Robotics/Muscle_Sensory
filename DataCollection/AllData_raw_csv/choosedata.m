@@ -93,5 +93,5 @@ function [diameter,lengths,lo,li,l620,kink,kmax,testnum] = choosedata(diameter,l
             kmax =(39.8-29.9)/39.8;
             testnum = test;
           end
-    end]
+    end
 end

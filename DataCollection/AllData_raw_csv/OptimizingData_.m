@@ -52,7 +52,7 @@ for k = 1:length(state)
     sgtitle(data_chosen{k})
     hold on
         for i=1:length(kink)
-            fun = @(x)sseval(x,data_pressure{k,i},data_force{k,i},li(i),lo,kmax);
+            fun = @(x)sseval(x,data_pressure{k,i},data_force{k,i},diameter,li(i),lo,kmax);
             %Best fitting parameters(x0)
             x0 = [0.6184,-41.219,2.1,3]%,5,1.2]; %random values (#of parameters = # of entries) 
             bestx{k,i} = fminsearch(fun,x0) 
@@ -65,8 +65,9 @@ for k = 1:length(state)
 %             a4 = bestx{k,i}(5);
 %             a5 = bestx{k,i}(6);
 %            yfit{k,i} = (a0 + a1*(li(i)-lo)/lo)*data_pressure{k,i} + a2*(li(i)-lo)/lo + a3;
-            yfit{k,i} = (a0 + a1*((lo-li(i))/lo)/kmax)*data_pressure{k,i} + a2*((lo-li(i))/lo)/kmax + a3;
-%            yfit{k,i} =(a0+a1 +a2*(((lo-li(i))/lo)/kmax))*data_pressure{k,i} + (a3+a4)*((lo-li)/lo)/kmax +a5; 
+%             yfit{k,i} = (a0 + a1*((lo-li(i))/lo)/kmax)*data_pressure{k,i} + a2*((lo-li(i))/lo)/kmax + a3;
+%            yfit{k,i} =(a0+a1 +a2*(((lo-li(i))/lo)/kmax))*data_pressure{k,i} + (a3+a4)*((lo-li)/lo)/kmax +a5;
+            yfit{k,i} = pi*diameter^2*data_pressure{k,i}*(a0+a1*(1/((lo-li(i))/lo)) + a2*(((lo-li(i))/lo)/kmax))+a3; %bad fit
             r{k,i} = data_force{k,i} - yfit{k,i};
             subplot (2,2,i)
             plot(data_pressure{k,i}, data_force{k,i},'*');

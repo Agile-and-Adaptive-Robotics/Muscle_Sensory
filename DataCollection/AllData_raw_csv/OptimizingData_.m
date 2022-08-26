@@ -70,10 +70,12 @@ for k = 1:length(state)
 %           yfit{k,i} = pi*diameter^2*data_pressure{k,i}*(a0+a1*(1/((lo-li(i))/lo)) + a2*(((lo-li(i))/lo)/kmax))+a3; %bad fit
             yfit{k,i} = (a0 + a1*(((lo-li(i))/lo)/kmax) + a2*diameter)*data_pressure{k,i} +a3*diameter + a4*(((lo-li(i))/lo)/kmax) +a5;
             r{k,i} = data_force{k,i} - yfit{k,i};
+            reg_fit = -32.7154 + 0.0603*data_pressure{k,i}-2.6*diameter-789.9*(((lo-li(i))/lo)/kmax) + 0.0875*diameter*data_pressure{k,i}+0.0414*data_pressure{k,i}*(((lo-li(i))/lo)/kmax);
             subplot (2,2,i)
             plot(data_pressure{k,i}, data_force{k,i},'*');
             hold on
             plot(data_pressure{k,i},yfit{k,i}, 'r');
+            plot(data_pressure{k,i},reg_fit,'o');
             xlabel('Pressure(kPa)');
             ylabel('Force (N)');
             subtitlestr = sprintf('Test%d|%gcm|%s',testnum,li(i),state(k));

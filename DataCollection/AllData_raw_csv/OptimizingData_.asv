@@ -74,7 +74,7 @@ for k = 1:length(state)
 %           yfit{k,i} = pi*diameter^2*data_pressure{k,i}*(a0+a1*(1/((lo-li(i))/lo)) + a2*(((lo-li(i))/lo)/kmax))+a3; %bad fit
 %           yfit{k,i} = (a0 + a1*(((lo-li(i))/lo)/kmax) + a2*diameter)*data_pressure{k,i} +a3*diameter + a4*(((lo-li(i))/lo)/kmax) +a5;
 
-            yfit{k,i} = a0 + a1*data_pressure{k,i} + a2*diameter +a3*lo + a4*(lo-li(i))/lo + a5*(kmax) + a6*State(k) + a7*data_pressure{k,i}*diameter + a8*((lo-li(i))/(lo-l620)); 
+            yfit{k,i} = a0 + a1*data_pressure{k,i} + a2*diameter +a3*lo + a4*(1/((lo-li(i)/lo)) + a5*(kmax) + a6*State(k) + a7*data_pressure{k,i}*diameter + a8*((lo-li(i))/(lo-l620)); 
             r{k,i} = data_force{k,i} - yfit{k,i}; %remove divide by zero. 
             
             
@@ -143,7 +143,7 @@ bestparameters = bestx'
     
 %% saving all figures in a folder
 for i = 1:6
-saveas(figure(i),sprintf('%s_%d.fig',str2,i))
+saveas(figure(i),sprintf('figure_%d.fig',i))
 end
 %% 
 

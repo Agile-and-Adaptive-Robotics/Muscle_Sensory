@@ -53,16 +53,16 @@ id_DP = (AllBPA20mm10cm(:,8)==0);
 AllBPA20mm10cm_P = AllBPA20mm10cm(id_P,1:13);
 AllBPA20mm10cm_DP = AllBPA20mm10cm(id_DP,1:13);
 
-figure
-subplot 121
-grid on
-plot(AllBPA20mm10cm(id_P,3),AllBPA20mm10cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA20mm10cm(id_DP,3),AllBPA20mm10cm(id_DP,1),'ro');
-title('20mm10cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
-grid on
+% figure
+% subplot 121
+% grid on
+% plot(AllBPA20mm10cm(id_P,3),AllBPA20mm10cm(id_P,1),'bo');
+% subplot 122
+% plot(AllBPA20mm10cm(id_DP,3),AllBPA20mm10cm(id_DP,1),'ro');
+% title('20mm10cm all kinks')
+% xlabel('Time(s)')
+% ylabel('Force(N)')
+% grid on
 
 %% 20mm12cm
 Kinks_20mm12cm = {'12cm_Unkinked_Test','12cm_Kinked10mm_Test','12cm_Kinked20mm_Test'};
@@ -105,15 +105,15 @@ id_DP = (AllBPA20mm12cm(:,8)==0);
 AllBPA20mm12cm_P = AllBPA20mm12cm(id_P,1:13);
 AllBPA20mm12cm_DP = AllBPA20mm12cm(id_DP,1:13);
 
-figure
-subplot 121
-plot(AllBPA20mm12cm(id_P,3),AllBPA20mm12cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA20mm12cm(id_DP,3),AllBPA20mm12cm(id_DP,1),'ro');
-title('20mm12cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
-grid on
+% figure
+% subplot 121
+% plot(AllBPA20mm12cm(id_P,3),AllBPA20mm12cm(id_P,1),'bo');
+% subplot 122
+% plot(AllBPA20mm12cm(id_DP,3),AllBPA20mm12cm(id_DP,1),'ro');
+% title('20mm12cm all kinks')
+% xlabel('Time(s)')
+% ylabel('Force(N)')
+% grid on
 
 
 
@@ -158,14 +158,14 @@ id_DP = (AllBPA20mm23cm(:,8)==0);
 AllBPA20mm23cm_P = AllBPA20mm23cm(id_P,1:13);
 AllBPA20mm23cm_DP = AllBPA20mm23cm(id_DP,1:13);
 
-figure
-subplot 121
-plot(AllBPA20mm23cm(id_P,3),AllBPA20mm23cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA20mm23cm(id_DP,3),AllBPA20mm23cm(id_DP,1),'ro');
-title('20mm23cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
+% figure
+% subplot 121
+% plot(AllBPA20mm23cm(id_P,3),AllBPA20mm23cm(id_P,1),'bo');
+% subplot 122
+% plot(AllBPA20mm23cm(id_DP,3),AllBPA20mm23cm(id_DP,1),'ro');
+% title('20mm23cm all kinks')
+% xlabel('Time(s)')
+% ylabel('Force(N)')
 
 %% 20mm 30cm
 Kinks_20mm30cm = {'30cm_Unkinked_Test','30cm_Kinked14mm_Test','30cm_Kinked23mm_Test','30cm_Kinked34mm_Test'};
@@ -209,14 +209,14 @@ id_DP = (AllBPA20mm30cm(:,8)==0);
 AllBPA20mm30cm_P = AllBPA20mm30cm(id_P,1:13);
 AllBPA20mm30cm_DP =AllBPA20mm30cm(id_DP,1:13);
 
-figure
-subplot 121
-plot(AllBPA20mm30cm(id_P,3),AllBPA20mm30cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA20mm30cm(id_DP,3),AllBPA20mm30cm(id_DP,1),'ro');
-title('20mm30cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
+% figure
+% subplot 121
+% plot(AllBPA20mm30cm(id_P,3),AllBPA20mm30cm(id_P,1),'bo');
+% subplot 122
+% plot(AllBPA20mm30cm(id_DP,3),AllBPA20mm30cm(id_DP,1),'ro');
+% title('20mm30cm all kinks')
+% xlabel('Time(s)')
+% ylabel('Force(N)')
 
 %% 20mm 40cm 
 Kinks_20mm40cm = {'40cm_Unkinked_Test','40cm_Kinked35mm_Test','40cm_Kinked46mm_Test','40cm_Kinked69mm_Test'};
@@ -260,15 +260,15 @@ AllBPA20mm40cm_P = AllBPA20mm40cm(id_P,1:13);
 AllBPA20mm40cm_DP = AllBPA20mm40cm(id_DP,1:13);
 
 
-figure
-subplot 121
-plot(AllBPA20mm40cm(id_P,3),AllBPA20mm40cm(id_P,1),'bo');
-subplot 122 
-plot(AllBPA20mm40cm(id_DP,3),AllBPA20mm40cm(id_DP,1),'ro');
-
-title('20mm40cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
+% figure
+% subplot 121
+% plot(AllBPA20mm40cm(id_P,3),AllBPA20mm40cm(id_P,1),'bo');
+% subplot 122 
+% plot(AllBPA20mm40cm(id_DP,3),AllBPA20mm40cm(id_DP,1),'ro');
+% 
+% title('20mm40cm all kinks')
+% xlabel('Time(s)')
+% ylabel('Force(N)')
 %% Combine all 20mm data into a single array 
 
 AllBPA20mm = vertcat(AllBPA20mm10cm,AllBPA20mm12cm,AllBPA20mm23cm,AllBPA20mm30cm,AllBPA20mm40cm);

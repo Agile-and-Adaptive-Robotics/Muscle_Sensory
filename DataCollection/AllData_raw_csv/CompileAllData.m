@@ -26,8 +26,14 @@ x5 = Emax;
 x6 = P_DP;
 x7 = Pressure.*Diameter;
 x8 = E./Emax;
-
 X = [ones(size(Force)) x1 x2 x3 x4 x5 x6 x7 x8];
+
+% x1 = Diameter; 
+% x2 = Pressure; 
+% x3 = E./Emax;
+% x4 = Diameter.*Pressure; 
+% x5 = E.*Pressure./Emax;
+% X = [ones(size(Force)) x1 x2 x3 x4 x5];
 b = regress(y,X)
 optimized_para = b; 
 
@@ -35,9 +41,12 @@ optimized_para = b;
 
 figure
 yfitt = b(1) + x1*b(2) + x2*b(3) + x3*b(4) + x4*b(5) +x5*b(6) + x6*b(7) +x7*b(8) +x8*b(9);
-plot(Pressure,yfitt);
+plot(Pressure,yfitt,'.');
 hold on
 plot(Pressure,Force,'o');
 legend('fit','data')
 xlabel('pressure(kPa)');
+title('Best fit using optimized Parameters vs data')
 ylabel('Force');
+grid on;
+hold off;

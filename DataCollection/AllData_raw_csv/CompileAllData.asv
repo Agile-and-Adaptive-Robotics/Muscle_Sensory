@@ -1,8 +1,7 @@
 %compiling all data into one giant matrix for optimization  of parameters
 CombinedData = vertcat(AllBPA10mm,AllBPA20mm);  %combine all data into a single matrix
-state = [1 0];
 SelectedData = CombinedData(CombinedData(:,7)==testnum&CombinedData(:,8)==1,:); %extract only certain test number and P/DP
-
+% 
 % SubsetData = CombinedData(CombinedData(:,7) = testnum&CombinedData(:,8)=1,:)
 %% extracting test # and rearranging columns into a matrix named AllData.
 Force = SelectedData(:,1);

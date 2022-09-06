@@ -21,15 +21,15 @@ AllData = [count,Force,Pressure,Diameter,Length,Lo,E,Emax,P_DP];
 
 %% creating regression matrix
 y = Force;
-x1 = Pressure;
-x2 = Diameter;
-x3 = Lo;                          
-x4 = E;                            
-x5 = Emax;
-x6 = P_DP;
-x7 = Pressure.*Diameter;
-x8 = E./Emax;
-X = [ones(size(Force)) x1 x2 x3 x4 x5 x6 x7 x8];
+x1 = E./Emax;
+x2 = Pressure;
+x3 = Pressure.*E./Emax     ;                     
+% x4 = E;                            
+% x5 = Emax;
+% x6 = P_DP;
+% x7 = Pressure.*Diameter;
+% x8 = E./Emax;
+X = [ones(size(Force)) x1 x2 x3]% x4 x5 x6 x7 x8];
 
 % x1 = Diameter; 
 % x2 = Pressure; 
@@ -43,7 +43,7 @@ optimized_para = b;
 %% plot fit
 
 figure
-yfitt = b(1) + x1*b(2) + x2*b(3) + x3*b(4) + x4*b(5) +x5*b(6) + x6*b(7) +x7*b(8) +x8*b(9);
+yfitt = b(1) + x1*b(2) + x2*b(3) + x3*b(4)% + x4*b(5) +x5*b(6) + x6*b(7) +x7*b(8) +x8*b(9);
 plot(Pressure,yfitt,'.');
 hold on
 plot(Pressure,Force,'o');

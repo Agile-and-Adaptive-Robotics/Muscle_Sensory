@@ -11,7 +11,7 @@
 % zlabel('Force(N)')
 % ylabel('Strain(%)')
 %% loadbens data
-ben = readmatrix('BensData.xlsx');
+csvread('BensDat
 %% Calculating strains and relative strains
 %10mm
     maxstrain_13cm = (12-10)/12;
@@ -46,7 +46,6 @@ plot3(AllBPA10mm23cm(:,2),relative_strain_10mm23cm,AllBPA10mm23cm(:,1),'.');
 plot3(AllBPA10mm27cm(:,2),relative_strain_10mm27cm,AllBPA10mm27cm(:,1),'.');
 plot3(AllBPA10mm29cm(:,2),relative_strain_10mm29cm,AllBPA10mm29cm(:,1),'.');
 plot3(AllBPA10mm30cm(:,2),relative_strain_10mm30cm,AllBPA10mm30cm(:,1),'.');
-plot3(ben(:,4),ben(:,7),ben(:,3),'*');
 xlabel('pressure (kPa)')
 zlabel('Force(N)')
 ylabel('Relative Strain')

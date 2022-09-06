@@ -14,6 +14,6 @@ a8 = x(9);
 % model =(a0 +a1 +a2*(((lo-li)/lo)/kmax))*tdata + a3*((lo-li)/lo) + a4*((lo-li)/lo)/kmax +a5;                     %(a0 + a1*(li-lo)/lo)*tdata + a2*(li-lo)/lo +a3 ;
 % model = pi*diameter^2*tdata*(a0+a1*(1/((lo-li)/lo)) + a2*(((lo-li)/lo)/kmax))+a3;
 % model = (a0 + a1*(((lo-li)/lo)/kmax) + a2*diameter)*data_pressure +a3*diameter + a4*(((lo-li)/lo)/kmax) +a5;
-model = a0 + a1*data_pressure + a2*diameter +a3*lo + a4*((lo-li)/lo) + a5*(kmax) + a6*State + a7*data_pressure*diameter + a8*(lo-li)/(lo-l620);
-
+% model = a0 + a1*data_pressure + a2*diameter +a3*lo + a4*((lo-li)/lo) + a5*(kmax) + a6*State + a7*data_pressure*diameter + a8*(lo-li)/(lo-l620);
+model = a0 + a
 sse =sum((ydata-model).^2); %sum((ydata-(a0*tdata+a1)).^2);

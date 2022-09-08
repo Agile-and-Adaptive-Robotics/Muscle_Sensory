@@ -1,13 +1,8 @@
 pressure = linspace(0,620,100)
 
 fit1 = (-3.133-17.6676+21.442).*pressure + (2.2667 -38.54-22.77); 
-fit2 = (26.33604).*pressure +(-94.66);
+fit2 = ().*pressure +();
 
-figure
-plot(pressure,fit1,pressure,fit2)
-legend('fit1','fit2')
-xlabel('pressure')
-ylabel('force')
 
 
 

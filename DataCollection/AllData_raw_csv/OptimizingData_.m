@@ -55,7 +55,7 @@ for k = 1:length(state)
         for i=1:length(kink)
             fun = @(x)sseval(x,data_pressure{k,i},data_force{k,i},diameter,li(i),lo,l620,kmax,State(k));
             %Best fitting parameters(x0)
-            x0 = [0.6184,-41.219,2.1,3]%,1.2,3,1,4]; %random values (#of parameters = # of entries) 
+            x0 = [-3.13,-1.47,21.44,2.26] %-3.21,-20];%,1,4]; %random values (#of parameters = # of entries) 
             bestx{k,i} = fminsearch(fun,x0) 
 
             %Test fit quality
@@ -74,7 +74,9 @@ for k = 1:length(state)
 %           yfit{k,i} = pi*diameter^2*data_pressure{k,i}*(a0+a1*(1/((lo-li(i))/lo)) + a2*(((lo-li(i))/lo)/kmax))+a3; %bad fit
 %           yfit{k,i} = (a0 + a1*(((lo-li(i))/lo)/kmax) + a2*diameter)*data_pressure{k,i} +a3*diameter + a4*(((lo-li(i))/lo)/kmax) +a5;
 %            yfit{k,i} = a0 + a1*data_pressure{k,i} + a2*diameter +a3*lo + a4*(lo-li(i))/lo + a5*(kmax) + a6*State(k) + a7*data_pressure{k,i}*diameter + a8*((lo-li(i))/(lo-l620)); 
-            yfit{k,i} = (a0 + a1*(((lo-li(i))/lo)/kmax))*data_pressure{k,i} +a2*(((lo-li(i))/lo)/kmax) + a3;
+%            yfit{k,i} = (a0 + a1*(((lo-li(i))/lo)/kmax))*data_pressure{k,i} +a2*(((lo-li(i))/lo)/kmax) + a3;
+%           yfit{k,i} = (a0 + a1*lo +a2*(1 - (((lo-li(i))/lo)/kmax)))*data_pressure{k,i} + a3*(1 - (((lo-li(i))/lo)/kmax))+ a4*lo +a5;
+            yfit{k,i} = (a0 +a1*lo)*data_pressure{k,i} + a2*lo +a3;
             r{k,i} = data_force{k,i} - yfit{k,i}; %remove divide by zero. 
             
             

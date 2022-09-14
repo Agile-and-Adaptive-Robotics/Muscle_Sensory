@@ -65,7 +65,7 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
 
     yyaxis left     %graph force on left axis in blue
     Force = animatedline('color','Blue');
-    ylim([-100,7000]);
+    ylim([-100,1040]);
     ylabel('Force (N)');
 
     yyaxis right    %graph pressure on right in red
@@ -84,10 +84,9 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
 
     for i = 1:total
         %for 10mm: % Jan 5 2022 ((A0)*0.1535-1.963)4.45 N | Aug 2 %*1.6475)-30.882)*4.45; %Force(N)           
-        %for 20mm: Jan 10 2022 ((A0)*0.392)-4.1786)*4.45 N
-        %for 40mm: Jun 8 2022 ((A0)*1.395)-14.661)*4.45 N
-        svalues(i,1) = (((str2double(readline(s)))*1.395)-14.661)*4.45;
-        svalues(i,2) = (((str2double(readline(s))))*0.7654) -18.609; %Pressure (kPa)         Aug 2
+        %for 20mm: Jan 10 2022 ((A0)*0.392)-4.1786)*4.45
+        svalues(i,1) = (((str2double(readline(s)))));%*0.392)-4.1786)*4.45; %Force (N)
+        svalues(i,2) = ((str2double(readline(s))));%*0.7654) -18.609; %Pressure (kPa)         Aug 2
         svalues(i,3) = str2double(readline(s))/1000; %Time(s)
         svalues(i,4) = str2double(readline(s)); %fill vs unfill ID
 

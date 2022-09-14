@@ -1,0 +1,46 @@
+% Function to plot all BPA data per diameter 
+
+%function BPAdataplot(BPAdiameter)
+BPAdiameter = '20mm'
+%BPAlengths = 
+BPAdiameter_dir = sprintf('%s*.csv',BPAdiameter)
+importcsv = dir(BPAdiameter_dir)
+
+for i = 1:length(importcsv)
+    BPA_alldatafiles(i) = convertCharsToStrings(importcsv(i).name);
+end
+
+%%
+lengthgroupeddata = cell(length(BPAlengths),1)
+for j = 1:length(BPAlengths)
+    exp = sprintf('%s_%s*.csv',BPAdiameter,BPAlengths(j))
+    lengthgroupeddata{j} = dir(exp)
+    labelBPA = sprintf('%s_%s',BPAdiameter,BPAlengths(j))
+    
+    
+    for k = 1:length(lengthgroupeddata{j}) %find all the kink lengths
+        exp2 = sprintf('')
+    end
+
+end
+
+
+
+
+
+%Grouping all the BPA data by lengths (per diameter)
+% expression = strings;groupinglengths =strings;
+% for i =1:length(BPAlengths)
+%  expression(i) = sprintf('[%s_%s]',BPAdiameter,BPAlengths(i));
+%  groupinglengths(i) = regexp(importcsv.name,expression(i),'match')
+% end
+
+
+
+
+
+% % Find all data, separated by lengths
+% for i=1:length(BPAlengths)
+%     length_grouped_data (i)=regexp(BPAlengths(i),'','match')
+% end
+% %end

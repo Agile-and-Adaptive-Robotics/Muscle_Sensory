@@ -44,6 +44,9 @@ Kinks_10mm23cm = {'23cm_Unkinked_Test', '23cm_Kinked14mm_Test','23cm_Kinked30mm_
             BPA10mm23cm{i,a}(:,5) = 23;
             BPA10mm23cm{i,a}(:,6) = ones(length(BPA10mm23cm{i}),1)*vals_23cm(a); %col5 = kinks
             BPA10mm23cm{i,a}(:,7) = ones(length(BPA10mm23cm{i}),1)*i%col6 = Test#
+            idx = BPA10mm23cm{i,a}(:,3) <=27; %indexing the pressurizing part
+            BPA10mm23cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
+
         end
     end
 
@@ -69,6 +72,9 @@ Kinks_10mm27cm = {'27cm_Unkinked_Test', '27cm_Kinked7mm_Test','27cm_Kinked15mm_T
             BPA10mm27cm{i,a}(:,5) = 27;
             BPA10mm27cm{i,a}(:,6) = ones(length(BPA10mm27cm{i}),1)*vals_27cm(a); %col5 = kinks
             BPA10mm27cm{i,a}(:,7) = ones(length(BPA10mm27cm{i}),1)*i%col6 = Test#
+            idx = BPA10mm27cm{i,a}(:,3) <=27; %indexing the pressurizing part
+            BPA10mm27cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
+
         end
     end
 
@@ -95,6 +101,9 @@ Kinks_10mm29cm = {'29cm_Unkinked_Test', '29cm_Kinked17mm_Test','29cm_Kinked28mm_
             BPA10mm29cm{i,a}(:,5) =29;
             BPA10mm29cm{i,a}(:,6) = ones(length(BPA10mm29cm{i}),1)*vals_29cm(a); %col5 = kinks
             BPA10mm29cm{i,a}(:,7) = ones(length(BPA10mm29cm{i}),1)*i%col6 = Test#
+            idx = BPA10mm29cm{i,a}(:,3) <=27; %indexing the pressurizing part
+            BPA10mm29cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
+
         end
     end
 
@@ -122,6 +131,9 @@ Kinks_10mm30cm = {'30cm_Unkinked_Test','30cm_Kinked12mm_Test','30cm_Kinked22mm_T
             BPA10mm30cm{i,a}(:,5) =30;
             BPA10mm30cm{i,a}(:,6) = ones(length(BPA10mm30cm{i}),1)*vals_30cm(a); %col5 = kinks
             BPA10mm30cm{i,a}(:,7) = ones(length(BPA10mm30cm{i}),1)*i%col6 = Test#
+            idx = BPA10mm30cm{i,a}(:,3) <=27; %indexing the pressurizing part
+            BPA10mm30cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
+
         end
     end
 

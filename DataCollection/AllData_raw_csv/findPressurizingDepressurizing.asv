@@ -1,0 +1,4 @@
+if AllBPA10mm13cm(:,8) ==1
+    plot
+    
+else

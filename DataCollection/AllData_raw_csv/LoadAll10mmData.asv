@@ -18,7 +18,7 @@ Kinks_10mm13cm = {'13cm_Unkinked_Test','13cm_Kinked4mm_Test','13cm_Kinked8mm_Tes
             BPA10mm13cm{i,a}(:,6) = ones(length(BPA10mm13cm{i}),1)*vals_13cm(a); %col5 = kinks
             BPA10mm13cm{i,a}(:,7) = ones(length(BPA10mm13cm{i}),1)*i%col6 = Test#
             idx = BPA10mm13cm{i,a}(:,3) <=27; %indexing the pressurizing part
-            BPA10mm13cm{i,a}(idx,8) = 1 %pressurizing = #1 on column 8, depressurizing = 0;
+            BPA10mm13cm{i,a}(idx,8) = 1 %pressur
         end
     end
 

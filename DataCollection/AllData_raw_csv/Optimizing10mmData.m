@@ -38,4 +38,4 @@ ylabel('Force data and Fit')
 title('Data and Fitting curve');
 legend('Data','Fitted Curve')
 hold off
-gof
+

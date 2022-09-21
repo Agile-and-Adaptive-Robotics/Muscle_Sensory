@@ -1,0 +1,41 @@
+% 10mm BPA Parameters (parameters to enter to select a specific set of data)
+    lo = 12; %resting length
+    li = [12 11.6 11.2 10.8]; %intial kinked length: needs to be changed every run
+    l620 = 10; %minimum contraction length
+    diameter = 10;
+    lengths = 13;
+    kink = [0 4 8 12];
+_____________________________________________
+    lo = 22;
+    li = [22 20.5 18.9]; 
+    l620 = 18.5; 
+    diameter = 10;
+    lengths = 23;
+    kink = [0 14 30];
+    testnum = 10;
+    state = ["P","DP"]; %P= pressurizig, DP = depressurizing
+
+------------------------------------
+    lo = 25.7; 
+    li = [25.7 25 24.2 22.6];
+    l620 = 21.8; 
+    diameter = 10;
+    lengths = 27;
+    kink = [0 7 15 31];
+
+------------------------------------
+    lo = 28.1;
+    li = [28.1 26.4 25.3 24]; 
+    l620 = 23.5; 
+    diameter = 10;
+    lengths = 29;
+    kink = [0 17 28 41];
+
+
+----------------------------------
+lo = 28.1;
+li = [28.1 26.9 25.9 24.8]
+l620 = 24;
+diameter = 10;
+lengths = 30;
+kink = [0 12 22 33]

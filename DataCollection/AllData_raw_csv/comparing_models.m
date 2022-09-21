@@ -6,7 +6,7 @@ fit2 = (26.33604).*pressure +(-94.66);
 figure
 plot(pressure,fit1,pressure,fit2)
 legend('fit1','fit2')
-xlabel('pressure')
+xlabel('pressure');
 ylabel('force')
 
 

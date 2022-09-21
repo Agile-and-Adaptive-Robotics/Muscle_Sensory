@@ -1,5 +1,5 @@
 %compiling all data into one giant matrix for optimization  of parameters
-CombinedData =AllBPA20mm12cm_P; %vertcat(AllBPA10mm,AllBPA20mm);  %combine all data into a single matrix
+CombinedData =AllBPA10mm13cm_P; %vertcat(AllBPA10mm,AllBPA20mm);  %combine all data into a single matrix
 state = [1 0];
 kinknum =0
 SelectedData = CombinedData(CombinedData(:,7)==testnum&CombinedData(:,8)==1&CombinedData(:,6)==kinknum,:); %extract only certain test number and P/DP
@@ -21,6 +21,7 @@ count = count';
 AllData = [count,Force,Pressure,Diameter,Length,Lo,E,Emax,P_DP];
 
 %% creating regression matrix
+
 y = Force;
 x1 = Pressure; 
 % x2 = Pressure;

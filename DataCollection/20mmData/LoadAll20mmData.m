@@ -80,8 +80,6 @@ Kinks_20mm12cm = {'12cm_Unkinked_Test','12cm_Kinked10mm_Test','12cm_Kinked20mm_T
             BPA20mm12cm{i,a}(:,6) = ones(length(BPA20mm12cm{i}),1)*vals_12cm(a); %col6 = kinks
             BPA20mm12cm{i,a}(:,7) = ones(length(BPA20mm12cm{i}),1)*i;%col7 = Test#
             idx = BPA20mm12cm{i,a}(:,3) <=23; %indexing the pressurizing part
-            idx_DP = BPA20mm12cm{i,a}(:,3) >23;
-             BPA20mm12cm{i,a}(idx_DP,8) = 0;
             BPA20mm12cm{i,a}(idx,8) = 1; %pressurizing = #1 on column 8, depressurizing = 0;
             BPA20mm12cm{i,a}(:,9) = lo;
             BPA20mm12cm{i,a}(:,10) = l620;
@@ -211,14 +209,14 @@ id_DP = (AllBPA20mm30cm(:,8)==0);
 AllBPA20mm30cm_P = AllBPA20mm30cm(id_P,1:13);
 AllBPA20mm30cm_DP =AllBPA20mm30cm(id_DP,1:13);
 
-figure
-subplot 121
-plot(AllBPA20mm30cm(id_P,3),AllBPA20mm30cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA20mm30cm(id_DP,3),AllBPA20mm30cm(id_DP,1),'ro');
-title('20mm30cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
+% figure
+% subplot 121
+% plot(AllBPA20mm30cm(id_P,3),AllBPA20mm30cm(id_P,1),'bo');
+% subplot 122
+% plot(AllBPA20mm30cm(id_DP,3),AllBPA20mm30cm(id_DP,1),'ro');
+% title('20mm30cm all kinks')
+% xlabel('Time(s)')
+% ylabel('Force(N)')
 
 %% 20mm 40cm 
 Kinks_20mm40cm = {'40cm_Unkinked_Test','40cm_Kinked35mm_Test','40cm_Kinked46mm_Test','40cm_Kinked69mm_Test'};
@@ -249,7 +247,7 @@ Kinks_20mm40cm = {'40cm_Unkinked_Test','40cm_Kinked35mm_Test','40cm_Kinked46mm_T
 %Combine all 10mm10cm data into a single array
 AllBPA20mm40cm = BPA20mm40cm{1};
 for a = 1:length(Kinks_20mm40cm)
-    for i =1:10
+    for i =2:10
         CurrentData = BPA20mm40cm{i,a};
         RealData = CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %remove data points with force below 15N
         AllBPA20mm40cm = vertcat(AllBPA20mm40cm,RealData);

@@ -1,6 +1,6 @@
 %this function inputs the BPA parameters (lo,li,l620,kink,kmax,test#) based
 %on chosen diameter and length. 
-function [diameter,lengths,lo,li,l620,kink,kmax,testnum,State,B0,B1] = choosedata(diameter,lengths,test)
+function [diameter,lengths,lo,li,l620,kink,kmax,testnum,State] = choosedata(diameter,lengths,test)
     if diameter == 10
          if lengths == 13
             lo = 12;
@@ -89,8 +89,13 @@ function [diameter,lengths,lo,li,l620,kink,kmax,testnum,State,B0,B1] = choosedat
             kmax = (12-9.1)/12;
             testnum = test;
             State = [1 0];
-            B0 =[-73.9562,-228.1784,-246.8121;-78.9729,-224.0691,-225.2483];
-            B1 =[1.8329,1.3149,0.8961;1.7966,1.3085,0.8608] ;
+            B0 =[-73.9562,-228.1784
+-246.8121
+-78.9729
+-224.0691
+-225.2483
+ ;
+            B1 = ;
           elseif lengths == 23
             lo = 22.5
             li = [22.5 21.9 20.9]; 
@@ -101,9 +106,8 @@ function [diameter,lengths,lo,li,l620,kink,kmax,testnum,State,B0,B1] = choosedat
             kmax =(22.5-17)/22.5;
             testnum = test;
             State = [1 0];
-            B0 =[-193.1132,-285.5341,-299.6463;-181.0135,-262.8829,-273.4042];
-            B1 =[2.1845,1.8482,1.5106;2.1498,1.8044,1.4623];
-
+            B0 =
+            B1 =
           elseif lengths == 30
             lo = 27.4; 
             li = [27.4 26.1 25.2 24.1]; 
@@ -114,9 +118,8 @@ function [diameter,lengths,lo,li,l620,kink,kmax,testnum,State,B0,B1] = choosedat
             kink = [0 14 23 34];
             testnum = test;
             State = [1 0];
-            B0 = [-138.4181,-284.4654,-309.7835,-331.1704;-132.6666,-269.9289,-290.9818,-304.3443];
-            B1 = [2.3146,2.0557,1.8759,1.4738;2.2916,2.0255,1.8375,1.4227];
-
+            B0 = 
+            B1 = 
           elseif lengths == 40
             lo = 39.8; 
             li = [39.8 36.2 35.1 32.8]; 
@@ -127,9 +130,8 @@ function [diameter,lengths,lo,li,l620,kink,kmax,testnum,State,B0,B1] = choosedat
             kmax =(39.8-29.9)/39.8;
             testnum = test;
             State = [1 0];
-            B0 =[ -162.5449,-340.6542,-344.231,-355.2951;-153.3159,-318.9088,-319.3926,-321.1931];
-            B1 =[ 2.2906,1.7865,1.5472,1.1063;2.2619,1.7423,1.496,1.036];
-
+            B0 = 
+            B1 = 
           end
     end
 end

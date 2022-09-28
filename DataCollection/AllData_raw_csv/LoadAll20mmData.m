@@ -45,6 +45,7 @@ for a = 1:length(Kinks_20mm10cm)
         AllBPA20mm10cm = vertcat(AllBPA20mm10cm,RealData);
     end
 end
+AllBPA20mm10cm = AllBPA20mm10cm(AllBPA20mm10cm(:,1)>low_force&AllBPA20mm10cm(:,2)<high_pressure,:);
 
 %Separating the pressurizing and depressurizing data
 id_P = (AllBPA20mm10cm(:,8)==1);
@@ -100,6 +101,7 @@ for a = 1:length(Kinks_20mm12cm)
         AllBPA20mm12cm = vertcat(AllBPA20mm12cm,RealData);
     end
 end
+AllBPA20mm12cm = AllBPA20mm12cm(AllBPA20mm12cm(:,1)>low_force&AllBPA20mm12cm(:,2)<high_pressure,:);
 
 %Separating the pressurizing and depressurizing data
 id_P = (AllBPA20mm12cm(:,8)==1);
@@ -153,7 +155,7 @@ for a = 1:length(Kinks_20mm23cm)
         AllBPA20mm23cm = vertcat(AllBPA20mm23cm,RealData);
     end
 end
-
+AllBPA20mm23cm = AllBPA20mm23cm(AllBPA20mm23cm(:,1)>low_force&AllBPA20mm23cm(:,2)<high_pressure,:);
 %Separating the pressurizing and depressurizing data
 id_P = (AllBPA20mm23cm(:,8)==1);
 id_DP = (AllBPA20mm23cm(:,8)==0);
@@ -203,7 +205,7 @@ for a = 1:length(Kinks_20mm30cm)
         AllBPA20mm30cm = vertcat(AllBPA20mm30cm,RealData);
     end
 end
-
+AllBPA20mm30cm = AllBPA20mm30cm(AllBPA20mm30cm(:,1)>low_force&AllBPA20mm30cm(:,2)<high_pressure,:);
 %Separating the pressurizing and depressurizing data
 
 id_P = (AllBPA20mm30cm(:,8)==1);
@@ -211,14 +213,14 @@ id_DP = (AllBPA20mm30cm(:,8)==0);
 AllBPA20mm30cm_P = AllBPA20mm30cm(id_P,1:13);
 AllBPA20mm30cm_DP =AllBPA20mm30cm(id_DP,1:13);
 
-figure
-subplot 121
-plot(AllBPA20mm30cm(id_P,3),AllBPA20mm30cm(id_P,1),'bo');
-subplot 122
-plot(AllBPA20mm30cm(id_DP,3),AllBPA20mm30cm(id_DP,1),'ro');
-title('20mm30cm all kinks')
-xlabel('Time(s)')
-ylabel('Force(N)')
+% figure
+% subplot 121
+% plot(AllBPA20mm30cm(id_P,3),AllBPA20mm30cm(id_P,1),'bo');
+% subplot 122
+% plot(AllBPA20mm30cm(id_DP,3),AllBPA20mm30cm(id_DP,1),'ro');
+% title('20mm30cm all kinks')
+% xlabel('Time(s)')
+% ylabel('Force(N)')
 
 %% 20mm 40cm 
 Kinks_20mm40cm = {'40cm_Unkinked_Test','40cm_Kinked35mm_Test','40cm_Kinked46mm_Test','40cm_Kinked69mm_Test'};
@@ -255,6 +257,7 @@ for a = 1:length(Kinks_20mm40cm)
         AllBPA20mm40cm = vertcat(AllBPA20mm40cm,RealData);
     end
 end
+AllBPA20mm40cm = AllBPA20mm40cm(AllBPA20mm40cm(:,1)>low_force&AllBPA20mm40cm(:,2)<high_pressure,:);
 %Separating the pressurizing and depressurizing data
 id_P = (AllBPA20mm40cm(:,8)==1);
 id_DP = (AllBPA20mm40cm(:,8)==0);

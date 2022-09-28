@@ -52,7 +52,7 @@ for a =1:length(Kinks_10mm13cm)
         AllBPA10mm13cm=vertcat(AllBPA10mm13cm,RealData);%CurrentData);%RealData);
     end
 end
-
+AllBPA10mm13cm = AllBPA10mm13cm(AllBPA10mm13cm(:,1)>low_force&AllBPA10mm13cm(:,2)<high_pressure,:);
 %Separating the pressurizing and depressurizing data
 id_P = (AllBPA10mm13cm(:,8)==1);
 id_DP = (AllBPA10mm13cm(:,8)==0);
@@ -94,6 +94,7 @@ for a =1:length(Kinks_10mm23cm)
         AllBPA10mm23cm=vertcat(AllBPA10mm23cm,RealData);
     end
 end
+AllBPA10mm23cm = AllBPA10mm23cm(AllBPA10mm23cm(:,1)>low_force&AllBPA10mm23cm(:,2)<high_pressure,:);
 
 %Separating the pressurizing and depressurizing data
 id_P = (AllBPA10mm23cm(:,8)==1);
@@ -135,7 +136,7 @@ for a =1:length(Kinks_10mm27cm)
         AllBPA10mm27cm=vertcat(AllBPA10mm27cm,RealData);
     end
 end
-
+AllBPA10mm27cm = AllBPA10mm27cm(AllBPA10mm27cm(:,1)>low_force&AllBPA10mm27cm(:,2)<high_pressure,:);
 %Separating the pressurizing and depressurizing data
 id_P = (AllBPA10mm27cm(:,8)==1);
 id_DP = (AllBPA10mm27cm(:,8)==0);
@@ -178,6 +179,7 @@ for a =1:length(Kinks_10mm29cm)
         AllBPA10mm29cm=vertcat(AllBPA10mm29cm,RealData);
     end
 end
+AllBPA10mm29cm = AllBPA10mm29cm(AllBPA10mm29cm(:,1)>low_force&AllBPA10mm29cm(:,2)<high_pressure,:);
 
 %Separating the pressurizing and depressurizing data
 id_P = (AllBPA10mm29cm(:,8)==1);
@@ -220,6 +222,7 @@ for a =1:length(Kinks_10mm30cm)
         AllBPA10mm30cm=vertcat(AllBPA10mm30cm,RealData);
     end
 end
+AllBPA10mm30cm = AllBPA10mm30cm(AllBPA10mm30cm(:,1)>low_force&AllBPA10mm30cm(:,2)<high_pressure,:);
 %Separating the pressurizing and depressurizing data
 id_P = (AllBPA10mm30cm(:,8)==1);
 id_DP = (AllBPA10mm30cm(:,8)==0);

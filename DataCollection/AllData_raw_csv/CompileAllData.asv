@@ -1,5 +1,6 @@
 %compiling all data into one giant matrix for optimization  of parameters
 CombinedData =AllBPA10mm_P; %vertcat(AllBPA10mm,AllBPA20mm);  %combine all data into a single matrix
+testnum=10;
 % state = [1 0];
 % kinknum =0;
 % SelectedData = CombinedData(CombinedData(:,7)==testnum&CombinedData(:,8)==1&CombinedData(:,6)==kinknum,:); %extract only certain test number and P/DP
@@ -47,16 +48,62 @@ lengths_ = [13,23,27,30];
 diameter = 10;
 test=10;
 
-figure
-hold on
+
+%plot fit
 for i=1:length(lengths_)
     [diameter,lengths,lo,li,l620,kink,E,kmax,Erel,testnum,State,B0,B1]=choosedata(diameter,lengths_(i),test);
+    figure(i)
+%     r = cell(length(lengths_),length(kink));
     for k = 1:length(kink)
-        yfit = c(1) + c(2)*(1-Erel(k)).^2 + c(3)*li(k)
+    wtc = SelectedData(SelectedData(:,5)==lengths_(i)&SelectedData(:,11)==li(k),:);
+    wtc_pressure = wtc(:,2);
+    wtc_force = wtc(:,1);
+    yfit = c(1) + c(2)*(1-Erel(k)).^2 + c(3)*wtc_pressure;
+    r{i,k}= wtc_force - yfit;
+    subplot(2,2,k)
+    plot(wtc_pressure,yfit)
+    hold on
+    plot(wtc_pressure,wtc_force,'.')
+    hold off
+    str = sprintf('%dcm%dmm',lengths_(i),kink(k));
+    title(str)
+    xlabel('Pressure (kPa)');
+    ylabel('Force (N)');
+    grid on
     end
-    
-    
 end
+%% plot residuals of each fit
+
+for i=1:length(lengths_)
+    [diameter,lengths,lo,li,l620,kink,E,kmax,Erel,testnum,State,B0,B1]=choosedata(diameter,lengths_(i),test);
+    figure(i)
+    for k =1:length(kinks)
+    wtc = SelectedData(SelectedData(:,5)==lengths_(i)&SelectedData(:,11)==li(k),:);
+    wtc_pressure = wtc(:,2);
+    wtc_force = wtc(:,1);
+    yfit = c(1) + c(2)*(1-Erel(k)).^2 + c(3)*wtc_pressure;
+    r{i,k}= wtc_force - yfit;
+
+
+
+
+
+
+% %% plot the fit with individual pressure points. 
+% c(1);
+% c(2);
+% c(3);
+% 
+% AllBPA10mm13cm_P; %4 kinks
+% AllBPA10mm23cm_P; %3 kinks
+% AllBPA10mm27cm_P; %4 kinks
+% AllBPA10mm30cm_P; %4 kinks
+
+
+
+
+
+
 
 
 % figure

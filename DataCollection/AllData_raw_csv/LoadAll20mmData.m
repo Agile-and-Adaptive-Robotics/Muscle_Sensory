@@ -9,7 +9,7 @@ lengths = {'10','12','23','30','40'};
     maxstrain_30cm = (27.4-20.7)/27.4;
     maxstrain_40cm = (39.8-29.9)/39.8;
     high_pressure = 620;
-    low_force = 20;
+    low_force = 30;
 
 %% 20mm 10cm 
 Kinks_20mm10cm = {'10cm_Unkinked_Test','10cm_Kinked13mm_Test','10cm_Kinked20mm_Test'};

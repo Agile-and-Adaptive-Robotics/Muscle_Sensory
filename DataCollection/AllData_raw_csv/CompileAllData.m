@@ -1,5 +1,5 @@
 %compiling all data into one giant matrix for optimization  of parameters
-CombinedData =AllBPA20mm_P; %vertcat(AllBPA10mm,AllBPA20mm);  %combine all data into a single matrix
+CombinedData =AllBPA10mm_DP; %vertcat(AllBPA10mm,AllBPA20mm);  %combine all data into a single matrix
 testnum=10;
 % state = [1 0];
 % kinknum =0;
@@ -25,14 +25,14 @@ AllData = [Force,Pressure,Lo,Li,L620,E,Emax,Erel];
 %% creating regression matrix
 y = Force;
 x1 = (1 - Erel).^2; 
-%x2 = Li+100;
+x2 = Li.^2;
 x3 = Pressure ;                     
 % % x4 = E;                            
 % x5 = Emax;
 % x6 = P_DP;
 % x7 = Pressure.*Diameter;
 % x8 = E./Emax;
-X = [ones(size(Force)) x1 x3];% x2 x3]% x4 x5 x6 x7 x8];
+X = [ones(size(Force)) x1 x2 x3];% x2 x3]% x4 x5 x6 x7 x8];
 
 % x1 = Diameter; 
 % x2 = Pressure; 
@@ -44,8 +44,10 @@ c = regress(y,X)
 optimized_para = c; 
 
 %% plot fit for all different lengths and Li (kinks)
-lengths_ = [10,12,23,30,40];
-diameter = 20;
+lengths_ = [13,23,27,30];
+diameter = 10;
+% diameter = 20;
+% lengths_= [10,12,23,30,40]
 test=10;
 
 
@@ -58,7 +60,7 @@ for i=1:length(lengths_)
     wtc = SelectedData(SelectedData(:,5)==lengths_(i)&SelectedData(:,11)==li(k),:);
     wtc_pressure = wtc(:,2);
     wtc_force = wtc(:,1);
-    yfit = c(1) + c(2)*(1-Erel(k)).^2 + c(3)*wtc_pressure;
+    yfit = c(1) +c(2)*(1-Erel(k)).^2 + c(3)*(li(k))^2 + c(4)*wtc_pressure;
     r{i,k}= wtc_force - yfit;
     subplot(2,2,k)
     plot(wtc_pressure,yfit)
@@ -81,7 +83,7 @@ for i=1:length(lengths_)
     wtc = SelectedData(SelectedData(:,5)==lengths_(i)&SelectedData(:,11)==li(k),:);
     wtc_pressure = wtc(:,2);
     wtc_force = wtc(:,1);
-    yfit = c(1) + c(2)*(1-Erel(k)).^2 + c(3)*wtc_pressure;
+    yfit = c(1) + c(2)*(1-Erel(k)).^2 + c(3)*(li(k))^2+ c(4)*wtc_pressure;
     r{i,k}= wtc_force - yfit;
     subplot(2,2,k)
     plot(wtc_pressure,r{i,k})
@@ -94,9 +96,9 @@ for i=1:length(lengths_)
 end
 
 %% save all figures
-for i = 1:10
-    saveas(figure(i),sprintf('Figure%d',i))
-end
+% for i = 1:10
+%     saveas(figure(i),sprintf('Figure%d',i));
+% end
 
 
 

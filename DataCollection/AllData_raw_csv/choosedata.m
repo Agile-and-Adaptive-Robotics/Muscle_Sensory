@@ -80,7 +80,7 @@ function [diameter,lengths,lo,li,l620,kink,E,kmax,Erel,testnum,State,B0,B1] = ch
           if lengths == 10
             lo = 9.8;
             li = [9.8, 8.5,7.8];
-            l620 = 7.6,
+            l620 = 7.6;
             diameter = 20;
             lengths = 10;
             kink = [0 13 20];
@@ -106,7 +106,7 @@ function [diameter,lengths,lo,li,l620,kink,E,kmax,Erel,testnum,State,B0,B1] = ch
             B0 =[-73.9562,-228.1784,-246.8121;-78.9729,-224.0691,-225.2483];
             B1 =[1.8329,1.3149,0.8961;1.7966,1.3085,0.8608] ;
           elseif lengths == 23
-            lo = 22.5
+            lo = 22.5;
             li = [22.5 21.9 20.9]; 
             l620 = 17;
             diameter =20 ;

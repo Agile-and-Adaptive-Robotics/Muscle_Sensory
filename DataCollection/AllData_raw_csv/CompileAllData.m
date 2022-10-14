@@ -47,12 +47,18 @@ for i=1:length(lengths_)
     wtc_pressure = wtc(:,2);
     wtc_force = wtc(:,1);
     
+    %Ben's fit
+    norm_force = -0.5887 + 0.3917*wtc_pressure + exp(-6.691*Erel(k)-0.8048) + wtc_pressure*(exp(-(1.113*Erel(k)).^2 -0.2881));
+    max_force = wtc_pressure.*(0.4864.*atan(0.03306.*(lo - 0.0075).*wtc_pressure));
+    ben_fit = norm_force;
+    
     
     yfit = c(1) +c(2)*((1-Erel(k))^2)*wtc_pressure + c(3)*((li(k)))*wtc_pressure;
     r{i,k}= wtc_force - yfit;
     subplot(2,2,k)
     plot(wtc_pressure,yfit)
     hold on
+    plot(wtc_pressure,ben_fit)
     plot(wtc_pressure,wtc_force,'.')
     hold off
     str = sprintf('%dcm%dmm',lengths_(i),kink(k));

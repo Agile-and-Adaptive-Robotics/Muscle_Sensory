@@ -30,8 +30,8 @@ AllData = [Force,Pressure,Lo,Li,L620,E,Emax,Erel];
 
 %% creating regression matrix
 y = Force;
-x1 = ((1-Erel).^2).*Pressure;
-x2 = (Li).*Pressure;
+x1 = (exp(1-Erel)).*Pressure;%((1-Erel).^2).*Pressure;
+x2 = Erel.*(Li).*Pressure;
 X = [ones(size(Force)) x1 x2];
 c = regress(y,X)
 optimized_para = c; 
@@ -48,17 +48,17 @@ for i=1:length(lengths_)
     wtc_force = wtc(:,1);
     
     %Ben's fit
-    norm_force = -0.5887 + 0.3917*wtc_pressure + exp(-6.691*Erel(k)-0.8048) + wtc_pressure*(exp(-(1.113*Erel(k)).^2 -0.2881));
-    max_force = wtc_pressure.*(0.4864.*atan(0.03306.*(lo - 0.0075).*wtc_pressure));
-    ben_fit = norm_force;
+%     norm_force = -0.5887 + 0.3917*wtc_pressure + exp(-6.691*Erel(k)-0.8048) + wtc_pressure*(exp(-(1.113*Erel(k)).^2 -0.2881));
+%     max_force = wtc_pressure.*(0.4864.*atan(0.03306.*(lo - 0.0075).*wtc_pressure));
+%     ben_fit = norm_force;
     
     
-    yfit = c(1) +c(2)*((1-Erel(k))^2)*wtc_pressure + c(3)*((li(k)))*wtc_pressure;
+    yfit = c(1) +c(2)*(exp(1-Erel(k)))*wtc_pressure + c(3)*(Erel(k).*(li(k)))*wtc_pressure;
     r{i,k}= wtc_force - yfit;
     subplot(2,2,k)
     plot(wtc_pressure,yfit)
     hold on
-    plot(wtc_pressure,ben_fit)
+%     plot(wtc_pressure,ben_fit)
     plot(wtc_pressure,wtc_force,'.')
     hold off
     str = sprintf('%dcm%dmm',lengths_(i),kink(k));
@@ -81,6 +81,9 @@ for i=1:length(lengths_)
     
      
     r{i,k}= wtc_force - yfit;
+    ssr = sum((r{i,k}).^2);
+    sst = sum((wtc_force - mean(r{i,k})).^2);
+    r_2 = 1 - ssr/sst
     subplot(2,2,k)
     plot(wtc_pressure,r{i,k})
     str = sprintf('Residual Plot %dcm%dmm',lengths_(i),kink(k));

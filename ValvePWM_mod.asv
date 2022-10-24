@@ -65,9 +65,9 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
     ylim([-50 800]);
     ylabel('Pressure (kPa)');
 
-    
     %the load cell data will sometimes spike unexpectedly which
     %causes problems in data collection
+ 
     prev = 1;   
     %since the spikes can span over multiple data readings, 
     %this variable keeps track of the last data point not in the spike 
@@ -95,13 +95,18 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
         %i > 1 because the spike detection references a previous i
         %value, which doesn't exist if the loop started at the minimum
         %i value
+
             if abs(svalues(i-prev,1)-svalues(i,1))<1000  
+
             %check if next value is more than
-            %1000 N away from the last known value
+            %100 N away from the last known value
+
                 prev = 1;
                 addpoints(Force,svalues(i,3),svalues(i,1)); 
                 %if so, add the force data
+
             else
+
                 svalues(i,1) = svalues(i-prev,1);   
                 %otherwise, replace it with the last known data point
                 disp('spike');                      
@@ -109,9 +114,12 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
                 prev = prev+1;                        
                 %increase the amount of points since 
                 %the last value outside of the spike
+
             end                                     
+
             addpoints(Pressure,svalues(i,3),svalues(i,2));  
             %add pressure and time data
+
         end
     end
 

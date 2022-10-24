@@ -20,11 +20,13 @@
 
   #include <math.h>
       int choose_branch;    //initialize the variable "choose_branch"
+      
       //Initiating Input and Output pins on Arduino
       int air_in = 13;  
       int air_out = 12;
       int pressure_pin = A0;
       int force_pin = A1;
+      
       //Setting the timing of the valves pwm 
       String pw_in = "500";            //use milliseconds
       String pw_out = "0";
@@ -90,7 +92,7 @@
                   Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
                   Serial.println(timer);                //record time stamp of data collection
                   Serial.println(1);
-                  
+                 
             }
                   // digitalWrite(air_in,LOW)
              //Data collection for depressurizing BPA       

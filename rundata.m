@@ -25,5 +25,7 @@ function rundata
 [Test9Data,Test9Stat]=ValvePWM_mod(2,5,29000,5,500,450,500);
 [Test10Data,Test10Stat]=ValvePWM_mod(2,5,29000,5,500,450,500);
 
+%% Oct 2022 only do two tests (test 9 and 10) 
+
 
 

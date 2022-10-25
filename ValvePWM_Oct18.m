@@ -40,7 +40,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     format short g      %remove scientific notation
 
     %Initialize serial port 
-    s = serialport(port,14400); %change 115200 to 9600 Nov 16
+    s = serialport(port,115200); %change 115200 to 9600 Nov 16
 
     while s.NumBytesAvailable < 1               
         write(s,string(protocol_id),'string');
@@ -55,7 +55,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     disp(vars);
 
     write(s,vars,'string'); 
-    total = str2num(total);
+    total = str2double(total);
     readline(s);
     %writes the data for the arduino, reads once to clear
     %the "running" string from the buffer before reading the data
@@ -65,7 +65,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     yyaxis left     %graph force on left axis in blue
     Force = animatedline('color','blue');
-    ylim([-100,5000]);
+    ylim([-100,800]);
     ylabel('Force (N)');
 
     yyaxis right    %graph pressure on right in red
@@ -84,7 +84,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     for i = 1:total
 
-        svalues(i,1) = ((((str2double(readline(s))))*1.6475)-30.882)/4.45; %Force(N)            Aug 2
+        svalues(i,1) =((((str2double(readline(s)))*0.1535)-1.963)*4.45); %((((str2double(readline(s))))*1.6475)-30.882)/4.45; %Force(N)            Aug 2
         svalues(i,2) = ((str2double(readline(s)))*0.7654) -18.609; %Pressure (kPa)         Aug 2
         svalues(i,3) = str2double(readline(s))/1000; %Time(s)
 
@@ -131,6 +131,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     addpoints(Force,svalues(i,3),svalues(i,1));     %add data to graph
     addpoints(Pressure,svalues(i,3),svalues(i,2));
     drawnow  
+    s.Terminator
 
     %Use the following bit of code to find some basic statistics about the data
     %that has been collected.  The operating assumption here is that collecting 

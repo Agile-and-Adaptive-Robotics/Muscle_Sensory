@@ -28,10 +28,10 @@
       int force_pin = A1;
       
       //Setting the timing of the valves pwm 
-      String pw_in = "500";            //use milliseconds
-      String pw_out = "0";
-      String period_in = "1000";
-      String period_out = "1";
+      String pw_in = "50";            //use milliseconds
+      String pw_out = "450";
+      String period_in = "500";
+      String period_out = "500";
       //initiate timer at 0
       int timer = 0;
       
@@ -39,17 +39,16 @@
     pinMode(air_in, OUTPUT);
     pinMode(air_out, OUTPUT);
     Serial.begin(115200);           //initialize arduino serial communication
-    Serial.setTimeout(1000);         //this sets the maximum milliseconds to wait for serial data. (Nov 5th, changed from 100 ->1000) 
-    digitalWrite(air_in,LOW);
-    digitalWrite(air_out,LOW);
+    Serial.setTimeout(100);         //this sets the maximum milliseconds to wait for serial data. (Nov 5th, changed from 100 ->1000) 
+    //digitalWrite(air_in,LOW);
+    //digitalWrite(air_out,LOW);
   }
 
   void loop() {
     char choose_branch = '0'; 
-    int total = 0;
+    int total=0;
         digitalWrite(air_in,LOW);
         digitalWrite(air_out,LOW);
-
     if (Serial.available() > 0)              //If there's info sent over serial from MATLAB, read the serial data into "choose branch" variable.    ('2' = PWM data collection) 
     {     
       choose_branch = Serial.read();        
@@ -91,8 +90,7 @@
                   Serial.println(analogRead(force_pin));       //reads raw force data
                   Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
                   Serial.println(timer);                //record time stamp of data collection
-                  Serial.println(1);
-                 
+                //Serial.println(1);       
             }
                   // digitalWrite(air_in,LOW)
              //Data collection for depressurizing BPA       
@@ -110,13 +108,12 @@
                 Serial.println(analogRead(force_pin));       //reads raw force data
                 Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
                 Serial.println(timer);                //record time stamp of data collection
-                Serial.println(2);
+                //Serial.println(2);
               }
               //digitalWrite(air_out,LOW);
       } else {  //if there is no information to read over serial from matlab, wait and release valve  
         digitalWrite(air_in,LOW);
         digitalWrite(air_out,LOW);
       }
-      
     }
   }

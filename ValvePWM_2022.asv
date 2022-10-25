@@ -1,4 +1,4 @@
-function [Data] = ValvePWM_2022(protocol_id,port,varargin)
+function [Data,Stats] = ValvePWM_2022(protocol_id,port,varargin)
     p = inputParser;
     addRequired(p,'protocol_id');
     addRequired(p,'port');
@@ -18,7 +18,7 @@ function [Data] = ValvePWM_2022(protocol_id,port,varargin)
     format short g
     
     %Initialize Serial port
-    s = serialport("COM3",115200)
+    s = serialport(port,115200)
     while s.NumBytesAvailable < 1 %if theres no byte available, write a string to create 
         write(s,string(protocol_id),'string');
     end
@@ -37,24 +37,38 @@ function [Data] = ValvePWM_2022(protocol_id,port,varargin)
         svalues(i,2) = ((((str2double(readline(s))))*0.7654) -18.609); %Pressure (kPa)         Aug 2
         svalues(i,3) = (str2double(readline(s))/1000); %Time(s)
         
+    yyaxis left
+    Force = animatedline('color','Blue')
+    ylim([-50,7000]);
+    ylabel('Force (N)');
+    yyaxis right    
+    Pressure = animatedline('color','red');
+    ylim([-50 800]);
+    ylabel('Pressure (kPa)');
+    
+    prev = 1;
+    
+    for i = 1:total-100
+        svalues(i,1) = str2double(readline(s));
+        svalues(i,2) = str2double(readline(s));
+        svalues(i,3) = str2double(readline(s));
+        svalues(i,4) = str2double(readline(s));
         if i >1
             if abs(svalues(i-prev,1) - svalues(i,1))<1000
                 prev = 1;
-   %             addpoints(Force,svalues(i,3),svalues(i,1));
+                addpoints(Force,svalues(i,3),svalues(i,1));
             else
                 svalues(i,1) = svalues(i-prev,1);
                 disp('spike');
                 disp(svalues(i,3));
                 prev = prev +1;
             end
-            %addpoints(Pressure,svalues(i,3),svalues(i,2));
+            addpoints(Pressure,svalues(i,3),svalues(i,2));
         end
     end
-%     addpoints(Force,svalues(i,3),svalues(i,1));     %add data to graph
-%     addpoints(Pressure,svalues(i,3),svalues(i,2));
-%     drawnow  
-
-Data = svalues
+    addpoints(Force,svalues(i,3),svalues(i,1));     %add data to graph
+    addpoints(Pressure,svalues(i,3),svalues(i,2));
+    drawnow  
 end
         
     

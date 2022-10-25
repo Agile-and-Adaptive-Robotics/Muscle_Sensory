@@ -57,8 +57,9 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
     clf;                        %clears graph from any previous tests
 
     yyaxis left     %graph force on left axis in blue
+    grid on
     Force = animatedline('color','Blue');
-    ylim([-50,7000]);
+    ylim([-50,1000]);
     ylabel('Force (N)');
     yyaxis right    %graph pressure on right in red
     Pressure = animatedline('color','red');
@@ -68,13 +69,12 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
     
     %the load cell data will sometimes spike unexpectedly which
     %causes problems in data collection
-    prev = 1;   
     %since the spikes can span over multiple data readings, 
     %this variable keeps track of the last data point not in the spike 
     %and compares new data against it until it finds one that is within
     %100 N, which indicates that the spike has ended
-
-    for i = 1:total
+    prev = 1;   
+    for i = 1:(total-1)
         %for 10mm: % Jan 5 2022 ((A0)*0.1535-1.963)4.45 N | Aug 2 %*1.6475)-30.882)*4.45; %Force(N)           
         %for 20mm: Jan 10 2022 ((A0)*0.392)-4.1786)*4.45 N
         %for 40mm: Jun 8 2022 ((A0)*1.395)-14.661)*4.45 N
@@ -89,9 +89,7 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
         %kPa
         %column 3 is the time that the data was collected,
         %converting milliseconds to seconds
-
-        if i > 1
-
+       if i > 1
         %i > 1 because the spike detection references a previous i
         %value, which doesn't exist if the loop started at the minimum
         %i value
@@ -110,11 +108,11 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
                 %increase the amount of points since 
                 %the last value outside of the spike
             end                                     
-            addpoints(Pressure,svalues(i,3),svalues(i,2));  
-            %add pressure and time data
-        end
-    end
+           addpoints(Pressure,svalues(i,3),svalues(i,2));  
+%             add pressure and time data
+      end
 
+    end
     addpoints(Force,svalues(i,3),svalues(i,1));     %add data to graph
     addpoints(Pressure,svalues(i,3),svalues(i,2));
     drawnow  
@@ -148,6 +146,6 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
     rows = {'Mean','Median','mode','min','max','Standard Deviation'};
     columns = {'Force','Pressure'};
     stats = array2table(stats,'RowNames',rows,'VariableNames',columns);
-    Data = svalues;
-    Stats = stats;
+    Data = svalues
+    Stats = stats
 end    

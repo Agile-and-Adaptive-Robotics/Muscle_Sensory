@@ -39,7 +39,7 @@
     pinMode(air_in, OUTPUT);
     pinMode(air_out, OUTPUT);
     Serial.begin(115200);           //initialize arduino serial communication
-    Serial.setTimeout(100);         //this sets the maximum milliseconds to wait for serial data. (Nov 5th, changed from 100 ->1000) 
+    Serial.setTimeout(1000);         //this sets the maximum milliseconds to wait for serial data. (Nov 5th, changed from 100 ->1000) 
     //digitalWrite(air_in,LOW);
     //digitalWrite(air_out,LOW);
   }

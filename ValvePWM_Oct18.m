@@ -17,7 +17,7 @@
 %their default values: total:50000, pw:0, perod:1 (the default values won't
 %oscillate the valve and will keep it open for the duration of the test)
 
-function [Data, Stats] = ValvePWM(protocol_id,port,varargin) 
+function [Data, Stats] = ValvePWM_Oct18(protocol_id,port,varargin) 
 
     p = inputParser;
     addRequired(p,'protocol_id');

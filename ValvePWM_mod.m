@@ -83,7 +83,7 @@ function [Data, Stats] = ValvePWM_mod(protocol_id,port,varargin)
                     svalues(i,1) = ((((str2double(readline(s)))*0.1535)-1.963)*4.45); %force (N)
                     svalues(i,2) = ((((str2double(readline(s))))*0.7654) -18.609); %Pressure (kPa)         Aug 2
                     svalues(i,3) = (str2double(readline(s))/1000); %Time(s)
-                   % svalues(i,4) = str2double(readline(s)); %fill vs unfill ID
+                    svalues(i,4) = str2double(readline(s)); %fill vs unfill ID
 %                     b = s.NumBytesAvailable()
                     %read data to each column and convert units when needed
                     %column 1 is force, converting lbs to N

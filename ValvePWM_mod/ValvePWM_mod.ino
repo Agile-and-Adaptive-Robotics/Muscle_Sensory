@@ -90,7 +90,7 @@
                   Serial.println(analogRead(force_pin));       //reads raw force data
                   Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
                   Serial.println(timer);                //record time stamp of data collection
-                //Serial.println(1);       
+                  Serial.println(1);       
             }
                   // digitalWrite(air_in,LOW)
              //Data collection for depressurizing BPA       
@@ -108,7 +108,7 @@
                 Serial.println(analogRead(force_pin));       //reads raw force data
                 Serial.println(analogRead(pressure_pin));       //reads raw pressure sensor data
                 Serial.println(timer);                //record time stamp of data collection
-                //Serial.println(2);
+                Serial.println(2);
               }
               //digitalWrite(air_out,LOW);
       } else {  //if there is no information to read over serial from matlab, wait and release valve  

@@ -77,7 +77,7 @@ stop = false;
 startTime = datetime('now');
 while ~stop
     % Read current voltage value
-    v = readVoltage(a,'A0');
+    v = readVoltage(a,'A0'); %A0 = pressure %A1 = force
     % Calculate temperature from voltage (based on data sheet)
     Pressure = ((v*1023/5)*0.7654)-18.609;
     TempF = Pressure;    

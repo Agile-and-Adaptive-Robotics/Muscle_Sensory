@@ -79,7 +79,8 @@ while ~stop
     % Read current voltage value
     v = readVoltage(a,'A0'); %A0 = pressure %A1 = force
     % Calculate temperature from voltage (based on data sheet)
-    Pressure = ((v*1023/5)*0.7654)-18.609;
+   % Pressure = ((((v*1023/5)*0.392)-4.1786)*4.45)      %force(20mm)
+    Pressure = ((v*1023/5)*0.7654)-18.609; %pressure
     TempF = Pressure;    
     % Get current time
     t =  datetime('now') - startTime;

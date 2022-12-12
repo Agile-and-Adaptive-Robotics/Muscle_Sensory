@@ -59,27 +59,63 @@ class DataFiltering(DataHandler):
         # 1Hz 2nd order Butterworth
         # coff = [9.446918438401618072e-4, -0.91497583480143362955, 1.91119706742607298189]
         # 2Hz 2nd order Butterworth
-        coff = [3.621681514928615665e-3, -0.83718165125602272969, 1.82269492519630826877]
+
+        # this method is from the schwietering website. I want to make my own method so that I understand the system
+        # coff = [3.621681514928615665e-3, -0.83718165125602272969, 1.82269492519630826877]
+        # v1 = 0
+        # v2 = 0
+        # # sensor 1
+        # for i in range(len(sen1)):
+        #     if i == len(sen1) - 1:
+        #         break
+        #     v0 = v1
+        #     v1 = v2
+        #     v2 = (coff[0] * sen1[i]) + (coff[1] * v0) + (coff[2] * v1)
+        #     ft_sen1[i] = v0 + v2 + 2 * v1
+        # # sensor 2
+        # v1 = 0
+        # v2 = 0
+        # for i in range(len(sen2)):
+        #     if i == len(sen2) - 1:
+        #         break
+        #     v0 = v1
+        #     v1 = v2
+        #     v2 = (coff[0] * sen2[i]) + (coff[1] * v0) + (coff[2] * v1)
+        #     ft_sen2[i] = v0 + v2 + 2 * v1
+        #
+
+        # 50Hz sampling frequency, 2Hz corner frequency filter.
+        coff = [0.09904, 0.07806, 1.314, -0.4913]
         v1 = 0
         v2 = 0
+        e1 = 0
+        e2 = 0
+        v = 0
         # sensor 1
-        for i in range(len(sen1)):
-            if i == len(sen1) - 1:
-                break
-            v0 = v1
-            v1 = v2
-            v2 = (coff[0] * sen1[i]) + (coff[1] * v0) + (coff[2] * v1)
-            ft_sen1[i] = v0 + v2 + 2 * v1
+        for idx, i in enumerate(sen1):
+            if idx in [0, 1]:  # skip the first 2 indexes
+                continue
+            e1 = sen1[idx-1]
+            e2 = sen1[idx-2]
+            v1 = v
+            v2 = v1
+            v = coff[0]*e1 + coff[1]*e2 + coff[2]*v1 + coff[3]*v2
+            ft_sen1[idx] = v
         # sensor 2
         v1 = 0
         v2 = 0
-        for i in range(len(sen2)):
-            if i == len(sen2) - 1:
-                break
-            v0 = v1
-            v1 = v2
-            v2 = (coff[0] * sen2[i]) + (coff[1] * v0) + (coff[2] * v1)
-            ft_sen2[i] = v0 + v2 + 2 * v1
+        e1 = 0
+        e2 = 0
+        v = 0
+        for idx, i in enumerate(sen2):
+            if idx in [0, 1]:  # skip the first 2 indexes
+                continue
+            e1 = sen2[idx - 1]
+            e2 = sen2[idx - 2]
+            v1 = v
+            v2 = v1
+            v = coff[0] * e1 + coff[1] * e2 + coff[2] * v1 + coff[3] * v2
+            ft_sen2[idx] = v
 
         return ft_sen1, ft_sen2
 
@@ -100,11 +136,15 @@ class DataFiltering(DataHandler):
             # calculate filtered data
             ft_s1, ft_s2 = self.butterworth_filter(each)
             # plot filter data
-            axs[0].plot(time, sen1, time, ft_s1)
-            axs[1].plot(time, sen2, time, ft_s2)
+            axs[0].plot(time, sen1, label='Original')
+            axs[0].plot(time, ft_s1, label='Filtered')
+            axs[1].plot(time, sen2, label='Original')
+            axs[1].plot(time, ft_s2, label='Filtered')
 
             axs[0].set_title(f'Filtered data Data ID {each}')
             axs[1].set_xlabel('Time')
+            axs[0].legend()
+            axs[1].legend()
             if save:
                 title = f'Filtered Data ID {each}'
                 plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500, bbox_inches='tight')
@@ -249,8 +289,8 @@ class DataFiltering(DataHandler):
         return poly_fit_param
 
     def clean_up_multi_filter_then_poly_fit(self):
-        ft9_s1, ft9_s2 = self.butterworth_filter(5)
-        ft10_s1, ft10_s2 = self.butterworth_filter(6)
+        ft9_s1, ft9_s2 = self.butterworth_filter(11)
+        ft10_s1, ft10_s2 = self.butterworth_filter(12)
         # clean up filtered data
         ft9_s1 = np.delete(ft9_s1, np.arange(0, 299, 1))
         ft9_s1 = np.delete(ft9_s1, [-1])
@@ -269,17 +309,38 @@ class DataFiltering(DataHandler):
         poly_fit_param = self._calculate_poly_fit(ft_s2, ft_s1, showPlot=True)
         return poly_fit_param
 
+    def clean_up_multi_filter_then_lin_fit(self):
+        ft9_s1, ft9_s2 = self.butterworth_filter(11)
+        ft10_s1, ft10_s2 = self.butterworth_filter(12)
+        # clean up filtered data
+        ft9_s1 = np.delete(ft9_s1, np.arange(0, 299, 1))
+        ft9_s1 = np.delete(ft9_s1, [-1])
+        ft9_s2 = np.delete(ft9_s2, np.arange(0, 299, 1))
+        ft9_s2 = np.delete(ft9_s2, [-1])
+
+        ft10_s1 = np.delete(ft10_s1, np.arange(0, 299, 1))
+        ft10_s1 = np.delete(ft10_s1, [-1])
+        ft10_s2 = np.delete(ft10_s2, np.arange(0, 299, 1))
+        ft10_s2 = np.delete(ft10_s2, [-1])
+
+        # combine data index 9 and 10
+        ft_s1 = np.concatenate([ft9_s1, ft10_s1])
+        ft_s2 = np.concatenate([ft9_s2, ft10_s2])
+
+        lin_fit_param = self._calculate_lin_fit(ft_s2, ft_s1, showPlot=True)
+        return lin_fit_param
+
 
 RunAll = True
 if RunAll and __name__ == "__main__":
-    path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
-    filtering = DataFiltering(filepath=path)
-    idx_list = [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
+    path = r"D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\filter_test_data.txt"
+    filtering = DataFiltering(filepath=(Path(path)))
+    idx_list = [0, 1]
     # filtering.plot_psd(idx_list, save=True)
 
-    # filtering.plot_butterworth_filter(idx_list, save=False)
+    filtering.plot_butterworth_filter(idx_list, save=False)
     # filtering.plot_psd_filtered_data(idx_list, save=False)
     # filtering.scatter_plot_filter_data(idx_list, save=False)
 
-    fit_param = filtering.clean_up_multi_filter_then_poly_fit()
-    print(f'Poly fit parameters: {fit_param}')
+    # fit_param = filtering.clean_up_multi_filter_then_lin_fit()
+    # print(f'Lin fit parameters: {fit_param}')

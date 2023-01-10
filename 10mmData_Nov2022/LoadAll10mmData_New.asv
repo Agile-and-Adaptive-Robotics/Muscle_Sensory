@@ -31,15 +31,12 @@ kink_p = [0 25 50 75];
 %combining data into a single array
 AllBPA10mm10cm = BPA10mm10cm{1};
 for a = 1:length(kink_p)
-    for i=2:3
+    for i=2:10
         CurrentData=BPA10mm10cm{i,a};
         RealData= CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %%%
         AllBPA10mm10cm=vertcat(AllBPA10mm10cm,RealData);
     end
 end
-id_P = (AllBPA10mm10cm(:,4)==1);
-id_DP = (AllBPA10mm10cm(:,4)==2);
-
 %Separating P and DP
 AllBPA10mm10cm_P  = AllBPA10mm10cm(id_P,1:14);
 AllBPA10mm10cm_DP = AllBPA10mm10cm(id_DP,1:14);

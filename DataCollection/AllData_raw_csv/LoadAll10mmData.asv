@@ -60,7 +60,6 @@ id_DP = (AllBPA10mm13cm(:,8)==0);
 AllBPA10mm13cm_P = AllBPA10mm13cm(id_P,1:13);
 AllBPA10mm13cm_DP = AllBPA10mm13cm(id_DP,1:13);
 
-
 %% 10mm 23cm data for all lengths and kinks
 Kinks_10mm23cm = {'23cm_Unkinked_Test', '23cm_Kinked14mm_Test','23cm_Kinked30mm_Test'};
     vals_23cm= [0,14,30];

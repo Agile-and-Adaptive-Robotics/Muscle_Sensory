@@ -1,0 +1,19 @@
+% plotting 10mm data and analysis
+
+
+figure
+plot (AllBPA10mm10cm_P(:,2),AllBPA10mm10cm_P(:,1),'.')
+xlabel('Pressure(kPa)')
+ylabel('Force(N)')
+title('P: 10mm10cm - FvP')
+
+figure
+yyaxis left
+plot(AllBPA10mm10cm_P(:,3),AllBPA10mm10cm_P(:,1),'.')
+ylabel('Force (N)')
+
+yyaxis right
+plot(AllBPA10mm10cm_P(:,3),AllBPA10mm10cm_P(:,2),'.')
+ylabel('Pressure(kPa)')
+xlabel('time')
+legend ('Force','Pressure')

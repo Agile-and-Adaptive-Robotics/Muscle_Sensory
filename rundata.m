@@ -27,7 +27,7 @@ function rundata
 
 %% Oct 2022 only do two tests (test 9 and 10) 
 [Offset,OffsetStat]=ValvePWM_mod(2,3,45000,0,500,450,500);
-[Test6Data,Test6Stat]=ValvePWM_mod(2,3,45000,25,500,450,500);
+[Test6Data,~]=ValvePWM_mod(2,3,45000,25,500,450,500);
 [Test7Data,Test7Stat]=ValvePWM_mod(2,3,45000,50,500,450,500);
 [Test8Data,Test8Stat]=ValvePWM_mod(2,3,45000,10,500,450,500);
 [Test9Data,Test9Stat]=ValvePWM_mod(2,3,45000,5,500,450,500);

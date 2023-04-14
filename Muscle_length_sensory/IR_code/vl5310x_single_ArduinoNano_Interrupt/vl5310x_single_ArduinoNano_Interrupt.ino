@@ -26,7 +26,7 @@ void setup()
   // fast as possible).  To use continuous timed mode
   // instead, provide a desired inter-measurement period in
   // ms (e.g. sensor.startContinuous(100)).
-  sensor.startContinuous(100);
+  sensor.startContinuous(20);
 }
 
 void loop()

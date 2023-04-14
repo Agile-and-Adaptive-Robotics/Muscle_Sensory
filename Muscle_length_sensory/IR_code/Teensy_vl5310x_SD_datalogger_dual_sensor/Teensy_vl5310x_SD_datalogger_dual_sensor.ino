@@ -23,18 +23,10 @@ June 27 2021
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-// address we will assign if dual sensor is present
-#define LOX1_ADDRESS 0x30
-#define LOX2_ADDRESS 0x31
-// set the pins to shutdown
-#define SHT_LOX1 24
-#define SHT_LOX2 25
 // set up the sensor
-Adafruit_VL53L0X lox1 = Adafruit_VL53L0X();
-Adafruit_VL53L0X lox2 = Adafruit_VL53L0X();
+Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 // this holds the measurement
-VL53L0X_RangingMeasurementData_t measure1;
-VL53L0X_RangingMeasurementData_t measure2;
+VL53L0X_RangingMeasurementData_t measure;
 
 
 // set up variables using the SD utility library functions:
@@ -75,6 +67,7 @@ void setup()
     // Set up the digital pins for sensors
     pinMode(SHT_LOX1, OUTPUT);
     pinMode(SHT_LOX2, OUTPUT);
+    pinMode(11, OUTPUT); // Set pin D11 as output to control muscle(DA)
     // shutdown both sensors
     Serial.println("Shutdown all sensors...");
     digitalWrite(SHT_LOX1, LOW);
@@ -98,7 +91,6 @@ void setup()
 void loop()
 {
     //do nothing
-
 }
 
 void DataLoggingLoop() //Interrupt loop
@@ -108,6 +100,8 @@ void DataLoggingLoop() //Interrupt loop
         return;
     }
     
+    digitalWriteFast(11, !digitalReadFast(11));
+
     // lox1.rangingTest(&measure1, false); // pass in 'true' to get debug data printout!
     // lox2.rangingTest(&measure2, false); // pass in 'true' to get debug data printout!  
     // String IR1_reading = String(measure1.RangeMilliMeter);
@@ -122,6 +116,7 @@ void DataLoggingLoop() //Interrupt loop
         Serial.println("Failed to open file.");
         while (1) {}
     }
+    /*
     if (dataFile){
         dataFile.print(counter);
         dataFile.print(", ");
@@ -139,6 +134,7 @@ void DataLoggingLoop() //Interrupt loop
         Serial.print("\t");
         Serial.println(counter); // write to Serial. Comment out when run for real
     }
+    */
     counter += 1;
 }
 

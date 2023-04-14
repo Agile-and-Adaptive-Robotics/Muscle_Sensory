@@ -152,6 +152,7 @@ class DataHandler(object):
         """Make plots of the specified index and output a simple report"""
         self.plot_series(idx, norm, save=True)
         self.plot_scatter(idx, save=True)
+        self.plot_residual(idx, save=True)
         if show:
             plt.show()
 
@@ -166,10 +167,12 @@ class DataHandler(object):
         sampF = float(self.header['Sampling Frequency'])
         data = self._str2array(idx)
         time = data[:, 0]*1/sampF
+        time = time[12:-1]
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        sen1 = data[:, 1]  # should be Internal sensor
-        sen2 = data[:, 2]  # should be External sensor
+        print('Remember! Skipping the first 12 data points for time series!')
+        sen1 = data[:, 1][12:-1]  # should be Internal sensor
+        sen2 = data[:, 2][12:-1]  # should be External sensor
         if norm:
             title = f'Normalized dual sensor comparison. Data ID {idx}'
             sen1 = self.normalize_data(sen1)
@@ -183,10 +186,42 @@ class DataHandler(object):
         ax.set(ylabel='Distance',
                xlabel='Time(s)')
         ax.legend(['Internal', 'External'])
+        plt.grid()
         # self._basic_stats(sen1, sen2)
         if save:
             plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
         plt.close(fig)
+
+    def plot_residual(self, idx, save=False):
+        """Plot the residual of the internal and external sensor
+        Also produce some stats to understand goodness of calibration"""
+        title = f'Residual. Data ID {idx}'
+        self.read_header_data(idx)
+        data = self._str2array(idx)
+
+        # prep data
+        sampF = float(self.header['Sampling Frequency'])
+        time_arr = data[:, 0]*1/sampF
+        time_arr = time_arr[12:-1]
+
+        print('Remember! Skipping the first 12 data points for residual!')
+        sen1 = data[:, 2][12:-1]
+        sen2 = data[:, 1][12:-1]
+        residual = sen1-sen2
+
+        # print out some basic stats for the residual data
+        self._calc_and_print_simple_stats(f"Data ID {idx}", residual)
+        rmse = self._rmse(sen1, sen2)
+        print(f'RMSE: {rmse}')
+
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.plot(time_arr, residual, '.b', linewidth=0, markersize=1)
+        ax.set(title=title,
+               ylabel='Residual (mm)',
+               xlabel='Time (s)')
+        if save:
+            plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
     def plot_scatter(self, idx, save=False):
         """Plot the scattered data"""
@@ -194,8 +229,9 @@ class DataHandler(object):
         data = self._str2array(idx)
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        sen1 = data[:, 2]
-        sen2 = data[:, 1]
+        sen1 = data[:, 2][12:-1]
+        sen2 = data[:, 1][12:-1]
+        print('Remember! Skipping the first 12 data points for scatter plot!')
         ax.plot(sen1, sen2, '.b', linewidth=0, markersize=2)
         ax.set(title=title,
                ylabel='Internal sensor',
@@ -221,6 +257,27 @@ class DataHandler(object):
         print(f'Sensor 1 std dev: {np.std(sen1)}')
         print(f'Sensor 2 mean: {np.mean(sen2)}')
         print(f'Sensor 2 std dev: {np.std(sen2)}')
+
+    @staticmethod
+    def _rmse(set1, set2):
+        """calculate the root mean square of set1 and set2"""
+        if len(set1) != len(set2):
+            raise Exception('To calculate rmse, set1 and set2 has to be the same length!')
+        diff = set1-set2
+        sum_diff_squared = np.sum(diff**2)
+        return np.sqrt(sum_diff_squared/len(set1))
+
+    @staticmethod
+    def _calc_and_print_simple_stats(data_name, data):
+        """Calculate and print basic stats for a data set"""
+        print(f'\t-> Data set {data_name}')
+        mean1 = np.mean(data)
+        std1 = np.std(data)
+        three_sigma = 3*np.std(data)
+        max1 = np.max(data)
+        min1 = np.min(data)
+        range1 = max1 - min1
+        print(f'Mean: {mean1}\tStd: {std1}\t3s: {three_sigma}\tRange: {range1}\n')
 
     def combine_data(self, indices):
         """input indices as a list of indices to aggregate data into one single pool"""
@@ -323,27 +380,27 @@ class DataHandler(object):
             plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
 
-RunAll = True
+RunAll = False
 if RunAll and __name__ == "__main__":
     # define path
-    file = 'IR_data8.txt'
+    file = 'IR_cali03.txt'
     path = Path(__file__).parent / file
     IR_data = DataHandler(path)
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
     IR_data.full_report(norm=False)
-    idx_list = [6, 7, 8]
+    idx_list = [0, 1]
     IR_data.combine_data(indices=idx_list)
     # IR_data.plot_combine_data(indices=idx_list, save=True)
     IR_data.plot_cdata_add_fit(indices=idx_list)
     # IR_data.test_fit_to_data_set(indices=idx_list, data_index=1, save=True)
     plt.show()
 
-makeReport = False
+makeReport = True
 if makeReport and __name__ == "__main__":
     # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
-    file = 'IR_data8.txt'
+    file = 'IR_data19.txt'
     path = Path(__file__).parent / file
     IR_data = DataHandler(path)
     for each in IR_data.data_index:

@@ -152,6 +152,35 @@ class DataFiltering(DataHandler):
             for each_ax in axs:
                 each_ax.clear()
 
+    def plot_butterworth_filter_each_sensor(self, idx, save=False):
+        """
+        plot the Butterworth filter each plot at a time rather than plotting all data on a subplot
+        :param idx:
+        :param save:
+        :return:
+        """
+        for each in idx:
+            self.read_header_data(each)
+            sampF = float(self.header['Sampling Frequency'])
+            data_segment = self._str2array(idx=each)
+            time = data_segment[:, 0] / sampF
+            sen1 = data_segment[:, 1]
+            sen2 = data_segment[:, 2]
+            sensors = [sen1, sen2]
+            # calculate filtered data
+            ft_s1, ft_s2 = self.butterworth_filter(each)
+            ft_sensors = [ft_s1, ft_s2]
+            for each_plot in range(2):
+                # plot filter data
+                plt.plot(time, sensors[each_plot], label='Unfiltered')
+                plt.plot(time, ft_sensors[each_plot], label='Filtered')
+
+                plt.title(f'Filtered data')
+                plt.xlabel('Time (s)')
+                plt.ylabel('Distance (mm)')
+                # plt.legend()
+                plt.show()
+
     def plot_psd_filtered_data(self, idx, save=False):
         """plot psd of the filtered data"""
         if not isinstance(idx, list):
@@ -335,10 +364,11 @@ RunAll = True
 if RunAll and __name__ == "__main__":
     path = r"D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\filter_test_data.txt"
     filtering = DataFiltering(filepath=(Path(path)))
-    idx_list = [0, 1]
+    idx_list = [0]
     # filtering.plot_psd(idx_list, save=True)
 
-    filtering.plot_butterworth_filter(idx_list, save=False)
+    filtering.plot_butterworth_filter_each_sensor(idx_list, save=False)
+    # filtering.plot_butterworth_filter(idx_list, save=False)
     # filtering.plot_psd_filtered_data(idx_list, save=False)
     # filtering.scatter_plot_filter_data(idx_list, save=False)
 

@@ -55,13 +55,21 @@ for n=1:length(fin_arr)
 end
 x1 = linspace(0, collect_time*60, length(fin_arr));
 % do a fit of raw data to check drift
-fit_raw = polyfit(reshape(x,[1,length(x)]), reshape(raw_data,[1,length(raw_data)]), 1);
+x2fit = reshape(x,[1,length(x)]);
+y2fit = reshape(raw_data,[1,length(raw_data)]);
+fit_raw = polyfit(x2fit , y2fit, 1);
 yfit = fit_raw(1)*x + fit_raw(2);
 fprintf('Fit params: slope=%f mm/s, intercept=%f\n', fit_raw(1), fit_raw(2))
 hold on
-plot(x1, fin_arr, 'LineWidth', 3)
+% plot(x1, fin_arr, 'LineWidth', 3)
 plot(x, yfit, 'LineWidth', 2)
-legend('Raw data', 'Running mean', 'Linfit raw data')
+% calculate R^2 term
+% (https://www.mathworks.com/matlabcentral/answers/500262-is-it-possible-to-extract-also-r-2-value-from-linear-fit-between-2-vectors)
+yfit = polyval(fit_raw, x2fit);
+SStot = sum((y2fit-mean(y2fit)).^2);
+SSres = sum((y2fit-yfit).^2);
+Rsq = 1-SSres/SStot
+legend('Raw data', 'Linear fit raw data')
 xlabel('Time (s)')
 ylabel('Distance (mm)')
 % title('Sensor drift - running average ' + string(bin) + ' samples')

@@ -71,9 +71,9 @@ volatile float vfin2 = 0.0;
 //rest offset value 
 //define the rest offset linear equation for each sensor. 
 //Use the restoffset_calibration code to find the restoffset for each sensor. 
-volatile float rest_m_iss = 0.0;
+volatile float rest_m_iss = 1.0;
 volatile float rest_b_iss = 0.0;
-volatile float rest_m_ess = 0.0;
+volatile float rest_m_ess = 1.0;
 volatile float rest_b_ess = 0.0;
 //filter coefficients
 volatile float fc1 = 0.013359200027857;
@@ -91,7 +91,7 @@ time: "HHMM" - use military time5
 */
 char collectDate[11] = "23/01/2022";
 char collectTime[6] = "00:00"; 
-char fileName[13] = "IR_test4.txt";
+char fileName[14] = "IR_test88.txt";
 char notes[200] = "filter and calibrated data";  // add notes, make it short
 
 void setup()
@@ -197,20 +197,20 @@ void DataLoggingLoop() //Interrupt loop
         }
     }
     
-    // lox1.rangingTest(&measure1, false); // pass in 'true' to get debug data printout!
-    // lox2.rangingTest(&measure2, false); // pass in 'true' to get debug data printout!  
+    iss.rangingTest(&measure_iss, false); // pass in 'true' to get debug data printout!
+    ess.rangingTest(&measure_ess, false); // pass in 'true' to get debug data printout!  
     // String IR1_reading = String(measure1.RangeMilliMeter);
     // String IR2_reading = String(measure2.RangeMilliMeter);
 
     // Need to filter both ISS and ESS
     v11 = v12;
     v12 = v13;
-    v13 = (fc1*iss.readRangeResult()) + (fc2*v11) + (fc3*v12);
+    v13 = (fc1*measure_iss.RangeMilliMeter) + (fc2*v11) + (fc3*v12);
     vfin1 = v11 + v12 + 2*v13;
 
     v21 = v22;
     v22 = v23;
-    v23 = (fc1*ess.readRangeResult()) + (fc2*v21) + (fc3*v22);
+    v23 = (fc1*measure_ess.RangeMilliMeter) + (fc2*v21) + (fc3*v22);
     vfin2 = v21 + v22 + 2*v23;
 
     // Apply calibration to correct for sensor offset

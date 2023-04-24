@@ -71,9 +71,9 @@ volatile float vfin2 = 0.0;
 //rest offset value 
 //define the rest offset linear equation for each sensor. 
 //Use the restoffset_calibration code to find the restoffset for each sensor. 
-volatile float rest_m_iss = 0.0;
+volatile float rest_m_iss = 1.0;
 volatile float rest_b_iss = 0.0;
-volatile float rest_m_ess = 0.0;
+volatile float rest_m_ess = 1.0;
 volatile float rest_b_ess = 0.0;
 //filter coefficients
 volatile float fc1 = 0.013359200027857;
@@ -91,7 +91,7 @@ time: "HHMM" - use military time5
 */
 char collectDate[11] = "23/01/2022";
 char collectTime[6] = "00:00"; 
-char fileName[13] = "IR_test4.txt";
+char fileName[14] = "IR_test88.txt";
 char notes[200] = "filter and calibrated data";  // add notes, make it short
 
 void setup()

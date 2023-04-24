@@ -197,20 +197,20 @@ void DataLoggingLoop() //Interrupt loop
         }
     }
     
-    iss.rangingTest(&measure_iss, false); // pass in 'true' to get debug data printout!
-    ess.rangingTest(&measure_ess, false); // pass in 'true' to get debug data printout!  
+    // iss.rangingTest(&measure_iss, false); // pass in 'true' to get debug data printout!
+    // ess.rangingTest(&measure_ess, false); // pass in 'true' to get debug data printout!  
     // String IR1_reading = String(measure1.RangeMilliMeter);
     // String IR2_reading = String(measure2.RangeMilliMeter);
 
     // Need to filter both ISS and ESS
     v11 = v12;
     v12 = v13;
-    v13 = (fc1*measure_iss.RangeMilliMeter) + (fc2*v11) + (fc3*v12);
+    v13 = (fc1*iss.readRangeResult()) + (fc2*v11) + (fc3*v12);
     vfin1 = v11 + v12 + 2*v13;
 
     v21 = v22;
     v22 = v23;
-    v23 = (fc1*measure_ess.RangeMilliMeter) + (fc2*v21) + (fc3*v22);
+    v23 = (fc1*ess.readRangeResult()) + (fc2*v21) + (fc3*v22);
     vfin2 = v21 + v22 + 2*v23;
 
     // Apply calibration to correct for sensor offset

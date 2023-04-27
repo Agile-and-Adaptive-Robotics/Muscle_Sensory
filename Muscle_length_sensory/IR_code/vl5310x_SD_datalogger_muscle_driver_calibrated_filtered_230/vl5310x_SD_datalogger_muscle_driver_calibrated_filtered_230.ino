@@ -73,8 +73,8 @@ volatile float fc1 = 0.013359200027857;
 volatile float fc2 = -0.7008967811884;
 volatile float fc3 = 1.64745998107697655399;
 //variables for calibration
-volatile float vfin2_m = 1.632254236470396;
-volatile float vfin2_b = 50.23728300552712;
+volatile float vfin2_m = 0.7830000417928301;
+volatile float vfin2_b = 107.51536037554061;
 volatile float vfin2_cal = 0.0;
 /*
 date and time of data collection 

@@ -136,16 +136,10 @@ class DataHandler(object):
         # pre-slot a 3xn array
         data = np.zeros(shape=(len(txt_data), 3))
         for idx, each in enumerate(txt_data):
-            temp = np.array([0, 0, 0])
-            # parse through each line to find the 3 numbers
-            comma1 = each.find(",")
-            comma2 = each[comma1+1:len(each)].find(",")
-            # the indexing is to skip various things like \n, spaces, and commas\
-            temp[0] = float(each[0:comma1])
-            temp[1] = float(each[comma1+2:comma2+comma1+1])
-            temp[2] = float(each[comma1+comma2+3:len(each)-1])
+            each_as_lst = each.split(',')
+            each_as_float = [float(x) for x in each_as_lst]
             for n in range(3):
-                data[idx, n] = temp[n]
+                data[idx, n] = each_as_float[n]
         return data
 
     def report(self, idx, norm=False, show=False):
@@ -167,26 +161,25 @@ class DataHandler(object):
         sampF = float(self.header['Sampling Frequency'])
         data = self._str2array(idx)
         time = data[:, 0]*1/sampF
-        time = time[12:-1]
+        time = time[24:-1]
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        print('Remember! Skipping the first 12 data points for time series!')
-        sen1 = data[:, 1][12:-1]  # should be Internal sensor
-        sen2 = data[:, 2][12:-1]  # should be External sensor
+        print('Remember! Skipping the first 24 data points for time series!')
+        sen1 = data[:, 1][24:-1]  # should be Internal sensor
+        sen2 = data[:, 2][24:-1]  # should be External sensor
         if norm:
-            title = f'Normalized dual sensor comparison. Data ID {idx}'
+            title = f'Normalized dual sensor comparison'
             sen1 = self.normalize_data(sen1)
             sen2 = self.normalize_data(sen2)
             ax.set(title=title)
         else:
-            title = f'Dual sensor comparison. Data ID {idx}'
+            title = f'Dual sensor comparison'
             ax.set(title=title)
         ax.plot(time, sen1)
         ax.plot(time, sen2)
         ax.set(ylabel='Distance',
                xlabel='Time(s)')
         ax.legend(['Internal', 'External'])
-        plt.grid()
         # self._basic_stats(sen1, sen2)
         if save:
             plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
@@ -225,7 +218,7 @@ class DataHandler(object):
 
     def plot_scatter(self, idx, save=False):
         """Plot the scattered data"""
-        title = f'Scatter plot external and internal sensors. Data ID {idx}'
+        title = f'Scatter plot external and internal sensors'
         data = self._str2array(idx)
         fig = plt.figure()
         ax = fig.add_subplot(111)
@@ -283,7 +276,8 @@ class DataHandler(object):
         """input indices as a list of indices to aggregate data into one single pool"""
         data = np.empty((1, 3))
         for each_idx in indices:
-            data = np.vstack((data, self._str2array(each_idx)))
+            reduced_data = self._str2array(each_idx)[12:-1]
+            data = np.vstack((data, reduced_data))
         # delete the first data entry of empty array
         data = np.delete(data, 0, 0)
         return data
@@ -340,7 +334,7 @@ class DataHandler(object):
         """plot the combined data """
         fit_params = self.calculate_lin_fit_params_combined_data(indices=indices)
         cdata = self.combine_data(indices=indices)
-        title = 'Combined Data'
+        title = 'Linear fit data from all runs of a muscle'
         fig = plt.figure()
         ax = fig.add_subplot(111)
         ax.plot(cdata[:, 1], cdata[:, 2], linewidth=0, marker='o', markersize=2)
@@ -380,10 +374,10 @@ class DataHandler(object):
             plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
 
 
-RunAll = False
+RunAll = True
 if RunAll and __name__ == "__main__":
     # define path
-    file = 'IR_cali03.txt'
+    file = 'IR_test250.txt'
     path = Path(__file__).parent / file
     IR_data = DataHandler(path)
     print(f"Type: {type(IR_data.raw_data)}")
@@ -397,10 +391,10 @@ if RunAll and __name__ == "__main__":
     # IR_data.test_fit_to_data_set(indices=idx_list, data_index=1, save=True)
     plt.show()
 
-makeReport = True
+makeReport = False
 if makeReport and __name__ == "__main__":
     # path = "D:\\Github\Muscle-Sensory\Muscle_length_sensory\IR_code\PythonCode\IR_data4.txt"
-    file = 'IR_data19.txt'
+    file = 'IR_test23.txt'
     path = Path(__file__).parent / file
     IR_data = DataHandler(path)
     for each in IR_data.data_index:

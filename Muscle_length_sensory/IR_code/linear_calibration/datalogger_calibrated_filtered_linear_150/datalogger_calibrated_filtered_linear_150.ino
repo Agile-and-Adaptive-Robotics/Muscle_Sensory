@@ -80,8 +80,8 @@ volatile float fc1 = 0.013359200027857;
 volatile float fc2 = -0.7008967811884;
 volatile float fc3 = 1.64745998107697655399;
 //variables for calibration
-volatile float vfin2_m = 1.0;
-volatile float vfin2_b = 0.0;
+volatile float vfin2_m = 0.7830000417928301;
+volatile float vfin2_b = 107.51536037554061;
 volatile float vfin2_cal = 0.0;
 /*
 date and time of data collection 
@@ -163,7 +163,7 @@ void DataLoggingLoop() //Interrupt loop
             counter2 = 0;
         }
     }
-    else if ((counter < 2*check) & (counter > 1*check))
+    else if ((counter < 2*check) & (counter > 1*check))n
     {
         //toggle at 2Hz
         counter2 = counter2 + samplingPeriod;

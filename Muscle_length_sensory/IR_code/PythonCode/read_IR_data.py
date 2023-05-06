@@ -147,6 +147,7 @@ class DataHandler(object):
         self.plot_series(idx, norm, save=True)
         self.plot_scatter(idx, save=True)
         self.plot_residual(idx, save=True)
+        self.plot_contraction_ratio(idx, save=True)
         if show:
             plt.show()
 
@@ -154,6 +155,34 @@ class DataHandler(object):
         for i in range(self.data_size):
             self.report(idx=i, norm=norm, show=False)
             plt.close()
+
+    def plot_contraction_ratio(self, idx, save):
+        """plot the contraction ratio"""
+        self.read_header_data(idx)
+        sampF = float(self.header['Sampling Frequency'])
+        data = self._str2array(idx)
+        time = data[:, 0]*1/sampF
+        time = time[24:-1]
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        print('Remember! Skipping the first 24 data points for time series!')
+        sen1 = data[:, 1][24:-1]  # should be Internal sensor
+        sen2 = data[:, 2][24:-1]  # should be External sensor
+        initial_length = 250
+        sen1 = (initial_length-sen1)/initial_length
+        sen2 = (initial_length-sen2)/initial_length
+        title = 'Comparison of contraction ratio of the sensors'
+        # plot
+        ax.plot(time, sen1)
+        ax.plot(time, sen2)
+        ax.set(ylabel='Contraction ratio',
+               xlabel='Time(s)')
+        ax.legend(['Internal', 'External'])
+        # self._basic_stats(sen1, sen2)
+        if save:
+            plt.savefig(f'{self.wd.as_posix()}\\{title}_{idx}.png', dpi=500)
+        plt.show()
+        plt.close(fig)
 
     def plot_series(self, idx, norm=False, save=False):
         """Plot the data series"""
@@ -173,48 +202,54 @@ class DataHandler(object):
             sen2 = self.normalize_data(sen2)
             ax.set(title=title)
         else:
-            title = f'Dual sensor comparison'
+            # title = f'Internal and external VL53L0X length sensing comparison for '
+            # title = f'Internal and external VL53L0X length sensing comparison'
+            title = f'Static response with dynamic calibration'
             ax.set(title=title)
         ax.plot(time, sen1)
         ax.plot(time, sen2)
-        ax.set(ylabel='Distance',
+        ax.set(ylabel='Distance (mm)',
                xlabel='Time(s)')
         ax.legend(['Internal', 'External'])
+        print(f'Sensor range: {max(sen1)-min(sen1)}')
         # self._basic_stats(sen1, sen2)
         if save:
-            plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
+            plt.savefig(f'{self.wd.as_posix()}\\{title}_{idx}.png', dpi=500)
+        plt.show()
         plt.close(fig)
 
     def plot_residual(self, idx, save=False):
         """Plot the residual of the internal and external sensor
         Also produce some stats to understand goodness of calibration"""
-        title = f'Residual. Data ID {idx}'
+        title = f'VL53L0X calibrated signal residual'
         self.read_header_data(idx)
         data = self._str2array(idx)
 
         # prep data
         sampF = float(self.header['Sampling Frequency'])
         time_arr = data[:, 0]*1/sampF
-        time_arr = time_arr[12:-1]
+        time_arr = time_arr[24:-1]
 
-        print('Remember! Skipping the first 12 data points for residual!')
-        sen1 = data[:, 2][12:-1]
-        sen2 = data[:, 1][12:-1]
+        print('Remember! Skipping the first 24 data points for residual!')
+        sen1 = data[:, 2][24:-1]
+        sen2 = data[:, 1][24:-1]
         residual = sen1-sen2
 
         # print out some basic stats for the residual data
         self._calc_and_print_simple_stats(f"Data ID {idx}", residual)
         rmse = self._rmse(sen1, sen2)
         print(f'RMSE: {rmse}')
+        print(f'RMSPE Sen1: {rmse/(max(sen1)-min(sen1))*100}')
+        print(f'RMSPE Sen2: {rmse/(max(sen2)-min(sen2))*100}')
 
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.plot(time_arr, residual, '.b', linewidth=0, markersize=1)
+        ax.plot(time_arr, residual, '.b', linewidth=0, markersize=3)
         ax.set(title=title,
                ylabel='Residual (mm)',
                xlabel='Time (s)')
         if save:
-            plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
+            plt.savefig(f'{self.wd.as_posix()}\\{title}_{idx}.png', dpi=500)
 
     def plot_scatter(self, idx, save=False):
         """Plot the scattered data"""
@@ -222,15 +257,15 @@ class DataHandler(object):
         data = self._str2array(idx)
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        sen1 = data[:, 2][12:-1]
-        sen2 = data[:, 1][12:-1]
-        print('Remember! Skipping the first 12 data points for scatter plot!')
+        sen1 = data[:, 2][24:-1]
+        sen2 = data[:, 1][24:-1]
+        print('Remember! Skipping the first 24 data points for scatter plot!')
         ax.plot(sen1, sen2, '.b', linewidth=0, markersize=2)
         ax.set(title=title,
                ylabel='Internal sensor',
                xlabel='External sensor')
         if save:
-            plt.savefig(f'{self.wd.as_posix()}\\{title}.png', dpi=500)
+            plt.savefig(f'{self.wd.as_posix()}\\{title}_{idx}.png', dpi=500)
 
     @staticmethod
     def normalize_data(data):
@@ -377,7 +412,7 @@ class DataHandler(object):
 RunAll = True
 if RunAll and __name__ == "__main__":
     # define path
-    file = 'IR_test250.txt'
+    file = 'IR_data250.txt'
     path = Path(__file__).parent / file
     IR_data = DataHandler(path)
     print(f"Type: {type(IR_data.raw_data)}")

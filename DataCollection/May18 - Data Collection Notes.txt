@@ -1,0 +1,5 @@
+40mm Data collection:
+
+1) Debugging and checking sensor signals
+Data is collected using ValvePWM_mod : no force equation is applied. Reading analogRead for both pressure and force. 
+Note: Pressure spikes a lot because of pressure sensor placement

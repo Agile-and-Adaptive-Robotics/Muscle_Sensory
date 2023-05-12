@@ -1,0 +1,5 @@
+
+global BPAlengths
+global NumberofTotalDataRecordings
+global BPAdiameter
+global importcsv

@@ -1,0 +1,58 @@
+20 mm BPA testing
+Already Done: 12 (15) cm, 23 (25.3) cm, 27.5 (30) cm. Need a longer and shorter test.
+
+
+
+FEB 02 2022: 
+
+Collect Data for 20mm BPA: 
+
+-----------------------------------------------------------------------------------------------------------
+BPA length: 42.7 cm 
+ 39.7 cm(measured from clamped end to end)
+
+Diameter :20mm
+
+Max contraction length (measured clamp end to end @ 620kPa):  29.6 cm
+Contraction: resting length - max contraction length = 39.7 cm - 29.6 cm = 10.1  cm
+
+NOTES:
+
+First attemp to run test, when the BPA was pressurized the bolt connecting the BPA to the load cell pulled out of the threads.
+Tried to thread the bolt in further, and was unsuccessful.  Threaded in as far as possible (by hand), and ran test again, appears 
+to be holding. Bolt does not appear to be correctly sized, unless the threads on the load cell aren't standard
+
+ -------------------
+Kinked: 3.5 cm
+-------------------
+Kinked: 4.6 cm
+
+NOTE:
+
+Data for last test appears weird. MATLAB command window noted spike, and the pressure spikes off the chart, while the force goes 
+off at about 10 o'clock. Saved data, ran the last test again (test 10)
+
+Ran Offset, Test 10, and all data appeared normal. Saved in seperate file, continuing testing.
+
+-------------------
+Kinked: 6.9 cm
+
+-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+BPA length: 12.4 cm 
+ 9.8 cm(measured from clamped end to end)
+
+Diameter :20mm
+
+Max contraction length (measured clamp end to end @ 620kPa):  7.4 cm
+Contraction: resting length - max contraction length = 9.8 cm - 7.4 cm = 2.4 cm
+
+NOTE: 
+
+ -------------------
+Kinked: 1.3 cm
+-------------------
+Kinked: 2.0 cm
+
+
+-----------------------------------------------------------------------------------------------------------

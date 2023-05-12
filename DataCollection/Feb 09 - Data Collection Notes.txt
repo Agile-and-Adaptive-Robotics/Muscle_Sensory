@@ -1,0 +1,51 @@
+Data for Ben
+
+42.7 cm
+
+20 mm BPA testing
+
+FEB 09 2022: 
+
+Collect Data for 20mm BPA: 
+
+-----------------------------------------------------------------------------------------------------------
+BPA length: 45.1 cm 
+ 42.7 cm(measured from clamped end to end)
+
+Diameter :20mm
+
+Max contraction length (measured clamp end to end @ 620kPa):  34.4 cm
+Contraction: resting length - max contraction length = 42.7 cm - 34.4 cm = 8.3 cm
+
+NOTES:
+
+20 mm BPA currently installed on knee was measured at 42.7 cm from clamp to clamp, and then a new BPA was cut 
+and installed on the test rig.
+
+-------------------
+Kinked: 1.0 cm
+-------------------
+Kinked:  3.0 cm
+-------------------
+Kinked:  4.0 cm
+
+
+-----------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+BPA length: cm 
+ cm(measured from clamped end to end)
+
+Diameter :20mm
+
+Max contraction length (measured clamp end to end @ 620kPa):  cm
+Contraction: resting length - max contraction length = cm - cm = cm
+
+NOTE: 
+
+ -------------------
+Kinked: cm
+-------------------
+Kinked:  cm
+
+
+-----------------------------------------------------------------------------------------------------------

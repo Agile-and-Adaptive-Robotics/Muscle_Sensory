@@ -1,0 +1,26 @@
+b =
+
+   1.0e+03 *
+
+         0
+   -0.0005
+   -0.0402
+    0.0045
+   -6.7764
+    4.5141
+   -0.4645
+    0.0001
+    0.6340
+
+-------------------
+y = Force;
+x1 = Pressure;
+x2 = Diameter;
+x3 = Lo;                          
+x4 = E;                            
+x5 = Emax;
+x6 = P_DP;
+x7 = Pressure.*Diameter;
+x8 = E./Emax;
+
+X = [ones(size(Force)) x1 x2 x3 x4 x5 x6 x7 x8];

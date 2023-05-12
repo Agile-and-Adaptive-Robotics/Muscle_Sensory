@@ -1,0 +1,1 @@
+Creating two shields with 1/8" thick polycarbonate to protect against flying fragments during tests.

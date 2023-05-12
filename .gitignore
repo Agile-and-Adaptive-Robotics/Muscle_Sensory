@@ -31,3 +31,4 @@ _$*.SLDPRT
 *.vscode
 *.zip
 *.DS_Store
+*.log

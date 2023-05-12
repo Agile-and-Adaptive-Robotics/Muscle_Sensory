@@ -46,7 +46,6 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     while s.NumBytesAvailable < 1               
         write(s,string(protocol_id),'string');
-        pause(0.25);
     end
 
     %the arduino sends sends the string "running" when it receives the
@@ -55,9 +54,10 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     vars = strjoin({total_in,total_out,pw_in,period_in,pw_out,period_out},',');
     %format variables to be easily read by the arduino
-
     disp(vars);
+
     write(s,vars,'string'); 
+    disp(vars);
     total_in = str2num(total_in);
     total_out = str2num(total_out);
     total = total_in + total_out;
@@ -70,7 +70,7 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
 
     yyaxis left     %graph force on left axis in blue
     Force = animatedline('color','blue');
-    ylim([-50,700]);
+    ylim([-50,300]);
     ylabel('Force (N)');
 
     yyaxis right    %graph pressure on right in red
@@ -90,10 +90,10 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     for i = 1:total
         
         svalues(i,1) = str2double(readline(s));         %raw force
-        svalues(i,2) = str2double(readline(s));         %raw pressure
+        svalues(i,2) = str2double(readline(2));         %raw pressure
         svalues(i,3) = svalues(i,1)*0.00505+(2/300000); %force (N)
         svalues(i,4) = svalues(i,2)*395/512-115;        %pressure (kPa)
-        svalues(i,5) = str2num(readline(s))/1000;                %time (seconds)
+        svalues(i,5) = readline(s);                     %time (seconds)
        
         if i > 1
 
@@ -142,9 +142,9 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     %or change the range of data on which the basic statistics are calculated.
 
     forceData = svalues(500:total,3);
-    pressureData = svalues(500:total,4);
-    rawForce = svalues(500:total,2);
-    rawPressure = svalues(500:total,1);
+    pressureData = svalues(500:total,2);
+    rawForce = svalues(500:total,1);
+    rawPressure = svalues(500:total,2);
     
     %Force stats
     stats = zeros(6,4);

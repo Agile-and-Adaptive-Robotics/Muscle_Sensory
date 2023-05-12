@@ -31,9 +31,14 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     parse(p, protocol_id,port,varargin{:});
 
     protocol_id = p.Results.protocol_id;
+<<<<<<< HEAD
+    port = strjoin({'COM',num2str(p.Results.port)}, '');   
+    total = num2str(p.Results.total);
+=======
     port = strjoin({'COM',num2str(p.Results.port)},'');   
     total_in = num2str(p.Results.total_in);
     total_out = num2str(p.Results.total_out);
+>>>>>>> master
     pw_in = num2str(p.Results.pw_in);
     period_in = num2str(p.Results.period_in);
     pw_out = num2str(p.Results.pw_out);
@@ -88,6 +93,21 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
     %100 N, which indicates that the spike has ended
 
     for i = 1:total
+<<<<<<< HEAD
+
+        svalues(i,1) = ((str2double(readline(s)))*0.1531-2.8338)*4.448; %Force(N)            Aug 5
+        svalues(i,2) = ((str2double(readline(s)))*0.7654) -18.609; %Pressure (kPa)         Aug 2
+        svalues(i,3) = str2double(readline(s))/1000; %Time(s)
+        
+
+        %read data to each column and convert units when needed
+        %column 1 is force, converting lbs to N
+        %column 2 is pressure, converting analog value (1-1023) to
+        %kPa
+        %column 3 is the time that the data was collected,
+        %converting milliseconds to seconds
+
+=======
         
         svalues(i,1) = str2double(readline(s));         %raw force
         svalues(i,2) = str2double(readline(s));         %raw pressure
@@ -95,13 +115,18 @@ function [Data, Stats] = ValvePWM(protocol_id,port,varargin)
         svalues(i,4) = svalues(i,2)*395/512-115;        %pressure (kPa)
         svalues(i,5) = str2num(readline(s))/1000;                %time (seconds)
        
+>>>>>>> master
         if i > 1
 
         %i > 1 because the spike detection references a previous i
         %value, which doesn't exist if the loop started at the minimum
         %i value
 
+<<<<<<< HEAD
+            if abs(svalues(i-prev,1)-svalues(i,1))<500  
+=======
             if abs(svalues(i-prev,3)-svalues(i,3))<100  
+>>>>>>> master
 
             %check if next value is more than
             %100 N away from the last known value

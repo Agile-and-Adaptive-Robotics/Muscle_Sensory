@@ -18,3 +18,16 @@ ignoreThis/
 Muscle_length_sensory/testFixture/~$testFixtureAssembly.SLDASM
 Muscle_length_sensory/IR_TOF_circular_housing/~$circularHousing_withMounting.SLDASM
 Agent
+~$*.SLDASM
+~$*.SLDPRT
+_$*.SLDASM
+_$*.SLDPRT
+_$*.SLDPRT
+*.asv
+~*.xlsx
+*.venv
+*.ini
+*.swj
+*.vscode
+*.zip
+*.DS_Store

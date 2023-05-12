@@ -1,0 +1,30 @@
+Model: (using compile alldata)
+	Force = c(1) + c(2)*(1-Erel)^2 + c(3)*Pressure
+
+Description: This model focuses on the shifting of model's intercept (B0) term. 
+
+10mm: Pressurizing
+	c(1) 	-366.9449
+  	c(2)	 329.3102
+    	c(3)	 0.6785
+10mm: Depressurizing
+ 	c(1)	-300.6856
+  	c(2)	284.6008
+   	c(3)	 0.5872
+20mm: Pressurizing
+
+ 	c(1)	-721.1431
+  	c(2)	748.7470
+   	c(3)	1.7610
+
+
+20mm: Depressurizing
+
+ 	c(1)	-676.4303
+  	c(2)	574.5064
+ 	 c(3)	  1.9615
+
+Comments: slope is consistent for 10mm but not for 20mmdata. AGAIN! Treat 10mm and 20mm as different systems. 
+
+20mm: slope is very random but its ok since I haven't add anyterm for the slope(B1) yet. This is expected. 
+

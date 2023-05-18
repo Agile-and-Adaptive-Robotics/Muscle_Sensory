@@ -274,7 +274,7 @@ class DataHandler(object):
         avg = np.mean(data)
         data = data - avg
         # remove spread
-        spread = max(data)-min(data)
+        spread = np.std(data)
         data = data/spread
         return data
 
@@ -412,17 +412,17 @@ class DataHandler(object):
 RunAll = True
 if RunAll and __name__ == "__main__":
     # define path
-    file = 'IR_data250.txt'
+    file = 'IR_test230.txt'
     path = Path(__file__).parent / file
     IR_data = DataHandler(path)
     print(f"Type: {type(IR_data.raw_data)}")
     print(f"Number of lines: {len(IR_data.raw_data)}")
     print(f"Data size: {IR_data.data_size}")
-    IR_data.full_report(norm=False)
-    idx_list = [0, 1]
-    IR_data.combine_data(indices=idx_list)
+    IR_data.full_report(norm=True)
+    # idx_list = [0, 1]
+    # IR_data.combine_data(indices=idx_list)
     # IR_data.plot_combine_data(indices=idx_list, save=True)
-    IR_data.plot_cdata_add_fit(indices=idx_list)
+    # IR_data.plot_cdata_add_fit(indices=idx_list)
     # IR_data.test_fit_to_data_set(indices=idx_list, data_index=1, save=True)
     plt.show()
 

@@ -1,0 +1,4220 @@
+<Project>
+<ProjectName>randomfire2_7</ProjectName>
+<SimulationFile>randomfire2_7.asim</SimulationFile>
+<LogLevel>ErrorType</LogLevel>
+<Version>3</Version>
+<Physics>Bullet</Physics>
+<LibraryVersion>Double</LibraryVersion>
+<Simulation>
+<ProjectPath>E:\ANIMATLAB\randomfire2_7\randomfire2_7\</ProjectPath>
+<AnimatModule>BulletAnimatSim_VC10_double.dll</AnimatModule>
+<UpdateDataInterval>250</UpdateDataInterval>
+<StartPaused>False</StartPaused>
+<EnableSimRecording>True</EnableSimRecording>
+<SetSimEnd>True</SetSimEnd>
+<APIFile/>
+<SimEndTime Value="30.02" Scale="None" Actual="30.02"/>
+<PlaybackControlMode>MatchPhysicsStep</PlaybackControlMode>
+<PresetPlaybackTimeStep Value="0" Scale="milli" Actual="0"/>
+<Environment>
+<PhysicsTimeStep Value="0.6" Scale="milli" Actual="0.0006"/>
+<PhysicsSubsteps>1</PhysicsSubsteps>
+<Gravity Value="-9.81" Scale="None" Actual="-9.81"/>
+<MouseSpringStiffness Value="0.5" Scale="None" Actual="0.5"/>
+<MouseSpringDamping Value="200" Scale="None" Actual="200"/>
+<StabilityScale>1</StabilityScale>
+<LinearCompliance Value="0.1" Scale="nano" Actual="1e-010"/>
+<AngularCompliance Value="0.1" Scale="nano" Actual="1e-010"/>
+<LinearDamping Value="50" Scale="Giga" Actual="5e+010"/>
+<AngularDamping Value="50" Scale="Kilo" Actual="50000"/>
+<LinearKineticLoss Value="0.1" Scale="nano" Actual="1e-010"/>
+<AngularKineticLoss Value="1" Scale="pico" Actual="1e-012"/>
+<RecFieldSelRadius Value="5" Scale="milli" Actual="0.005"/>
+<BackgroundColor Red="0.2" Green="0.2" Blue="0.6" Alpha="1"/>
+<AlphaThreshold>0.2</AlphaThreshold>
+<SimulateHydrodynamics>False</SimulateHydrodynamics>
+<MassUnits>Kilograms</MassUnits>
+<DistanceUnits>Meters</DistanceUnits>
+<AutoGenerateRandomSeed>True</AutoGenerateRandomSeed>
+<ManualRandomSeed>12345</ManualRandomSeed>
+<MaterialTypes>
+<MaterialType>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.MaterialTypeBullet</ClassName>
+<ID>DEFAULTMATERIAL</ID>
+<Name>Default</Name>
+<FrictionLinearPrimary Value="1" Scale="None" Actual="1"/>
+<FrictionAngularPrimary Value="0.01" Scale="None" Actual="0.01"/>
+<Restitution Value="0" Scale="None" Actual="0"/>
+</MaterialType>
+</MaterialTypes>
+<Organisms>
+<Organism>
+<Name>Organism_1</Name>
+<ID>0c09a1f3-6c09-415f-b5bc-262b8f420962</ID>
+<Description/>
+<Transparencies>
+<Graphics>50</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>100</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="10" Scale="None" Actual="10"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,0,10,0,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Basic</Type>
+<RigidBody>
+<Name>Root</Name>
+<ID>e0d3c103-b472-4e29-974c-dd27a9003b71</ID>
+<Description/>
+<Transparencies>
+<Graphics>50</Graphics>
+<Collisions>0</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="8.135" Scale="None" Actual="8.135"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="90" Scale="None" Actual="90"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>-4.37114e-008,0,-1,0,0,1,0,0,1,0,-4.37114e-008,0,0,10,0,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Box</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Box</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>True</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0.667" Scale="Kilo" Actual="667"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>True</Freeze>
+<ChildBodies>
+<RigidBody>
+<Name>Body_19</Name>
+<ID>0e0259d9-679c-421f-9550-943fe6df3b03</ID>
+<Description/>
+<Transparencies>
+<Graphics>50</Graphics>
+<Collisions>0</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="0.501961" Green="1" Blue="0.501961" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="-2" Scale="None" Actual="-2"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>-4.37114e-008,0,-1,0,0,1,0,0,1,0,-4.37114e-008,0,0,8,0,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Box</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Box</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>True</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0.667" Scale="Kilo" Actual="667"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<Joint>
+<Name>Joint_3</Name>
+<ID>fe2e1c46-9a45-46cc-9ba9-128d466ebc79</ID>
+<Description/>
+<Transparencies>
+<Graphics>50</Graphics>
+<Collisions>50</Collisions>
+<Joints>0</Joints>
+<RecFields>50</RecFields>
+<Simulation>50</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="1.525" Scale="None" Actual="1.525"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="90" Scale="None" Actual="90"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>-0.000203653,0,-1,0,0,1,0,0,1,0,-0.000203653,0,0,-0.475,0,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Hinge</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Joints.Hinge</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<Size Value="20" Scale="centi" Actual="0.2"/>
+<EnableLimits>True</EnableLimits>
+<Relaxation1>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationBullet</ClassName>
+<ID>4be1d371-cfd9-4c7c-a4da-7560d6c79f4a</ID>
+<Enabled>False</Enabled>
+<CoordinateID>0</CoordinateID>
+<Stiffness Value="100" Scale="Kilo" Actual="100000"/>
+<Damping Value="50" Scale="Mega" Actual="5e+007"/>
+</Relaxation1>
+<Relaxation2>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationBullet</ClassName>
+<ID>8c910749-4a1f-4c13-8aa8-8f8311b244d1</ID>
+<Enabled>False</Enabled>
+<CoordinateID>1</CoordinateID>
+<Stiffness Value="100" Scale="Kilo" Actual="100000"/>
+<Damping Value="50" Scale="Mega" Actual="5e+007"/>
+</Relaxation2>
+<Relaxation3>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationBullet</ClassName>
+<ID>b10b00fa-29df-4301-883a-9b0a844a3461</ID>
+<Enabled>False</Enabled>
+<CoordinateID>2</CoordinateID>
+<Stiffness Value="100" Scale="Kilo" Actual="100000"/>
+<Damping Value="50" Scale="Mega" Actual="5e+007"/>
+</Relaxation3>
+<Relaxation4>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationBullet</ClassName>
+<ID>7aacf25d-4936-4797-871b-eafb8b934b1f</ID>
+<Enabled>False</Enabled>
+<CoordinateID>3</CoordinateID>
+<Stiffness Value="100" Scale="Kilo" Actual="100000"/>
+<Damping Value="50" Scale="Mega" Actual="5e+007"/>
+</Relaxation4>
+<Relaxation5>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationBullet</ClassName>
+<ID>8bafaa7b-a85d-4594-b8b6-c5247e05d71f</ID>
+<Enabled>False</Enabled>
+<CoordinateID>4</CoordinateID>
+<Stiffness Value="100" Scale="Kilo" Actual="100000"/>
+<Damping Value="50" Scale="Mega" Actual="5e+007"/>
+</Relaxation5>
+<Relaxation6>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintRelaxationBullet</ClassName>
+<ID>b04aad55-bbf9-42af-b3f8-13c437cfd100</ID>
+<Enabled>False</Enabled>
+<CoordinateID>5</CoordinateID>
+<Stiffness Value="100" Scale="Kilo" Actual="100000"/>
+<Damping Value="50" Scale="Mega" Actual="5e+007"/>
+</Relaxation6>
+<Friction>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Physical.ConstraintFriction</ClassName>
+<ID>2ff8b4c2-7ec5-4d12-bff2-1df4e719931b</ID>
+<Name/>
+<Enabled>True</Enabled>
+<Proportional>True</Proportional>
+<Coefficient Value="0.02" Scale="None" Actual="0.02"/>
+<MaxForce Value="10" Scale="None" Actual="10"/>
+<Loss Value="0" Scale="None" Actual="0"/>
+<StaticFrictionScale Value="1" Scale="None" Actual="1"/>
+</Friction>
+<LowerLimit>
+<Name>4888b19a-730a-4857-9bf7-be49c4630e58</Name>
+<ID>4888b19a-730a-4857-9bf7-be49c4630e58</ID>
+<LimitPos Value="-45" Scale="None" Actual="-45"/>
+<Damping Value="500" Scale="None" Actual="500"/>
+<Restitution Value="0" Scale="None" Actual="0"/>
+<Stiffness Value="100" Scale="None" Actual="100"/>
+</LowerLimit>
+<UpperLimit>
+<Name>82ca7413-1ba0-4607-b041-af86d9c7bda3</Name>
+<ID>82ca7413-1ba0-4607-b041-af86d9c7bda3</ID>
+<LimitPos Value="45" Scale="None" Actual="45"/>
+<Damping Value="500" Scale="None" Actual="500"/>
+<Restitution Value="0" Scale="None" Actual="0"/>
+<Stiffness Value="100" Scale="None" Actual="100"/>
+</UpperLimit>
+<MaxForce Value="100" Scale="None" Actual="100"/>
+<MaxVelocity Value="100" Scale="None" Actual="100"/>
+<EnableMotor>False</EnableMotor>
+<MotorType>VelocityControl</MotorType>
+<ServoGain>100</ServoGain>
+<PID>
+<ID>319dcd97-6401-4787-8aed-8191d4aacf53</ID>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.PidControl</ClassName>
+<Enabled>False</Enabled>
+<ComplexError>True</ComplexError>
+<AntiResetWindup>False</AntiResetWindup>
+<RampLimit>False</RampLimit>
+<Kp Value="20" Scale="None" Actual="20"/>
+<Ki Value="0" Scale="None" Actual="0"/>
+<Kd Value="1" Scale="None" Actual="1"/>
+<RangeMax Value="1" Scale="None" Actual="1"/>
+<RangeMin Value="-1" Scale="None" Actual="-1"/>
+<ARWBound Value="0" Scale="None" Actual="0"/>
+<RampGradient Value="45" Scale="None" Actual="45"/>
+</PID>
+</Joint>
+<ChildBodies>
+<RigidBody>
+<Name>Body_23</Name>
+<ID>018bc72d-4ec9-461f-8f2e-bc1a521a8032</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="-24.995" Scale="centi" Actual="-0.24995"/>
+<Y Value="1.1" Scale="None" Actual="1.1"/>
+<Z Value="-25" Scale="centi" Actual="-0.25"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,-0.24995,1.1,-0.25,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0" Scale="None" Actual="0"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="5" Scale="centi" Actual="0.05"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>Body_22</Name>
+<ID>0f19ff9b-070a-4240-b71f-a06bc1585373</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="-25.005" Scale="centi" Actual="-0.25005"/>
+<Y Value="1.1" Scale="None" Actual="1.1"/>
+<Z Value="25" Scale="centi" Actual="0.25"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,-0.25005,1.1,0.25,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0" Scale="None" Actual="0"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="5" Scale="centi" Actual="0.05"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>Body_21</Name>
+<ID>12bb3a38-e41a-4f93-a037-0c43c12c845c</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="25.005" Scale="centi" Actual="0.25005"/>
+<Y Value="1.1" Scale="None" Actual="1.1"/>
+<Z Value="-25" Scale="centi" Actual="-0.25"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,0.25005,1.1,-0.25,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0" Scale="None" Actual="0"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="5" Scale="centi" Actual="0.05"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>Extensor1</Name>
+<ID>13f518c4-5de7-4498-a98c-006ef71c0de8</ID>
+<Type>LinearHillMuscle</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Enabled>True</Enabled>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
+<Attachments>
+<AttachID>790f80c9-1572-479f-8439-29b2afd8438a</AttachID>
+<AttachID>018bc72d-4ec9-461f-8f2e-bc1a521a8032</AttachID>
+</Attachments>
+<StimulusTension>
+<ID>b33ec35a-f470-4c65-a416-9ac229d0e365</ID>
+<Type>StimulusTension</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
+<IndependentUnits>Membrane Voltage (V)</IndependentUnits>
+<DependentUnits>Contractile Tension (N)</DependentUnits>
+<A Value="-50" Scale="milli" Actual="-0.05"/>
+<B Value="1020" Scale="None" Actual="1020"/>
+<C Value="530" Scale="None" Actual="530"/>
+<D Value="-5.1" Scale="None" Actual="-5.1"/>
+</StimulusTension>
+<LengthTension>
+<ID>296e65b9-23a5-465a-8e7c-c0769bde2d5c</ID>
+<Type>LengthTension</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="1.575" Scale="None" Actual="1.575"/>
+<UpperLimitScale Value="1.925" Scale="None" Actual="1.925"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits>Meters</IndependentUnits>
+<DependentUnits>% Isometric Tension Used</DependentUnits>
+<RestingLength Value="0.4" Scale="None" Actual="0.4"/>
+<Lwidth Value="0.026" Scale="None" Actual="0.026"/>
+<PeLength Value="90" Scale="None" Actual="90"/>
+<MinPeLength Value="5" Scale="None" Actual="5"/>
+</LengthTension>
+<MaximumTension Value="1020" Scale="None" Actual="1020"/>
+<Kse Value="255" Scale="Kilo" Actual="255000"/>
+<Kpe Value="4.322" Scale="Kilo" Actual="4322"/>
+<B Value="2550" Scale="None" Actual="2550"/>
+<IbDischarge Value="100" Scale="None" Actual="100"/>
+</RigidBody>
+<RigidBody>
+<Name>Body_20</Name>
+<ID>4f2fda98-dce2-4844-9577-35e26b7fa20b</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="24.995" Scale="centi" Actual="0.24995"/>
+<Y Value="1.1" Scale="None" Actual="1.1"/>
+<Z Value="25" Scale="centi" Actual="0.25"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,0.24995,1.1,0.25,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0" Scale="None" Actual="0"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="5" Scale="centi" Actual="0.05"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>Flexor1</Name>
+<ID>5261bc79-6bc9-4f5b-8b82-94e8640325d3</ID>
+<Type>LinearHillMuscle</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Enabled>True</Enabled>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
+<Attachments>
+<AttachID>12bb3a38-e41a-4f93-a037-0c43c12c845c</AttachID>
+<AttachID>4415536e-4dae-4dab-8a05-bd6ef936aabc</AttachID>
+</Attachments>
+<StimulusTension>
+<ID>24f6fbb9-c8e6-421d-a0cf-f963a753e4a8</ID>
+<Type>StimulusTension</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
+<IndependentUnits>Membrane Voltage (V)</IndependentUnits>
+<DependentUnits>Contractile Tension (N)</DependentUnits>
+<A Value="-50" Scale="milli" Actual="-0.05"/>
+<B Value="1020" Scale="None" Actual="1020"/>
+<C Value="530" Scale="None" Actual="530"/>
+<D Value="-5.1" Scale="None" Actual="-5.1"/>
+</StimulusTension>
+<LengthTension>
+<ID>483b840e-3349-4c3a-93c0-2b708d6e4072</ID>
+<Type>LengthTension</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="1.369" Scale="None" Actual="1.369"/>
+<UpperLimitScale Value="1.673" Scale="None" Actual="1.673"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits>Meters</IndependentUnits>
+<DependentUnits>% Isometric Tension Used</DependentUnits>
+<RestingLength Value="0.4" Scale="None" Actual="0.4"/>
+<Lwidth Value="0.026" Scale="None" Actual="0.026"/>
+<PeLength Value="90" Scale="None" Actual="90"/>
+<MinPeLength Value="5" Scale="None" Actual="5"/>
+</LengthTension>
+<MaximumTension Value="1020" Scale="None" Actual="1020"/>
+<Kse Value="255" Scale="Kilo" Actual="255000"/>
+<Kpe Value="4.322" Scale="Kilo" Actual="4322"/>
+<B Value="2550" Scale="None" Actual="2550"/>
+<IbDischarge Value="100" Scale="None" Actual="100"/>
+</RigidBody>
+<RigidBody>
+<Name>Flexor2</Name>
+<ID>56e8a3da-51b3-481e-8cfb-1061e8a7e3ef</ID>
+<Type>LinearHillMuscle</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Enabled>True</Enabled>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
+<Attachments>
+<AttachID>bdda723e-1a8e-4ca0-99a0-290359ffc5a3</AttachID>
+<AttachID>4f2fda98-dce2-4844-9577-35e26b7fa20b</AttachID>
+</Attachments>
+<StimulusTension>
+<ID>63286883-7cb0-4d2e-ad3b-b84d6aa4ad4a</ID>
+<Type>StimulusTension</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
+<IndependentUnits>Membrane Voltage (V)</IndependentUnits>
+<DependentUnits>Contractile Tension (N)</DependentUnits>
+<A Value="-50" Scale="milli" Actual="-0.05"/>
+<B Value="1020" Scale="None" Actual="1020"/>
+<C Value="530" Scale="None" Actual="530"/>
+<D Value="-5.1" Scale="None" Actual="-5.1"/>
+</StimulusTension>
+<LengthTension>
+<ID>e0feacd1-89b5-481e-956f-59bbfa43b4cd</ID>
+<Type>LengthTension</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="1.369" Scale="None" Actual="1.369"/>
+<UpperLimitScale Value="1.673" Scale="None" Actual="1.673"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits>Meters</IndependentUnits>
+<DependentUnits>% Isometric Tension Used</DependentUnits>
+<RestingLength Value="0.4" Scale="None" Actual="0.4"/>
+<Lwidth Value="0.026" Scale="None" Actual="0.026"/>
+<PeLength Value="90" Scale="None" Actual="90"/>
+<MinPeLength Value="5" Scale="None" Actual="5"/>
+</LengthTension>
+<MaximumTension Value="1020" Scale="None" Actual="1020"/>
+<Kse Value="255" Scale="Kilo" Actual="255000"/>
+<Kpe Value="14.322" Scale="Kilo" Actual="14322"/>
+<B Value="2550" Scale="None" Actual="2550"/>
+<IbDischarge Value="100" Scale="None" Actual="100"/>
+</RigidBody>
+<RigidBody>
+<Name>Extensor2</Name>
+<ID>bb2a99ba-3181-486c-8bad-ce2680907c07</ID>
+<Type>LinearHillMuscle</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.LinearHillMuscle</PartType>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Enabled>True</Enabled>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="0" Green="0" Blue="1" Alpha="1"/>
+<Attachments>
+<AttachID>7e361ead-2415-4f70-8775-548f295d1257</AttachID>
+<AttachID>0f19ff9b-070a-4240-b71f-a06bc1585373</AttachID>
+</Attachments>
+<StimulusTension>
+<ID>d0f7a615-3ee4-4fa4-8218-f154287be335</ID>
+<Type>StimulusTension</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.StimulusTension</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="0" Scale="milli" Actual="0"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="6" Scale="None" Actual="6"/>
+<IndependentUnits>Membrane Voltage (V)</IndependentUnits>
+<DependentUnits>Contractile Tension (N)</DependentUnits>
+<A Value="-50" Scale="milli" Actual="-0.05"/>
+<B Value="1020" Scale="None" Actual="1020"/>
+<C Value="530" Scale="None" Actual="530"/>
+<D Value="-5.1" Scale="None" Actual="-5.1"/>
+</StimulusTension>
+<LengthTension>
+<ID>2e144f42-887a-454e-a504-05bdd5174a2f</ID>
+<Type>LengthTension</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.MuscleGains.LengthTension</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="1.369" Scale="None" Actual="1.369"/>
+<UpperLimitScale Value="1.673" Scale="None" Actual="1.673"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits>Meters</IndependentUnits>
+<DependentUnits>% Isometric Tension Used</DependentUnits>
+<RestingLength Value="0.4" Scale="None" Actual="0.4"/>
+<Lwidth Value="0.026" Scale="None" Actual="0.026"/>
+<PeLength Value="90" Scale="None" Actual="90"/>
+<MinPeLength Value="5" Scale="None" Actual="5"/>
+</LengthTension>
+<MaximumTension Value="1020" Scale="None" Actual="1020"/>
+<Kse Value="255" Scale="None" Actual="255"/>
+<Kpe Value="4.322" Scale="Kilo" Actual="4322"/>
+<B Value="2550" Scale="None" Actual="2550"/>
+<IbDischarge Value="100" Scale="None" Actual="100"/>
+</RigidBody>
+</ChildBodies>
+<FoodSource>False</FoodSource>
+<Length Value="0.5" Scale="None" Actual="0.5"/>
+<Width Value="1" Scale="None" Actual="1"/>
+<Height Value="3" Scale="None" Actual="3"/>
+<LengthSections>1</LengthSections>
+<WidthSections>1</WidthSections>
+<HeightSections>1</HeightSections>
+</RigidBody>
+<RigidBody>
+<Name>Body_9</Name>
+<ID>4415536e-4dae-4dab-8a05-bd6ef936aabc</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="25.005" Scale="centi" Actual="0.25005"/>
+<Y Value="-50" Scale="centi" Actual="-0.5"/>
+<Z Value="-24.945" Scale="centi" Actual="-0.24945"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,0.25005,-0.5,-0.24945,1</LocalMatrix>
+<DraggerSize Value="0.25" Scale="None" Actual="0.25"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0" Scale="None" Actual="0"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="5" Scale="centi" Actual="0.05"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>Body_10</Name>
+<ID>790f80c9-1572-479f-8439-29b2afd8438a</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="-24.995" Scale="centi" Actual="-0.24995"/>
+<Y Value="-50" Scale="centi" Actual="-0.5"/>
+<Z Value="-24.955" Scale="centi" Actual="-0.24955"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,-0.24995,-0.5,-0.24955,1</LocalMatrix>
+<DraggerSize Value="0.25" Scale="None" Actual="0.25"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0" Scale="None" Actual="0"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="5" Scale="centi" Actual="0.05"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>Body_16</Name>
+<ID>7e361ead-2415-4f70-8775-548f295d1257</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="-25.005" Scale="centi" Actual="-0.25005"/>
+<Y Value="-50" Scale="centi" Actual="-0.5"/>
+<Z Value="24.945" Scale="centi" Actual="0.24945"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,-0.25005,-0.5,0.24945,1</LocalMatrix>
+<DraggerSize Value="0.25" Scale="None" Actual="0.25"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0" Scale="None" Actual="0"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="5" Scale="centi" Actual="0.05"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+<RigidBody>
+<Name>Body_15</Name>
+<ID>bdda723e-1a8e-4ca0-99a0-290359ffc5a3</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0.647059" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="24.995" Scale="centi" Actual="0.24995"/>
+<Y Value="-50" Scale="centi" Actual="-0.5"/>
+<Z Value="24.955" Scale="centi" Actual="0.24955"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,0.24995,-0.5,0.24955,1</LocalMatrix>
+<DraggerSize Value="0.25" Scale="None" Actual="0.25"/>
+<Type>Attachment</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Attachment</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>False</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0" Scale="None" Actual="0"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>False</Freeze>
+<FoodSource>False</FoodSource>
+<Radius Value="5" Scale="centi" Actual="0.05"/>
+<LatitudeSegments>20</LatitudeSegments>
+<LongtitudeSegments>20</LongtitudeSegments>
+</RigidBody>
+</ChildBodies>
+<FoodSource>False</FoodSource>
+<Length Value="1.5" Scale="None" Actual="1.5"/>
+<Width Value="1" Scale="None" Actual="1"/>
+<Height Value="1" Scale="None" Actual="1"/>
+<LengthSections>1</LengthSections>
+<WidthSections>1</WidthSections>
+<HeightSections>1</HeightSections>
+</RigidBody>
+<CollisionExclusionPairs/>
+<NervousSystem>
+<NeuralModules>
+<Node>
+<ID>fde8ee25-16e7-4747-8b2a-10f100483548</ID>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.NeuralModule</ClassName>
+<TimeStep Value="0.2" Scale="milli" Actual="0.0002"/>
+<ID>fde8ee25-16e7-4747-8b2a-10f100483548</ID>
+<AHPEquilibriumPotential Value="-70" Scale="milli" Actual="-0.07"/>
+<SpikePeak Value="0" Scale="milli" Actual="0"/>
+<SpikeStrength>1</SpikeStrength>
+<CaEquilibriumPotential Value="200" Scale="milli" Actual="0.2"/>
+<RefractoryPeriod Value="2" Scale="milli" Actual="0.002"/>
+<UseCriticalPeriod>False</UseCriticalPeriod>
+<StartCriticalPeriod Value="0" Scale="None" Actual="0"/>
+<EndCriticalPeriod Value="5" Scale="None" Actual="5"/>
+<TTX>False</TTX>
+<Cd>False</Cd>
+<HH>False</HH>
+<FreezeHebb>False</FreezeHebb>
+<RetainHebbMemory>False</RetainHebbMemory>
+<SynapseTypes>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
+<ID>334e7fbf-dcb4-4aaa-aa28-4118f61e8c2c</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Circle</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>True</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>One</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>Hyperpolarising IPSP</Name>
+<EquilibriumPotential Value="-70" Scale="milli" Actual="-0.07"/>
+<MaxSynapticConductance Value="0.5" Scale="micro" Actual="5e-007"/>
+<PreSynapticThreshold Value="-55" Scale="milli" Actual="-0.055"/>
+<PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.SpikingChemical</ClassName>
+<ID>3fb7faf1-63e4-4894-9959-a8032aa4f138</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>None</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>True</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>Hyperpolarizing IPSP</Name>
+<EquilibriumPotential Value="-70" Scale="milli" Actual="-0.07"/>
+<SynapticConductance Value="1.5" Scale="micro" Actual="1.5e-006"/>
+<DecayRate Value="10" Scale="milli" Actual="0.01"/>
+<RelativeFacilitation Value="1.5" Scale="None" Actual="1.5"/>
+<FacilitationDecay Value="100" Scale="milli" Actual="0.1"/>
+<VoltageDependent>True</VoltageDependent>
+<MaxRelativeConductance Value="5" Scale="micro" Actual="5e-006"/>
+<SaturatePotential Value="-30" Scale="milli" Actual="-0.03"/>
+<ThresholdPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<Hebbian>True</Hebbian>
+<MaxAugmentedConductance Value="1" Scale="micro" Actual="1e-006"/>
+<LearningIncrement>0.1</LearningIncrement>
+<LearningTimeWindow Value="30" Scale="milli" Actual="0.03"/>
+<AllowForgetting>True</AllowForgetting>
+<ForgettingTimeWindow Value="10000" Scale="milli" Actual="10"/>
+<ConsolidationFactor>1</ConsolidationFactor>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.Electrical</ClassName>
+<ID>400205c3-2de8-4582-9e35-64fef10d0028</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>Rectifying Synapse</Name>
+<LowCoupling Value="0.1" Scale="micro" Actual="1e-007"/>
+<HighCoupling Value="0.3" Scale="micro" Actual="3e-007"/>
+<TurnOnThreshold Value="10" Scale="milli" Actual="0.01"/>
+<TurnOnSaturate Value="30" Scale="milli" Actual="0.03"/>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
+<ID>56aaab61-4fb3-4c8c-9a6d-7fff87d51ebf</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Circle</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>True</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>One</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>Depolarising IPSP</Name>
+<EquilibriumPotential Value="-55" Scale="milli" Actual="-0.055"/>
+<MaxSynapticConductance Value="0.5" Scale="micro" Actual="5e-007"/>
+<PreSynapticThreshold Value="-60" Scale="milli" Actual="-0.06"/>
+<PreSynapticSaturationLevel Value="-40" Scale="milli" Actual="-0.04"/>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.SpikingChemical</ClassName>
+<ID>67559fd7-6256-4747-acdf-9252af625942</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>Depolarizing IPSP</Name>
+<EquilibriumPotential Value="-55" Scale="milli" Actual="-0.055"/>
+<SynapticConductance Value="1.5" Scale="micro" Actual="1.5e-006"/>
+<DecayRate Value="3" Scale="milli" Actual="0.003"/>
+<RelativeFacilitation Value="1" Scale="None" Actual="1"/>
+<FacilitationDecay Value="100" Scale="milli" Actual="0.1"/>
+<VoltageDependent>False</VoltageDependent>
+<MaxRelativeConductance Value="5" Scale="micro" Actual="5e-006"/>
+<SaturatePotential Value="-30" Scale="milli" Actual="-0.03"/>
+<ThresholdPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<Hebbian>False</Hebbian>
+<MaxAugmentedConductance Value="1" Scale="micro" Actual="1e-006"/>
+<LearningIncrement>0.25</LearningIncrement>
+<LearningTimeWindow Value="20" Scale="milli" Actual="0.02"/>
+<AllowForgetting>True</AllowForgetting>
+<ForgettingTimeWindow Value="10000" Scale="milli" Actual="10"/>
+<ConsolidationFactor>1</ConsolidationFactor>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.SpikingChemical</ClassName>
+<ID>6eb65765-7263-4e47-a9a4-b6eb2dd00e2d</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Circle</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>NMDA type</Name>
+<EquilibriumPotential Value="-10" Scale="milli" Actual="-0.01"/>
+<SynapticConductance Value="0.1" Scale="micro" Actual="1e-007"/>
+<DecayRate Value="50" Scale="milli" Actual="0.05"/>
+<RelativeFacilitation Value="1" Scale="None" Actual="1"/>
+<FacilitationDecay Value="1" Scale="milli" Actual="0.001"/>
+<VoltageDependent>True</VoltageDependent>
+<MaxRelativeConductance Value="10" Scale="micro" Actual="1e-005"/>
+<SaturatePotential Value="-30" Scale="milli" Actual="-0.03"/>
+<ThresholdPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<Hebbian>False</Hebbian>
+<MaxAugmentedConductance Value="1" Scale="micro" Actual="1e-006"/>
+<LearningIncrement>0.1</LearningIncrement>
+<LearningTimeWindow Value="20" Scale="milli" Actual="0.02"/>
+<AllowForgetting>True</AllowForgetting>
+<ForgettingTimeWindow Value="10000" Scale="milli" Actual="10"/>
+<ConsolidationFactor>1</ConsolidationFactor>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.SpikingChemical</ClassName>
+<ID>a995aa9d-044c-4dc0-b2d3-0b4ec900f193</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Circle</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>Hebbian ACh type</Name>
+<EquilibriumPotential Value="-10" Scale="milli" Actual="-0.01"/>
+<SynapticConductance Value="0.4" Scale="micro" Actual="4e-007"/>
+<DecayRate Value="3" Scale="milli" Actual="0.003"/>
+<RelativeFacilitation Value="1" Scale="None" Actual="1"/>
+<FacilitationDecay Value="1" Scale="milli" Actual="0.001"/>
+<VoltageDependent>True</VoltageDependent>
+<MaxRelativeConductance Value="5" Scale="micro" Actual="5e-006"/>
+<SaturatePotential Value="-30" Scale="milli" Actual="-0.03"/>
+<ThresholdPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<Hebbian>True</Hebbian>
+<MaxAugmentedConductance Value="2" Scale="micro" Actual="2e-006"/>
+<LearningIncrement>0.02</LearningIncrement>
+<LearningTimeWindow Value="40" Scale="milli" Actual="0.04"/>
+<AllowForgetting>True</AllowForgetting>
+<ForgettingTimeWindow Value="10000" Scale="milli" Actual="10"/>
+<ConsolidationFactor>20</ConsolidationFactor>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.Electrical</ClassName>
+<ID>ade75421-5c44-420e-ac8e-a7d1dd33f700</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>Non-Rectifying Synapse</Name>
+<LowCoupling Value="0.2" Scale="micro" Actual="2e-007"/>
+<HighCoupling Value="0.2" Scale="micro" Actual="2e-007"/>
+<TurnOnThreshold Value="0" Scale="milli" Actual="0"/>
+<TurnOnSaturate Value="0" Scale="milli" Actual="0"/>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.SpikingChemical</ClassName>
+<ID>edb9d45a-3677-4195-9aa9-2863f7efeb8f</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Fork</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>Nicotinic ACh</Name>
+<EquilibriumPotential Value="-10" Scale="milli" Actual="-0.01"/>
+<SynapticConductance Value="1.5" Scale="micro" Actual="1.5e-006"/>
+<DecayRate Value="15" Scale="milli" Actual="0.015"/>
+<RelativeFacilitation Value="0.5" Scale="None" Actual="0.5"/>
+<FacilitationDecay Value="100" Scale="milli" Actual="0.1"/>
+<VoltageDependent>False</VoltageDependent>
+<MaxRelativeConductance Value="5" Scale="micro" Actual="5e-006"/>
+<SaturatePotential Value="-30" Scale="milli" Actual="-0.03"/>
+<ThresholdPotential Value="-60" Scale="milli" Actual="-0.06"/>
+<Hebbian>False</Hebbian>
+<MaxAugmentedConductance Value="1" Scale="micro" Actual="1e-006"/>
+<LearningIncrement>0.1</LearningIncrement>
+<LearningTimeWindow Value="20" Scale="milli" Actual="0.02"/>
+<AllowForgetting>True</AllowForgetting>
+<ForgettingTimeWindow Value="10000" Scale="milli" Actual="10"/>
+<ConsolidationFactor>1</ConsolidationFactor>
+</Link>
+<Link>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.SynapseTypes.NonSpikingChemical</ClassName>
+<ID>ef3263f9-726a-48ea-90aa-b74a0f4df283</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Medium</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID/>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID/>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+<Name>Nicotinic ACh type</Name>
+<EquilibriumPotential Value="-10" Scale="milli" Actual="-0.01"/>
+<MaxSynapticConductance Value="0.5" Scale="micro" Actual="5e-007"/>
+<PreSynapticThreshold Value="-65" Scale="milli" Actual="-0.065"/>
+<PreSynapticSaturationLevel Value="-20" Scale="milli" Actual="-0.02"/>
+</Link>
+</SynapseTypes>
+</Node>
+<Node>
+<ID>4a33a7c9-14ef-4ed9-846d-627fcd914c77</ID>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.PhysicsModule</ClassName>
+<TimeStep Value="0.6" Scale="milli" Actual="0.0006"/>
+</Node>
+</NeuralModules>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Subsystem</ClassName>
+<ID>aeb59d16-073d-4898-a708-ecffc1740c36</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-8586240</FillColor>
+<Font Family="Arial" Size="12" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="0" y="0"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="40" Height="40"/>
+<Text>Neural Subsystem</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks/>
+<Nodes>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
+<ID>08af6958-eb1c-4155-9026-6aad292724d6</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-360334</FillColor>
+<Font Family="Arial" Size="12" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="293.25" y="477"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Display</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="40" Height="40"/>
+<Text>10</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>5f8231a2-0f57-4d96-acfc-030baf17ce57</ID>
+</InLinks>
+<OutLinks>
+<ID>e4125c30-e45e-41a9-9ca1-2b5c7633d661</ID>
+</OutLinks>
+<OriginID>61761fcf-5de2-4c09-a29c-91460d3314a4</OriginID>
+<DestinationID>57e8d44d-bddf-406f-9f36-d5e7067262a0</DestinationID>
+<DataTypeID>MembraneVoltage</DataTypeID>
+<TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
+<Gain>
+<ID>4091c8c9-6065-4481-92ea-221e5737339e</ID>
+<Type>Polynomial</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="100" Scale="milli" Actual="0.1"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits/>
+<DependentUnits>Output Variable</DependentUnits>
+<A Value="0" Scale="None" Actual="0"/>
+<B Value="0" Scale="None" Actual="0"/>
+<C Value="1" Scale="None" Actual="1"/>
+<D Value="0" Scale="None" Actual="0"/>
+</Gain>
+<DelayBufferMode>NoDelayBuffer</DelayBufferMode>
+<DelayBufferInterval Value="100" Scale="milli" Actual="0.1"/>
+<InitIODisableDuration Value="0" Scale="milli" Actual="0"/>
+<Enabled>True</Enabled>
+<RobotIOScale>1</RobotIOScale>
+<SynchWithRobot>True</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<SynchUpdateStartInterval Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.Spiking</ClassName>
+<ID>0fc5e081-12aa-4bb1-81ce-98f7ddb5639e</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-10496</FillColor>
+<Font Family="Arial" Size="14" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="138" y="268.25"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="66.5" Height="52.75"/>
+<Text>Flexor2</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>ed01d2f2-fe73-4afe-8bf2-33949e1bc988</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-100" Scale="milli" Actual="-0.1"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="1" Scale="micro" Actual="1e-006"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>85a5315a-b87e-4863-a920-71c6c8278683</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>6a2d0b4a-209e-4485-b127-440f1866962a</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
+<ID>25f7b60d-cacb-4699-bc40-ae5392d41d08</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-360334</FillColor>
+<Font Family="Arial" Size="12" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="268.5" y="147"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Display</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="40" Height="40"/>
+<Text>3</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>d48c48cd-8628-4dca-8902-4bcc410a16b0</ID>
+</InLinks>
+<OutLinks>
+<ID>80859229-51af-40da-a05d-b26c7edcbe6d</ID>
+</OutLinks>
+<OriginID>4e99eb0b-6225-40ef-86ee-7538d5942269</OriginID>
+<DestinationID>d5725dc2-3876-4c9a-99d3-eff141c78a60</DestinationID>
+<DataTypeID>MembraneVoltage</DataTypeID>
+<TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
+<Gain>
+<ID>f02835d0-53b0-4065-80e4-034a43b22863</ID>
+<Type>Polynomial</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="100" Scale="milli" Actual="0.1"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits/>
+<DependentUnits>Output Variable</DependentUnits>
+<A Value="0" Scale="None" Actual="0"/>
+<B Value="0" Scale="None" Actual="0"/>
+<C Value="1" Scale="None" Actual="1"/>
+<D Value="0" Scale="None" Actual="0"/>
+</Gain>
+<DelayBufferMode>NoDelayBuffer</DelayBufferMode>
+<DelayBufferInterval Value="100" Scale="milli" Actual="0.1"/>
+<InitIODisableDuration Value="0" Scale="milli" Actual="0"/>
+<Enabled>True</Enabled>
+<RobotIOScale>1</RobotIOScale>
+<SynchWithRobot>True</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<SynchUpdateStartInterval Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.Spiking</ClassName>
+<ID>4e99eb0b-6225-40ef-86ee-7538d5942269</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-10496</FillColor>
+<Font Family="Arial" Size="14" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="143.25" y="145"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="60.75" Height="51.5"/>
+<Text>Flexor1</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>d48c48cd-8628-4dca-8902-4bcc410a16b0</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-100" Scale="milli" Actual="-0.1"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<AHP_Conductance Value="1" Scale="micro" Actual="1e-006"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>cb2c3630-c285-4185-9a54-cc7e7d5e134e</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>d05b45e3-50ae-4932-bdac-2c93fd0040e4</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>57e8d44d-bddf-406f-9f36-d5e7067262a0</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>16777215</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-1</FillColor>
+<Font Family="Arial" Size="14" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="430" y="406"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="30" Height="150"/>
+<Text>7</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>e4125c30-e45e-41a9-9ca1-2b5c7633d661</ID>
+</InLinks>
+<OutLinks/>
+<LinkedBodyPartID>5261bc79-6bc9-4f5b-8b82-94e8640325d3</LinkedBodyPartID>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.Spiking</ClassName>
+<ID>61761fcf-5de2-4c09-a29c-91460d3314a4</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-10496</FillColor>
+<Font Family="Arial" Size="14" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="126" y="493"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="75.5" Height="53"/>
+<Text>Extensor1</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>5f8231a2-0f57-4d96-acfc-030baf17ce57</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-100" Scale="milli" Actual="-0.1"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="1" Scale="micro" Actual="1e-006"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>a8a065de-1234-4f5a-b061-1ee4fca56b04</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>169c1a20-77a1-4fa6-9f76-035a33779141</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>7459f63b-3555-4d08-8ff1-b0008bd0758b</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>16777215</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-1</FillColor>
+<Font Family="Arial" Size="14" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="420" y="211"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="30" Height="150"/>
+<Text>5</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>441db908-2af7-4994-81d6-8b976a369bcc</ID>
+</InLinks>
+<OutLinks/>
+<LinkedBodyPartID>56e8a3da-51b3-481e-8cfb-1061e8a7e3ef</LinkedBodyPartID>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
+<ID>76d0798c-e310-4354-b7c0-4ff2e076bb70</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-360334</FillColor>
+<Font Family="Arial" Size="12" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="289.75" y="267.125"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Display</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="40" Height="40"/>
+<Text>8</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>ed01d2f2-fe73-4afe-8bf2-33949e1bc988</ID>
+</InLinks>
+<OutLinks>
+<ID>441db908-2af7-4994-81d6-8b976a369bcc</ID>
+</OutLinks>
+<OriginID>0fc5e081-12aa-4bb1-81ce-98f7ddb5639e</OriginID>
+<DestinationID>7459f63b-3555-4d08-8ff1-b0008bd0758b</DestinationID>
+<DataTypeID>MembraneVoltage</DataTypeID>
+<TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
+<Gain>
+<ID>0ea178d7-defc-46c7-a1a1-614de69d7c27</ID>
+<Type>Polynomial</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="100" Scale="milli" Actual="0.1"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits/>
+<DependentUnits>Output Variable</DependentUnits>
+<A Value="0" Scale="None" Actual="0"/>
+<B Value="0" Scale="None" Actual="0"/>
+<C Value="1" Scale="None" Actual="1"/>
+<D Value="0" Scale="None" Actual="0"/>
+</Gain>
+<DelayBufferMode>NoDelayBuffer</DelayBufferMode>
+<DelayBufferInterval Value="100" Scale="milli" Actual="0.1"/>
+<InitIODisableDuration Value="0" Scale="milli" Actual="0"/>
+<Enabled>True</Enabled>
+<RobotIOScale>1</RobotIOScale>
+<SynchWithRobot>True</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<SynchUpdateStartInterval Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>9949a98e-1e42-4cfe-a8e6-1b2dfb37a6df</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>16777215</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-1</FillColor>
+<Font Family="Arial" Size="14" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="355" y="315"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="30" Height="150"/>
+<Text>6</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>eef40e1b-4001-47fe-b357-c05ff3be4361</ID>
+</InLinks>
+<OutLinks/>
+<LinkedBodyPartID>bb2a99ba-3181-486c-8bad-ce2680907c07</LinkedBodyPartID>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.NodeToPhysicalAdapter</ClassName>
+<ID>9fa9a330-d0c2-42db-82e7-0b8c6e963254</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-360334</FillColor>
+<Font Family="Arial" Size="12" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="256.125" y="375.125"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Display</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="40" Height="40"/>
+<Text>9</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>acea412a-f7bc-49f8-add4-c9ddcb609207</ID>
+</InLinks>
+<OutLinks>
+<ID>eef40e1b-4001-47fe-b357-c05ff3be4361</ID>
+</OutLinks>
+<OriginID>f3ce03b6-e844-4ab4-a0f6-b72a5bd00c3b</OriginID>
+<DestinationID>9949a98e-1e42-4cfe-a8e6-1b2dfb37a6df</DestinationID>
+<DataTypeID>MembraneVoltage</DataTypeID>
+<TargetDataTypeID>MembraneVoltage</TargetDataTypeID>
+<Gain>
+<ID>792c57b3-0928-446f-bcdc-be1d99f7573d</ID>
+<Type>Polynomial</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="-100" Scale="milli" Actual="-0.1"/>
+<UpperLimitScale Value="100" Scale="milli" Actual="0.1"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits/>
+<DependentUnits>Output Variable</DependentUnits>
+<A Value="0" Scale="None" Actual="0"/>
+<B Value="0" Scale="None" Actual="0"/>
+<C Value="1" Scale="None" Actual="1"/>
+<D Value="0" Scale="None" Actual="0"/>
+</Gain>
+<DelayBufferMode>NoDelayBuffer</DelayBufferMode>
+<DelayBufferInterval Value="100" Scale="milli" Actual="0.1"/>
+<InitIODisableDuration Value="0" Scale="milli" Actual="0"/>
+<Enabled>True</Enabled>
+<RobotIOScale>1</RobotIOScale>
+<SynchWithRobot>True</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<SynchUpdateStartInterval Value="0" Scale="milli" Actual="0"/>
+</Node>
+<Node>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Nodes.Muscle</ClassName>
+<ID>d5725dc2-3876-4c9a-99d3-eff141c78a60</ID>
+<Alignment>CenterBottom</Alignment>
+<AutoSize>ImageToNode</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>16777215</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-1</FillColor>
+<Font Family="Arial" Size="14" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName>AnimatGUI.Muscle.gif</DiagramImageName>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="378" y="94"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Rectangle</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="30" Height="150"/>
+<Text>1</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks>
+<ID>80859229-51af-40da-a05d-b26c7edcbe6d</ID>
+</InLinks>
+<OutLinks/>
+<LinkedBodyPartID>13f518c4-5de7-4498-a98c-006ef71c0de8</LinkedBodyPartID>
+</Node>
+<Node>
+<AssemblyFile>IntegrateFireGUI.dll</AssemblyFile>
+<ClassName>IntegrateFireGUI.DataObjects.Behavior.Neurons.Spiking</ClassName>
+<ID>f3ce03b6-e844-4ab4-a0f6-b72a5bd00c3b</ID>
+<Alignment>CenterMiddle</Alignment>
+<AutoSize>None</AutoSize>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<FillColor>-10496</FillColor>
+<Font Family="Arial" Size="14" Bold="True" Underline="False" Strikeout="False" Italic="False"/>
+<Gradient>False</Gradient>
+<GradientColor>0</GradientColor>
+<GradientMode>BackwardDiagonal</GradientMode>
+<DiagramImageName/>
+<ImageName/>
+<ImageLocation x="0" y="0"/>
+<ImagePosition>RelativeToText</ImagePosition>
+<InLinkable>True</InLinkable>
+<LabelEdit>True</LabelEdit>
+<Location x="117" y="380.25"/>
+<OutLinkable>True</OutLinkable>
+<ShadowStyle>None</ShadowStyle>
+<ShadowColor>-16777216</ShadowColor>
+<ShadowSize Width="0" Height="0"/>
+<Shape>Termination</Shape>
+<ShapeOrientation>Angle0</ShapeOrientation>
+<Size Width="85.25" Height="64.5"/>
+<Text>Extensor2</Text>
+<TextColor>-16777216</TextColor>
+<TextMargin Width="0" Height="0"/>
+<ToolTip/>
+<Transparent>False</Transparent>
+<Url/>
+<XMoveable>True</XMoveable>
+<XSizeable>True</XSizeable>
+<YMoveable>True</YMoveable>
+<YSizeable>True</YSizeable>
+<ZOrder>0</ZOrder>
+<ZOrder>0</ZOrder>
+<TemplateNode>False</TemplateNode>
+<TemplateNodeCount>1</TemplateNodeCount>
+<TemplateChangeScript/>
+<InLinks/>
+<OutLinks>
+<ID>acea412a-f7bc-49f8-add4-c9ddcb609207</ID>
+</OutLinks>
+<Enabled>True</Enabled>
+<RestingPotential Value="-100" Scale="milli" Actual="-0.1"/>
+<RelativeSize Value="1" Scale="None" Actual="1"/>
+<TimeConstant Value="5" Scale="milli" Actual="0.005"/>
+<InitialThreshold Value="50" Scale="milli" Actual="0.05"/>
+<RelativeAccomodation Value="0.3" Scale="None" Actual="0.3"/>
+<AccomodationTimeConstant Value="10" Scale="milli" Actual="0.01"/>
+<AHP_Conductance Value="1" Scale="micro" Actual="1e-006"/>
+<AHP_TimeConstant Value="3" Scale="milli" Actual="0.003"/>
+<MaxCaConductance Value="0" Scale="micro" Actual="0"/>
+<CaActivation>
+<ID>3b8644cf-9ee4-4bdb-a824-71b303270009</ID>
+<MidPoint Value="-30" Scale="milli" Actual="-0.03"/>
+<Slope Value="0.1" Scale="None" Actual="0.1"/>
+<TimeConstant Value="20" Scale="milli" Actual="0.02"/>
+<ActivationType>True</ActivationType>
+</CaActivation>
+<CaDeactivation>
+<ID>9c5bb4d7-6ea9-44b0-8665-45c51126c11a</ID>
+<MidPoint Value="-90" Scale="milli" Actual="-0.09"/>
+<Slope Value="-0.1" Scale="None" Actual="-0.1"/>
+<TimeConstant Value="7500" Scale="milli" Actual="7.5"/>
+<ActivationType>False</ActivationType>
+</CaDeactivation>
+<InitAtBottom>True</InitAtBottom>
+<TonicStimulus Value="0" Scale="nano" Actual="0"/>
+<TonicNoise Value="0" Scale="milli" Actual="0"/>
+</Node>
+</Nodes>
+<Links>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>441db908-2af7-4994-81d6-8b976a369bcc</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>7459f63b-3555-4d08-8ff1-b0008bd0758b</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>76d0798c-e310-4354-b7c0-4ff2e076bb70</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>5f8231a2-0f57-4d96-acfc-030baf17ce57</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>08af6958-eb1c-4155-9026-6aad292724d6</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>61761fcf-5de2-4c09-a29c-91460d3314a4</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>80859229-51af-40da-a05d-b26c7edcbe6d</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>d5725dc2-3876-4c9a-99d3-eff141c78a60</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>25f7b60d-cacb-4699-bc40-ae5392d41d08</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>acea412a-f7bc-49f8-add4-c9ddcb609207</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>9fa9a330-d0c2-42db-82e7-0b8c6e963254</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>f3ce03b6-e844-4ab4-a0f6-b72a5bd00c3b</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>d48c48cd-8628-4dca-8902-4bcc410a16b0</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>25f7b60d-cacb-4699-bc40-ae5392d41d08</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>4e99eb0b-6225-40ef-86ee-7538d5942269</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>e4125c30-e45e-41a9-9ca1-2b5c7633d661</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>57e8d44d-bddf-406f-9f36-d5e7067262a0</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>08af6958-eb1c-4155-9026-6aad292724d6</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>ed01d2f2-fe73-4afe-8bf2-33949e1bc988</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>76d0798c-e310-4354-b7c0-4ff2e076bb70</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>0fc5e081-12aa-4bb1-81ce-98f7ddb5639e</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+<Link>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Behavior.Links.Adapter</ClassName>
+<ID>eef40e1b-4001-47fe-b357-c05ff3be4361</ID>
+<AdjustDst>False</AdjustDst>
+<AdjustOrg>False</AdjustOrg>
+<ArrowDestination>
+<Style>Arrow</Style>
+<Size>Small</Size>
+<Angle>deg15</Angle>
+<Filled>False</Filled>
+</ArrowDestination>
+<ArrowMiddle>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowMiddle>
+<ArrowOrigin>
+<Style>None</Style>
+<Size>Small</Size>
+<Angle>deg30</Angle>
+<Filled>False</Filled>
+</ArrowOrigin>
+<BackMode>Transparent</BackMode>
+<DashStyle>Solid</DashStyle>
+<DrawColor>-16777216</DrawColor>
+<DrawWidth>1</DrawWidth>
+<DestinationID>9949a98e-1e42-4cfe-a8e6-1b2dfb37a6df</DestinationID>
+<Font Family="Arial" Size="12" Bold="False" Underline="False" Strikeout="False" Italic="False"/>
+<Hidden>False</Hidden>
+<Jump>Arc</Jump>
+<LineStyle>Polyline</LineStyle>
+<OrthogonalDynamic>True</OrthogonalDynamic>
+<OriginID>9fa9a330-d0c2-42db-82e7-0b8c6e963254</OriginID>
+<OrientedText>True</OrientedText>
+<Selectable>True</Selectable>
+<Stretchable>True</Stretchable>
+<Text/>
+<ToolTip/>
+<Url/>
+<ZOrder>0</ZOrder>
+</Link>
+</Links>
+<DiagramXml><![CDATA[<Root>
+<Diagram>
+<ID>8f549fa8-3109-4c6b-a8e9-6fe3d893592a</ID>
+<AssemblyFile>LicensedAnimatGUI.dll</AssemblyFile>
+<ClassName>LicensedAnimatGUI.Forms.Behavior.AddFlowDiagram</ClassName>
+<PageName>Neural Subsystem</PageName>
+<ZoomX>1</ZoomX>
+<ZoomY>1</ZoomY>
+<BackColor Red="1" Green="1" Blue="1" Alpha="1"/>
+<ShowGrid>False</ShowGrid>
+<GridColor Red="0.427451" Green="0.427451" Blue="0.427451" Alpha="1"/>
+<GridSize Width="16" Height="16"/>
+<GridStyle>DottedLines</GridStyle>
+<JumpSize>Medium</JumpSize>
+<SnapToGrid>False</SnapToGrid>
+<AddFlow Nodes="12" Links="8">
+  <Version>1.5.0.1</Version>
+  <Node Left="143.25" Top="145" Width="60.75" Height="51.5">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Termination" Orientation="so_0" />
+    <FillColor>-10496</FillColor>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>Flexor1</Text>
+    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>4e99eb0b-6225-40ef-86ee-7538d5942269</Tag>
+  </Node>
+  <Node Left="378" Top="94" Width="30" Height="150">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Rectangle" Orientation="so_0" />
+    <AutoSize>ImageToNode</AutoSize>
+    <Alignment>CenterBOTTOM</Alignment>
+    <FillColor>-1</FillColor>
+    <DrawColor>16777215</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>1</Text>
+    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <ImageIndex>0</ImageIndex>
+    <Tag>d5725dc2-3876-4c9a-99d3-eff141c78a60</Tag>
+  </Node>
+  <Node Left="268.5" Top="147" Width="40" Height="40">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Display" Orientation="so_0" />
+    <FillColor>-360334</FillColor>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>3</Text>
+    <Font Name="Arial" Size="12" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>25f7b60d-cacb-4699-bc40-ae5392d41d08</Tag>
+  </Node>
+  <Link Org="0" Dst="2">
+    <OrientedText>True</OrientedText>
+    <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
+    <ArrowDst Head="None" Size="Small" Angle="deg15" Filled="False" />
+    <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <Jump>Arc</Jump>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>d48c48cd-8628-4dca-8902-4bcc410a16b0</Tag>
+  </Link>
+  <Link Org="2" Dst="1">
+    <OrientedText>True</OrientedText>
+    <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
+    <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <Jump>Arc</Jump>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>80859229-51af-40da-a05d-b26c7edcbe6d</Tag>
+  </Link>
+  <Node Left="138" Top="268.25" Width="66.5" Height="52.75">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Termination" Orientation="so_0" />
+    <FillColor>-10496</FillColor>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>Flexor2</Text>
+    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>0fc5e081-12aa-4bb1-81ce-98f7ddb5639e</Tag>
+  </Node>
+  <Node Left="117" Top="380.25" Width="85.25" Height="64.5">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Termination" Orientation="so_0" />
+    <FillColor>-10496</FillColor>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>Extensor2</Text>
+    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>f3ce03b6-e844-4ab4-a0f6-b72a5bd00c3b</Tag>
+  </Node>
+  <Node Left="126" Top="493" Width="75.5" Height="53">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Termination" Orientation="so_0" />
+    <FillColor>-10496</FillColor>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>Extensor1</Text>
+    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>61761fcf-5de2-4c09-a29c-91460d3314a4</Tag>
+  </Node>
+  <Node Left="420" Top="211" Width="30" Height="150">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Rectangle" Orientation="so_0" />
+    <AutoSize>ImageToNode</AutoSize>
+    <Alignment>CenterBOTTOM</Alignment>
+    <FillColor>-1</FillColor>
+    <DrawColor>16777215</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>5</Text>
+    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <ImageIndex>0</ImageIndex>
+    <Tag>7459f63b-3555-4d08-8ff1-b0008bd0758b</Tag>
+  </Node>
+  <Node Left="355" Top="315" Width="30" Height="150">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Rectangle" Orientation="so_0" />
+    <AutoSize>ImageToNode</AutoSize>
+    <Alignment>CenterBOTTOM</Alignment>
+    <FillColor>-1</FillColor>
+    <DrawColor>16777215</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>6</Text>
+    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <ImageIndex>0</ImageIndex>
+    <Tag>9949a98e-1e42-4cfe-a8e6-1b2dfb37a6df</Tag>
+  </Node>
+  <Node Left="430" Top="406" Width="30" Height="150">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Rectangle" Orientation="so_0" />
+    <AutoSize>ImageToNode</AutoSize>
+    <Alignment>CenterBOTTOM</Alignment>
+    <FillColor>-1</FillColor>
+    <DrawColor>16777215</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>7</Text>
+    <Font Name="Arial" Size="14" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <ImageIndex>0</ImageIndex>
+    <Tag>57e8d44d-bddf-406f-9f36-d5e7067262a0</Tag>
+  </Node>
+  <Node Left="289.75" Top="267.125" Width="40" Height="40">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Display" Orientation="so_0" />
+    <FillColor>-360334</FillColor>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>8</Text>
+    <Font Name="Arial" Size="12" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>76d0798c-e310-4354-b7c0-4ff2e076bb70</Tag>
+  </Node>
+  <Link Org="5" Dst="11">
+    <OrientedText>True</OrientedText>
+    <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
+    <ArrowDst Head="None" Size="Small" Angle="deg15" Filled="False" />
+    <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <Jump>Arc</Jump>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>ed01d2f2-fe73-4afe-8bf2-33949e1bc988</Tag>
+  </Link>
+  <Link Org="11" Dst="8">
+    <OrientedText>True</OrientedText>
+    <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
+    <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <Jump>Arc</Jump>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>441db908-2af7-4994-81d6-8b976a369bcc</Tag>
+  </Link>
+  <Node Left="256.125" Top="375.125" Width="40" Height="40">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Display" Orientation="so_0" />
+    <FillColor>-360334</FillColor>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>9</Text>
+    <Font Name="Arial" Size="12" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>9fa9a330-d0c2-42db-82e7-0b8c6e963254</Tag>
+  </Node>
+  <Link Org="6" Dst="14">
+    <OrientedText>True</OrientedText>
+    <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
+    <ArrowDst Head="None" Size="Small" Angle="deg15" Filled="False" />
+    <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <Jump>Arc</Jump>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>acea412a-f7bc-49f8-add4-c9ddcb609207</Tag>
+  </Link>
+  <Link Org="14" Dst="9">
+    <OrientedText>True</OrientedText>
+    <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
+    <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <Jump>Arc</Jump>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>eef40e1b-4001-47fe-b357-c05ff3be4361</Tag>
+  </Link>
+  <Node Left="293.25" Top="477" Width="40" Height="40">
+    <Shadow Style="None" Color="-16777216" Width="0" Height="0" />
+    <Shape Style="Display" Orientation="so_0" />
+    <FillColor>-360334</FillColor>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <GradientColor>0</GradientColor>
+    <Text>10</Text>
+    <Font Name="Arial" Size="12" Bold="True" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>08af6958-eb1c-4155-9026-6aad292724d6</Tag>
+  </Node>
+  <Link Org="7" Dst="17">
+    <OrientedText>True</OrientedText>
+    <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
+    <ArrowDst Head="None" Size="Small" Angle="deg15" Filled="False" />
+    <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <Jump>Arc</Jump>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>5f8231a2-0f57-4d96-acfc-030baf17ce57</Tag>
+  </Link>
+  <Link Org="17" Dst="10">
+    <OrientedText>True</OrientedText>
+    <Line Style="Polyline" OrthogonalDynamic="True" RoundedCorner="True" />
+    <ArrowOrg Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <ArrowMid Head="None" Size="Small" Angle="deg30" Filled="False" />
+    <Jump>Arc</Jump>
+    <DrawColor>-16777216</DrawColor>
+    <TextColor>-16777216</TextColor>
+    <Font Name="Arial" Size="12" Bold="False" Italic="False" Strikeout="False" Underline="False" />
+    <Tag>e4125c30-e45e-41a9-9ca1-2b5c7633d661</Tag>
+  </Link>
+</AddFlow>
+</Diagram>
+</Root>
+]]></DiagramXml>
+</Node>
+</NervousSystem>
+<RobotInterface>
+<Name>Standard Interface</Name>
+<ID>263f43f5-073d-4aec-b30a-23c4c9712c3c</ID>
+<AssemblyFile>RoboticsGUI.dll</AssemblyFile>
+<ClassName>RoboticsGUI.RobotInterfaces.StandardInterface</ClassName>
+<SynchSim>True</SynchSim>
+<Enabled>True</Enabled>
+<PhysicsTimeStep Value="1" Scale="milli" Actual="0.001"/>
+<IOControls>
+<RobotIOControl>
+<Name>input Serial</Name>
+<ID>6f1ecd1a-d23c-4867-9b2e-597b571077e6</ID>
+<AssemblyFile>RoboticsGUI.dll</AssemblyFile>
+<ClassName>RoboticsGUI.RobotIOControls.AnimatSerial</ClassName>
+<Enabled>True</Enabled>
+<Parts/>
+<Links>
+<Link>
+<Name>Current Input</Name>
+<ID>baa7f0b0-7442-47df-85a4-d0c870943539</ID>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Robotics.PassThroughLinkage</ClassName>
+<InLink>True</InLink>
+<PropertyID>20</PropertyID>
+<LinkedSourceID>6f1ecd1a-d23c-4867-9b2e-597b571077e6</LinkedSourceID>
+<LinkedSourcePropertyID>serial port</LinkedSourcePropertyID>
+<LinkedTargetID>4e99eb0b-6225-40ef-86ee-7538d5942269</LinkedTargetID>
+<LinkedTargetPropertyID>MembraneVoltage</LinkedTargetPropertyID>
+<Gain>
+<ID>4837f43f-c7e5-4c2d-b555-ab8fe1a550dd</ID>
+<Type>Polynomial</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="0" Scale="None" Actual="0"/>
+<UpperLimitScale Value="1" Scale="None" Actual="1"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits/>
+<DependentUnits>Output Variable</DependentUnits>
+<A Value="0" Scale="None" Actual="0"/>
+<B Value="0" Scale="None" Actual="0"/>
+<C Value="1" Scale="milli" Actual="0.001"/>
+<D Value="0" Scale="None" Actual="0"/>
+</Gain>
+</Link>
+</Links>
+<Port>COM9</Port>
+<BaudRate>25600</BaudRate>
+<ChangeSimStepCount>5</ChangeSimStepCount>
+</RobotIOControl>
+<RobotIOControl>
+<Name>output Serial</Name>
+<ID>ce80c28c-d746-4c02-9bfb-978d5b426991</ID>
+<AssemblyFile>RoboticsGUI.dll</AssemblyFile>
+<ClassName>RoboticsGUI.RobotIOControls.AnimatSerial</ClassName>
+<Enabled>True</Enabled>
+<Parts/>
+<Links>
+<Link>
+<Name>Current Output</Name>
+<ID>0e04f5dd-89d5-4065-850a-bad8c3a61db2</ID>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Robotics.PassThroughLinkage</ClassName>
+<InLink>False</InLink>
+<PropertyID>30</PropertyID>
+<LinkedSourceID>4e99eb0b-6225-40ef-86ee-7538d5942269</LinkedSourceID>
+<LinkedSourcePropertyID>MembraneVoltage</LinkedSourcePropertyID>
+<LinkedTargetID>ce80c28c-d746-4c02-9bfb-978d5b426991</LinkedTargetID>
+<LinkedTargetPropertyID>serial port</LinkedTargetPropertyID>
+<Gain>
+<ID>b60a8574-8ef9-4ff3-90b0-22b236585988</ID>
+<Type>Polynomial</Type>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.Gains.Polynomial</ClassName>
+<UseLimits>False</UseLimits>
+<LimitsReadOnly>False</LimitsReadOnly>
+<LimitOutputsReadOnly>False</LimitOutputsReadOnly>
+<UseParentIncomingDataType>True</UseParentIncomingDataType>
+<LowerLimitScale Value="0" Scale="None" Actual="0"/>
+<UpperLimitScale Value="1" Scale="None" Actual="1"/>
+<LowerOutputScale Value="0" Scale="None" Actual="0"/>
+<UpperOutputScale Value="1" Scale="None" Actual="1"/>
+<IndependentUnits/>
+<DependentUnits>Output Variable</DependentUnits>
+<A Value="0" Scale="None" Actual="0"/>
+<B Value="0" Scale="None" Actual="0"/>
+<C Value="1" Scale="None" Actual="1"/>
+<D Value="0" Scale="None" Actual="0"/>
+</Gain>
+</Link>
+</Links>
+<Port>COM8</Port>
+<BaudRate>256000</BaudRate>
+<ChangeSimStepCount>5</ChangeSimStepCount>
+</RobotIOControl>
+</IOControls>
+</RobotInterface>
+</Organism>
+</Organisms>
+<Structures>
+<Structure>
+<Name>Structure_1</Name>
+<ID>1f55ec1f-2087-45f2-bc1c-659966d9e412</ID>
+<Description/>
+<Transparencies>
+<Graphics>50</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>100</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0.0980392" Green="0.0980392" Blue="0.0980392" Alpha="1"/>
+<Diffuse Red="1" Green="0" Blue="0" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Basic</Type>
+<RigidBody>
+<Name>Root</Name>
+<ID>956629c6-7b4d-4b7f-a834-878858300020</ID>
+<Description/>
+<Transparencies>
+<Graphics>0</Graphics>
+<Collisions>0</Collisions>
+<Joints>0</Joints>
+<RecFields>0</RecFields>
+<Simulation>0</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="0" Green="1" Blue="0" Alpha="1"/>
+<Diffuse Red="1" Green="1" Blue="1" Alpha="1"/>
+<Specular Red="0.25098" Green="0.25098" Blue="0.25098" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</LocalPosition>
+<Rotation>
+<X Value="-90" Scale="None" Actual="-90"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,-0.000203653,-1,0,0,1,-0.000203653,0,0,0,0,1</LocalMatrix>
+<DraggerSize Value="-1" Scale="None" Actual="-1"/>
+<Type>Plane</Type>
+<PartType>AnimatGUI.DataObjects.Physical.Bodies.Plane</PartType>
+<SynchWithRobot>False</SynchWithRobot>
+<SynchUpdateInterval Value="0" Scale="milli" Actual="0"/>
+<IsContactSensor>False</IsContactSensor>
+<IsCollisionObject>True</IsCollisionObject>
+<IsStickyPart>False</IsStickyPart>
+<BuoyancyCenter>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</BuoyancyCenter>
+<BuoyancyScale>1</BuoyancyScale>
+<LinearDrag>
+<X Value="1" Scale="None" Actual="1"/>
+<Y Value="1" Scale="None" Actual="1"/>
+<Z Value="1" Scale="None" Actual="1"/>
+</LinearDrag>
+<AngularDrag>
+<X Value="50" Scale="milli" Actual="0.05"/>
+<Y Value="50" Scale="milli" Actual="0.05"/>
+<Z Value="50" Scale="milli" Actual="0.05"/>
+</AngularDrag>
+<MaxHydroForce Value="50" Scale="None" Actual="50"/>
+<MaxHydroTorque Value="20" Scale="None" Actual="20"/>
+<Magnus>0</Magnus>
+<EnableFluids>False</EnableFluids>
+<Density Value="0" Scale="None" Actual="0"/>
+<Mass Value="1" Scale="Kilo" Actual="1000"/>
+<COM>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</COM>
+<MaterialTypeID>DEFAULTMATERIAL</MaterialTypeID>
+<Freeze>True</Freeze>
+<FoodSource>False</FoodSource>
+<Size>
+<X Value="0.1" Scale="Kilo" Actual="100"/>
+<Y Value="0.1" Scale="Kilo" Actual="100"/>
+</Size>
+<WidthSegments>1</WidthSegments>
+<LengthSegments>1</LengthSegments>
+</RigidBody>
+<CollisionExclusionPairs/>
+</Structure>
+</Structures>
+<Lights>
+<Light>
+<Name>Light_2</Name>
+<ID>6ad4e62a-787b-4f23-b7c5-919067820c30</ID>
+<Description/>
+<Transparencies>
+<Graphics>50</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>100</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="1" Green="1" Blue="1" Alpha="1"/>
+<Diffuse Red="1" Green="1" Blue="0.501961" Alpha="1"/>
+<Specular Red="1" Green="1" Blue="1" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="10" Scale="None" Actual="10"/>
+<Y Value="15" Scale="None" Actual="15"/>
+<Z Value="10" Scale="None" Actual="10"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,10,15,10,1</LocalMatrix>
+<DraggerSize Value="2" Scale="None" Actual="2"/>
+<Enabled>True</Enabled>
+<Radius Value="1" Scale="centi" Actual="0.01"/>
+<ConstantAttenuation>1</ConstantAttenuation>
+<LinearAttenuationDistance Value="0" Scale="None" Actual="0"/>
+<QuadraticAttenuationDistance Value="75" Scale="None" Actual="75"/>
+<LatitudeSegments>10</LatitudeSegments>
+<LongtitudeSegments>10</LongtitudeSegments>
+</Light>
+<Light>
+<Name>Light_1</Name>
+<ID>c9a07bbc-fa2e-4322-8ddc-275c5b9ee55f</ID>
+<Description/>
+<Transparencies>
+<Graphics>50</Graphics>
+<Collisions>50</Collisions>
+<Joints>50</Joints>
+<RecFields>50</RecFields>
+<Simulation>100</Simulation>
+</Transparencies>
+<IsVisible>True</IsVisible>
+<Ambient Red="1" Green="1" Blue="1" Alpha="1"/>
+<Diffuse Red="1" Green="1" Blue="0.501961" Alpha="1"/>
+<Specular Red="1" Green="1" Blue="1" Alpha="1"/>
+<Shininess>64</Shininess>
+<Texture/>
+<LocalPosition>
+<X Value="10" Scale="None" Actual="10"/>
+<Y Value="15" Scale="None" Actual="15"/>
+<Z Value="-10" Scale="None" Actual="-10"/>
+</LocalPosition>
+<Rotation>
+<X Value="0" Scale="None" Actual="0"/>
+<Y Value="0" Scale="None" Actual="0"/>
+<Z Value="0" Scale="None" Actual="0"/>
+</Rotation>
+<LocalMatrix>1,0,0,0,0,1,0,0,0,0,1,0,10,15,-10,1</LocalMatrix>
+<DraggerSize Value="2" Scale="None" Actual="2"/>
+<Enabled>True</Enabled>
+<Radius Value="1" Scale="centi" Actual="0.01"/>
+<ConstantAttenuation>1</ConstantAttenuation>
+<LinearAttenuationDistance Value="0" Scale="None" Actual="0"/>
+<QuadraticAttenuationDistance Value="0" Scale="None" Actual="0"/>
+<LatitudeSegments>10</LatitudeSegments>
+<LongtitudeSegments>10</LongtitudeSegments>
+</Light>
+</Lights>
+</Environment>
+<ToolViewers>
+<ToolHolder>
+<ID>1ee28b8b-5598-4d8d-8b15-6e0114ed4e8a</ID>
+<Name>DataTool_1</Name>
+<BaseAssemblyFile>LicensedAnimatGUI.dll</BaseAssemblyFile>
+<BaseClassName>LicensedAnimatGUI.Forms.Charts.LineChart</BaseClassName>
+<ToolFormID>22071c70-f94f-45be-a81a-7ca4160422a2</ToolFormID>
+</ToolHolder>
+</ToolViewers>
+<Stimuli>
+<Stimulus>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.RepetitiveCurrent</ClassName>
+<Name>Stimulus_2</Name>
+<ID>ec0d76d5-9620-4ca1-9fb7-9630d277bec5</ID>
+<StartTime Value="11" Scale="None" Actual="11"/>
+<EndTime Value="16" Scale="None" Actual="16"/>
+<StepInterval Value="0" Scale="milli" Actual="0"/>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
+<ValueType>Constant</ValueType>
+<Equation>0</Equation>
+<OrganismID>0c09a1f3-6c09-415f-b5bc-262b8f420962</OrganismID>
+<NodeID>f3ce03b6-e844-4ab4-a0f6-b72a5bd00c3b</NodeID>
+<CurrentOn Value="50" Scale="nano" Actual="5e-008"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="6" Scale="None" Actual="6"/>
+<CycleOffDuration Value="1" Scale="None" Actual="1"/>
+<BurstOnDuration Value="5" Scale="None" Actual="5"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
+</Stimulus>
+<Stimulus>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.RepetitiveCurrent</ClassName>
+<Name>Stimulus_1</Name>
+<ID>58796447-e597-4145-a74c-4c02aa9f4f30</ID>
+<StartTime Value="9" Scale="None" Actual="9"/>
+<EndTime Value="15" Scale="None" Actual="15"/>
+<StepInterval Value="0" Scale="milli" Actual="0"/>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
+<ValueType>Constant</ValueType>
+<Equation>0</Equation>
+<OrganismID>0c09a1f3-6c09-415f-b5bc-262b8f420962</OrganismID>
+<NodeID>0fc5e081-12aa-4bb1-81ce-98f7ddb5639e</NodeID>
+<CurrentOn Value="50" Scale="nano" Actual="5e-008"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="3" Scale="None" Actual="3"/>
+<CycleOffDuration Value="1" Scale="None" Actual="1"/>
+<BurstOnDuration Value="6" Scale="None" Actual="6"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
+</Stimulus>
+<Stimulus>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.RepetitiveCurrent</ClassName>
+<Name>Stimulus_3</Name>
+<ID>cef50f45-6504-4885-8b46-61a80cac9ebd</ID>
+<StartTime Value="18" Scale="None" Actual="18"/>
+<EndTime Value="30" Scale="None" Actual="30"/>
+<StepInterval Value="0" Scale="milli" Actual="0"/>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
+<ValueType>Constant</ValueType>
+<Equation>0</Equation>
+<OrganismID>0c09a1f3-6c09-415f-b5bc-262b8f420962</OrganismID>
+<NodeID>61761fcf-5de2-4c09-a29c-91460d3314a4</NodeID>
+<CurrentOn Value="50" Scale="nano" Actual="5e-008"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="1" Scale="None" Actual="1"/>
+<CycleOffDuration Value="2" Scale="None" Actual="2"/>
+<BurstOnDuration Value="12" Scale="None" Actual="12"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
+</Stimulus>
+<Stimulus>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.DataObjects.ExternalStimuli.RepetitiveCurrent</ClassName>
+<Name>Stimulus_1</Name>
+<ID>1919a285-fe97-4d49-a091-ac77797f625b</ID>
+<StartTime Value="1" Scale="None" Actual="1"/>
+<EndTime Value="8" Scale="None" Actual="8"/>
+<StepInterval Value="0" Scale="milli" Actual="0"/>
+<AlwaysActive>False</AlwaysActive>
+<Enabled>False</Enabled>
+<ValueType>Constant</ValueType>
+<Equation>0</Equation>
+<OrganismID>0c09a1f3-6c09-415f-b5bc-262b8f420962</OrganismID>
+<NodeID>4e99eb0b-6225-40ef-86ee-7538d5942269</NodeID>
+<CurrentOn Value="50" Scale="nano" Actual="5e-008"/>
+<CurrentOff Value="0" Scale="nano" Actual="0"/>
+<CurrentBurstOff Value="0" Scale="nano" Actual="0"/>
+<CycleOnDuration Value="1" Scale="None" Actual="1"/>
+<CycleOffDuration Value="1" Scale="None" Actual="1"/>
+<BurstOnDuration Value="7" Scale="None" Actual="7"/>
+<BurstOffDuration Value="0" Scale="None" Actual="0"/>
+</Stimulus>
+</Stimuli>
+<HudItems>
+<HudItem>
+<Name>7285858a-4c02-4da0-8758-94d923cc4893</Name>
+<ID>7285858a-4c02-4da0-8758-94d923cc4893</ID>
+<Type>HudText</Type>
+<CharSize>30</CharSize>
+<Text>Time: %3.3f</Text>
+<DisplayTargetID>Simulator</DisplayTargetID>
+<DisplayDataType>Time</DisplayDataType>
+<UpdateTargetID>Simulator</UpdateTargetID>
+<UpdateDataType>RealTime</UpdateDataType>
+<UpdateInterval>1</UpdateInterval>
+<Position x="10" y="10"/>
+<Color Red="1" Green="1" Blue="1" Alpha="1"/>
+</HudItem>
+</HudItems>
+</Simulation>
+<DockingForms>
+<Form>
+<ID>f54bf1c2-2dd4-47e0-92ae-ee6a8f526491</ID>
+<Title>Receptive Field Current</Title>
+<TabPageName>Receptive Field Current</TabPageName>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.Forms.ReceptiveFieldCurrent</ClassName>
+<BackgroundForm>True</BackgroundForm>
+</Form>
+<Form>
+<ID>e511dbb0-717c-48fe-9b58-94fa323edce7</ID>
+<Title>Receptive Field Gain</Title>
+<TabPageName>Receptive Field Gain</TabPageName>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.Forms.ReceptiveFieldGain</ClassName>
+<BackgroundForm>True</BackgroundForm>
+</Form>
+<Form>
+<ID>ebcb0828-2379-4e61-a1a2-2fb741bd7a3b</ID>
+<Title>Receptive Field Pairs</Title>
+<TabPageName>Receptive Field Pairs</TabPageName>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.Forms.ReceptiveFieldPairs</ClassName>
+<BackgroundForm>True</BackgroundForm>
+</Form>
+<Form>
+<ID>0b99c07f-5ee4-40b9-8f17-5d116fb94670</ID>
+<Title>Toolbox</Title>
+<TabPageName>Toolbox</TabPageName>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.Forms.Toolbox</ClassName>
+<BackgroundForm>True</BackgroundForm>
+</Form>
+<Form>
+<ID>70588615-3f17-498f-9cf5-20edc877033a</ID>
+<Title>Properties</Title>
+<TabPageName>Properties</TabPageName>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.Forms.ProjectProperties</ClassName>
+<BackgroundForm>True</BackgroundForm>
+</Form>
+<Form>
+<ID>c38b3f77-43f2-4aca-a8e2-8edd4c65d0d6</ID>
+<Title>Workspace</Title>
+<TabPageName>Workspace</TabPageName>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.Forms.ProjectWorkspace</ClassName>
+<BackgroundForm>True</BackgroundForm>
+</Form>
+<Form>
+<ID>9dea55f5-ee59-40a8-99c0-a2ae35ee7d52</ID>
+<Title>Simulation Controller</Title>
+<TabPageName>Simulation Controller</TabPageName>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.Forms.SimulationController</ClassName>
+<BackgroundForm>True</BackgroundForm>
+<StartingBarTime Value="0" Scale="milli" Actual="0"/>
+<EndingBarTime Value="5000" Scale="milli" Actual="5"/>
+<TimeBarInterval Value="1" Scale="None" Actual="1"/>
+<ActualTimeColor>-5383962</ActualTimeColor>
+<CurrentTimeColor>-16776961</CurrentTimeColor>
+<AutomaticTimeScale>True</AutomaticTimeScale>
+<DivisionMarkFactor>4</DivisionMarkFactor>
+<Divisions>10</Divisions>
+<MajorInterval>5</MajorInterval>
+<MiddleMarkFactor>3</MiddleMarkFactor>
+<TimeScale>Seconds</TimeScale>
+</Form>
+<Form>
+<ID>09e60838-2351-4513-8a67-9fd65efa92f2</ID>
+<Title>Errors</Title>
+<TabPageName>Errors</TabPageName>
+<AssemblyFile>AnimatGUI.dll</AssemblyFile>
+<ClassName>AnimatGUI.Forms.Errors</ClassName>
+<BackgroundForm>True</BackgroundForm>
+</Form>
+</DockingForms>
+<DockingConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
+&lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
+&lt;!-- Modifying this generated file will probably render it invalid --&gt;
+&lt;DockingConfig FormatVersion="10" InsideFill="False" InnerMinimum="20, 20" SavedAt="02/13/2023 12:06:37"&gt;
+  &lt;Content Name="Errors" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 178" DisplayLocation="150, 150" AutoHideSize="150, 125" FloatingSize="150, 150" FullTitle="Errors" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+    &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Errors" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/DefaultRestore&gt;
+    &lt;AutoHideRestore Type="Crownwood.DotNetMagic.Docking.RestoreAutoHideState"&gt;
+      &lt;Content Name="Errors" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/AutoHideRestore&gt;
+    &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
+      &lt;Content Name="Errors" UniqueName="" /&gt;
+      &lt;State Value="DockBottom" /&gt;
+      &lt;Position Size="150, 178" Location="150, 150" /&gt;
+      &lt;Best Count="2"&gt;
+        &lt;Item Name="Errors" /&gt;
+        &lt;Item Name="Simulation Controller" /&gt;
+      &lt;/Best&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="1"&gt;
+        &lt;Item Name="Workspace" /&gt;
+      &lt;/NextAll&gt;
+      &lt;PreviousAll Count="1"&gt;
+        &lt;Item Name="Properties" /&gt;
+      &lt;/PreviousAll&gt;
+      &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreZoneAffinity"&gt;
+        &lt;Content Name="Errors" UniqueName="" /&gt;
+        &lt;Space Value="100" /&gt;
+        &lt;Best Count="2"&gt;
+          &lt;Item Name="Simulation Controller" /&gt;
+          &lt;Item Name="Errors" /&gt;
+        &lt;/Best&gt;
+        &lt;Next Count="0" /&gt;
+        &lt;Previous Count="0" /&gt;
+        &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreWindowContent"&gt;
+          &lt;Content Name="Errors" UniqueName="" /&gt;
+          &lt;Next Count="0" /&gt;
+          &lt;Previous Count="1"&gt;
+            &lt;Item Name="Simulation Controller" /&gt;
+          &lt;/Previous&gt;
+          &lt;Selected Value="False" /&gt;
+          &lt;Child Type="null" /&gt;
+        &lt;/Child&gt;
+      &lt;/Child&gt;
+    &lt;/DockingRestore&gt;
+    &lt;FloatingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Errors" UniqueName="" /&gt;
+      &lt;State Value="Floating" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/FloatingRestore&gt;
+  &lt;/Content&gt;
+  &lt;Content Name="Simulation Controller" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="150, 178" DisplayLocation="150, 150" AutoHideSize="150, 125" FloatingSize="150, 150" FullTitle="Simulation Controller" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+    &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Simulation Controller" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/DefaultRestore&gt;
+    &lt;AutoHideRestore Type="Crownwood.DotNetMagic.Docking.RestoreAutoHideState"&gt;
+      &lt;Content Name="Simulation Controller" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/AutoHideRestore&gt;
+    &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
+      &lt;Content Name="Simulation Controller" UniqueName="" /&gt;
+      &lt;State Value="DockBottom" /&gt;
+      &lt;Position Size="150, 178" Location="150, 150" /&gt;
+      &lt;Best Count="1"&gt;
+        &lt;Item Name="Simulation Controller" /&gt;
+      &lt;/Best&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="1"&gt;
+        &lt;Item Name="Workspace" /&gt;
+      &lt;/NextAll&gt;
+      &lt;PreviousAll Count="1"&gt;
+        &lt;Item Name="Properties" /&gt;
+      &lt;/PreviousAll&gt;
+      &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreZoneAffinity"&gt;
+        &lt;Content Name="Simulation Controller" UniqueName="" /&gt;
+        &lt;Space Value="100" /&gt;
+        &lt;Best Count="1"&gt;
+          &lt;Item Name="Simulation Controller" /&gt;
+        &lt;/Best&gt;
+        &lt;Next Count="0" /&gt;
+        &lt;Previous Count="0" /&gt;
+        &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreWindowContent"&gt;
+          &lt;Content Name="Simulation Controller" UniqueName="" /&gt;
+          &lt;Next Count="0" /&gt;
+          &lt;Previous Count="0" /&gt;
+          &lt;Selected Value="True" /&gt;
+          &lt;Child Type="null" /&gt;
+        &lt;/Child&gt;
+      &lt;/Child&gt;
+    &lt;/DockingRestore&gt;
+    &lt;FloatingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Simulation Controller" UniqueName="" /&gt;
+      &lt;State Value="Floating" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/FloatingRestore&gt;
+  &lt;/Content&gt;
+  &lt;Content Name="Workspace" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="261, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Workspace" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+    &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Workspace" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/DefaultRestore&gt;
+    &lt;AutoHideRestore Type="Crownwood.DotNetMagic.Docking.RestoreAutoHideState"&gt;
+      &lt;Content Name="Workspace" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/AutoHideRestore&gt;
+    &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
+      &lt;Content Name="Workspace" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Position Size="261, 150" Location="150, 150" /&gt;
+      &lt;Best Count="1"&gt;
+        &lt;Item Name="Workspace" /&gt;
+      &lt;/Best&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="0" /&gt;
+      &lt;PreviousAll Count="1"&gt;
+        &lt;Item Name="Properties" /&gt;
+      &lt;/PreviousAll&gt;
+      &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreZoneAffinity"&gt;
+        &lt;Content Name="Workspace" UniqueName="" /&gt;
+        &lt;Space Value="100" /&gt;
+        &lt;Best Count="1"&gt;
+          &lt;Item Name="Workspace" /&gt;
+        &lt;/Best&gt;
+        &lt;Next Count="0" /&gt;
+        &lt;Previous Count="0" /&gt;
+        &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreWindowContent"&gt;
+          &lt;Content Name="Workspace" UniqueName="" /&gt;
+          &lt;Next Count="0" /&gt;
+          &lt;Previous Count="0" /&gt;
+          &lt;Selected Value="True" /&gt;
+          &lt;Child Type="null" /&gt;
+        &lt;/Child&gt;
+      &lt;/Child&gt;
+    &lt;/DockingRestore&gt;
+    &lt;FloatingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Workspace" UniqueName="" /&gt;
+      &lt;State Value="Floating" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/FloatingRestore&gt;
+  &lt;/Content&gt;
+  &lt;Content Name="Properties" Visible="True" Docked="True" AutoHidden="False" CaptionBar="True" CloseButton="False" DisplaySize="260, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Properties" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+    &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Properties" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/DefaultRestore&gt;
+    &lt;AutoHideRestore Type="Crownwood.DotNetMagic.Docking.RestoreAutoHideState"&gt;
+      &lt;Content Name="Properties" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/AutoHideRestore&gt;
+    &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
+      &lt;Content Name="Properties" UniqueName="" /&gt;
+      &lt;State Value="DockRight" /&gt;
+      &lt;Position Size="260, 150" Location="150, 150" /&gt;
+      &lt;Best Count="1"&gt;
+        &lt;Item Name="Properties" /&gt;
+      &lt;/Best&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="0" /&gt;
+      &lt;PreviousAll Count="0" /&gt;
+      &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreZoneAffinity"&gt;
+        &lt;Content Name="Properties" UniqueName="" /&gt;
+        &lt;Space Value="100" /&gt;
+        &lt;Best Count="1"&gt;
+          &lt;Item Name="Properties" /&gt;
+        &lt;/Best&gt;
+        &lt;Next Count="0" /&gt;
+        &lt;Previous Count="0" /&gt;
+        &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreWindowContent"&gt;
+          &lt;Content Name="Properties" UniqueName="" /&gt;
+          &lt;Next Count="0" /&gt;
+          &lt;Previous Count="0" /&gt;
+          &lt;Selected Value="True" /&gt;
+          &lt;Child Type="null" /&gt;
+        &lt;/Child&gt;
+      &lt;/Child&gt;
+    &lt;/DockingRestore&gt;
+    &lt;FloatingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Properties" UniqueName="" /&gt;
+      &lt;State Value="Floating" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/FloatingRestore&gt;
+  &lt;/Content&gt;
+  &lt;Content Name="Toolbox" Visible="True" Docked="True" AutoHidden="True" CaptionBar="True" CloseButton="False" DisplaySize="208, 150" DisplayLocation="150, 150" AutoHideSize="208, 150" FloatingSize="150, 150" FullTitle="Toolbox" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+    &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Toolbox" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/DefaultRestore&gt;
+    &lt;AutoHideRestore Type="Crownwood.DotNetMagic.Docking.RestoreAutoHideAffinity"&gt;
+      &lt;Content Name="Toolbox" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="0" /&gt;
+      &lt;PreviousAll Count="0" /&gt;
+      &lt;CurrentContent Value="True" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/AutoHideRestore&gt;
+    &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
+      &lt;Content Name="Toolbox" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Position Size="150, 150" Location="150, 150" /&gt;
+      &lt;Best Count="1"&gt;
+        &lt;Item Name="Toolbox" /&gt;
+      &lt;/Best&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="0" /&gt;
+      &lt;PreviousAll Count="0" /&gt;
+      &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreZoneAffinity"&gt;
+        &lt;Content Name="Toolbox" UniqueName="" /&gt;
+        &lt;Space Value="100" /&gt;
+        &lt;Best Count="1"&gt;
+          &lt;Item Name="Toolbox" /&gt;
+        &lt;/Best&gt;
+        &lt;Next Count="0" /&gt;
+        &lt;Previous Count="0" /&gt;
+        &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreWindowContent"&gt;
+          &lt;Content Name="Toolbox" UniqueName="" /&gt;
+          &lt;Next Count="0" /&gt;
+          &lt;Previous Count="0" /&gt;
+          &lt;Selected Value="True" /&gt;
+          &lt;Child Type="null" /&gt;
+        &lt;/Child&gt;
+      &lt;/Child&gt;
+    &lt;/DockingRestore&gt;
+    &lt;FloatingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Toolbox" UniqueName="" /&gt;
+      &lt;State Value="Floating" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/FloatingRestore&gt;
+  &lt;/Content&gt;
+  &lt;Content Name="Receptive Field Pairs" Visible="True" Docked="True" AutoHidden="True" CaptionBar="True" CloseButton="False" DisplaySize="200, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Receptive Field Pairs" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+    &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Receptive Field Pairs" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/DefaultRestore&gt;
+    &lt;AutoHideRestore Type="Crownwood.DotNetMagic.Docking.RestoreAutoHideAffinity"&gt;
+      &lt;Content Name="Receptive Field Pairs" UniqueName="" /&gt;
+      &lt;State Value="DockRight" /&gt;
+      &lt;Next Count="2"&gt;
+        &lt;Item Name="Receptive Field Gain" /&gt;
+        &lt;Item Name="Receptive Field Current" /&gt;
+      &lt;/Next&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="0" /&gt;
+      &lt;PreviousAll Count="0" /&gt;
+      &lt;CurrentContent Value="True" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/AutoHideRestore&gt;
+    &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
+      &lt;Content Name="Receptive Field Pairs" UniqueName="" /&gt;
+      &lt;State Value="DockRight" /&gt;
+      &lt;Position Size="200, 150" Location="150, 150" /&gt;
+      &lt;Best Count="3"&gt;
+        &lt;Item Name="Receptive Field Current" /&gt;
+        &lt;Item Name="Receptive Field Gain" /&gt;
+        &lt;Item Name="Receptive Field Pairs" /&gt;
+      &lt;/Best&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="4"&gt;
+        &lt;Item Name="Simulation Controller" /&gt;
+        &lt;Item Name="Errors" /&gt;
+        &lt;Item Name="Workspace" /&gt;
+        &lt;Item Name="Properties" /&gt;
+      &lt;/NextAll&gt;
+      &lt;PreviousAll Count="0" /&gt;
+      &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreZoneAffinity"&gt;
+        &lt;Content Name="Receptive Field Pairs" UniqueName="" /&gt;
+        &lt;Space Value="100" /&gt;
+        &lt;Best Count="3"&gt;
+          &lt;Item Name="Receptive Field Pairs" /&gt;
+          &lt;Item Name="Receptive Field Gain" /&gt;
+          &lt;Item Name="Receptive Field Current" /&gt;
+        &lt;/Best&gt;
+        &lt;Next Count="0" /&gt;
+        &lt;Previous Count="0" /&gt;
+        &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreWindowContent"&gt;
+          &lt;Content Name="Receptive Field Pairs" UniqueName="" /&gt;
+          &lt;Next Count="2"&gt;
+            &lt;Item Name="Receptive Field Gain" /&gt;
+            &lt;Item Name="Receptive Field Current" /&gt;
+          &lt;/Next&gt;
+          &lt;Previous Count="0" /&gt;
+          &lt;Selected Value="True" /&gt;
+          &lt;Child Type="null" /&gt;
+        &lt;/Child&gt;
+      &lt;/Child&gt;
+    &lt;/DockingRestore&gt;
+    &lt;FloatingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Receptive Field Pairs" UniqueName="" /&gt;
+      &lt;State Value="Floating" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/FloatingRestore&gt;
+  &lt;/Content&gt;
+  &lt;Content Name="Receptive Field Gain" Visible="True" Docked="True" AutoHidden="True" CaptionBar="True" CloseButton="False" DisplaySize="200, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Receptive Field Gain" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+    &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Receptive Field Gain" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/DefaultRestore&gt;
+    &lt;AutoHideRestore Type="Crownwood.DotNetMagic.Docking.RestoreAutoHideAffinity"&gt;
+      &lt;Content Name="Receptive Field Gain" UniqueName="" /&gt;
+      &lt;State Value="DockRight" /&gt;
+      &lt;Next Count="1"&gt;
+        &lt;Item Name="Receptive Field Current" /&gt;
+      &lt;/Next&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="0" /&gt;
+      &lt;PreviousAll Count="0" /&gt;
+      &lt;CurrentContent Value="True" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/AutoHideRestore&gt;
+    &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
+      &lt;Content Name="Receptive Field Gain" UniqueName="" /&gt;
+      &lt;State Value="DockRight" /&gt;
+      &lt;Position Size="200, 150" Location="150, 150" /&gt;
+      &lt;Best Count="2"&gt;
+        &lt;Item Name="Receptive Field Current" /&gt;
+        &lt;Item Name="Receptive Field Gain" /&gt;
+      &lt;/Best&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="4"&gt;
+        &lt;Item Name="Simulation Controller" /&gt;
+        &lt;Item Name="Errors" /&gt;
+        &lt;Item Name="Workspace" /&gt;
+        &lt;Item Name="Properties" /&gt;
+      &lt;/NextAll&gt;
+      &lt;PreviousAll Count="0" /&gt;
+      &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreZoneAffinity"&gt;
+        &lt;Content Name="Receptive Field Gain" UniqueName="" /&gt;
+        &lt;Space Value="100" /&gt;
+        &lt;Best Count="2"&gt;
+          &lt;Item Name="Receptive Field Gain" /&gt;
+          &lt;Item Name="Receptive Field Current" /&gt;
+        &lt;/Best&gt;
+        &lt;Next Count="0" /&gt;
+        &lt;Previous Count="0" /&gt;
+        &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreWindowContent"&gt;
+          &lt;Content Name="Receptive Field Gain" UniqueName="" /&gt;
+          &lt;Next Count="1"&gt;
+            &lt;Item Name="Receptive Field Current" /&gt;
+          &lt;/Next&gt;
+          &lt;Previous Count="0" /&gt;
+          &lt;Selected Value="True" /&gt;
+          &lt;Child Type="null" /&gt;
+        &lt;/Child&gt;
+      &lt;/Child&gt;
+    &lt;/DockingRestore&gt;
+    &lt;FloatingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Receptive Field Gain" UniqueName="" /&gt;
+      &lt;State Value="Floating" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/FloatingRestore&gt;
+  &lt;/Content&gt;
+  &lt;Content Name="Receptive Field Current" Visible="True" Docked="True" AutoHidden="True" CaptionBar="True" CloseButton="False" DisplaySize="200, 150" DisplayLocation="150, 150" AutoHideSize="200, 150" FloatingSize="150, 150" FullTitle="Receptive Field Current" Office2003BackColor="Base" UniqueName="" Office2007BackColor="Base" MediaPlayerBackColor="Base"&gt;
+    &lt;DefaultRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Receptive Field Current" UniqueName="" /&gt;
+      &lt;State Value="DockLeft" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/DefaultRestore&gt;
+    &lt;AutoHideRestore Type="Crownwood.DotNetMagic.Docking.RestoreAutoHideAffinity"&gt;
+      &lt;Content Name="Receptive Field Current" UniqueName="" /&gt;
+      &lt;State Value="DockRight" /&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="0" /&gt;
+      &lt;PreviousAll Count="0" /&gt;
+      &lt;CurrentContent Value="True" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/AutoHideRestore&gt;
+    &lt;DockingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentDockingAffinity"&gt;
+      &lt;Content Name="Receptive Field Current" UniqueName="" /&gt;
+      &lt;State Value="DockRight" /&gt;
+      &lt;Position Size="200, 150" Location="150, 150" /&gt;
+      &lt;Best Count="1"&gt;
+        &lt;Item Name="Receptive Field Current" /&gt;
+      &lt;/Best&gt;
+      &lt;Next Count="0" /&gt;
+      &lt;Previous Count="0" /&gt;
+      &lt;NextAll Count="4"&gt;
+        &lt;Item Name="Simulation Controller" /&gt;
+        &lt;Item Name="Errors" /&gt;
+        &lt;Item Name="Workspace" /&gt;
+        &lt;Item Name="Properties" /&gt;
+      &lt;/NextAll&gt;
+      &lt;PreviousAll Count="0" /&gt;
+      &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreZoneAffinity"&gt;
+        &lt;Content Name="Receptive Field Current" UniqueName="" /&gt;
+        &lt;Space Value="100" /&gt;
+        &lt;Best Count="1"&gt;
+          &lt;Item Name="Receptive Field Current" /&gt;
+        &lt;/Best&gt;
+        &lt;Next Count="0" /&gt;
+        &lt;Previous Count="0" /&gt;
+        &lt;Child Type="Crownwood.DotNetMagic.Docking.RestoreWindowContent"&gt;
+          &lt;Content Name="Receptive Field Current" UniqueName="" /&gt;
+          &lt;Next Count="0" /&gt;
+          &lt;Previous Count="0" /&gt;
+          &lt;Selected Value="True" /&gt;
+          &lt;Child Type="null" /&gt;
+        &lt;/Child&gt;
+      &lt;/Child&gt;
+    &lt;/DockingRestore&gt;
+    &lt;FloatingRestore Type="Crownwood.DotNetMagic.Docking.RestoreContentState"&gt;
+      &lt;Content Name="Receptive Field Current" UniqueName="" /&gt;
+      &lt;State Value="Floating" /&gt;
+      &lt;Child Type="null" /&gt;
+    &lt;/FloatingRestore&gt;
+  &lt;/Content&gt;
+&lt;/DockingConfig&gt;</DockingConfig>
+<TabbedGroupsConfig>&lt;?xml version="1.0" encoding="us-ascii"?&gt;
+&lt;!-- DotNetMagic, The User Interface library for .NET (www.crownwood.net) --&gt;
+&lt;!-- Modifying this generated file will probably render it invalid --&gt;
+&lt;TabbedGroups FormatVersion="1" ActiveLeaf="11"&gt;
+  &lt;CustomGlobalData /&gt;
+  &lt;Sequence Count="1" Unique="0" Space="100" Direction="Horizontal"&gt;
+    &lt;Leaf Count="3" Unique="11" Space="100"&gt;
+      &lt;Page Title="Neural Subsystem" ImageList="True" ImageIndex="0" Selected="False" Control="null" UniqueName=""&gt;
+        &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+&lt;Form&gt;
+&lt;ID&gt;8f549fa8-3109-4c6b-a8e9-6fe3d893592a&lt;/ID&gt;
+&lt;Title&gt;Neural Subsystem&lt;/Title&gt;
+&lt;TabPageName&gt;Neural Subsystem&lt;/TabPageName&gt;
+&lt;AssemblyFile&gt;LicensedAnimatGUI.dll&lt;/AssemblyFile&gt;
+&lt;ClassName&gt;LicensedAnimatGUI.Forms.Behavior.AddFlowDiagram&lt;/ClassName&gt;
+&lt;OrganismID&gt;0c09a1f3-6c09-415f-b5bc-262b8f420962&lt;/OrganismID&gt;
+&lt;SubSystemID&gt;aeb59d16-073d-4898-a708-ecffc1740c36&lt;/SubSystemID&gt;
+&lt;/Form&gt;
+&lt;/TabPage&gt;
+]]&gt;&lt;/CustomPageData&gt;
+      &lt;/Page&gt;
+      &lt;Page Title="DataTool_1" ImageList="True" ImageIndex="1" Selected="False" Control="null" UniqueName=""&gt;
+        &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+&lt;Form&gt;
+&lt;ID&gt;22071c70-f94f-45be-a81a-7ca4160422a2&lt;/ID&gt;
+&lt;Title&gt;DataTool_1&lt;/Title&gt;
+&lt;TabPageName&gt;DataTool_1&lt;/TabPageName&gt;
+&lt;AssemblyFile&gt;LicensedAnimatGUI.dll&lt;/AssemblyFile&gt;
+&lt;ClassName&gt;LicensedAnimatGUI.Forms.Charts.LineChart&lt;/ClassName&gt;
+&lt;ExternalFile&gt;DataTool_1.aform&lt;/ExternalFile&gt;
+&lt;/Form&gt;
+&lt;/TabPage&gt;
+]]&gt;&lt;/CustomPageData&gt;
+      &lt;/Page&gt;
+      &lt;Page Title="Sim Window" ImageList="True" ImageIndex="2" Selected="True" Control="null" UniqueName=""&gt;
+        &lt;CustomPageData&gt;&lt;![CDATA[&lt;TabPage&gt;
+&lt;Form&gt;
+&lt;ID&gt;7322aa09-e48c-40a4-a0a1-e2b475dccfa7&lt;/ID&gt;
+&lt;Title&gt;Organism_1 Body&lt;/Title&gt;
+&lt;TabPageName&gt;Page 1&lt;/TabPageName&gt;
+&lt;AssemblyFile&gt;AnimatGUI.dll&lt;/AssemblyFile&gt;
+&lt;ClassName&gt;AnimatGUI.Forms.SimulationWindow&lt;/ClassName&gt;
+&lt;TrackCamera&gt;True&lt;/TrackCamera&gt;
+&lt;/Form&gt;
+&lt;/TabPage&gt;
+]]&gt;&lt;/CustomPageData&gt;
+      &lt;/Page&gt;
+    &lt;/Leaf&gt;
+  &lt;/Sequence&gt;
+&lt;/TabbedGroups&gt;</TabbedGroupsConfig>
+</Project>

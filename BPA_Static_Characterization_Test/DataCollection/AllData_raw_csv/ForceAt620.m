@@ -3,13 +3,9 @@
 %not been fine-tuned.
 
 %Run Ben_Lawrence_data_10mm.m
-X13P9 = data13cm_test9(data13cm_test9(:,1)==0,1)
 
+%13cm cut length, test 9
 Y13P9 = data13cm_test9(data13cm_test9(:,1)==0,2); Z13P9 = data13cm_test9(data13cm_test9(:,1)==0,3);
-
-figure
-scatter(Y13P9,Z13P9)
-
 y13P9 = imresize(Y13P9,[400 1]);
 z13P9 = imresize(Z13P9,[400 1]);
 
@@ -17,11 +13,13 @@ figure
 hold on
 scatter(Y13P9,Z13P9,[],'blue')
 scatter(y13P9,z13P9,[],'red')
+hold off
 
+%13cm cut length, test 10
 Y13P10 = data13cm_test10(data13cm_test10(:,1)==0,2); Z13P10 = data13cm_test10(data13cm_test10(:,1)==0,3);
 y13P10 = imresize(Y13P10,[400 1]);
 z13P10 = imresize(Z13P10,[400 1]);
-vq = interp1(y13P10, z13P10, 620)
+vq = interp1(y13P10, z13P10, 620);
 
 figure
 hold on

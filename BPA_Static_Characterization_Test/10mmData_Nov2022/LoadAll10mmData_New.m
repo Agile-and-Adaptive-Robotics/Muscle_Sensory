@@ -4,7 +4,7 @@ kink = {'Unkink_','kinked25_','kinked50_','kinked75_'};
 test = {'Test8','Test9','Test10'};
 test_num = [8,9,10];
 low_force = 0;
-high_pressure = 700;
+high_pressure = 800;
 kink_p = [0 25 50 75];
 %% Loading 10mm 10cm data(Force,Pressure,t,state) for all lengths and kinks
 % Note = 10cm is the cut length(lc), (lo = resting length)
@@ -161,34 +161,34 @@ l620 = 23.2;
 li = [28.1	26.875	25.65	24.425]
         for a = 1:length(kink_p)
         for b=1:length(test)
-            BPA10mm30cm{b,a}=csvread(['10mm_30cm_',kink{a},test{b},'.csv'])
-            BPA10mm30cm{b,a}(:,5) = 10; %diameter
-            BPA10mm30cm{b,a}(:,6) = 30; %cut length(lc) 
-            BPA10mm30cm{b,a}(:,7) = ones(length(BPA10mm30cm{b}),1)*lo; %resting length(lo) 
-            BPA10mm30cm{b,a}(:,8) = kink_p(a); 
-            BPA10mm30cm{b,a}(:,9) = li(a);
-            BPA10mm30cm{b,a}(:,10) = l620;
-            BPA10mm30cm{b,a}(:,11) = -((li(a)-lo)/lo); %strain
-            BPA10mm30cm{b,a}(:,12) = -((l620-lo)/lo); %max strain
-            BPA10mm30cm{b,a}(:,13) = ((li(a)-lo)/lo)/((l620-lo)/lo);%relative strain
-            BPA10mm30cm{b,a}(:,14) = ones(length(BPA10mm30cm{b}),1)*test_num(b);
+            BPA10mm30cm_2{b,a}=csvread(['10mm_30cm_',kink{a},test{b},'.csv'])
+            BPA10mm30cm_2{b,a}(:,5) = 10; %diameter
+            BPA10mm30cm_2{b,a}(:,6) = 30; %cut length(lc) 
+            BPA10mm30cm_2{b,a}(:,7) = ones(length(BPA10mm30cm_2{b}),1)*lo; %resting length(lo) 
+            BPA10mm30cm_2{b,a}(:,8) = kink_p(a); 
+            BPA10mm30cm_2{b,a}(:,9) = li(a);
+            BPA10mm30cm_2{b,a}(:,10) = l620;
+            BPA10mm30cm_2{b,a}(:,11) = -((li(a)-lo)/lo); %strain
+            BPA10mm30cm_2{b,a}(:,12) = -((l620-lo)/lo); %max strain
+            BPA10mm30cm_2{b,a}(:,13) = ((li(a)-lo)/lo)/((l620-lo)/lo);%relative strain
+            BPA10mm30cm_2{b,a}(:,14) = ones(length(BPA10mm30cm_2{b}),1)*test_num(b);
         end
     end
 %combining data into a single array
-AllBPA10mm30cm = BPA10mm30cm{1};
+AllBPA10mm30cm_2 = BPA10mm30cm_2{1};
 for a = 1:length(kink_p)
     for i=2:3
-        CurrentData=BPA10mm30cm{i,a};
+        CurrentData=BPA10mm30cm_2{i,a};
         RealData= CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %%%
-        AllBPA10mm30cm=vertcat(AllBPA10mm30cm,RealData);
+        AllBPA10mm30cm_2=vertcat(AllBPA10mm30cm_2,RealData);
     end
 end
-id_P = (AllBPA10mm30cm(:,4)==1);
-id_DP = (AllBPA10mm30cm(:,4)==2);
+id_P = (AllBPA10mm30cm_2(:,4)==1);
+id_DP = (AllBPA10mm30cm_2(:,4)==2);
 
 %Separating P and DP
-AllBPA10mm30cm_P  = AllBPA10mm30cm(id_P,1:14);
-AllBPA10mm30cm_DP = AllBPA10mm30cm(id_DP,1:14);
+AllBPA10mm30cm_2_P  = AllBPA10mm30cm_2(id_P,1:14);
+AllBPA10mm30cm_2_DP = AllBPA10mm30cm_2(id_DP,1:14);
 
 
 

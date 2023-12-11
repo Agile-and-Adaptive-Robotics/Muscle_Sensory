@@ -1,4 +1,4 @@
-close all; clc; 
+close all; clc; clear;
 
 %% Diameter: 10mm
 diameter = {'10'};
@@ -13,8 +13,8 @@ lengths_10mm = {'13','23','27','29','30'}
     maxstrain_30cm = (28.1-24)/28.1;
     
  %removing low forces data
-    low_force = 20; %removing force below 20N
-    high_pressure = 650; %remove pressure above 620kPa (was at 630) 
+    low_force = 0; %removing force below this value
+    high_pressure = 800; %remove pressure above this value 
 
 %% 10mm 13cm data for all lengths and kinks
 Kinks_10mm13cm = {'13cm_Unkinked_Test','13cm_Kinked4mm_Test','13cm_Kinked8mm_Test','13cm_Kinked12mm_Test'};
@@ -27,7 +27,7 @@ li = [12,11.6,11.2,10.8];
             test = num2str(i);
             BPA10mm13cm{i,a} = csvread(['10mm_',Kinks_10mm13cm{a},test,'.csv'])
             BPA10mm13cm{i,a}(:,4) = ones(length(BPA10mm13cm{i}),1)*10;  %col 4 = diameter
-            BPA10mm13cm{i,a}(:,5) = 13;
+            BPA10mm13cm{i,a}(:,5) = 13; %cut length (cm)
             BPA10mm13cm{i,a}(:,6) = ones(length(BPA10mm13cm{i}),1)*vals_13cm(a); %col6 = kinks
             BPA10mm13cm{i,a}(:,7) = ones(length(BPA10mm13cm{i}),1)*i%col7 = Test#
             idx = BPA10mm13cm{i,a}(:,3) <17; %indexing the pressurizing part
@@ -291,4 +291,4 @@ AllBPA10mm_DP = vertcat(AllBPA10mm13cm_DP,AllBPA10mm23cm_DP,AllBPA10mm27cm_DP,Al
 %     xlabel('Time(s)')
 %     ylabel('Force(N)')
 %     grid on
-
+% 

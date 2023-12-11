@@ -1,3 +1,6 @@
+%Clean up workspace. Comment out if also using data from LoadAll10mmData.
+clear; clc; close all
+
 % Loading all 10mm data from csv files. 
 
 kink = {'Unkink_','kinked25_','kinked50_','kinked75_'};
@@ -12,21 +15,19 @@ lo = 8.3;
 l620 = 7;
 li = [8.3,7.975,7.65,7.325];
 
-
-
     for a = 1:length(kink_p)
         for b=1:length(test)
-            BPA10mm10cm{b,a}=csvread(['10mm_10cm_',kink{a},test{b},'.csv'])
+            BPA10mm10cm{b,a}=csvread(['10mm_10cm_',kink{a},test{b},'.csv']);
             BPA10mm10cm{b,a}(:,5) = 10; %diameter
             BPA10mm10cm{b,a}(:,6) = 10; %cut length(lc) 
             BPA10mm10cm{b,a}(:,7) = ones(length(BPA10mm10cm{b}),1)*lo; %resting length(lo) 
-            BPA10mm10cm{b,a}(:,8) = kink_p(a); 
-            BPA10mm10cm{b,a}(:,9) = li(a);
-            BPA10mm10cm{b,a}(:,10) = l620;
+            BPA10mm10cm{b,a}(:,8) = kink_p(a); %attempted kink percent
+            BPA10mm10cm{b,a}(:,9) = li(a);   %current length
+            BPA10mm10cm{b,a}(:,10) = l620;   %length at 620 kPa
             BPA10mm10cm{b,a}(:,11) = -((li(a)-lo)/lo); %strain
             BPA10mm10cm{b,a}(:,12) = -((l620-lo)/lo); %max strain
             BPA10mm10cm{b,a}(:,13) = ((li(a)-lo)/lo)/((l620-lo)/lo);%relative strain
-            BPA10mm10cm{b,a}(:,14) = ones(length(BPA10mm10cm{b}),1)*test_num(b);
+            BPA10mm10cm{b,a}(:,14) = ones(length(BPA10mm10cm{b}),1)*test_num(b); %test number
         end
     end
 %combining data into a single array
@@ -56,13 +57,13 @@ li = [13.2	12.675	12.15	11.625];
             BPA10mm15cm{b,a}(:,5) = 10; %diameter
             BPA10mm15cm{b,a}(:,6) = 15; %cut length(lc) 
             BPA10mm15cm{b,a}(:,7) = ones(length(BPA10mm15cm{b}),1)*lo; %resting length(lo) 
-            BPA10mm15cm{b,a}(:,8) = kink_p(a); 
-            BPA10mm15cm{b,a}(:,9) = li(a);
-            BPA10mm15cm{b,a}(:,10) = l620;
+            BPA10mm15cm{b,a}(:,8) = kink_p(a); %attempted kink
+            BPA10mm15cm{b,a}(:,9) = li(a);  %current length
+            BPA10mm15cm{b,a}(:,10) = l620;  %length at 620
             BPA10mm15cm{b,a}(:,11) = -((li(a)-lo)/lo); %strain
             BPA10mm15cm{b,a}(:,12) = -((l620-lo)/lo); %max strain
             BPA10mm15cm{b,a}(:,13) = ((li(a)-lo)/lo)/((l620-lo)/lo);%relative strain
-            BPA10mm15cm{b,a}(:,14) = ones(length(BPA10mm15cm{b}),1)*test_num(b);
+            BPA10mm15cm{b,a}(:,14) = ones(length(BPA10mm15cm{b}),1)*test_num(b); %test number
         end
     end
 %combining data into a single array
@@ -155,13 +156,13 @@ AllBPA10mm25cm_P  = AllBPA10mm25cm(id_P,1:14);
 AllBPA10mm25cm_DP = AllBPA10mm25cm(id_DP,1:14);
 
 
-%% 30cm
+%% 30cm, use _2 to differentiate from 30cm data from LoadAll10mmData
 lo = 28.1;
 l620 = 23.2;
-li = [28.1	26.875	25.65	24.425]
+li = [28.1	26.875	25.65	24.425];
         for a = 1:length(kink_p)
         for b=1:length(test)
-            BPA10mm30cm_2{b,a}=csvread(['10mm_30cm_',kink{a},test{b},'.csv'])
+            BPA10mm30cm_2{b,a}=csvread(['10mm_30cm_',kink{a},test{b},'.csv']);
             BPA10mm30cm_2{b,a}(:,5) = 10; %diameter
             BPA10mm30cm_2{b,a}(:,6) = 30; %cut length(lc) 
             BPA10mm30cm_2{b,a}(:,7) = ones(length(BPA10mm30cm_2{b}),1)*lo; %resting length(lo) 
@@ -195,11 +196,11 @@ AllBPA10mm30cm_2_DP = AllBPA10mm30cm_2(id_DP,1:14);
 %% 40cm
 lo = 38.2;
 l620 = 31.4;
-li = [38.2	36.5	34.8	33.1]
+li = [38.2	36.5	34.8	33.1];
 
         for a = 1:length(kink_p)
-        for b=1:length(test)
-            BPA10mm40cm{b,a}=csvread(['10mm_40cm_',kink{a},test{b},'.csv'])
+          for b=1:length(test)
+            BPA10mm40cm{b,a}=csvread(['10mm_40cm_',kink{a},test{b},'.csv']);
             BPA10mm40cm{b,a}(:,5) = 10; %diameter
             BPA10mm40cm{b,a}(:,6) = 40; %cut length(lc) 
             BPA10mm40cm{b,a}(:,7) = ones(length(BPA10mm40cm{b}),1)*lo; %resting length(lo) 
@@ -210,8 +211,8 @@ li = [38.2	36.5	34.8	33.1]
             BPA10mm40cm{b,a}(:,12) = -((l620-lo)/lo); %max strain
             BPA10mm40cm{b,a}(:,13) = ((li(a)-lo)/lo)/((l620-lo)/lo);%relative strain
             BPA10mm40cm{b,a}(:,14) = ones(length(BPA10mm40cm{b}),1)*test_num(b);
-        end
-    end
+          end
+         end
 %combining data into a single array
 AllBPA10mm40cm = BPA10mm40cm{1};
 for a = 1:length(kink_p)
@@ -227,3 +228,75 @@ id_DP = (AllBPA10mm40cm(:,4)==2);
 %Separating P and DP
 AllBPA10mm40cm_P  = AllBPA10mm40cm(id_P,1:14);
 AllBPA10mm40cm_DP = AllBPA10mm40cm(id_DP,1:14);
+
+%% 45cm, use _2 to differentiate from Ben's test (Bipedal robot)
+lo = 42.6;
+l620 = 35.1;
+li = [38.2	36.5	34.8	33.1];
+
+        for a = 1:length(kink_p)
+          for b=1:length(test)
+            BPA10mm45cm_2{b,a}=csvread(['10mm_45cm_',kink{a},test{b},'.csv']);
+            BPA10mm45cm_2{b,a}(:,5) = 10; %diameter
+            BPA10mm45cm_2{b,a}(:,6) = 40; %cut length(lc) 
+            BPA10mm45cm_2{b,a}(:,7) = ones(length(BPA10mm45cm_2{b}),1)*lo; %resting length(lo) 
+            BPA10mm45cm_2{b,a}(:,8) = kink_p(a); 
+            BPA10mm45cm_2{b,a}(:,9) = li(a);
+            BPA10mm45cm_2{b,a}(:,10) = l620;
+            BPA10mm45cm_2{b,a}(:,11) = -((li(a)-lo)/lo); %strain
+            BPA10mm45cm_2{b,a}(:,12) = -((l620-lo)/lo); %max strain
+            BPA10mm45cm_2{b,a}(:,13) = ((li(a)-lo)/lo)/((l620-lo)/lo);%relative strain
+            BPA10mm45cm_2{b,a}(:,14) = ones(length(BPA10mm45cm_2{b}),1)*test_num(b);
+          end
+         end
+%combining data into a single array
+AllBPA10mm45cm_2 = BPA10mm45cm_2{1};
+for a = 1:length(kink_p)
+    for i=2:3
+        CurrentData=BPA10mm45cm_2{i,a};
+        RealData= CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %%%
+        AllBPA10mm45cm_2=vertcat(AllBPA10mm45cm_2,RealData);
+    end
+end
+id_P = (AllBPA10mm45cm_2(:,4)==1);
+id_DP = (AllBPA10mm45cm_2(:,4)==2);
+
+%Separating P and DP
+AllBPA10mm45cm_2_P  = AllBPA10mm45cm_2(id_P,1:14);
+AllBPA10mm45cm_2_DP = AllBPA10mm45cm_2(id_DP,1:14);
+
+%% 52cm, use _2 to differentiate from 52cm data from Ben's test (Bipedal robot)
+lo = 38.2;
+l620 = 31.4;
+li = [38.2	36.5	34.8	33.1];
+
+        for a = 1:length(kink_p)
+          for b=1:length(test)
+            BPA10mm52cm_2{b,a}=csvread(['10mm_52cm_2_',kink{a},test{b},'.csv']);
+            BPA10mm52cm_2{b,a}(:,5) = 10; %diameter
+            BPA10mm52cm_2{b,a}(:,6) = 40; %cut length(lc) 
+            BPA10mm52cm_2{b,a}(:,7) = ones(length(BPA10mm52cm_2{b}),1)*lo; %resting length(lo) 
+            BPA10mm52cm_2{b,a}(:,8) = kink_p(a); 
+            BPA10mm52cm_2{b,a}(:,9) = li(a);
+            BPA10mm52cm_2{b,a}(:,10) = l620;
+            BPA10mm52cm_2{b,a}(:,11) = -((li(a)-lo)/lo); %strain
+            BPA10mm52cm_2{b,a}(:,12) = -((l620-lo)/lo); %max strain
+            BPA10mm52cm_2{b,a}(:,13) = ((li(a)-lo)/lo)/((l620-lo)/lo);%relative strain
+            BPA10mm52cm_2{b,a}(:,14) = ones(length(BPA10mm52cm_2{b}),1)*test_num(b);
+          end
+         end
+%combining data into a single array
+AllBPA10mm52cm_2 = BPA10mm52cm_2{1};
+for a = 1:length(kink_p)
+    for i=2:3
+        CurrentData=BPA10mm52cm_2{i,a};
+        RealData= CurrentData(CurrentData(:,1)>low_force&CurrentData(:,2)<high_pressure,:); %%%
+        AllBPA10mm52cm_2=vertcat(AllBPA10mm52cm_2,RealData);
+    end
+end
+id_P = (AllBPA10mm52cm_2(:,4)==1);
+id_DP = (AllBPA10mm52cm_2(:,4)==2);
+
+%Separating P and DP
+AllBPA10mm52cm_2_P  = AllBPA10mm52cm_2(id_P,1:14);
+AllBPA10mm52cm_2_DP = AllBPA10mm52cm_2(id_DP,1:14);

@@ -24,13 +24,13 @@ li = [8.3,7.975,7.65,7.325];
             idx_DP = (BPA10mm10cm{b,a}(:,4) ==2);
             BPA10mm10cm{b,a}(idx_DP,8) = 0;
             BPA10mm10cm{b,a}(idx,8) = 1; %pressurizing = #1 on column 4, depressurizing = 2;
-            BPA10mm10cm{b,a}(:,4) = ones(length(BPA10mm13cm{i,a}),1)*10; %diameter
-            BPA10mm10cm{b,a}(:,5) = ones(length(BPA10mm13cm{i,a}),1)*10; %cut length(lc)
-            BPA10mm10cm{b,a}(:,6) = ones(length(BPA10mm13cm{i,a}),1)*kink_p(a); %attempted kink percent
+            BPA10mm10cm{b,a}(:,4) = ones(length(BPA10mm10cm{b,a}),1)*10; %diameter
+            BPA10mm10cm{b,a}(:,5) = ones(length(BPA10mm10cm{b,a}),1)*10; %cut length(lc)
+            BPA10mm10cm{b,a}(:,6) = ones(length(BPA10mm10cm{b,a}),1)*kink_p(a); %attempted kink percent
             BPA10mm10cm{b,a}(:,7) = ones(length(BPA10mm10cm{b,a}),1)*test_num(b); %test number
             BPA10mm10cm{b,a}(:,9) = ones(length(BPA10mm10cm{b,a}),1)*lo; %resting length(lo) 
-            BPA10mm10cm{b,a}(:,10) = ones(length(BPA10mm13cm{i,a}),1)*l620;   %length at 620 kPa
-            BPA10mm10cm{b,a}(:,11) = ones(length(BPA10mm13cm{i,a}),1)*li(a);   %current length
+            BPA10mm10cm{b,a}(:,10) = ones(length(BPA10mm10cm{b,a}),1)*l620;   %length at 620 kPa
+            BPA10mm10cm{b,a}(:,11) = ones(length(BPA10mm10cm{b,a}),1)*li(a);   %current length
             BPA10mm10cm{b,a}(:,12) = -((li(a)-lo)/lo); %strain
             BPA10mm10cm{b,a}(:,13) = ((li(a)-lo)/lo)/((l620-lo)/lo);%relative strain
             BPA10mm10cm{b,a}=imresize(BPA10mm10cm{b,a},[num 13]) %resize it all to remove excess data (already checked for accuracy
@@ -65,9 +65,9 @@ li = [13.2	12.675	12.15	11.625];
             BPA10mm15cm{b,a}=csvread(['10mm_15cm_',kink{a},test{b},'.csv']);
             idx = (BPA10mm15cm{b,a}(:,4) == 1); %indexing the pressurizing part
             idx_DP = (BPA10mm15cm{b,a}(:,4) ==2);
-            BPA10mm15cm{b,a}(idx_DP,4) = zeros(length(BPA10mm13cm{i,a}),1);
-            BPA10mm15cm{b,a}(idx,4) = ones(length(BPA10mm13cm{i,a}),1); %pressurizing = #1 on column 4, depressurizing = 2;
-            BPA10mm15cm{b,a}(:,5) = ones(length(BPA10mm13cm{i,a}),1)*10; %diameter
+            BPA10mm15cm{b,a}(idx_DP,4) = zeros(length(BPA10mm15cm{b,a}),1);
+            BPA10mm15cm{b,a}(idx,4) = ones(length(BPA10mm15cm{b,a}),1); %pressurizing = #1 on column 4, depressurizing = 2;
+            BPA10mm15cm{b,a}(:,5) = ones(length(BPA10mm15cm{b,a}),1)*10; %diameter
             BPA10mm15cm{b,a}(:,6) = 15; %cut length(lc) 
             BPA10mm15cm{b,a}(:,7) = ones(length(BPA10mm15cm{b,a}),1)*lo; %resting length(lo) 
             BPA10mm15cm{b,a}(:,8) = kink_p(a); %attempted kink
@@ -111,7 +111,7 @@ li = [18.2	17.45	16.7	15.95];
             idx_DP = (BPA10mm20cm{b,a}(:,4) ==2);
             BPA10mm20cm{b,a}(idx_DP,4) =2;
             BPA10mm20cm{b,a}(idx,4) = 1; %pressurizing = #1 on column 4, depressurizing = 2;
-            BPA10mm20cm{b,a}(:,5) = ones(length(BPA10mm13cm{i,a}),1)*10; %diameter
+            BPA10mm20cm{b,a}(:,5) = ones(length(BPA10mm20cm{b,a}),1)*10; %diameter
             BPA10mm20cm{b,a}(:,6) = 20; %cut length(lc) 
             BPA10mm20cm{b,a}(:,7) = ones(length(BPA10mm20cm{b,a}),1)*lo; %resting length(lo) 
             BPA10mm20cm{b,a}(:,8) = kink_p(a); 
@@ -149,11 +149,11 @@ li = [23.3	22.3	21.3	20.3];
     for a = 1:length(kink_p)
         for b=1:length(test)
             BPA10mm25cm{b,a}=csvread(['10mm_25cm_',kink{a},test{b},'.csv']);
-            idx = (BPA10mm20cm{b,a}(:,4) == 1); %indexing the pressurizing part
-            idx_DP = (BPA10mm20cm{b,a}(:,4) ==2);
-            BPA10mm20cm{b,a}(idx_DP,4) =2;
-            BPA10mm20cm{b,a}(idx,4) = 1; %pressurizing = #1 on column 4, depressurizing = 2;
-            BPA10mm25cm{b,a}(:,5) = ones(length(BPA10mm13cm{i,a}),1)*10; %diameter
+            idx = (BPA10mm25cm{b,a}(:,4) == 1); %indexing the pressurizing part
+            idx_DP = (BPA10mm25cm{b,a}(:,4) ==2);
+            BPA10mm25cm{b,a}(idx_DP,4) =2;
+            BPA10mm25cm{b,a}(idx,4) = 1; %pressurizing = #1 on column 4, depressurizing = 2;
+            BPA10mm25cm{b,a}(:,5) = ones(length(BPA10mm25cm{b,a}),1)*10; %diameter
             BPA10mm25cm{b,a}(:,6) = 25; %cut length(lc) 
             BPA10mm25cm{b,a}(:,7) = ones(length(BPA10mm25cm{b,a}),1)*lo; %resting length(lo) 
             BPA10mm25cm{b,a}(:,8) = kink_p(a); 
@@ -195,7 +195,7 @@ li = [28.1	26.875	25.65	24.425];
             idx_DP = (BPA10mm30cm_2{b,a}(:,4) ==2);
             BPA10mm30cm_2{b,a}(idx_DP,4) =2;
             BPA10mm30cm_2{b,a}(idx,4) = 1; %pressurizing = #1 on column 4, depressurizing = 2;
-            BPA10mm30cm_2{b,a}(:,5) = ones(length(BPA10mm13cm{i,a}),1)*10; %diameter
+            BPA10mm30cm_2{b,a}(:,5) = ones(length(BPA10mm30_2cm{b,a}),1)*10; %diameter
             BPA10mm30cm_2{b,a}(:,6) = 30; %cut length(lc) 
             BPA10mm30cm_2{b,a}(:,7) = ones(length(BPA10mm30cm_2{b,a}),1)*lo; %resting length(lo) 
             BPA10mm30cm_2{b,a}(:,8) = kink_p(a); 
@@ -239,7 +239,7 @@ li = [38.2	36.5	34.8	33.1];
             idx_DP = (BPA10mm40cm{b,a}(:,4) ==2);
             BPA10mm40cm{b,a}(idx_DP,4) =2;
             BPA10mm40cm{b,a}(idx,4) = 1; %pressurizing = #1 on column 4, depressurizing = 2;
-            BPA10mm40cm{b,a}(:,5) = ones(length(BPA10mm13cm{i,a}),1)*10; %diameter
+            BPA10mm40cm{b,a}(:,5) = ones(length(BPA10mm15cm{b,a}),1)*10; %diameter
             BPA10mm40cm{b,a}(:,6) = 40; %cut length(lc) 
             BPA10mm40cm{b,a}(:,7) = ones(length(BPA10mm40cm{b,a}),1)*lo; %resting length(lo) 
             BPA10mm40cm{b,a}(:,8) = kink_p(a); 
@@ -281,7 +281,7 @@ li = [42.6];
             idx_DP = (BPA10mm45cm_2{b,a}(:,4) ==2);
             BPA10mm45cm_2{b,a}(idx_DP,4) =2;
             BPA10mm45cm_2{b,a}(idx,4) = 1; %pressurizing = #1 on column 4, depressurizing = 2;
-            BPA10mm45cm_2{b,a}(:,5) = ones(length(BPA10mm13cm{i,a}),1)*10; %diameter
+            BPA10mm45cm_2{b,a}(:,5) = ones(length(BPA10mm45_2cm{b,a}),1)*10; %diameter
             BPA10mm45cm_2{b,a}(:,6) = 40; %cut length(lc) 
             BPA10mm45cm_2{b,a}(:,7) = ones(length(BPA10mm45cm_2{b,a}),1)*lo; %resting length(lo) 
             BPA10mm45cm_2{b,a}(:,8) = kink_p(a); 
@@ -323,7 +323,7 @@ li = [52.1	50	47.9  45.8];
             idx_DP = (BPA10mm52cm_2{b,a}(:,4) ==2);
             BPA10mm52cm_2{b,a}(idx_DP,4) =2;
             BPA10mm52cm_2{b,a}(idx,4) = 1; %pressurizing = #1 on column 4, depressurizing = 2;
-            BPA10mm52cm_2{b,a}(:,5) = ones(length(BPA10mm13cm{i,a}),1)*10; %diameter
+            BPA10mm52cm_2{b,a}(:,5) = ones(length(BPA10mm52_2cm{b,a}),1)*10; %diameter
             BPA10mm52cm_2{b,a}(:,6) = 40; %cut length(lc) 
             BPA10mm52cm_2{b,a}(:,7) = ones(length(BPA10mm52cm_2{b,a}),1)*lo; %resting length(lo) 
             BPA10mm52cm_2{b,a}(:,8) = kink_p(a); 

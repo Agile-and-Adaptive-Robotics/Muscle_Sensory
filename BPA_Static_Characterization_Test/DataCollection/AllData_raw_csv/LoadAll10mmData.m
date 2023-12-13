@@ -13,11 +13,11 @@ lengths_10mm = {'13','23','27','29','30'}
     maxstrain_30cm = (28.1-24)/28.1;
     
  %removing low forces data
-    low_force = 0; %removing force below this value
+    low_force = 3; %removing force below this value
     high_pressure = 800; %remove pressure above this value 
 
     
- num = 200; %number of rows
+ num = 50; %number of rows
 %% 10mm 13cm data for all lengths and kinks
 Kinks_10mm13cm = {'13cm_Unkinked_Test','13cm_Kinked4mm_Test','13cm_Kinked8mm_Test','13cm_Kinked12mm_Test'};
 lo = 12;

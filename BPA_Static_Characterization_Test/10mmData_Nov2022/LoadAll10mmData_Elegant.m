@@ -75,7 +75,7 @@ for i = 1:length(Cut)
 end
 
 
-vars = {'Test9Data','Test10Data'};                    %desired tests
+vars = {'Test8Data','Test9Data'};                    %desired tests
 [a, b] = size(filz);
 tf2 = cell(a,b);
 wrk = cell(a,b);

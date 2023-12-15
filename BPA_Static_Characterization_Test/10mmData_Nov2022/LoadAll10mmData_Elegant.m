@@ -5,7 +5,7 @@ low_force = 3;
 high_pressure = 800;
 kink_p = [0 25 50 75];
 
-num = 100;  %number of data points
+num = 25;  %number of data points
 
 % Loading all 10mm data from mat files. 
 Cut = {'10','15','20','25','30','40','45','52'};     %cut lengths
@@ -75,138 +75,95 @@ for i = 1:length(Cut)
 end
 
 
-vars = {'Test8Data','Test9Data'};                    %desired tests
+vars = ["Test8Data","Test9Data","Test10Data"];                    %desired tests
 [a, b] = size(filz);
 tf2 = cell(a,b);
 wrk = cell(a,b);
-t9 = cell(a,b);
-t10 = cell(a,b);
+% t9 = cell(a,b);
+% t10 = cell(a,b);
+
+T = cell(a,b,length(vars));
+Q = cell(size(T));
+
+disp('Calculating cell arrays')
 
 for i = 1:length(Cut)
    for j = 1:length(li{i})
       if TF(i,j)==1  
         wrk = matfile(filz{i,j},'Writable',true);
         varlist = who(wrk);
-        tf2 = matches(vars,varlist);
-        myVars = vars(tf2);
+        tf2{i,j} = matches(vars,varlist);
+        myVars = vars(tf2{i,j});
         S = load(filz{i,j},myVars{:});
-        C = struct2cell(S);
-          if tf2(1)==1
-            T9 = C{1};
-            T9 = T9((T9(:,4)==1 &T9(:,1)>low_force),1:3);  %remove depressurizing data
-            T9 = imresize(T9,[num 3]);
-            T9 = [ones(length(T9),1)*relE{i,j}(:), T9(:,2), T9(:,1), T9(:,3)];
-            t9{i,j} = T9(:,:);
-          else
-          end
-          if tf2(2)==1
-            T10 = C{2};
-            T10 = T10((T10(:,4)==1 &T10(:,1)>low_force),1:3);
-            T10 = imresize(T10,[num 3]);
-            T10 = [ones(length(T10),1)*relE{i,j}(:), T10(:,2), T10(:,1), T10(:,3)];
-            t10{i,j} = T10(:,:);
-          else
-          end
+        for k = 1:length(vars)
+            if tf2{i,j}(k) == 1
+            M = S.(myVars(k));
+            M = M((M(:,4)==1 &M(:,1)>low_force &M(:,2)<high_pressure),1:3);  %remove depressurizing data
+            N = imresize(M,[num 3]);
+            N = [ones(length(N),1)*relE{i,j}(:), N(:,2), N(:,1), N(:,3)];
+            T{i,j,k} = N(:,:);
+            M = [ones(length(M),1)*relE{i,j}(:), M(:,2), M(:,1), M(:,3)];
+            Q{i,j,k} = M(:,:);
+            else
+            end
+        end
       end
    end
 end
 
-
-Testz = cell(a,b,(length(vars)));
-for a = 1:length(Cut)
-  for  b = 1:length(li{b})
-        Testz{a,b,1} = t9{a,b};
-        Testz{a,b,2} = t10{a,b};
-  end
-end
+% 
+% Testz = cell(a,b,(length(vars)));
+% for a = 1:length(Cut)
+%   for  b = 1:length(li{b})
+%         Testz{a,b,1} = t9{a,b};
+%         Testz{a,b,2} = t10{a,b};
+%   end
+% end
 %% plots to check data
-% 10mm 10cm
-cz = ['b','r'];
+varZ = ["Relative Strain", "Pressure (kPa)", "Force (N)", "Time (s)"];
+cz = ["b", "m", "r"];
+xAx = [4, 4, 1, 2];    %which subplots will use which varS for x-axis
+yAy = [3, 2, 3, 3];    %which subplots will use which varS for y-axis
+disp('Plotting, be patient')
 
-for a = 1:length(Cut)
-    
-    fig(a) = figure;
-      
-      subplot(2,2,1)
+for i = 1:length(Cut)
+    figure
+    tlo = tiledlayout(2,2);
+    for a = 1:length(xAx)
+      nexttile
+%     subplot(2,2,a)
       hold on
-        for b = 1:length(li{a})
-            for c = 1:length(vars)
-               str = sprintf('kinked  %d percent, %s',kink_p(b),string(vars(c)));
-               scatter(Testz{a,b,c}(:,4),Testz{a,b,c}(:,3),[],cz(c),'DisplayName',str);
+      x = xAx(a);
+      y = yAy(a);
+      for j = 1:length(li{i})
+        for k = 1:length(vars)
+            if tf2{i,j}(k)==1
+            xx = T{i,j,k}(:,x);
+            yy = T{i,j,k}(:,y);
+%             str1 = sprintf('%.2f \\epsilon, %s, resize ',relE{i,j},vars(k));
+            str1 = sprintf('%s, resize ',vars(k));
+            scatter(xx,yy,[],cz(k),'LineWidth',2,'DisplayName',str1);
+            XX = Q{i,j,k}(:,x);
+            YY = Q{i,j,k}(:,y);
+%             str2 = sprintf('%.2f \\epsilon, %s, full ',relE{i,j},vars(k));
+            str2 = sprintf('%s, full ',vars(k));
+            scatter(XX,YY,.05,'.',cz(k),'MarkerFaceAlpha',0.5,'MarkerEdgeAlpha',0.5,'DisplayName',str2); 
+            else
             end
         end
-        hold off
-        xlabel('time (s)')
-        ylabel('Force(N)')
-        str3 = sprintf('10mm %scm Pressurizing, Force vs Time',string(Cut(a)));
-        title(str3)
-        lgd = legend;
-        lgd.Title.String = 'Kink percentages';
-        
-        subplot(2,2,2)
-        hold on
-        for b = 1:length(li{a})
-            for c = 1:length(vars)
-               str = sprintf('kinked  %d percent, %s',kink_p(b),string(vars(c)));
-               scatter(Testz{a,b,c}(:,4),Testz{a,b,c}(:,2),[],cz(c),'DisplayName',str);
-            end
-        end
-        hold off
-        xlabel('time (s)')
-        ylabel('Pressure(kPa)')
-        str4 = sprintf('10mm %scm Pressurizing, Pressure vs Time',string(Cut(a)));
-        title(str4)
-        lgd = legend;
-        lgd.Title.String = 'Kink percentages';
-        
-        subplot(2,2,3)
-        hold on
-        for b = 1:length(li{a})
-            for c = 1:length(vars)
-               str = sprintf('kinked  %d percent, %s',kink_p(b),string(vars(c)));
-               scatter(Testz{a,b,c}(:,1),Testz{a,b,c}(:,3),[],cz(c),'DisplayName',str);
-            end
-        end
-        hold off
-        xlabel('Rel. Strain')
-        ylabel('Force (N)')
-        str4 = sprintf('10mm %scm Pressurizing, Force vs Strain',string(Cut(a)));
-        title(str4)
-        lgd = legend;
-        lgd.Title.String = 'Kink percentages';
-        
-        subplot(2,2,4)
-        hold on
-        for b = 1:length(li{a})
-            for c = 1:length(vars)
-               str = sprintf('kinked  %d percent, %s',kink_p(b),string(vars(c)));
-               scatter(Testz{a,b,c}(:,2),Testz{a,b,c}(:,3),[],cz(c),'DisplayName',str);
-            end
-        end
-        hold off
-        xlabel('Pressure(kPa)')
-        ylabel('Force (N)')
-        str4 = sprintf('10mm %scm Pressurizing, Force vs Pressure',string(Cut(a)));
-        title(str4)
-        lgd = legend;
-        lgd.Title.String = 'Kink percentages';
+      end
+      hold off
+      xlabel(varZ(x))
+      ylabel(varZ(y))
+      str3 = sprintf('%.1fcm l_{rest}, %s vs. %s, all kinks',lo(i),varZ(y),varZ(x));
+      title(str3)
+    end
+    if a == length(xAx)
+     lgd = legend;
+     lgd.NumColumns = length(vars);
+     txt = cellstr(lgd.String(1:6));
+     lgd.String = txt;
+     lgd.Layout.Tile = 'South';
+    else
+    end
 end
-% 10mm 15cm
-
-
-% 10mm 20cm
-
-
-%10mm 25cm
-
-
-%10mm 30cm_2
-
-    
-% 10mm 40cm
-
-    
-%10mm 45cm_2
-
-
-%10mm 52cm_2

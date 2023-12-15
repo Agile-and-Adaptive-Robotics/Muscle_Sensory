@@ -82,7 +82,7 @@ end
 varS = ["Relative Strain", "Pressure (kPa)", "Force (N)", "Time (s)"];
 cz = ["b", "m", "r"];
 xAx = [4, 4, 1, 2];    %which subplots will use which varS for x-axis 
-% 10mm 13cm
+
 for i = 1:length(Cut)
     figure
     for a = 1:length(xAx)
@@ -101,7 +101,7 @@ for i = 1:length(Cut)
     hold off
     xlabel(varS(x))
     ylabel(varS(y))
-    str2 = sprintf('%.1fcm l_{rest}, %s vs. %s - all kinks',lo(i),varS(x),varS(y));
+    str2 = sprintf('%.1fcm l_{rest}, %s vs. %s',lo(i),varS(x),varS(y));
     title(str2)
     lgd = legend;
     end

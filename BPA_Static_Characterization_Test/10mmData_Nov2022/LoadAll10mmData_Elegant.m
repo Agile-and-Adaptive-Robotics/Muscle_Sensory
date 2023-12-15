@@ -111,14 +111,7 @@ for i = 1:length(Cut)
    end
 end
 
-% 
-% Testz = cell(a,b,(length(vars)));
-% for a = 1:length(Cut)
-%   for  b = 1:length(li{b})
-%         Testz{a,b,1} = t9{a,b};
-%         Testz{a,b,2} = t10{a,b};
-%   end
-% end
+
 %% plots to check data
 varZ = ["Relative Strain", "Pressure (kPa)", "Force (N)", "Time (s)"];
 cz = ["b", "m", "r"];
@@ -131,7 +124,6 @@ for i = 1:length(Cut)
     tlo = tiledlayout(2,2);
     for a = 1:length(xAx)
       nexttile
-%     subplot(2,2,a)
       hold on
       x = xAx(a);
       y = yAy(a);
@@ -140,12 +132,10 @@ for i = 1:length(Cut)
             if tf2{i,j}(k)==1
             xx = T{i,j,k}(:,x);
             yy = T{i,j,k}(:,y);
-%             str1 = sprintf('%.2f \\epsilon, %s, resize ',relE{i,j},vars(k));
             str1 = sprintf('%s, resize ',vars(k));
             scatter(xx,yy,[],cz(k),'LineWidth',2,'DisplayName',str1);
             XX = Q{i,j,k}(:,x);
             YY = Q{i,j,k}(:,y);
-%             str2 = sprintf('%.2f \\epsilon, %s, full ',relE{i,j},vars(k));
             str2 = sprintf('%s, full ',vars(k));
             scatter(XX,YY,.05,'.',cz(k),'MarkerFaceAlpha',0.5,'MarkerEdgeAlpha',0.5,'DisplayName',str2); 
             else

@@ -8,7 +8,7 @@ dia = '10';
 low_force = 3; %removing force below this value
 high_pressure = 800; %remove pressure above this value 
 
-num = 50; %number of rows
+num = 25; %number of rows
 
 %% BPA info
 Cut = {'13','23','27','29','30'};  %Cut lengths
@@ -57,20 +57,23 @@ for i = 1:length(Cut)
 end
 
 
-test = ["8", "9", "10"];
+test = ["9", "10"];
 
 [a,b] = size(relE);
 c = length(test);
 T = cell(a,b,c);
+Q = cell(size(T));
 for k = 1:length(test)
     for i = 1:length(Cut)
         for j = 1:length(li{i})
          str ="10mm_"+(string(Kinks{i}{1,j})+test(k)+".csv");   
          M = readmatrix(str);
          M = M((M(:,3)<=17 &M(:,1)>low_force &M(:,2)<high_pressure),:);  %keep values that are pressurizing (less than 17second, high than low force, lower than high pressure
-         M = imresize(M,[num 3],'nearest');
+         N = imresize(M,[num 3]);
+         N = [ones(length(N),1).*relE{i,j}(:), N(:,2), N(:,1), N(:,3)];
+         T{i,j,k} = N(:,:);
          M = [ones(length(M),1).*relE{i,j}(:), M(:,2), M(:,1), M(:,3)];
-         T{i,j,k} = M(:,:);
+         Q{i,j,k} = M(:,:);
         end
     end
 end
@@ -82,28 +85,41 @@ end
 varS = ["Relative Strain", "Pressure (kPa)", "Force (N)", "Time (s)"];
 cz = ["b", "m", "r"];
 xAx = [4, 4, 1, 2];    %which subplots will use which varS for x-axis 
+yAy = [3, 2, 3, 3];    %which subplots will use which varS for y-axis
+disp('Plotting, be patient')
 
 for i = 1:length(Cut)
     figure
+    tlo = tiledlayout(2,2);
     for a = 1:length(xAx)
-    subplot(2,2,a)
-    hold on
-    x = xAx(a);
-    y = 3;
-    for j = 1:length(li{i})
+      nexttile
+      hold on
+      x = xAx(a);
+      y = yAy(a);
+      for j = 1:length(li{i})
         for k = 1:length(test)
             xx = T{i,j,k}(:,x);
             yy = T{i,j,k}(:,y);
-            str1 = sprintf('%.2f rel. strain, test %s ',relE{i,j},test(k));
-            scatter(xx,yy,[],cz(k),'DisplayName',str1);
+            str1 = sprintf('Test %s, resize ',test(k));
+            scatter(xx,yy,[],cz(k),'LineWidth',2,'DisplayName',str1);
+            XX = Q{i,j,k}(:,x);
+            YY = Q{i,j,k}(:,y);
+            str2 = sprintf('Test %s, full ',test(k));
+            scatter(XX,YY,.05,'.',cz(k),'MarkerFaceAlpha',0.5,'MarkerEdgeAlpha',0.5,'DisplayName',str2); 
         end
+      end
+      hold off
+      xlabel(varS(x))
+      ylabel(varS(y))
+      str3 = sprintf('%.1fcm l_{rest}, %s vs. %s, all kinks',lo(i),varS(y),varS(x));
+      title(str3)
     end
-    hold off
-    xlabel(varS(x))
-    ylabel(varS(y))
-    str2 = sprintf('%.1fcm l_{rest}, %s vs. %s',lo(i),varS(x),varS(y));
-    title(str2)
-    lgd = legend;
+    if a == length(xAx)
+     lgd = legend;
+     lgd.NumColumns = length(test);
+     txt = cellstr(lgd.String(1:6));
+     lgd.String = txt;
+     lgd.Layout.Tile = 'South';
+    else
     end
 end
-    

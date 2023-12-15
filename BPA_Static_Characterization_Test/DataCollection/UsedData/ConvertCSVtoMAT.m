@@ -5,10 +5,10 @@ clear; close all; clc;
 dia = '10';
 
 %remove low force and pressure data data
-low_force = 3; %removing force below this value
+low_force = 10; %removing force below this value
 high_pressure = 800; %remove pressure above this value 
 
-num = 25; %number of rows
+num = 15; %number of rows
 
 %% BPA info
 Cut = {'13','23','27','29','30'};  %Cut lengths
@@ -57,7 +57,7 @@ for i = 1:length(Cut)
 end
 
 
-test = ["9", "10"];
+test = ["8","9", "10"];
 
 [a,b] = size(relE);
 c = length(test);
@@ -117,7 +117,7 @@ for i = 1:length(Cut)
     if a == length(xAx)
      lgd = legend;
      lgd.NumColumns = length(test);
-     txt = cellstr(lgd.String(1:6));
+     txt = cellstr(lgd.String(1:(2*length(test))));
      lgd.String = txt;
      lgd.Layout.Tile = 'South';
     else

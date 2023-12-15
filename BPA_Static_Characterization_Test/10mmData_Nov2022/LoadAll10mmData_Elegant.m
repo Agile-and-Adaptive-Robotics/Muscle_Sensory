@@ -1,11 +1,11 @@
 %Clean up workspace. Comment out if also using data from LoadAll10mmData.
 clear; clc; close all
 
-low_force = 3;
+low_force = 17;
 high_pressure = 800;
 kink_p = [0 25 50 75];
 
-num = 25;  %number of data points
+num = 15;  %number of data points
 
 % Loading all 10mm data from mat files. 
 Cut = {'10','15','20','25','30','40','45','52'};     %cut lengths
@@ -99,11 +99,14 @@ for i = 1:length(Cut)
             if tf2{i,j}(k) == 1
             M = S.(myVars(k));
             M = M((M(:,4)==1 &M(:,1)>low_force &M(:,2)<high_pressure),1:3);  %remove depressurizing data
-            N = imresize(M,[num 3]);
-            N = [ones(length(N),1)*relE{i,j}(:), N(:,2), N(:,1), N(:,3)];
-            T{i,j,k} = N(:,:);
-            M = [ones(length(M),1)*relE{i,j}(:), M(:,2), M(:,1), M(:,3)];
-            Q{i,j,k} = M(:,:);
+                if ~isempty(M) && size(M,1)>=num
+                N = imresize(M,[num 3]);
+                N = [ones(length(N),1)*relE{i,j}(:), N(:,2), N(:,1), N(:,3)];
+                T{i,j,k} = N(:,:);
+                M = [ones(size(M,1),1)*relE{i,j}(:), M(:,2), M(:,1), M(:,3)];
+                Q{i,j,k} = M(:,:);
+                else
+                end
             else
             end
         end
@@ -130,14 +133,17 @@ for i = 1:length(Cut)
       for j = 1:length(li{i})
         for k = 1:length(vars)
             if tf2{i,j}(k)==1
-            xx = T{i,j,k}(:,x);
-            yy = T{i,j,k}(:,y);
-            str1 = sprintf('%s, resize ',vars(k));
-            scatter(xx,yy,[],cz(k),'LineWidth',2,'DisplayName',str1);
-            XX = Q{i,j,k}(:,x);
-            YY = Q{i,j,k}(:,y);
-            str2 = sprintf('%s, full ',vars(k));
-            scatter(XX,YY,.05,'.',cz(k),'MarkerFaceAlpha',0.5,'MarkerEdgeAlpha',0.5,'DisplayName',str2); 
+                if ~isempty(T{i,j,k})
+                xx = T{i,j,k}(:,x);
+                yy = T{i,j,k}(:,y);
+                str1 = sprintf('%s, resize ',vars(k));
+                scatter(xx,yy,[],cz(k),'LineWidth',2,'DisplayName',str1);
+                XX = Q{i,j,k}(:,x);
+                YY = Q{i,j,k}(:,y);
+                str2 = sprintf('%s, full ',vars(k));
+                scatter(XX,YY,.05,'.',cz(k),'MarkerFaceAlpha',0.5,'MarkerEdgeAlpha',0.5,'DisplayName',str2);
+                else
+                end
             else
             end
         end
@@ -151,7 +157,7 @@ for i = 1:length(Cut)
     if a == length(xAx)
      lgd = legend;
      lgd.NumColumns = length(vars);
-     txt = cellstr(lgd.String(1:6));
+     txt = cellstr(lgd.String(1:(2*length(vars))));
      lgd.String = txt;
      lgd.Layout.Tile = 'South';
     else

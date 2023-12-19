@@ -5,7 +5,7 @@ clear; close all; clc;
 dia = '10';
 
 %remove low force and pressure data data
-low_force = 10; %removing force below this value
+low_force = 0; %removing force below this value
 high_pressure = 800; %remove pressure above this value 
 
 num = 15; %number of rows

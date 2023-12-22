@@ -18,7 +18,7 @@ int pump1 = HIGH;
 int pump2 = LOW;
 
 // Buffer for storing last 4 force sensor readings
-float f_values_buffer[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+float f_values_buffer[20] = { 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0 };
 float true_avg_f_value = 0;
 
 void setup() {
@@ -40,27 +40,27 @@ void loop() {
   p_value = analogRead(p_sensor);  // Pressure sensor
 
   // Calibrate sensor readings
-  float true_p_value = (p_value * 0.7538 - 11.583);  // Convert to kPa
-  float true_f_value = (f_value * 157 / 146);        // Convert to N
+  float true_p_value = (p_value * 0.7525 - 9.5246);  // Convert to kPa
+  float true_f_value = (f_value * 156.9064/143);        // Convert to N
 
   // Update the buffer with the new reading
-  for (int i = 7; i > 0; i--) {
+  for (int i = 19; i > 0; i--) {
     f_values_buffer[i] = f_values_buffer[i - 1];  // Shift buffer
   }
   f_values_buffer[0] = true_f_value;  // Store new reading
 
   // Calculate the average force value
   true_avg_f_value = 0;
-  for (int i = 0; i < 8; i++) {
+  for (int i = 0; i < 20; i++) {
     true_avg_f_value += f_values_buffer[i];
   }
-  true_avg_f_value /= 8;  // Compute average
+  true_avg_f_value /= 20;  // Compute average
 
   // Print the average and pressure values
   // Serial.print("Average Force (N): ");
   Serial.println(true_avg_f_value);
-    Serial.print(" ");
-   Serial.println(true_p_value);
+  Serial.print(" ");
+  Serial.println(true_p_value);
 
   // Implement any additional functionality here...
 }

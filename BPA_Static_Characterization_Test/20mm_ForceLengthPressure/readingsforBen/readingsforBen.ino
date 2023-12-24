@@ -18,7 +18,7 @@ int pump1 = HIGH;
 int pump2 = LOW;
 
 // Buffer for storing last 4 force sensor readings
-float f_values_buffer[20] = { 0, 0, 0, 0, 0, 0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0 };
+float f_values_buffer[20] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 float true_avg_f_value = 0;
 
 void setup() {
@@ -40,8 +40,8 @@ void loop() {
   p_value = analogRead(p_sensor);  // Pressure sensor
 
   // Calibrate sensor readings
-  float true_p_value = (p_value * 0.7525 - 9.5246);  // Convert to kPa
-  float true_f_value = (f_value * 156.9064/143);        // Convert to N
+ float true_p_value = (p_value * 1.1494 - 9.2674);  // inside bracket converts reading to psig, outside converts to kPa.
+  float true_f_value = (f_value * 0.17204-0.5161)*9.81;           //inner bracket converts reading to kg, outside converts to N
 
   // Update the buffer with the new reading
   for (int i = 19; i > 0; i--) {

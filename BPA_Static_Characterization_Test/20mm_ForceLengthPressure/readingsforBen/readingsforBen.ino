@@ -1,6 +1,6 @@
 // Pin assignments
-int inflatepin1 = 13;  // Inflation pin
-int deflatepin1 = 10;  // Deflation pin
+int inflatepin1 = 11;  // Inflation pin
+int deflatepin1 = 9;  // Deflation pin
 int p_sensor = A1;     // Pressure sensor pin
 int f_sensor = A3;     // Force sensor pin
 
@@ -40,7 +40,7 @@ void loop() {
   p_value = analogRead(p_sensor);  // Pressure sensor
 
   // Calibrate sensor readings
- float true_p_value = (p_value * 1.1494 - 9.2674);  // inside bracket converts reading to psig, outside converts to kPa.
+ float true_p_value = (p_value * 1.1678 - 13.312);  // inside bracket converts reading to psig, outside converts to kPa.
   float true_f_value = (f_value * 0.17204-0.5161)*9.81;           //inner bracket converts reading to kg, outside converts to N
 
   // Update the buffer with the new reading

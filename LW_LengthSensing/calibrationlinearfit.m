@@ -1,21 +1,24 @@
+% clc
+% clear
+% 
+% coeff1, coeff2 = getCoefficients();
+% 
+
+%% RUN THIS SECTION
+% function coeff1, coeff2 = getCoefficients();
+%coeff1 is the array of coefficients of the calibration equation of the
+%potentiometer
+%coeff2 is the array of coefficients of the calibration equation of the strain gauge
+%potlength and resistance are manual measurements, use 300mV setting on multimeter and
+%caliper
 clc
 clear
-
-coeff1, coeff2 = getCoefficients(potlength, resistance);
-
-
-%% 
-%function coeff1, coeff2 = getCoefficients()
-%coeff1 is the array of coefficients of the calibration of the
-%potentiometer
-%coeff2 is the array of coefficients of the calibration of the strain gauge
-%potlength and resistance are manual measurements 
 
 arduino = serialport("COM5", 9600);
 fopen(arduino);
 
 % Prompt the user to enter measurements
-n = input('Enter the number of measurements: ');
+n = input('Adjust trimpot until zero voltage, enter the number of measurements: ');
 resistance = zeros(1,n);
 potlength = zeros(1,n);
 potbits = zeros(1,n);
@@ -27,7 +30,7 @@ potlength = zeros(1,n);
 
 % Input each measurement
 for i = 1:n
-    resistance(i) = input(['Enter resistance measurement (Ohms) ', num2str(i), ': ']);
+    resistance(i) = input(['Enter resistance measurement (mV) ', num2str(i), ': '])/1000;
     potlength(i) = input(['Enter length measurement (mm) ', num2str(i), ': ']);
 
     fprintf(arduino,'%c', 'R');
@@ -48,19 +51,20 @@ fitline1 = coeff1(1)*potbits+coeff1(2)
 fitline2 = coeff2(1)*strainbits+coeff2(2)
 
 figure;
-title("Potentiometer Calibration");
-xlabel("potbits");
-ylabel("Measured Length (mm)")
 scatter(potbits, potlength);
 hold on
 plot(potbits, fitline1);
+title("Potentiometer Calibration");
+xlabel("potbits");
+ylabel("Measured Length (mm)")
 
 figure;
-title("Strain Gauge Calibration");
-xlabel("strainbits");
-ylabel("Measured Voltage (V)")
 scatter(strainbits, resistance);
 hold on
 plot(strainbits,fitline2);
+title("Strain Gauge Calibration");
+
+xlabel("strainbits");
+ylabel("Measured Voltage (V)")
 
 delete(arduino);

@@ -19,7 +19,7 @@ double testPress[] = {4,14,28,42,57,71,86,98,99,100};
 void setup() {
   pinMode(valvePin, OUTPUT);
   Serial.begin(9600);
-  
+  analogWrite(ovalvePin, 255);
 
   // put your setup code here, to run once:
 

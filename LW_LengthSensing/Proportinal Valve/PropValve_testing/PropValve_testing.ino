@@ -12,7 +12,7 @@ double pressVal = 0;
 int ovalveVal = 0;
 int temp = 0;
 
-int testVals[] = {112,128,144,160,176,192,208,224,240,255};
+int testVals[] = {};
 double testPress[] = {4,14,28,42,57,71,86,98,99,100};
 
 

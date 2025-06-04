@@ -7,7 +7,7 @@ const int LpotPin = A5;
 int valveVal = 0;
 int ovalveVal = 255;
 int outVal = 0;
-int inc = 5;
+int inc = 3;
 int inVal = 100;
 int SG = 0;
 double Len[50];
@@ -31,7 +31,7 @@ void loop() {
         Serial.print(String(inVal) + ",");
         int start = millis();
         int now = millis();
-        double lastLpot = map(analogRead(LpotPin), 0, 1023, 1000.00, 0.00) / 10.0;
+        double lastLpot = map(analogRead(LpotPin), 0, 1023, 10000.00, 0.00) / 100.0;
         int last = now;
         int temp = 0;
         int lastTime = millis();
@@ -39,15 +39,15 @@ void loop() {
         double dt = 0;
         analogWrite(valvePin, inVal);
         while ((now - start) <= 5000 && temp <= 50) {
-          double lpotVal = map(analogRead(LpotPin), 0, 1023, 1000.00, 0.00) / 10.0;
+          double lpotVal = map(analogRead(LpotPin), 0, 1023, 10000.000, 0.000) / 100.000;
           now = millis();
           time = now - lastTime;
           dt = abs(lpotVal - lastLpot);
           //Serial.println(dt);
           if (dt >= 0.5) {
             lastTime = millis();
-            double velo = (dt / time) * 100.0;
-            Serial.print(String(velo) + ",");
+            double velo = (dt / time) * 1000.0;
+            Serial.println(String(velo,4) + ",");
             if(inVal == 255){
               Len[temp] = lpotVal;
             }
@@ -65,7 +65,7 @@ void loop() {
       }
       analogWrite(ovalvePin, 255);
       Serial.print("PWM,");
-      for(int i; i <= 50; i++){
+      for(int i = 0; i < 50; i++){
         Serial.print(String(Len[i]) + ",");
       }
     }

@@ -1,108 +1,124 @@
-const int potPin = A3;
-const int opotPin = A1;
-const int valvePin = 3;
-const int ovalvePin = 9;
-const int SGPin = A4;
-const int LpotPin = A5;
-int valveVal = 0;
-int ovalveVal = 255;
-int outVal = 0;
-int inc = 3;
-int inVal = 105;
-int SG = 0;
-double Len[100];
-bool first = true;
+// Arduino sketch: measure actuator velocity across percentages of travel
+
+const int LpotPin     = A5;     // position sensor pin (linear pot)
+const int valvePin    = 3;      // PWM pin for contraction
+const int ovalvePin   = 9;      // PWM pin for extension
+
+const int PWM_start   = 105;    // starting PWM for sweep
+const int PWM_max     = 255;    // max PWM
+const int PWM_inc     = 3;      // PWM increment
+const int numPoints   = 100;    // number of percentage thresholds (1% increments)
+const uint32_t fallbackTimeout = 3000;  // ms to wait per point before fallback
+
+double Len[numPoints];     // actual position thresholds
+
+double posMax = 0;         // sensor value at fully contracted
+double posMin = 0;         // sensor value at fully extended
 
 void setup() {
-  // put your setup code here, to run once:
+  Serial.begin(9600);
   pinMode(valvePin, OUTPUT);
   pinMode(ovalvePin, OUTPUT);
-  analogWrite(valvePin, valveVal);
-  analogWrite(ovalvePin, ovalveVal);
-  Serial.begin(9600);
+
+  // ensure actuator fully extended at start
+  analogWrite(valvePin, 0);
+  analogWrite(ovalvePin, 255);
 }
 
 void loop() {
-  if (Serial.available() > 0) {
-    //Serial.println(Serial.read());
+  if (Serial.available()) {
+    char c = Serial.read();
+    if (c == 'a') {
+      // 1) Calibrate endpoints and build Len[] based on percentage
+      calibrateEndpoints();
+      buildThresholds();
 
-    if (Serial.read() == 'a') {
-      //delay(3000);
-      first = true;
-      inVal = 255;
-      while (inVal <= 255) {
-        analogWrite(ovalvePin, 0);
-        if(!first){
-        Serial.print(String(inVal) + ",");
+      // 2) Print CSV header: PWM + percent labels
+      Serial.print("PWM");
+      for (int i = 0; i < numPoints; i++) {
+        Serial.print(",Pct"); Serial.print(i+1);
+      }
+      Serial.println();
+
+      // 3) Sweep PWM
+      for (int pwm = PWM_start; pwm <= PWM_max; pwm += PWM_inc) {
+        double velocities[numPoints];
+        measureVelocities(pwm, velocities);
+        // print results
+        Serial.print(pwm);
+        for (int i = 0; i < numPoints; i++) {
+          Serial.print(",");
+          Serial.print(velocities[i], 4);
         }
-        int start = millis();
-        int now = millis();
-        double lastLpot = map(analogRead(LpotPin), 0, 1023, 10000.00, 0.00) / 100.0;
-        int last = now;
-        int temp = 0;
-        int lastTime = millis();
-        double time = (now - start);
-        double dt = 0;
-        analogWrite(valvePin, inVal);
-        while ((now - start) <= 5000 && temp <= 100) {
-          double lpotVal = map(analogRead(LpotPin), 0, 1023, 10000.000, 0.000) / 100.000;
-          now = millis();
-          time = now - lastTime;
-          dt = abs(lpotVal - lastLpot);
-          //Serial.println(dt);
-          
-          if ((dt >= 0.25 && first) || (lpotVal <= Len[temp])) {
-            lastTime = millis();
-            double velo = (dt / time) * 1000.0;
-            if(!first){
-            Serial.print(String(velo,4) + ",");
-            }
-            if(inVal == 255 && first){
-              Len[temp] = lpotVal;
-              //Serial.println(temp);
-            }
-
-            temp++;
-
-            lastLpot = lpotVal;
-          }
-          
-
-          if(lpotVal <= Len[temp-1]){
-            Serial.print(Len[temp]); Serial.print("\t"); Serial.println(lpotVal);
-            
-          }
-        }
-        analogWrite(valvePin, 0);
-        analogWrite(ovalvePin, 255);
-        delay(6000);
-        Serial.println("");
-        if(!first){
-        inVal += inc;
+        Serial.println();
+        delay(2000);
       }
-      if(first){
-        inVal = 105;
-        Serial.print("PWM,");
-        for(int i = 0; i < 100; i++){
-          Serial.print("L"+String(i)+",");
-        }
-        Serial.println("");
-        Serial.print("-1,");
-        for(int i = 0; i < 100; i++){
-        Serial.print(String(Len[i]) + ",");
-      }
-      first = false;
-      Serial.println("");
-      }
-      }
-      analogWrite(ovalvePin, 255);
-      
-
+      Serial.println("Sweep complete.");
     }
-
-
   }
+}
 
+//------------------------------------------------------------------------------
 
-  // put your main code here, to run repeatedly:
+void calibrateEndpoints() {
+  // move to fully contracted
+  analogWrite(ovalvePin, 0);
+  analogWrite(valvePin, PWM_max);
+  delay(2000);
+  posMax = readRaw();
+
+  // move to fully extended
+  analogWrite(valvePin, 0);
+  analogWrite(ovalvePin, 255);
+  delay(2000);
+  posMin = readRaw();
+
+  // stop motion
+  analogWrite(ovalvePin, 0);
+}
+
+void buildThresholds() {
+  // thresholds evenly spaced from 1% to 100%
+  for (int i = 0; i < numPoints; i++) {
+    double frac = double(i+1) / numPoints;  // 0.01 to 1.0
+    Len[i] = posMax - (posMax - posMin) * frac;
+  }
+}
+
+void measureVelocities(int pwmVal, double *vel) {
+  // start contraction
+  analogWrite(ovalvePin, 0);
+  analogWrite(valvePin, pwmVal);
+
+  unsigned long t_prev = millis();
+  double pos_prev = readRaw();
+
+  for (int idx = 0; idx < numPoints; idx++) {
+    bool hit = false;
+    unsigned long t_start = millis();
+    while ((millis() - t_start) < fallbackTimeout) {
+      double pos = readRaw();
+      if (pos <= Len[idx]) {
+        unsigned long t_now = millis();
+        double dt = (t_now - t_prev) / 1000.0;  // s
+        vel[idx] = fabs(pos - pos_prev) / dt;
+        t_prev = t_now;
+        pos_prev = pos;
+        hit = true;
+        break;
+      }
+    }
+    if (!hit) {
+      // fallback
+      vel[idx] = 0.0;
+      t_prev = millis();
+      pos_prev = readRaw();
+    }
+  }
+  analogWrite(valvePin, 0);
+}
+
+// return raw analog reading (0-1023)
+double readRaw() {
+  return analogRead(LpotPin);
 }

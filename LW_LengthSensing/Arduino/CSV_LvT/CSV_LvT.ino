@@ -10,7 +10,7 @@ int outVal = 0;
 int inc = 3;
 int inVal = 105;
 int SG = 0;
-double Len[40];
+double Len[100];
 bool first = true;
 
 void setup() {
@@ -41,16 +41,17 @@ void loop() {
         int last = now;
         int temp = 0;
         int lastTime = millis();
-        int time = (now - start);
+        double time = (now - start);
         double dt = 0;
         analogWrite(valvePin, inVal);
-        while ((now - start) <= 5000 && temp <= 40) {
+        while ((now - start) <= 5000 && temp <= 100) {
           double lpotVal = map(analogRead(LpotPin), 0, 1023, 10000.000, 0.000) / 100.000;
           now = millis();
           time = now - lastTime;
           dt = abs(lpotVal - lastLpot);
           //Serial.println(dt);
-          if (dt >= 0.5) {
+          
+          if ((dt >= 0.25 && first) || (lpotVal <= Len[temp])) {
             lastTime = millis();
             double velo = (dt / time) * 1000.0;
             if(!first){
@@ -60,14 +61,21 @@ void loop() {
               Len[temp] = lpotVal;
               //Serial.println(temp);
             }
+
             temp++;
 
             lastLpot = lpotVal;
           }
+          
+
+          if(lpotVal <= Len[temp-1]){
+            Serial.print(Len[temp]); Serial.print("\t"); Serial.println(lpotVal);
+            
+          }
         }
         analogWrite(valvePin, 0);
         analogWrite(ovalvePin, 255);
-        delay(3000);
+        delay(6000);
         Serial.println("");
         if(!first){
         inVal += inc;
@@ -75,12 +83,12 @@ void loop() {
       if(first){
         inVal = 105;
         Serial.print("PWM,");
-        for(int i = 0; i < 40; i++){
+        for(int i = 0; i < 100; i++){
           Serial.print("L"+String(i)+",");
         }
         Serial.println("");
         Serial.print("-1,");
-        for(int i = 0; i < 40; i++){
+        for(int i = 0; i < 100; i++){
         Serial.print(String(Len[i]) + ",");
       }
       first = false;

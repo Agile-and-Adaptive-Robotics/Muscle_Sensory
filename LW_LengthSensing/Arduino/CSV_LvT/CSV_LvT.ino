@@ -1,107 +1,114 @@
-// Arduino sketch: measure actuator velocity across percentages of travel
+// Arduino sketch: measure actuator contraction velocity with positive PWM values, thresholds in mm, velocity in mm/s using high-resolution timing
 
-const int LpotPin     = A5;     // position sensor pin (linear pot)
-const int valvePin    = 3;      // PWM pin for contraction
-const int ovalvePin   = 9;      // PWM pin for extension
+const int LpotPin            = A5;       // position sensor pin (linear pot)
+const int valvePin           = 3;        // PWM pin for contraction
+const int ovalvePin          = 9;        // PWM pin for extension
 
-const int PWM_start   = 105;    // starting PWM for sweep
-const int PWM_max     = 255;    // max PWM
-const int PWM_inc     = 3;      // PWM increment
-const int numPoints   = 100;    // number of percentage thresholds (1% increments)
-const uint32_t fallbackTimeout = 3000;  // ms to wait per point before fallback
+const int PWM_start          = 105;      // starting PWM magnitude for sweep
+const int PWM_max            = 255;      // max PWM magnitude
+const int PWM_inc            = 3;        // PWM increment
+const int numSections        = 50;       // number of length sections (e.g., 2 mm each)
+const double totalTravelMm   = 100.0;    // actuator stroke in mm
+const uint32_t fallbackTimeoutUs = 1000000ULL; // 1 s timeout per section in microseconds
+const uint32_t extendTimeMs     = 2000;   // ms to fully extend before each test
+const double minDtSec           = 0.001;  // minimum delta time in seconds to avoid overflow
 
-double Len[numPoints];     // actual position thresholds
+double Len[numSections];               // calibrated contraction thresholds in mm
 
-double posMax = 0;         // sensor value at fully contracted
-double posMin = 0;         // sensor value at fully extended
+double posExtended   = 0.0;            // mm at fully extended
+double posContracted = 0.0;            // mm at fully contracted
 
 void setup() {
   Serial.begin(9600);
   pinMode(valvePin, OUTPUT);
   pinMode(ovalvePin, OUTPUT);
-
-  // ensure actuator fully extended at start
-  analogWrite(valvePin, 0);
-  analogWrite(ovalvePin, 255);
+  fullExtend();
 }
 
 void loop() {
-  if (Serial.available()) {
-    char c = Serial.read();
-    if (c == 'a') {
-      // 1) Calibrate endpoints and build Len[] based on percentage
-      calibrateEndpoints();
-      buildThresholds();
+  if (Serial.available() && Serial.read() == 'a') {
+    calibrateEndpoints();
+    buildThresholds();
 
-      // 2) Print CSV header: PWM + percent labels
-      Serial.print("PWM");
-      for (int i = 0; i < numPoints; i++) {
-        Serial.print(",Pct"); Serial.print(i+1);
-      }
-      Serial.println();
-
-      // 3) Sweep PWM
-      for (int pwm = PWM_start; pwm <= PWM_max; pwm += PWM_inc) {
-        double velocities[numPoints];
-        measureVelocities(pwm, velocities);
-        // print results
-        Serial.print(pwm);
-        for (int i = 0; i < numPoints; i++) {
-          Serial.print(",");
-          Serial.print(velocities[i], 4);
-        }
-        Serial.println();
-        delay(2000);
-      }
-      Serial.println("Sweep complete.");
+    // CSV header
+    Serial.print("PWM");
+    for (int i = 0; i < numSections; i++) {
+      Serial.print(",L"); Serial.print(Len[i], 1); Serial.print("mm");
     }
+    Serial.println();
+
+    // calibration row
+    Serial.print("-1");
+    for (int i = 0; i < numSections; i++) {
+      Serial.print(","); Serial.print(Len[i], 1);
+    }
+    Serial.println();
+
+    // sweep contraction
+    for (int pwm = PWM_start; pwm <= PWM_max; pwm += PWM_inc) {
+      fullExtend();
+      double velocities[numSections];
+      for(int i = 0; i < numSections; i++){
+        velocities[i] = -1.0;
+      }
+      measureContractionVelocities(pwm, velocities);
+      printResults(pwm, velocities);
+      delay(2000);
+    }
+    //Serial.println("Sweep complete.");
+    fullExtend();
   }
 }
 
-//------------------------------------------------------------------------------
+// drive to fully extended position before contraction run
+void fullExtend() {
+  analogWrite(valvePin, 0);
+  analogWrite(ovalvePin, PWM_max);
+  delay(extendTimeMs);
+  analogWrite(ovalvePin, 0);
+}
 
+// calibrate endpoints
 void calibrateEndpoints() {
-  // move to fully contracted
+  fullExtend();
+  posExtended = readPositionMm();
+
+  // fully contract
   analogWrite(ovalvePin, 0);
   analogWrite(valvePin, PWM_max);
-  delay(2000);
-  posMax = readRaw();
-
-  // move to fully extended
+  delay(extendTimeMs);
+  posContracted = readPositionMm();
   analogWrite(valvePin, 0);
-  analogWrite(ovalvePin, 255);
-  delay(2000);
-  posMin = readRaw();
-
-  // stop motion
-  analogWrite(ovalvePin, 0);
 }
 
+// build length thresholds
 void buildThresholds() {
-  // thresholds evenly spaced from 1% to 100%
-  for (int i = 0; i < numPoints; i++) {
-    double frac = double(i+1) / numPoints;  // 0.01 to 1.0
-    Len[i] = posMax - (posMax - posMin) * frac;
+  double travel = posExtended - posContracted;
+  for (int i = 0; i < numSections; i++) {
+    double frac = double(i + 1) / numSections;
+    Len[i] = posExtended - travel * frac;
   }
 }
 
-void measureVelocities(int pwmVal, double *vel) {
-  // start contraction
+// measure velocities between thresholds using micros() for timing
+void measureContractionVelocities(int pwmVal, double *vel) {
   analogWrite(ovalvePin, 0);
   analogWrite(valvePin, pwmVal);
 
-  unsigned long t_prev = millis();
-  double pos_prev = readRaw();
+  unsigned long t_prev = micros();
+  double pos_prev = readPositionMm();
 
-  for (int idx = 0; idx < numPoints; idx++) {
+  for (int i = 0; i < numSections; i++) {
     bool hit = false;
-    unsigned long t_start = millis();
-    while ((millis() - t_start) < fallbackTimeout) {
-      double pos = readRaw();
-      if (pos <= Len[idx]) {
-        unsigned long t_now = millis();
-        double dt = (t_now - t_prev) / 1000.0;  // s
-        vel[idx] = fabs(pos - pos_prev) / dt;
+    unsigned long start_us = micros();
+    while (micros() - start_us < fallbackTimeoutUs) {
+      double pos = readPositionMm();
+      if (pos <= Len[i]) {
+        unsigned long t_now = micros();
+        unsigned long delta_us = t_now - t_prev;
+        double dt = delta_us / 1e6;
+        if (dt < minDtSec) dt = minDtSec;
+        vel[i] = (pos_prev - pos) / dt;  // mm/s
         t_prev = t_now;
         pos_prev = pos;
         hit = true;
@@ -109,16 +116,28 @@ void measureVelocities(int pwmVal, double *vel) {
       }
     }
     if (!hit) {
-      // fallback
-      vel[idx] = 0.0;
-      t_prev = millis();
-      pos_prev = readRaw();
+      // Timeout fallback
+      vel[i] = -1.0;
+      t_prev = micros();
+      pos_prev = readPositionMm();
+      break;
     }
   }
   analogWrite(valvePin, 0);
+
 }
 
-// return raw analog reading (0-1023)
-double readRaw() {
-  return analogRead(LpotPin);
+// print CSV results
+void printResults(int pwm, double *vel) {
+  Serial.print(pwm);
+  for (int i = 0; i < numSections; i++) {
+    Serial.print(","); Serial.print(vel[i], 2);
+  }
+  Serial.println();
+}
+
+// map raw ADC to mm (1023→0 mm, 0→totalTravelMm mm)
+double readPositionMm() {
+  double raw = analogRead(LpotPin);
+  return (1023.0 - raw) * (totalTravelMm / 1023.0);
 }

@@ -1,0 +1,38 @@
+ // Arduino sketch: measure actuator velocity across percentages of travel
+
+const int LpotPin     = A5;     // position sensor pin (linear pot)
+const int ivalvePin    = 11;      // PWM pin for contraction (inlet)
+const int evalvePin   = 9;      // PWM pin for extension (outlet)
+
+const int PWM_start   = 105;    // starting PWM for sweep
+const int PWM_max     = 255;    // max PWM
+const int PWM_inc     = 3;      // PWM increment
+const int numPoints   = 100;    // number of percentage thresholds (1% increments)
+const uint32_t fallbackTimeout = 3000;  // ms to wait per point before fallback
+
+double Len[numPoints];     // actual position thresholds
+
+double posMax = 0;         // sensor value at fully contracted
+double posMin = 0;         // sensor value at fully extended
+
+
+
+void setup() {
+    Serial.begin(9600);
+    pinMode(ivalvePin, OUTPUT);
+    pinMode(evalvePin, OUTPUT);
+
+    // ensure actuator fully extended at start
+    analogWrite(ivalvePin, 0);
+    analogWrite(evalvePin, 255);
+
+}
+
+void loop() {
+    analogWrite(ivalvePin, 0);
+    analogWrite(evalvePin, 255);
+    delay(2000);
+    analogWrite(ivalvePin, 255);
+    analogWrite(evalvePin, 0);    
+
+}

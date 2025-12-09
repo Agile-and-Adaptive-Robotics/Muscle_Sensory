@@ -1,5 +1,7 @@
  // Arduino sketch: measure actuator velocity across percentages of travel
 
+#include <math.h> 
+
 const int LpotPin     = A5;     // position sensor pin (linear pot)
 const int ivalvePin    = 11;      // PWM pin for contraction (inlet)
 const int evalvePin   = 9;      // PWM pin for extension (outlet)
@@ -9,12 +11,14 @@ const int PWM_max     = 255;    // max PWM
 const int PWM_inc     = 3;      // PWM increment
 const int numPoints   = 100;    // number of percentage thresholds (1% increments)
 const uint32_t fallbackTimeout = 3000;  // ms to wait per point before fallback
+const int PressurePin = A2; // pressure pin to measure internal pressure
 
 double Len[numPoints];     // actual position thresholds
 
 double posMax = 0;         // sensor value at fully contracted
 double posMin = 0;         // sensor value at fully extended
-
+float pressure = 0.0 ;        // pressure sensor value
+float PSIpressure = 0.0 ;        // pressure sensor value
 
 
 void setup() {
@@ -29,12 +33,28 @@ void setup() {
 }
 
 void loop() {
+  if (Serial.available()) {
+    char c = Serial.read();
+    if (c == 'a') {
+    analogWrite(ivalvePin, 255);
+    analogWrite(evalvePin, 0);
+      }
+
+    if (c == 'b') {
     analogWrite(ivalvePin, 0);
     analogWrite(evalvePin, 255);
-    delay(2000);
-    analogWrite(ivalvePin, 255);
-    analogWrite(evalvePin, 0);    
+      }
+  }
 
+pressure = analogRead(PressurePin) ; //Measure analog value
+pressure = pressure/1024 * 5; //Convert analog value to voltage
+pressure = ((pressure / 5) -0.04)/ 0.0012858 ; //Convert to kPa
+PSIpressure = (pressure * 0.145);
+// Serial.print(pressure);
+// Serial.print(" Kpa  ");
+Serial.print(PSIpressure); // in psi
+Serial.println(" Psi");
+// delay(1000);
 }
 
 

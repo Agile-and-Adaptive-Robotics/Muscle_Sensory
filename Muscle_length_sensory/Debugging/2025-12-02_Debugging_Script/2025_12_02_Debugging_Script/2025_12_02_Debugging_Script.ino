@@ -19,6 +19,7 @@ double posMax = 0;         // sensor value at fully contracted
 double posMin = 0;         // sensor value at fully extended
 float pressure = 0.0 ;        // pressure sensor value
 float PSIpressure = 0.0 ;        // pressure sensor value
+int Lpot_Out = 0; // output of linear potentiometer
 
 
 void setup() {
@@ -47,9 +48,12 @@ void loop() {
   }
 
 pressure = analogRead(PressurePin) ; //Measure analog value
+Lpot_Out = analogRead(LpotPin); 
 pressure = pressure/1024 * 5; //Convert analog value to voltage
 pressure = ((pressure / 5) -0.04)/ 0.0012858 ; //Convert to kPa
 PSIpressure = (pressure * 0.145);
+Serial.print(Lpot_Out);
+Serial.print(" bits  ");
 // Serial.print(pressure);
 // Serial.print(" Kpa  ");
 Serial.print(PSIpressure); // in psi

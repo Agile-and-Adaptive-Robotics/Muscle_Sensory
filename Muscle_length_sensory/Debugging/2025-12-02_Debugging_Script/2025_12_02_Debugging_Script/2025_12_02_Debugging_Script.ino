@@ -45,7 +45,7 @@ int sensorValue = 0;        //sensorPin default value
 char filename[20];
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
 
     while (!Serial) {
     ; // wait for serial port to connect. Needed for Leonardo only
@@ -77,10 +77,10 @@ void setup() {
     analogWrite(evalvePin, 255);
     delay(1000);
     Lpot_Out = analogRead(LpotPin); 
-    Lref = 101.6 - Lpot_Out * (101.6/1024);
+    Lref = 101.6 + Lpot_Out * (101.6/1024);
 
 }
-
+ 
 void loop() {
   if (Serial.available()) {
     char c = Serial.read();
@@ -108,7 +108,7 @@ Lpot_Out = analogRead(LpotPin);
 pressure = pressure/1024 * 5; //Convert analog value to voltage
 pressure = ((pressure / 5) -0.04)/ 0.0012858 ; //Convert to kPa
 PSIpressure = (pressure * 0.145);
-length =Lref - (101.6 - Lpot_Out * (101.6/1024));
+length =Lref + 25 - (101.6 + Lpot_Out * (101.6/1024));
 
 // char buffer[4];          // 3 digits + null terminator
 // sprintf(buffer, "%03d", c1);
@@ -133,13 +133,17 @@ length =Lref - (101.6 - Lpot_Out * (101.6/1024));
 // // myFile.print(Lpot_Out);
 // // myFile.print(" ,  ");
 // myFile.println(length);
+Serial.print(length);
+Serial.print(" mm  ");
+Serial.print(Lpot_Out);
+Serial.print(" bits  ");
 Serial.print(pressure);
 Serial.print(" Kpa  ");
 Serial.print(PSIpressure); // in psi
 Serial.print(" Psi  Vout: ");
 Serial.print(Vout); // in ohm
 Serial.println(""); // in psi
-delay(1000);
+delay(50);
 // myFile.close();
 // } else {
 //     // if the file didn't open, print an error:

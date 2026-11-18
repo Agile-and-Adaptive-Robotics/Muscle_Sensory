@@ -17,3 +17,5 @@ PWMe = PWM outlet/exit valve value
 Pressure (Psi) = Internal muscle pressure 
 LW (V) = Liquid wire sensor voltage change reading post amplification. Amplification ~ 1000x
 Displacement (mm) = Linear potentiometer muscle displacement 
+
+18-03-2026 Length Characterisation.ipynb: Processing script
